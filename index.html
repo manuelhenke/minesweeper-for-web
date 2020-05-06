@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Minesweeper</title>
+    <link rel="stylesheet" href="dist/style.css">
+    <style>
+        .minesweeper {
+            text-align: center;
+            padding: 30px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <p>
+        Just play <a href="https://www.instructables.com/id/How-to-beat-Minesweeper/" target="_blank"
+            title="Explanation">minesweeper</a>.
+        To place a flag press ctrl while clicking on a field.
+    </p>
+    <select name="gamemode" id="gamemode">
+        <option value="easy" selected>Easy - 9x9 / 10 Mines</option>
+        <option value="normal">Normal - 16x16 / 40 Mines</option>
+        <option value="hard">Hard - 16x30 / 99 Mines</option>
+        <option value="custom">Custom</option>
+    </select>
+    <div><span id="bombCounter"></span> Mines</div>
+    <div class="minesweeper"></div>
+    <button id="newMinesweeperGame">Restart!</button>
+    <button id="newMinesweeperGame_Custom">Restart with Confirm!</button>
+
+
+    <script src="dist/minesweeper-for-web.js"></script>
+    <script>
+        $(document).ready(function ($) {
+
+            function getGamemodeConfiguration(currentGamemode) {
+                switch (currentGamemode) {
+                    case 'easy':
+                        return {
+                            columns: 9,
+                            rows: 9,
+                            bombs: 10
+                        };
+                    case 'normal':
+                        return {
+                            columns: 16,
+                            rows: 16,
+                            bombs: 40
+                        };
+                    case 'hard':
+                        return {
+                            columns: 30,
+                            rows: 16,
+                            bombs: 99
+                        };
+                }
+            }
+
+            const gamemodeConfiguration = getGamemodeConfiguration($('#gamemode').val());
+
+            const minesweeper = $('.minesweeper').minesweeper({
+                'pathToIcons': '/dist/assets/icons/',
+                'gamemodeConfiguration': gamemodeConfiguration,
+                'newGameSelector': '#newMinesweeperGame',
+                'bombCounterSelector': '#bombCounter',
+                'onWinCallback': () => {
+                    console.log("win");
+                },
+                'onLoseCallback': () => {
+                    console.log("lose");
+                }
+            });
+
+            $('#newMinesweeperGame_Custom').click(function(e) {
+                e.preventDefault();
+                if(confirm("Are you sure, that you want to restart the game?")) {
+                    minesweeper.restart();
+                }
+            })
+
+            $('#gamemode').change(function (e) {
+                e.preventDefault();
+
+                const gamemodeConfiguration = getGamemodeConfiguration(this.value);
+                minesweeper.createBoard(gamemodeConfiguration);
+            });
+        });
+    </script>
+</body>
+
+</html>
