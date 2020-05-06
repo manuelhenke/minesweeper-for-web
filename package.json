@@ -1,8 +1,8 @@
 {
   "name": "minesweeper-for-web",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "This is the classic microsoft minesweeper for the web.",
-  "main": "src/minesweeper-for-web.js",
+  "main": "dist/minesweeper-for-web.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "npm install && grunt"
