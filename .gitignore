@@ -105,3 +105,6 @@ typings/
 
 # Editor-related folders
 .vscode
+
+# sass cache
+.sass-cache/
