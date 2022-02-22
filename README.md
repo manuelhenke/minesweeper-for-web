@@ -1,5 +1,5 @@
 # minesweeper-for-web
-This is the classic Microsoft Minesweeper-Game as a jQuery-Plugin. Once you implement it as described further, the game just follows the [standard rules](https://www.instructables.com/id/How-to-beat-Minesweeper/). To place a flag just press `ctrl` while clicking on a field.
+This is the classic Microsoft Minesweeper-Game as a WebComponent. Once you integrate it as described further, the game just follows the [standard rules](https://www.instructables.com/id/How-to-beat-Minesweeper/). To place a flag just press `ctrl`, `alt` or the meta key while clicking on a field.
 
 # Getting Started
 Install the package via `npm` or `yarn` and deliver the script to the user.
