@@ -1,37 +1,80 @@
 {
   "name": "minesweeper-for-web",
-  "version": "1.0.2",
+  "version": "2.0.0",
   "description": "This is the classic microsoft minesweeper for the web.",
-  "main": "dist/minesweeper-for-web.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "npm install && grunt"
+  "keywords": [
+    "minesweeper",
+    "javascript",
+    "webcomponent",
+    "custom-element"
+  ],
+  "homepage": "https://henkebyte.com/minesweeper",
+  "bugs": {
+    "url": "https://github.com/manuelhenke/minesweeper-for-web/issues"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/manuelhenke/minesweeper-for-web.git"
   },
-  "keywords": [
-    "minesweeper",
-    "javascript"
-  ],
-  "author": "Manuel Henke",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/manuelhenke/minesweeper-for-web/issues"
+  "author": "Manuel Henke <manuel.henke@yahoo.de> (https://github.com/manuelhenke)",
+  "type": "module",
+  "main": "dist/minesweeper.js",
+  "module": "dist/minesweeper.js",
+  "scripts": {
+    "analyze": "cem analyze --litelement",
+    "build": "webpack -c webpack.cjs",
+    "format": "eslint --ext .js,.html,.scss . --fix --ignore-path .gitignore && prettier \"**/*.js\" --write --ignore-path .gitignore",
+    "lint": "eslint --ext .js,.html,.scss . --ignore-path .gitignore && prettier \"**/*.js\" --check --ignore-path .gitignore",
+    "test": "web-test-runner --coverage",
+    "test:watch": "web-test-runner --watch"
   },
-  "homepage": "https://github.com/manuelhenke/minesweeper-for-web#readme",
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.js": [
+      "eslint --fix",
+      "prettier --write"
+    ]
+  },
+  "prettier": {
+    "arrowParens": "avoid",
+    "singleQuote": true
+  },
+  "eslintConfig": {
+    "extends": [
+      "@open-wc",
+      "prettier"
+    ]
+  },
   "dependencies": {
-    "jquery": "^3.5.0"
+    "lit": "^2.2.0"
   },
   "devDependencies": {
-    "grunt": "^1.1.0",
-    "grunt-contrib-clean": "^2.0.0",
-    "grunt-contrib-concat": "^1.0.1",
-    "grunt-contrib-copy": "^1.0.0",
-    "grunt-contrib-jshint": "^2.1.0",
-    "grunt-contrib-sass": "^1.0.0",
-    "grunt-contrib-uglify": "^4.0.1",
-    "grunt-contrib-watch": "^1.1.0"
-  }
+    "@custom-elements-manifest/analyzer": "^0.5.7",
+    "@open-wc/eslint-config": "^7.0.0",
+    "@open-wc/testing": "^3.0.4",
+    "@web/test-runner": "0.13.27",
+    "css-loader": "^6.5.1",
+    "eslint": "^8.9.0",
+    "eslint-config-prettier": "^8.4.0",
+    "eslint-plugin-import": "^2.25.4",
+    "eslint-plugin-lit-a11y": "^2.2.0",
+    "eslint-plugin-wc": "^1.3.2",
+    "html-loader": "^3.1.0",
+    "husky": "^7.0.4",
+    "lint-staged": "^12.3.4",
+    "postcss": "^8.4.4",
+    "postcss-loader": "^6.2.1",
+    "prettier": "^2.5.1",
+    "sass": "^1.49.8",
+    "sass-loader": "^12.6.0",
+    "svg-inline-loader": "^0.8.2",
+    "webpack": "^5.69.1",
+    "webpack-cli": "^4.9.2"
+  },
+  "customElements": "custom-elements.json"
 }

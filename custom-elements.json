@@ -1,0 +1,493 @@
+{
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
+    {
+      "kind": "javascript-module",
+      "path": "src/Minesweeper.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "Minesweeper",
+          "members": [
+            {
+              "kind": "field",
+              "name": "ICONS",
+              "type": {
+                "text": "object"
+              },
+              "static": true,
+              "default": "{\n    BOMB: Bomb,\n    BOMB_EXPLODE: BombExplode,\n    FLAG: Flag,\n    FLAG_MISSED: FlagMissed,\n    QUESTION_MARK: QuestionMark,\n    UNOPENED_SQUARE: UnopenedSquare,\n    NUMBER_0: Number0,\n    NUMBER_1: Number1,\n    NUMBER_2: Number2,\n    NUMBER_3: Number3,\n    NUMBER_4: Number4,\n    NUMBER_5: Number5,\n    NUMBER_6: Number6,\n    NUMBER_7: Number7,\n    NUMBER_8: Number8,\n  }"
+            },
+            {
+              "kind": "method",
+              "name": "__createGameBoard"
+            },
+            {
+              "kind": "method",
+              "name": "__gameWonCallback"
+            },
+            {
+              "kind": "method",
+              "name": "__gameLostCallback"
+            },
+            {
+              "kind": "method",
+              "name": "setGameModeConfiguration",
+              "parameters": [
+                {
+                  "name": "gameModeConfiguration",
+                  "type": {
+                    "text": "GameModeConfiguration"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "restartGame"
+            },
+            {
+              "kind": "method",
+              "name": "__handleFieldClick",
+              "parameters": [
+                {
+                  "name": "event",
+                  "type": {
+                    "text": "PointerEvent"
+                  }
+                },
+                {
+                  "name": "selectedRow"
+                },
+                {
+                  "name": "selectedColumn"
+                },
+                {
+                  "name": "hasFlag"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "getSweeperFieldHtml",
+              "parameters": [
+                {
+                  "name": "rowIndex"
+                },
+                {
+                  "name": "columnIndex"
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "restartSelector",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "privacy": "public",
+              "attribute": "restart-selector"
+            },
+            {
+              "kind": "field",
+              "name": "bombCounterSelector",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "privacy": "public",
+              "attribute": "bomb-counter-selector"
+            },
+            {
+              "kind": "field",
+              "name": "columns",
+              "type": {
+                "text": "number"
+              },
+              "default": "9",
+              "privacy": "public",
+              "attribute": "columns"
+            },
+            {
+              "kind": "field",
+              "name": "rows",
+              "type": {
+                "text": "number"
+              },
+              "default": "9",
+              "privacy": "public",
+              "attribute": "rows"
+            },
+            {
+              "kind": "field",
+              "name": "bombs",
+              "type": {
+                "text": "number"
+              },
+              "default": "10",
+              "privacy": "public",
+              "attribute": "bombs"
+            },
+            {
+              "kind": "field",
+              "name": "__game",
+              "type": {
+                "text": "MinesweeperGame"
+              },
+              "default": "null",
+              "privacy": "public",
+              "attribute": "__game"
+            }
+          ],
+          "events": [
+            {
+              "name": "game-won",
+              "type": {
+                "text": "CustomEvent"
+              }
+            },
+            {
+              "name": "game-lost",
+              "type": {
+                "text": "CustomEvent"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "restart-selector",
+              "fieldName": "restartSelector"
+            },
+            {
+              "name": "bomb-counter-selector",
+              "fieldName": "bombCounterSelector"
+            },
+            {
+              "name": "columns",
+              "fieldName": "columns"
+            },
+            {
+              "name": "rows",
+              "fieldName": "rows"
+            },
+            {
+              "name": "bombs",
+              "fieldName": "bombs"
+            },
+            {
+              "name": "__game",
+              "type": {
+                "text": "MinesweeperGame"
+              },
+              "fieldName": "__game"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "minesweeper-game",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "Minesweeper",
+          "declaration": {
+            "name": "Minesweeper",
+            "module": "src/Minesweeper.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "minesweeper-game",
+          "declaration": {
+            "name": "Minesweeper",
+            "module": "src/Minesweeper.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/MinesweeperBoard.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "MinesweeperBoard",
+          "members": [
+            {
+              "kind": "method",
+              "name": "build"
+            },
+            {
+              "kind": "field",
+              "name": "generate2dFields"
+            },
+            {
+              "kind": "method",
+              "name": "placeBombs"
+            },
+            {
+              "kind": "method",
+              "name": "calculateBombIndices",
+              "description": "Calculates a random set of indices where bombs are located on the field",
+              "return": {
+                "type": {
+                  "text": ""
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "applyFieldNumbers"
+            },
+            {
+              "kind": "method",
+              "name": "revealFieldEntry",
+              "parameters": [
+                {
+                  "name": "row"
+                },
+                {
+                  "name": "column"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "expand",
+              "parameters": [
+                {
+                  "name": "row"
+                },
+                {
+                  "name": "column"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "getNeighbors",
+              "parameters": [
+                {
+                  "name": "currentRow",
+                  "type": {
+                    "text": "number"
+                  }
+                },
+                {
+                  "name": "currentColumn",
+                  "type": {
+                    "text": "number"
+                  }
+                }
+              ],
+              "return": {
+                "type": {
+                  "text": "[number, number][]"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "addFlag",
+              "parameters": [
+                {
+                  "name": "selectedRow"
+                },
+                {
+                  "name": "selectedColumn"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "removeFlag",
+              "parameters": [
+                {
+                  "name": "selectedRow"
+                },
+                {
+                  "name": "selectedColumn"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "revealBombs",
+              "parameters": [
+                {
+                  "name": "bombsAsFlags",
+                  "default": "false"
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "positions",
+              "type": {
+                "text": "null"
+              },
+              "default": "null"
+            },
+            {
+              "kind": "field",
+              "name": "flags",
+              "type": {
+                "text": "null"
+              },
+              "default": "null"
+            },
+            {
+              "kind": "field",
+              "name": "flagCounter",
+              "type": {
+                "text": "number"
+              },
+              "default": "0"
+            },
+            {
+              "kind": "field",
+              "name": "revealedFields",
+              "type": {
+                "text": "null"
+              },
+              "default": "null"
+            },
+            {
+              "kind": "field",
+              "name": "rows"
+            },
+            {
+              "kind": "field",
+              "name": "columns"
+            },
+            {
+              "kind": "field",
+              "name": "bombs"
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "MinesweeperBoard",
+          "declaration": {
+            "name": "MinesweeperBoard",
+            "module": "src/MinesweeperBoard.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/MinesweeperGame.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "MinesweeperGame",
+          "members": [
+            {
+              "kind": "method",
+              "name": "createBoard",
+              "parameters": [
+                {
+                  "name": "columns",
+                  "default": "9"
+                },
+                {
+                  "name": "rows",
+                  "default": "9"
+                },
+                {
+                  "name": "bombs",
+                  "default": "10"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "restart"
+            },
+            {
+              "kind": "method",
+              "name": "setFlag",
+              "parameters": [
+                {
+                  "name": "selectedRow"
+                },
+                {
+                  "name": "selectedColumn"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "selectField",
+              "parameters": [
+                {
+                  "name": "selectedRow"
+                },
+                {
+                  "name": "selectedColumn"
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "onWinCallback",
+              "default": "onWinCallback"
+            },
+            {
+              "kind": "field",
+              "name": "onLoseCallback",
+              "default": "onLoseCallback"
+            },
+            {
+              "kind": "field",
+              "name": "board",
+              "type": {
+                "text": "MinesweeperBoard"
+              },
+              "default": "null"
+            },
+            {
+              "kind": "field",
+              "name": "gameModeConfiguration",
+              "type": {
+                "text": "GameModeConfiguration"
+              },
+              "default": "null"
+            },
+            {
+              "kind": "field",
+              "name": "isGameOver",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "true"
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "MinesweeperGame",
+          "declaration": {
+            "name": "MinesweeperGame",
+            "module": "src/MinesweeperGame.js"
+          }
+        }
+      ]
+    }
+  ]
+}

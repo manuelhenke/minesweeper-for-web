@@ -1,3 +1,162 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid meet" viewBox="0 0 76 76" width="76" height="76"><defs><path d="M75.99 0C76 0 76 0 76 0.01C76 7.61 76 68.39 76 75.99C76 76 76 76 75.99 76C68.39 76 7.61 76 0.01 76C0 76 0 76 0 75.99C0 68.39 0 7.61 0 0.01C0 0 0 0 0.01 0C15.21 0 68.39 0 75.99 0Z" id="c4RgRayzmz"></path><path d="M76 0.01C76 7.61 76 68.39 76 75.99C76 76 76 76 75.99 76C68.39 76 7.61 76 0.01 76C0 76 0 76 0 75.99C5.07 70.92 30.4 45.59 75.99 0C76 0 76 0.01 76 0.01Z" id="aZKlD8xUO"></path><path d="M67.49 8.5L67.5 8.51L67.5 67.49L67.49 67.5L8.51 67.5L8.5 67.49L8.5 8.51L8.51 8.5L67.49 8.5Z" id="akhWiWIG0"></path><path d="M36 16.5L40 16.5L40 55.5L36 55.5L36 55.5L36 16.5Z" id="i3Zw9vFXy"></path><path d="M19.38 27L40 40.13L40 13.88L19.38 27Z" id="b1CJ10Rj3l"></path><path d="M47.43 51.63C47.43 51.63 47.43 51.63 47.43 51.63C47.43 54.93 47.43 56.76 47.43 57.13C47.43 57.12 47.43 57.12 47.43 57.13C36.11 57.12 29.83 57.12 28.57 57.13C28.57 57.12 28.57 57.12 28.57 57.13C28.57 53.83 28.57 51.99 28.57 51.63C28.57 51.63 28.57 51.63 28.57 51.63C39.89 51.63 46.17 51.63 47.43 51.63Z" id="imiAfoPX9"></path><path d="M55.78 56.46C55.78 56.46 55.78 56.46 55.78 56.46C55.78 60.68 55.78 63.03 55.78 63.5C55.78 63.5 55.78 63.5 55.78 63.5C34.44 63.5 22.59 63.5 20.22 63.5C20.22 63.5 20.22 63.5 20.22 63.5C20.22 59.28 20.22 56.93 20.22 56.46C20.22 56.46 20.22 56.46 20.22 56.46C41.56 56.46 53.41 56.46 55.78 56.46Z" id="agikDsBuy"></path><path d="M8.82 10.95L10.95 8.82L67.24 65.12L65.12 67.24L8.82 10.95Z" id="aZI0NuNrZ"></path><path d="M65.12 8.82L67.24 10.95L10.95 67.24L8.82 65.12L65.12 8.82Z" id="dbrJ6X53I"></path></defs><g><g><g><use xlink:href="#c4RgRayzmz" opacity="1" fill="#fdfcfd" fill-opacity="1"></use><g><use xlink:href="#c4RgRayzmz" opacity="1" fill-opacity="0" stroke="#000000" stroke-width="1" stroke-opacity="0"></use></g></g><g><use xlink:href="#aZKlD8xUO" opacity="1" fill="#757575" fill-opacity="1"></use><g><use xlink:href="#aZKlD8xUO" opacity="1" fill-opacity="0" stroke="#000000" stroke-width="1" stroke-opacity="0"></use></g></g><g><use xlink:href="#akhWiWIG0" opacity="1" fill="#b9b9b9" fill-opacity="1"></use><g><use xlink:href="#akhWiWIG0" opacity="1" fill-opacity="0" stroke="#000000" stroke-width="1" stroke-opacity="0"></use></g></g><g><use xlink:href="#i3Zw9vFXy" opacity="1" fill="#000000" fill-opacity="1"></use><g><use xlink:href="#i3Zw9vFXy" opacity="1" fill-opacity="0" stroke="#000000" stroke-width="1" stroke-opacity="0"></use></g></g><g><use xlink:href="#b1CJ10Rj3l" opacity="1" fill="#ff0000" fill-opacity="1"></use><g><use xlink:href="#b1CJ10Rj3l" opacity="1" fill-opacity="0" stroke="#000000" stroke-width="1" stroke-opacity="0"></use></g></g><g><use xlink:href="#imiAfoPX9" opacity="1" fill="#000000" fill-opacity="1"></use><g><use xlink:href="#imiAfoPX9" opacity="1" fill-opacity="0" stroke="#000000" stroke-width="1" stroke-opacity="0"></use></g></g><g><use xlink:href="#agikDsBuy" opacity="1" fill="#000000" fill-opacity="1"></use><g><use xlink:href="#agikDsBuy" opacity="1" fill-opacity="0" stroke="#000000" stroke-width="1" stroke-opacity="0"></use></g></g><g><use xlink:href="#aZI0NuNrZ" opacity="1" fill="#ff0000" fill-opacity="1"></use><g><use xlink:href="#aZI0NuNrZ" opacity="1" fill-opacity="0" stroke="#000000" stroke-width="0.1" stroke-opacity="1"></use></g></g><g><use xlink:href="#dbrJ6X53I" opacity="1" fill="#ff0000" fill-opacity="1"></use><g><use xlink:href="#dbrJ6X53I" opacity="1" fill-opacity="0" stroke="#000000" stroke-width="0.1" stroke-opacity="1"></use></g></g></g></g></svg>
+<svg viewBox="0 0 76 76" width="76" height="76" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid meet" version="1.1">
+	<defs>
+		<path id="e2iiwvZd6v" d="m2,74l0,-72l72,0l0,72l0,0l-72,0z" />
+		<mask maskUnits="userSpaceOnUse" height="80" width="80" y="-2" x="-2" id="maskaXtlGt3qy">
+			<rect id="svg_1" fill="white" height="80" width="80" y="-2" x="-2" />
+			<use id="svg_2" fill="black" xlink:href="#e2iiwvZd6v" />
+		</mask>
+		<path id="c9eN9knBh" d="m35.6,6.8l4.8,0l0,62.4l-4.8,0l0,-62.4z" />
+		<clipPath id="clipd1zPYXGAwy">
+			<use id="svg_3" xlink:href="#c9eN9knBh" />
+		</clipPath>
+		<path id="gx4drqHvY" d="m40.4,16.4l9.6,0l0,43.2l-9.6,0l0,-43.2z" />
+		<clipPath id="clipa2yM9RkR6">
+			<use id="svg_4" xlink:href="#gx4drqHvY" />
+		</clipPath>
+		<path id="fgtYUnw8A" d="m50,21.2l4.8,0l0,33.6l-4.8,0l0,-33.6z" />
+		<clipPath id="clipk32QKT1MaU">
+			<use id="svg_5" xlink:href="#fgtYUnw8A" />
+		</clipPath>
+		<path id="cgzxabwz1" d="m54.8,26l4.8,0l0,24l-4.8,0l0,-24z" />
+		<clipPath id="cliph2KpOi7P9O">
+			<use id="svg_6" xlink:href="#cgzxabwz1" />
+		</clipPath>
+		<path id="b3gPwqEoX" d="m59.6,35.6l9.6,0l0,4.8l-9.6,0l0,-4.8z" />
+		<clipPath id="clipe23gtVrUJ">
+			<use id="svg_7" xlink:href="#b3gPwqEoX" />
+		</clipPath>
+		<path id="ad99VAl8I" d="m26,16.4l9.6,0l0,43.2l-9.6,0l0,-43.2z" />
+		<clipPath id="clipd1v1rV6sj4">
+			<use id="svg_8" xlink:href="#ad99VAl8I" />
+		</clipPath>
+		<path id="c13ZaXjO2p" d="m21.2,21.2l4.8,0l0,33.6l-4.8,0l0,-33.6z" />
+		<clipPath id="cliph399Xr21VH">
+			<use id="svg_9" xlink:href="#c13ZaXjO2p" />
+		</clipPath>
+		<path id="b2SwHVIyUf" d="m16.4,26l4.8,0l0,24l-4.8,0l0,-24z" />
+		<clipPath id="clipbgmy6Y3Gb">
+			<use id="svg_10" xlink:href="#b2SwHVIyUf" />
+		</clipPath>
+		<path id="g3CI8RzO6L" d="m6.8,35.6l9.6,0l0,4.8l-9.6,0l0,-4.8z" />
+		<clipPath id="clipb4iPMKkLd9">
+			<use id="svg_11" xlink:href="#g3CI8RzO6L" />
+		</clipPath>
+		<path id="bVu929Gr" d="m54.8,16.4l4.8,0l0,4.8l-4.8,0l0,-4.8z" />
+		<clipPath id="clipb5eim9AY4T">
+			<use id="svg_12" xlink:href="#bVu929Gr" />
+		</clipPath>
+		<path id="bbmkl5w40" d="m16.4,16.4l4.8,0l0,4.8l-4.8,0l0,-4.8z" />
+		<clipPath id="clipdILmNb1DZ">
+			<use id="svg_13" xlink:href="#bbmkl5w40" />
+		</clipPath>
+		<path id="afRzpmA7F" d="m54.8,54.8l4.8,0l0,4.8l-4.8,0l0,-4.8z" />
+		<clipPath id="clipa1MHsUZSGO">
+			<use id="svg_14" xlink:href="#afRzpmA7F" />
+		</clipPath>
+		<path id="f34Z0Cg2H2" d="m16.4,54.8l4.8,0l0,4.8l-4.8,0l0,-4.8z" />
+		<clipPath id="clipaiMYuA5gL">
+			<use id="svg_15" xlink:href="#f34Z0Cg2H2" />
+		</clipPath>
+		<path id="a7XCqe2jKp" d="m26,26l9.6,0l0,9.6l-9.6,0l0,-9.6z" />
+	</defs>
+	<g>
+		<title>
+			Layer 1
+		</title>
+		<g id="svg_16">
+			<g id="svg_17">
+				<g id="svg_18">
+					<use id="svg_19" fill="#b9b9b9" xlink:href="#e2iiwvZd6v" />
+					<g id="svg_20" mask="url(#maskaXtlGt3qy)">
+						<use id="svg_21" stroke-width="4" stroke="#757575" fill-opacity="0" xlink:href="#e2iiwvZd6v" />
+					</g>
+				</g>
+				<g id="svg_22">
+					<use id="svg_23" fill="#000000" xlink:href="#c9eN9knBh" />
+					<g id="svg_24" clip-path="url(#clipd1zPYXGAwy)">
+						<use id="svg_25" stroke-width="2" stroke="#000000" fill-opacity="0" xlink:href="#c9eN9knBh" />
+					</g>
+				</g>
+				<g id="svg_26">
+					<use id="svg_27" fill="#000000" xlink:href="#gx4drqHvY" />
+					<g id="svg_28" clip-path="url(#clipa2yM9RkR6)">
+						<use id="svg_29" stroke-width="2" stroke="#000000" fill-opacity="0" xlink:href="#gx4drqHvY" />
+					</g>
+				</g>
+				<g id="svg_30">
+					<use id="svg_31" fill="#000000" xlink:href="#fgtYUnw8A" />
+					<g id="svg_32" clip-path="url(#clipk32QKT1MaU)">
+						<use id="svg_33" stroke-width="2" stroke="#000000" fill-opacity="0" xlink:href="#fgtYUnw8A" />
+					</g>
+				</g>
+				<g id="svg_34">
+					<use id="svg_35" fill="#000000" xlink:href="#cgzxabwz1" />
+					<g id="svg_36" clip-path="url(#cliph2KpOi7P9O)">
+						<use id="svg_37" stroke-width="2" stroke="#000000" fill-opacity="0" xlink:href="#cgzxabwz1" />
+					</g>
+				</g>
+				<g id="svg_38">
+					<use id="svg_39" fill="#000000" xlink:href="#b3gPwqEoX" />
+					<g id="svg_40" clip-path="url(#clipe23gtVrUJ)">
+						<use id="svg_41" stroke-width="2" stroke="#000000" fill-opacity="0" xlink:href="#b3gPwqEoX" />
+					</g>
+				</g>
+				<g id="svg_42">
+					<use id="svg_43" fill="#000000" xlink:href="#ad99VAl8I" />
+					<g id="svg_44" clip-path="url(#clipd1v1rV6sj4)">
+						<use id="svg_45" stroke-width="2" stroke="#000000" fill-opacity="0" xlink:href="#ad99VAl8I" />
+					</g>
+				</g>
+				<g id="svg_46">
+					<use id="svg_47" fill="#000000" xlink:href="#c13ZaXjO2p" />
+					<g id="svg_48" clip-path="url(#cliph399Xr21VH)">
+						<use id="svg_49" stroke-width="2" stroke="#000000" fill-opacity="0" xlink:href="#c13ZaXjO2p" />
+					</g>
+				</g>
+				<g id="svg_50">
+					<use id="svg_51" fill="#000000" xlink:href="#b2SwHVIyUf" />
+					<g id="svg_52" clip-path="url(#clipbgmy6Y3Gb)">
+						<use id="svg_53" stroke-width="2" stroke="#000000" fill-opacity="0" xlink:href="#b2SwHVIyUf" />
+					</g>
+				</g>
+				<g id="svg_54">
+					<use id="svg_55" fill="#000000" xlink:href="#g3CI8RzO6L" />
+					<g id="svg_56" clip-path="url(#clipb4iPMKkLd9)">
+						<use id="svg_57" stroke-width="2" stroke="#000000" fill-opacity="0" xlink:href="#g3CI8RzO6L" />
+					</g>
+				</g>
+				<g id="svg_58">
+					<use id="svg_59" fill="#000000" xlink:href="#bVu929Gr" />
+					<g id="svg_60" clip-path="url(#clipb5eim9AY4T)">
+						<use id="svg_61" stroke-width="2" stroke="#000000" fill-opacity="0" xlink:href="#bVu929Gr" />
+					</g>
+				</g>
+				<g id="svg_62">
+					<use id="svg_63" fill="#000000" xlink:href="#bbmkl5w40" />
+					<g id="svg_64" clip-path="url(#clipdILmNb1DZ)">
+						<use id="svg_65" stroke-width="2" stroke="#000000" fill-opacity="0" xlink:href="#bbmkl5w40" />
+					</g>
+				</g>
+				<g id="svg_66">
+					<use id="svg_67" fill="#000000" xlink:href="#afRzpmA7F" />
+					<g id="svg_68" clip-path="url(#clipa1MHsUZSGO)">
+						<use id="svg_69" stroke-width="2" stroke="#000000" fill-opacity="0" xlink:href="#afRzpmA7F" />
+					</g>
+				</g>
+				<g id="svg_70">
+					<use id="svg_71" fill="#000000" xlink:href="#f34Z0Cg2H2" />
+					<g id="svg_72" clip-path="url(#clipaiMYuA5gL)">
+						<use id="svg_73" stroke-width="2" stroke="#000000" fill-opacity="0" xlink:href="#f34Z0Cg2H2" />
+					</g>
+				</g>
+				<g id="svg_74">
+					<use id="svg_75" fill="#ffffff" xlink:href="#a7XCqe2jKp" />
+				</g>
+			</g>
+		</g>
+		<line stroke-width="4" stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_78" y2="72" x2="72" y1="4" x1="4" stroke="#ff0000" fill="none" />
+		<line stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_79" y2="72" x2="4" y1="4" x1="72" stroke-width="4" stroke="#ff0000" fill="none" />
+	</g>
+</svg>

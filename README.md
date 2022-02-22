@@ -2,10 +2,14 @@
 This is the classic Microsoft Minesweeper-Game as a jQuery-Plugin. Once you implement it as described further, the game just follows the [standard rules](https://www.instructables.com/id/How-to-beat-Minesweeper/). To place a flag just press `ctrl` while clicking on a field.
 
 # Getting Started
-All you have to do is deliver everything in the dist/ folder to the user. Either by installing the npm package in your project or by cloning this repo into your project.
+Install the package via `npm` or `yarn` and deliver the script to the user.
+This can be done via `import`, `require` or just inserting a `script` tag.
 
 ```shell
 npm i minesweeper-for-web
+```
+```shell
+yarn add minesweeper-for-web
 ```
 
 # Usage
@@ -13,146 +17,125 @@ npm i minesweeper-for-web
 ## Basic usage
 Just a basic 9x9 / 10 Mines minesweeper game. You can **combine** further examples.
 ```html
-<div class="minesweeper"></div>
-```
-```javascript
-const minesweeper = $('.minesweeper').minesweeper({
-     // pls replace the path with your actual path to the icons
-    'pathToIcons': '/dist/assets/icons/'
-});
+<minesweeper-game></minesweeper-game>
 ```
 
 ## Provide left-bomb-counter container
 To keep the user informed how many mines are there left, after subtracting the number of placed flags, just provide a container for the counter.
 ```html
-<div><span id="bombCounter"></span> Mines</div>
-
-<div class="minesweeper"></div>
-```
-```javascript
-const minesweeper = $('.minesweeper').minesweeper({
-     // pls replace the path with your actual path to the icons
-    'pathToIcons': '/dist/assets/icons/',
-    'bombCounterSelector': '#bombCounter'
-});
+<p><span id="bomb-counter"></span> Mines</p>
+<minesweeper-game bomb-counter-selector="#bomb-counter"></minesweeper-game>
 ```
 
 ## Provide a restart button
-You can provide a jQuery selector where a "click"-event will be attached to, to restart the game or/and write your own custom logic.
+You can provide a selector where a "click"-event will be attached to, to restart the game.
 ```html
-<div class="minesweeper"></div>
+<minesweeper-game restart-selector="#restart-game-button"></minesweeper-game>
+<button id="restart-game-button">Restart!</button>
+```
 
-<button id="newMinesweeperGame">Restart!</button>
-<button id="newMinesweeperGame_Custom">Restart with Confirm!</button>
+## Trigger Restart via JavaScript
+You can write your own custom logic to restart the game.
+```html
+<minesweeper-game id="minesweeper"></minesweeper-game>
+<button id="restart-game-button-confirm">Restart with Confirm!</button>
 ```
 ```javascript
-const minesweeper = $('.minesweeper').minesweeper({
-     // pls replace the path with your actual path to the icons
-    'pathToIcons': '/dist/assets/icons/',
-    'newGameSelector': '#newMinesweeperGame'
-});
+window.addEventListener('DOMContentLoaded', () => {
+    const minesweeper = document.getElementById('minesweeper');
 
-$('#newMinesweeperGame_Custom').click(function(e) {
-    e.preventDefault();
-    if(confirm("Are you sure, that you want to restart the game?")) {
-        minesweeper.restart();
-    }
-})
+    document
+        .getElementById('restart-game-button-confirm')
+        .addEventListener('click', (e) => {
+            e.preventDefault();
+            if (window.confirm('Are you sure, that you want to restart the game?')) {
+                minesweeper.restartGame();
+            }
+        });
+});
 ```
 
 ## Custom win/lose callbacks
-You can provide callbacks for the win-/lose-state.
+You can attach EventListener for the win-/lose-events.
 ```html
-<div class="minesweeper"></div>
+<minesweeper-game id="minesweeper"></minesweeper-game>
 ```
 ```javascript
-const minesweeper = $('.minesweeper').minesweeper({
-     // pls replace the path with your actual path to the icons
-    'pathToIcons': '/dist/assets/icons/',
-    'onWinCallback': () => {
-        console.log("win");
-    },
-    'onLoseCallback': () => {
-        console.log("lose");
-    }
+window.addEventListener('DOMContentLoaded', () => {
+    const minesweeper = document.getElementById('minesweeper');
+
+    minesweeper.addEventListener('game-won', () => {
+        console.log("win")
+    });
+
+    minesweeper.addEventListener('game-lost', () => {
+        console.log('lose');
+    });
 });
 ```
 
 ## Different initial game configurations
 Of course you can provide different configurations for the game.
 ```html
-<div class="minesweeper"></div>
-```
-```javascript
-const minesweeper = $('.minesweeper').minesweeper({
-     // pls replace the path with your actual path to the icons
-    'pathToIcons': '/dist/assets/icons/',
-    'gamemodeConfiguration': {
-        columns: 30,
-        rows: 16,
-        bombs: 99
-    }
-});
+<minesweeper-game rows="30" columns="16" bombs="99"></minesweeper-game>
 ```
 
 ## Providing a selectable gamemode
 Furthermore you can implement some own logic to create a selectable gamemode
 ```html
-<select name="gamemode" id="gamemode">
+<select name="select-game-mode" id="select-game-mode">
     <option value="easy" selected>Easy - 9x9 / 10 Mines</option>
     <option value="normal">Normal - 16x16 / 40 Mines</option>
     <option value="hard">Hard - 16x30 / 99 Mines</option>
-    <option value="custom">Custom</option>
 </select>
 
-<div class="minesweeper"></div>
+<minesweeper-game id="minesweeper"></minesweeper-game>
 ```
 ```javascript
-function getGamemodeConfiguration(currentGamemode) {
-    switch (currentGamemode) {
-        case 'easy':
-            return {
-                columns: 9,
-                rows: 9,
-                bombs: 10
-            };
-        case 'normal':
-            return {
-                columns: 16,
-                rows: 16,
-                bombs: 40
-            };
-        case 'hard':
-            return {
-                columns: 30,
-                rows: 16,
-                bombs: 99
-            };
+window.addEventListener('DOMContentLoaded', () => {
+    function getGameModeConfiguration(currentGameMode) {
+        switch (currentGameMode) {
+            case 'hard':
+                return {
+                    columns: 30,
+                    rows: 16,
+                    bombs: 99,
+                };
+            case 'normal':
+                return {
+                    columns: 16,
+                    rows: 16,
+                    bombs: 40,
+                };
+            case 'easy':
+            default:
+                return {
+                    columns: 9,
+                    rows: 9,
+                    bombs: 10,
+                };
+        }
     }
-}
 
-const gamemodeConfiguration = getGamemodeConfiguration($('#gamemode').val());
+    const minesweeper = document.getElementById('minesweeper');
 
-const minesweeper = $('.minesweeper').minesweeper({
-     // pls replace the path with your actual path to the icons
-    'pathToIcons': '/dist/assets/icons/',
-    'gamemodeConfiguration': gamemodeConfiguration
-});
+    document
+        .getElementById('select-game-mode')
+        .addEventListener('change', (e) => {
+            e.preventDefault();
 
-$('#gamemode').change(function (e) {
-    e.preventDefault();
-
-    const gamemodeConfiguration = getGamemodeConfiguration(this.value);
-    minesweeper.createBoard(gamemodeConfiguration);
+            const gameModeConfiguration = getGameModeConfiguration(e.target.value);
+            minesweeper.setGameModeConfiguration(gameModeConfiguration);
+        });
 });
 ```
 
 
 # Example
-You can take a look at [index.html](index.html) to get a full example.
+You can take a look at [demo.html](index.html) to get a full example.
 ![Example Image](minesweeper-example.png)
 
 
 # Icons Copyright
 All rights for the icons used in this project belongs to their original creators: https://commons.wikimedia.org/wiki/Category:Minesweeper 
-The icons "bomb_red.svg" and "bomb.svg" are based on "number-0.svg" and "flag_missed.svg" is based on "flag.svg".
+The icons "bomb_red.svg" and "bomb.svg" are based on "number-0.svg" and "flag_missed.svg" is based on "bomb.svg".
