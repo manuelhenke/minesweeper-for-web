@@ -37,7 +37,6 @@ export class Minesweeper extends LitElement {
   };
 
   static get styles() {
-    console.log('styles');
     return [
       css`
         :host {
@@ -86,7 +85,6 @@ export class Minesweeper extends LitElement {
   }
 
   static get properties() {
-    console.log('properties');
     return {
       restartSelector: {
         attribute: 'restart-selector',
@@ -106,7 +104,6 @@ export class Minesweeper extends LitElement {
 
   constructor() {
     super();
-    console.log('constructor');
     this.restartSelector = null;
     this.bombCounterSelector = null;
     this.columns = 9;
@@ -117,7 +114,6 @@ export class Minesweeper extends LitElement {
 
   connectedCallback() {
     super.connectedCallback();
-    console.log('connectedCallback');
 
     if (this.restartSelector) {
       const restartElements = document.querySelectorAll(this.restartSelector);
@@ -181,7 +177,6 @@ export class Minesweeper extends LitElement {
    * @param {PointerEvent} event
    */
   __handleFieldClick(event, selectedRow, selectedColumn, hasFlag) {
-    console.log('__handleFieldClick', event);
     if (this.__game && this.__game.board && !this.__game.isGameOver) {
       if (event.ctrlKey || event.altKey || event.metaKey) {
         this.__game.setFlag(selectedRow, selectedColumn);
@@ -196,13 +191,11 @@ export class Minesweeper extends LitElement {
   }
 
   render() {
-    console.log('render', this.__game, this.__game.board);
     if (!this.__game || !this.__game.board) {
       return html`No Board :(`;
     }
 
     const gameBoard = this.__game.board;
-    console.log(gameBoard.positions);
 
     if (this.bombCounterSelector) {
       const bombCounterElements = document.querySelectorAll(

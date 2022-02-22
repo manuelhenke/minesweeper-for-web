@@ -40,7 +40,6 @@ export class MinesweeperGame {
   }
 
   restart() {
-    console.log('restart');
     this.board.build();
     this.isGameOver = false;
   }
