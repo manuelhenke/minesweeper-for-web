@@ -190,12 +190,32 @@ export class Minesweeper extends LitElement {
    */
   __handleFieldClickStart(selectedRow, selectedColumn) {
     if (this.__game && this.__game.board && !this.__game.isGameOver) {
+      /** @type {HTMLElement} */
+      const sweeperField = this.renderRoot.getElementById(
+        `sweeper-field-${selectedRow}-${selectedColumn}`
+      );
+
       this.__longPressTimer = setTimeout(() => {
         this.__wasLongPress = true;
-        this.__handleFieldHintClick(selectedRow, selectedColumn);
-        this.requestUpdate();
+
+        let animationInterval = null;
+        let currentScale = 1;
+        animationInterval = setInterval(scale, 2);
+        function scale() {
+          if (currentScale >= 1.25) {
+            clearInterval(animationInterval);
+            sweeperField.style.transform = "none";
+          } else {
+            currentScale += 0.01;
+            sweeperField.style.transform = `scale(${currentScale})`;
+          }
+        }
       }, 500);
     }
+  }
+
+  __handleFieldClickEnd() {
+    clearTimeout(this.__longPressTimer);
   }
 
   /**
@@ -203,17 +223,23 @@ export class Minesweeper extends LitElement {
    * @param {Number} selectedRow
    * @param {Number} selectedColumn
    */
-  __handleFieldClickEnd(event, selectedRow, selectedColumn) {
+  __handleFieldClick(event, selectedRow, selectedColumn) {
     clearTimeout(this.__longPressTimer);
     if (
       this.__game &&
       this.__game.board &&
-      !this.__game.isGameOver &&
-      !this.__wasLongPress
+      !this.__game.isGameOver
     ) {
-      if (event.ctrlKey || event.altKey || event.metaKey) {
-        this.__handleFieldHintClick(selectedRow, selectedColumn);
-      } else if (this.__game.board.flags[selectedRow][selectedColumn]) {
+      const gameBoard = this.__game.board;
+      const hasFlag = gameBoard.flags[selectedRow][selectedColumn];
+      if (this.__wasLongPress || event.ctrlKey || event.altKey || event.metaKey) {
+        const hasQuestionMark = gameBoard.questionMarks[selectedRow][selectedColumn];
+        if (hasQuestionMark || hasFlag) {
+          this.__game.toggleQuestionMark(selectedRow, selectedColumn);
+        } else {
+          this.__game.toggleFlag(selectedRow, selectedColumn);
+        }
+      } else if (hasFlag) {
         // if user performs a regular click on a field with a flag on it cancel it
         return;
       } else {
@@ -224,22 +250,6 @@ export class Minesweeper extends LitElement {
     }
 
     this.__wasLongPress = false;
-  }
-
-  /**
-   * @param {Number} selectedRow
-   * @param {Number} selectedColumn
-   */
-  __handleFieldHintClick(selectedRow, selectedColumn) {
-    const gameBoard = this.__game.board;
-    const hasFlag = gameBoard.flags[selectedRow][selectedColumn];
-    const hasQuestionMark = gameBoard.questionMarks[selectedRow][selectedColumn];
-
-    if (hasQuestionMark || hasFlag) {
-      this.__game.toggleQuestionMark(selectedRow, selectedColumn);
-    } else {
-      this.__game.toggleFlag(selectedRow, selectedColumn);
-    }
   }
 
   render() {
@@ -303,15 +313,18 @@ export class Minesweeper extends LitElement {
       isRevealed || hasFlag || this.__game.isGameOver ? 'unselectable' : '';
 
     return html`<div
+      id="sweeper-field-${rowIndex}-${columnIndex}"
       class="sweeper-field ${sweeperFieldClass}"
-      @touchstart="${event =>
-        this.__handleFieldClickStart(rowIndex, columnIndex)}"
-      @mousedown="${event =>
-        this.__handleFieldClickStart(rowIndex, columnIndex)}"
-      @touchend="${event =>
-        this.__handleFieldClickEnd(event, rowIndex, columnIndex)}"
-      @mouseup="${event =>
-        this.__handleFieldClickEnd(event, rowIndex, columnIndex)}"
+
+      @touchstart="${event => this.__handleFieldClickStart(rowIndex, columnIndex)}"
+      @touchend="${this.__handleFieldClickEnd}"
+      @touchcancel="${this.__handleFieldClickEnd}"
+
+      @mousedown="${event => this.__handleFieldClickStart(rowIndex, columnIndex)}"
+      @mouseup="${this.__handleFieldClickEnd}"
+      @mouseleave="${this.__handleFieldClickEnd}"
+
+      @click="${event => this.__handleFieldClick(event, rowIndex, columnIndex)}"
     >
       ${unsafeSVG(sweeperFieldContent)}
     </div>`;

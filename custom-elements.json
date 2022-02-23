@@ -68,7 +68,11 @@
             },
             {
               "kind": "method",
-              "name": "__handleFieldClickEnd",
+              "name": "__handleFieldClickEnd"
+            },
+            {
+              "kind": "method",
+              "name": "__handleFieldClick",
               "parameters": [
                 {
                   "name": "event",
@@ -76,24 +80,6 @@
                     "text": "PointerEvent"
                   }
                 },
-                {
-                  "name": "selectedRow",
-                  "type": {
-                    "text": "Number"
-                  }
-                },
-                {
-                  "name": "selectedColumn",
-                  "type": {
-                    "text": "Number"
-                  }
-                }
-              ]
-            },
-            {
-              "kind": "method",
-              "name": "__handleFieldHintClick",
-              "parameters": [
                 {
                   "name": "selectedRow",
                   "type": {
@@ -173,15 +159,6 @@
             },
             {
               "kind": "field",
-              "name": "__clickStartTimestamp",
-              "privacy": "public",
-              "type": {
-                "text": "Number"
-              },
-              "attribute": "__clickStartTimestamp"
-            },
-            {
-              "kind": "field",
               "name": "__wasLongPress",
               "privacy": "public",
               "type": {
@@ -240,13 +217,6 @@
                 "text": "MinesweeperGame"
               },
               "fieldName": "__game"
-            },
-            {
-              "name": "__clickStartTimestamp",
-              "type": {
-                "text": "Number"
-              },
-              "fieldName": "__clickStartTimestamp"
             },
             {
               "name": "__wasLongPress",
