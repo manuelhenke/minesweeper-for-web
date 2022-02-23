@@ -43,7 +43,6 @@ export class Minesweeper extends LitElement {
           display: block;
           border: solid 8px #bdbdbd;
           max-width: 100%;
-          overflow-x: auto;
         }
 
         *,
@@ -59,6 +58,8 @@ export class Minesweeper extends LitElement {
           border-left-color: rgb(123, 123, 123);
           border-bottom-color: white;
           border-right-color: white;
+          background-color: #bdbdbd;
+          overflow-x: auto;
         }
 
         .sweeper-row {
@@ -70,6 +71,8 @@ export class Minesweeper extends LitElement {
 
         .sweeper-field {
           display: inline-block;
+          user-select: none;
+          -webkit-user-select: none;
           height: 40px;
           width: 40px;
           object-position: center;
