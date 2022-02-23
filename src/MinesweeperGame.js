@@ -44,13 +44,21 @@ export class MinesweeperGame {
     this.isGameOver = false;
   }
 
-  setFlag(selectedRow, selectedColumn) {
+  toggleFlag(selectedRow, selectedColumn) {
     if (this.board.flags[selectedRow][selectedColumn]) {
       // removing a flag is always possible
       this.board.removeFlag(selectedRow, selectedColumn);
     } else if (this.board.flagCounter < this.board.bombs) {
       // it should not be possible to place more flags than bombs
       this.board.addFlag(selectedRow, selectedColumn);
+    }
+  }
+
+  toggleQuestionMark(selectedRow, selectedColumn) {
+    if (this.board.questionMarks[selectedRow][selectedColumn]) {
+      this.board.removeQuestionMark(selectedRow, selectedColumn);
+    } else {
+      this.board.addQuestionMark(selectedRow, selectedColumn);
     }
   }
 

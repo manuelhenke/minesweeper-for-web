@@ -213,6 +213,7 @@ class MinesweeperBoard {
     this.positions = null;
     this.flags = null;
     this.flagCounter = 0;
+    this.questionMarks = null;
     this.revealedFields = null;
     this.rows = gameModeConfiguration.rows;
     this.columns = gameModeConfiguration.columns;
@@ -224,6 +225,7 @@ class MinesweeperBoard {
     this.positions = this.generate2dFields(0);
     this.flags = this.generate2dFields(false);
     this.flagCounter = 0;
+    this.questionMarks = this.generate2dFields(false);
     this.revealedFields = this.generate2dFields(false);
 
     // Second: Place the bombs on the field
@@ -285,6 +287,13 @@ class MinesweeperBoard {
   }
 
   revealFieldEntry(row, column) {
+    if (this.flags[row][column]) {
+      return null;
+    }
+    if (this.questionMarks[row][column]) {
+      this.questionMarks[row][column] = false;
+    }
+
     const field = this.positions[row][column];
 
     if (field === 'bomb') {
@@ -312,6 +321,9 @@ class MinesweeperBoard {
     this.revealedFields[row][column] = true;
     if (this.flags[row][column]) {
       this.removeFlag(row, column);
+    }
+    if (this.questionMarks[row][column]) {
+      this.removeQuestionMark(row, column);
     }
 
     if (field === 0) {
@@ -403,6 +415,7 @@ class MinesweeperBoard {
     if(!this.flags[selectedRow][selectedColumn]) {
       this.flags[selectedRow][selectedColumn] = true;
       this.flagCounter++;
+      this.removeQuestionMark(selectedRow, selectedColumn);
     }
   }
 
@@ -410,6 +423,19 @@ class MinesweeperBoard {
     if(this.flags[selectedRow][selectedColumn]) {
       this.flags[selectedRow][selectedColumn] = false;
       this.flagCounter--;
+    }
+  }
+
+  addQuestionMark(selectedRow, selectedColumn) {
+    if(!this.questionMarks[selectedRow][selectedColumn]) {
+      this.questionMarks[selectedRow][selectedColumn] = true;
+      this.removeFlag(selectedRow, selectedColumn);
+    }
+  }
+
+  removeQuestionMark(selectedRow, selectedColumn) {
+    if(this.questionMarks[selectedRow][selectedColumn]) {
+      this.questionMarks[selectedRow][selectedColumn] = false;
     }
   }
 
@@ -424,6 +450,9 @@ class MinesweeperBoard {
         }
         if (this.flags[row][column]) {
           this.revealedFields[row][column] = true;
+        }
+        if (this.questionMarks[row][column]) {
+          this.removeQuestionMark(row, column);
         }
       }
     }
@@ -477,13 +506,21 @@ class MinesweeperGame {
     this.isGameOver = false;
   }
 
-  setFlag(selectedRow, selectedColumn) {
+  toggleFlag(selectedRow, selectedColumn) {
     if (this.board.flags[selectedRow][selectedColumn]) {
       // removing a flag is always possible
       this.board.removeFlag(selectedRow, selectedColumn);
     } else if (this.board.flagCounter < this.board.bombs) {
       // it should not be possible to place more flags than bombs
       this.board.addFlag(selectedRow, selectedColumn);
+    }
+  }
+
+  toggleQuestionMark(selectedRow, selectedColumn) {
+    if (this.board.questionMarks[selectedRow][selectedColumn]) {
+      this.board.removeQuestionMark(selectedRow, selectedColumn);
+    } else {
+      this.board.addQuestionMark(selectedRow, selectedColumn);
     }
   }
 
@@ -723,10 +760,14 @@ class Minesweeper extends lit_element_s {
    *
    * @param {PointerEvent} event
    */
-  __handleFieldClick(event, selectedRow, selectedColumn, hasFlag) {
+  __handleFieldClick(event, selectedRow, selectedColumn, hasFlag, hasQuestionMark) {
     if (this.__game && this.__game.board && !this.__game.isGameOver) {
       if (event.ctrlKey || event.altKey || event.metaKey) {
-        this.__game.setFlag(selectedRow, selectedColumn);
+        if (hasQuestionMark || hasFlag) {
+          this.__game.toggleQuestionMark(selectedRow, selectedColumn);
+        } else {
+          this.__game.toggleFlag(selectedRow, selectedColumn);
+        }
       } else if (hasFlag) {
         return;
       } else {
@@ -770,6 +811,7 @@ class Minesweeper extends lit_element_s {
     const gameBoard = this.__game.board;
     const isRevealed = gameBoard.revealedFields[rowIndex][columnIndex];
     const hasFlag = gameBoard.flags[rowIndex][columnIndex];
+    const hasQuestionMark = gameBoard.questionMarks[rowIndex][columnIndex];
 
     let sweeperFieldContent = Minesweeper.ICONS.UNOPENED_SQUARE;
     if (isRevealed) {
@@ -787,6 +829,8 @@ class Minesweeper extends lit_element_s {
       } else {
         sweeperFieldContent = Minesweeper.ICONS[`NUMBER_${fieldValue}`];
       }
+    } else if (hasQuestionMark) {
+      sweeperFieldContent = Minesweeper.ICONS.QUESTION_MARK;
     } else if (hasFlag) {
       sweeperFieldContent = Minesweeper.ICONS.FLAG;
     }
@@ -796,7 +840,7 @@ class Minesweeper extends lit_element_s {
 
     return $`<div
       class="sweeper-field ${sweeperFieldClass}"
-      @click="${(event) => this.__handleFieldClick(event, rowIndex, columnIndex, hasFlag)}"
+      @click="${(event) => this.__handleFieldClick(event, rowIndex, columnIndex, hasFlag, hasQuestionMark)}"
     >
       ${unsafe_svg_o(sweeperFieldContent)}
     </div>`;

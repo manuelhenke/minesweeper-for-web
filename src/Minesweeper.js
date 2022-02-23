@@ -181,10 +181,14 @@ export class Minesweeper extends LitElement {
    *
    * @param {PointerEvent} event
    */
-  __handleFieldClick(event, selectedRow, selectedColumn, hasFlag) {
+  __handleFieldClick(event, selectedRow, selectedColumn, hasFlag, hasQuestionMark) {
     if (this.__game && this.__game.board && !this.__game.isGameOver) {
       if (event.ctrlKey || event.altKey || event.metaKey) {
-        this.__game.setFlag(selectedRow, selectedColumn);
+        if (hasQuestionMark || hasFlag) {
+          this.__game.toggleQuestionMark(selectedRow, selectedColumn);
+        } else {
+          this.__game.toggleFlag(selectedRow, selectedColumn);
+        }
       } else if (hasFlag) {
         return;
       } else {
@@ -228,6 +232,7 @@ export class Minesweeper extends LitElement {
     const gameBoard = this.__game.board;
     const isRevealed = gameBoard.revealedFields[rowIndex][columnIndex];
     const hasFlag = gameBoard.flags[rowIndex][columnIndex];
+    const hasQuestionMark = gameBoard.questionMarks[rowIndex][columnIndex];
 
     let sweeperFieldContent = Minesweeper.ICONS.UNOPENED_SQUARE;
     if (isRevealed) {
@@ -245,6 +250,8 @@ export class Minesweeper extends LitElement {
       } else {
         sweeperFieldContent = Minesweeper.ICONS[`NUMBER_${fieldValue}`];
       }
+    } else if (hasQuestionMark) {
+      sweeperFieldContent = Minesweeper.ICONS.QUESTION_MARK;
     } else if (hasFlag) {
       sweeperFieldContent = Minesweeper.ICONS.FLAG;
     }
@@ -254,7 +261,7 @@ export class Minesweeper extends LitElement {
 
     return html`<div
       class="sweeper-field ${sweeperFieldClass}"
-      @click="${(event) => this.__handleFieldClick(event, rowIndex, columnIndex, hasFlag)}"
+      @click="${(event) => this.__handleFieldClick(event, rowIndex, columnIndex, hasFlag, hasQuestionMark)}"
     >
       ${unsafeSVG(sweeperFieldContent)}
     </div>`;

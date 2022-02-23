@@ -3,6 +3,7 @@ export class MinesweeperBoard {
     this.positions = null;
     this.flags = null;
     this.flagCounter = 0;
+    this.questionMarks = null;
     this.revealedFields = null;
     this.rows = gameModeConfiguration.rows;
     this.columns = gameModeConfiguration.columns;
@@ -14,6 +15,7 @@ export class MinesweeperBoard {
     this.positions = this.generate2dFields(0);
     this.flags = this.generate2dFields(false);
     this.flagCounter = 0;
+    this.questionMarks = this.generate2dFields(false);
     this.revealedFields = this.generate2dFields(false);
 
     // Second: Place the bombs on the field
@@ -75,6 +77,13 @@ export class MinesweeperBoard {
   }
 
   revealFieldEntry(row, column) {
+    if (this.flags[row][column]) {
+      return null;
+    }
+    if (this.questionMarks[row][column]) {
+      this.questionMarks[row][column] = false;
+    }
+
     const field = this.positions[row][column];
 
     if (field === 'bomb') {
@@ -102,6 +111,9 @@ export class MinesweeperBoard {
     this.revealedFields[row][column] = true;
     if (this.flags[row][column]) {
       this.removeFlag(row, column);
+    }
+    if (this.questionMarks[row][column]) {
+      this.removeQuestionMark(row, column);
     }
 
     if (field === 0) {
@@ -193,6 +205,7 @@ export class MinesweeperBoard {
     if(!this.flags[selectedRow][selectedColumn]) {
       this.flags[selectedRow][selectedColumn] = true;
       this.flagCounter++;
+      this.removeQuestionMark(selectedRow, selectedColumn);
     }
   }
 
@@ -200,6 +213,19 @@ export class MinesweeperBoard {
     if(this.flags[selectedRow][selectedColumn]) {
       this.flags[selectedRow][selectedColumn] = false;
       this.flagCounter--;
+    }
+  }
+
+  addQuestionMark(selectedRow, selectedColumn) {
+    if(!this.questionMarks[selectedRow][selectedColumn]) {
+      this.questionMarks[selectedRow][selectedColumn] = true;
+      this.removeFlag(selectedRow, selectedColumn);
+    }
+  }
+
+  removeQuestionMark(selectedRow, selectedColumn) {
+    if(this.questionMarks[selectedRow][selectedColumn]) {
+      this.questionMarks[selectedRow][selectedColumn] = false;
     }
   }
 
@@ -214,6 +240,9 @@ export class MinesweeperBoard {
         }
         if (this.flags[row][column]) {
           this.revealedFields[row][column] = true;
+        }
+        if (this.questionMarks[row][column]) {
+          this.removeQuestionMark(row, column);
         }
       }
     }

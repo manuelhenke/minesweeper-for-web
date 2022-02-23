@@ -66,6 +66,9 @@
                 },
                 {
                   "name": "hasFlag"
+                },
+                {
+                  "name": "hasQuestionMark"
                 }
               ]
             },
@@ -226,8 +229,13 @@
               "name": "build"
             },
             {
-              "kind": "field",
-              "name": "generate2dFields"
+              "kind": "method",
+              "name": "generate2dFields",
+              "parameters": [
+                {
+                  "name": "value"
+                }
+              ]
             },
             {
               "kind": "method",
@@ -320,6 +328,30 @@
             },
             {
               "kind": "method",
+              "name": "addQuestionMark",
+              "parameters": [
+                {
+                  "name": "selectedRow"
+                },
+                {
+                  "name": "selectedColumn"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "removeQuestionMark",
+              "parameters": [
+                {
+                  "name": "selectedRow"
+                },
+                {
+                  "name": "selectedColumn"
+                }
+              ]
+            },
+            {
+              "kind": "method",
               "name": "revealBombs",
               "parameters": [
                 {
@@ -351,6 +383,14 @@
                 "text": "number"
               },
               "default": "0"
+            },
+            {
+              "kind": "field",
+              "name": "questionMarks",
+              "type": {
+                "text": "null"
+              },
+              "default": "null"
             },
             {
               "kind": "field",
@@ -419,7 +459,19 @@
             },
             {
               "kind": "method",
-              "name": "setFlag",
+              "name": "toggleFlag",
+              "parameters": [
+                {
+                  "name": "selectedRow"
+                },
+                {
+                  "name": "selectedColumn"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "toggleQuestionMark",
               "parameters": [
                 {
                   "name": "selectedRow"
