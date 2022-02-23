@@ -400,13 +400,17 @@ class MinesweeperBoard {
   }
 
   addFlag(selectedRow, selectedColumn) {
-    this.flags[selectedRow][selectedColumn] = true;
-    this.flagCounter++;
+    if(!this.flags[selectedRow][selectedColumn]) {
+      this.flags[selectedRow][selectedColumn] = true;
+      this.flagCounter++;
+    }
   }
 
   removeFlag(selectedRow, selectedColumn) {
-    this.flags[selectedRow][selectedColumn] = false;
-    this.flagCounter--;
+    if(this.flags[selectedRow][selectedColumn]) {
+      this.flags[selectedRow][selectedColumn] = false;
+      this.flagCounter--;
+    }
   }
 
   revealBombs(bombsAsFlags = false) {
@@ -415,7 +419,7 @@ class MinesweeperBoard {
         if (this.positions[row][column] === 'bomb') {
           this.revealedFields[row][column] = true;
           if (bombsAsFlags) {
-            this.flags[row][column] = true;
+            this.addFlag(row, column);
           }
         }
         if (this.flags[row][column]) {
