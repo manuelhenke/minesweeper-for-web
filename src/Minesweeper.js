@@ -72,7 +72,9 @@ export class Minesweeper extends LitElement {
         .sweeper-field {
           display: inline-block;
           user-select: none;
-          -webkit-user-select: none;
+          -webkit-user-select: none; /* Chrome/Safari */
+          -moz-user-select: none; /* Firefox */
+          -ms-user-select: none; /* IE10+ */
           height: 40px;
           width: 40px;
           object-position: center;
