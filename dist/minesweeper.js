@@ -412,7 +412,7 @@ class MinesweeperBoard {
   }
 
   addFlag(selectedRow, selectedColumn) {
-    if(!this.flags[selectedRow][selectedColumn]) {
+    if (!this.flags[selectedRow][selectedColumn]) {
       this.flags[selectedRow][selectedColumn] = true;
       this.flagCounter++;
       this.removeQuestionMark(selectedRow, selectedColumn);
@@ -420,21 +420,21 @@ class MinesweeperBoard {
   }
 
   removeFlag(selectedRow, selectedColumn) {
-    if(this.flags[selectedRow][selectedColumn]) {
+    if (this.flags[selectedRow][selectedColumn]) {
       this.flags[selectedRow][selectedColumn] = false;
       this.flagCounter--;
     }
   }
 
   addQuestionMark(selectedRow, selectedColumn) {
-    if(!this.questionMarks[selectedRow][selectedColumn]) {
+    if (!this.questionMarks[selectedRow][selectedColumn]) {
       this.questionMarks[selectedRow][selectedColumn] = true;
       this.removeFlag(selectedRow, selectedColumn);
     }
   }
 
   removeQuestionMark(selectedRow, selectedColumn) {
-    if(this.questionMarks[selectedRow][selectedColumn]) {
+    if (this.questionMarks[selectedRow][selectedColumn]) {
       this.questionMarks[selectedRow][selectedColumn] = false;
     }
   }
@@ -446,13 +446,12 @@ class MinesweeperBoard {
           this.revealedFields[row][column] = true;
           if (bombsAsFlags) {
             this.addFlag(row, column);
+          } else if (this.questionMarks[row][column]) {
+            this.removeQuestionMark(row, column);
           }
         }
         if (this.flags[row][column]) {
           this.revealedFields[row][column] = true;
-        }
-        if (this.questionMarks[row][column]) {
-          this.removeQuestionMark(row, column);
         }
       }
     }
@@ -683,17 +682,24 @@ class Minesweeper extends lit_element_s {
       bombs: { type: Number },
       /** @type {MinesweeperGame} */
       __game: { state: true },
+      /** @type {Boolean} */
+      __wasLongPress: {
+        state: true,
+        type: Boolean,
+      },
+      /** @type {Number} */
+      __longPressTimer: {
+        state: true,
+        type: Number,
+      },
     };
   }
 
   constructor() {
     super();
-    this.restartSelector = null;
-    this.bombCounterSelector = null;
     this.columns = 9;
     this.rows = 9;
     this.bombs = 10;
-    this.__game = null;
   }
 
   connectedCallback() {
@@ -757,24 +763,60 @@ class Minesweeper extends lit_element_s {
   }
 
   /**
-   *
-   * @param {PointerEvent} event
+   * @param {Number} selectedRow
+   * @param {Number} selectedColumn
    */
-  __handleFieldClick(event, selectedRow, selectedColumn, hasFlag, hasQuestionMark) {
+  __handleFieldClickStart(selectedRow, selectedColumn) {
     if (this.__game && this.__game.board && !this.__game.isGameOver) {
+      this.__longPressTimer = setTimeout(() => {
+        this.__wasLongPress = true;
+        this.__handleFieldHintClick(selectedRow, selectedColumn);
+        this.requestUpdate();
+      }, 500);
+    }
+  }
+
+  /**
+   * @param {PointerEvent} event
+   * @param {Number} selectedRow
+   * @param {Number} selectedColumn
+   */
+  __handleFieldClickEnd(event, selectedRow, selectedColumn) {
+    clearTimeout(this.__longPressTimer);
+    if (
+      this.__game &&
+      this.__game.board &&
+      !this.__game.isGameOver &&
+      !this.__wasLongPress
+    ) {
       if (event.ctrlKey || event.altKey || event.metaKey) {
-        if (hasQuestionMark || hasFlag) {
-          this.__game.toggleQuestionMark(selectedRow, selectedColumn);
-        } else {
-          this.__game.toggleFlag(selectedRow, selectedColumn);
-        }
-      } else if (hasFlag) {
+        this.__handleFieldHintClick(selectedRow, selectedColumn);
+      } else if (this.__game.board.flags[selectedRow][selectedColumn]) {
+        // if user performs a regular click on a field with a flag on it cancel it
         return;
       } else {
         this.__game.selectField(selectedRow, selectedColumn);
       }
 
       this.requestUpdate();
+    }
+
+    this.__wasLongPress = false;
+  }
+
+  /**
+   * @param {Number} selectedRow
+   * @param {Number} selectedColumn
+   */
+  __handleFieldHintClick(selectedRow, selectedColumn) {
+    const gameBoard = this.__game.board;
+    const hasFlag = gameBoard.flags[selectedRow][selectedColumn];
+    const hasQuestionMark = gameBoard.questionMarks[selectedRow][selectedColumn];
+
+    if (hasQuestionMark || hasFlag) {
+      this.__game.toggleQuestionMark(selectedRow, selectedColumn);
+    } else {
+      this.__game.toggleFlag(selectedRow, selectedColumn);
     }
   }
 
@@ -835,12 +877,19 @@ class Minesweeper extends lit_element_s {
       sweeperFieldContent = Minesweeper.ICONS.FLAG;
     }
 
-    let sweeperFieldClass = 
+    let sweeperFieldClass =
       isRevealed || hasFlag || this.__game.isGameOver ? 'unselectable' : '';
 
     return $`<div
       class="sweeper-field ${sweeperFieldClass}"
-      @click="${(event) => this.__handleFieldClick(event, rowIndex, columnIndex, hasFlag, hasQuestionMark)}"
+      @touchstart="${event =>
+        this.__handleFieldClickStart(rowIndex, columnIndex)}"
+      @mousedown="${event =>
+        this.__handleFieldClickStart(rowIndex, columnIndex)}"
+      @touchend="${event =>
+        this.__handleFieldClickEnd(event, rowIndex, columnIndex)}"
+      @mouseup="${event =>
+        this.__handleFieldClickEnd(event, rowIndex, columnIndex)}"
     >
       ${unsafe_svg_o(sweeperFieldContent)}
     </div>`;

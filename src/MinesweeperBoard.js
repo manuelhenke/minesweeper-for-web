@@ -202,7 +202,7 @@ export class MinesweeperBoard {
   }
 
   addFlag(selectedRow, selectedColumn) {
-    if(!this.flags[selectedRow][selectedColumn]) {
+    if (!this.flags[selectedRow][selectedColumn]) {
       this.flags[selectedRow][selectedColumn] = true;
       this.flagCounter++;
       this.removeQuestionMark(selectedRow, selectedColumn);
@@ -210,21 +210,21 @@ export class MinesweeperBoard {
   }
 
   removeFlag(selectedRow, selectedColumn) {
-    if(this.flags[selectedRow][selectedColumn]) {
+    if (this.flags[selectedRow][selectedColumn]) {
       this.flags[selectedRow][selectedColumn] = false;
       this.flagCounter--;
     }
   }
 
   addQuestionMark(selectedRow, selectedColumn) {
-    if(!this.questionMarks[selectedRow][selectedColumn]) {
+    if (!this.questionMarks[selectedRow][selectedColumn]) {
       this.questionMarks[selectedRow][selectedColumn] = true;
       this.removeFlag(selectedRow, selectedColumn);
     }
   }
 
   removeQuestionMark(selectedRow, selectedColumn) {
-    if(this.questionMarks[selectedRow][selectedColumn]) {
+    if (this.questionMarks[selectedRow][selectedColumn]) {
       this.questionMarks[selectedRow][selectedColumn] = false;
     }
   }
@@ -236,13 +236,12 @@ export class MinesweeperBoard {
           this.revealedFields[row][column] = true;
           if (bombsAsFlags) {
             this.addFlag(row, column);
+          } else if (this.questionMarks[row][column]) {
+            this.removeQuestionMark(row, column);
           }
         }
         if (this.flags[row][column]) {
           this.revealedFields[row][column] = true;
-        }
-        if (this.questionMarks[row][column]) {
-          this.removeQuestionMark(row, column);
         }
       }
     }

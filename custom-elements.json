@@ -50,7 +50,25 @@
             },
             {
               "kind": "method",
-              "name": "__handleFieldClick",
+              "name": "__handleFieldClickStart",
+              "parameters": [
+                {
+                  "name": "selectedRow",
+                  "type": {
+                    "text": "Number"
+                  }
+                },
+                {
+                  "name": "selectedColumn",
+                  "type": {
+                    "text": "Number"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "__handleFieldClickEnd",
               "parameters": [
                 {
                   "name": "event",
@@ -59,16 +77,34 @@
                   }
                 },
                 {
-                  "name": "selectedRow"
+                  "name": "selectedRow",
+                  "type": {
+                    "text": "Number"
+                  }
                 },
                 {
-                  "name": "selectedColumn"
+                  "name": "selectedColumn",
+                  "type": {
+                    "text": "Number"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "__handleFieldHintClick",
+              "parameters": [
+                {
+                  "name": "selectedRow",
+                  "type": {
+                    "text": "Number"
+                  }
                 },
                 {
-                  "name": "hasFlag"
-                },
-                {
-                  "name": "hasQuestionMark"
+                  "name": "selectedColumn",
+                  "type": {
+                    "text": "Number"
+                  }
                 }
               ]
             },
@@ -83,26 +119,6 @@
                   "name": "columnIndex"
                 }
               ]
-            },
-            {
-              "kind": "field",
-              "name": "restartSelector",
-              "type": {
-                "text": "null"
-              },
-              "default": "null",
-              "privacy": "public",
-              "attribute": "restart-selector"
-            },
-            {
-              "kind": "field",
-              "name": "bombCounterSelector",
-              "type": {
-                "text": "null"
-              },
-              "default": "null",
-              "privacy": "public",
-              "attribute": "bomb-counter-selector"
             },
             {
               "kind": "field",
@@ -136,13 +152,51 @@
             },
             {
               "kind": "field",
+              "name": "restartSelector",
+              "privacy": "public",
+              "attribute": "restart-selector"
+            },
+            {
+              "kind": "field",
+              "name": "bombCounterSelector",
+              "privacy": "public",
+              "attribute": "bomb-counter-selector"
+            },
+            {
+              "kind": "field",
               "name": "__game",
+              "privacy": "public",
               "type": {
                 "text": "MinesweeperGame"
               },
-              "default": "null",
-              "privacy": "public",
               "attribute": "__game"
+            },
+            {
+              "kind": "field",
+              "name": "__clickStartTimestamp",
+              "privacy": "public",
+              "type": {
+                "text": "Number"
+              },
+              "attribute": "__clickStartTimestamp"
+            },
+            {
+              "kind": "field",
+              "name": "__wasLongPress",
+              "privacy": "public",
+              "type": {
+                "text": "Boolean"
+              },
+              "attribute": "__wasLongPress"
+            },
+            {
+              "kind": "field",
+              "name": "__longPressTimer",
+              "privacy": "public",
+              "type": {
+                "text": "Number"
+              },
+              "attribute": "__longPressTimer"
             }
           ],
           "events": [
@@ -186,6 +240,27 @@
                 "text": "MinesweeperGame"
               },
               "fieldName": "__game"
+            },
+            {
+              "name": "__clickStartTimestamp",
+              "type": {
+                "text": "Number"
+              },
+              "fieldName": "__clickStartTimestamp"
+            },
+            {
+              "name": "__wasLongPress",
+              "type": {
+                "text": "Boolean"
+              },
+              "fieldName": "__wasLongPress"
+            },
+            {
+              "name": "__longPressTimer",
+              "type": {
+                "text": "Number"
+              },
+              "fieldName": "__longPressTimer"
             }
           ],
           "superclass": {
