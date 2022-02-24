@@ -74,6 +74,25 @@ window.addEventListener('DOMContentLoaded', () => {
 });
 ```
 
+## Custom win/lose callbacks
+You can attach EventListener for the win-/lose-events.
+```html
+<minesweeper-game id="minesweeper"></minesweeper-game>
+```
+```javascript
+window.addEventListener('DOMContentLoaded', () => {
+    const minesweeper = document.getElementById('minesweeper');
+
+    minesweeper.addEventListener('field-click', (event) => {
+        // event.detail.field containts the html element of the clicked field
+        // It has the data-row and data-column attributes
+        // Currently there is no clean way to identify which type of field it is: 
+        // Number, Bomb, Flag or Questionmark before and after
+        console.log(event.detail.field)
+    });
+});
+```
+
 ## Different initial game configurations
 Of course you can provide different configurations for the game.
 ```html
