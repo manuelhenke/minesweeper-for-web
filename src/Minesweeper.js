@@ -242,6 +242,7 @@ export class Minesweeper extends LitElement {
       !this.__game.isGameOver &&
       this.__pressStartSweeperField === sweeperField
     ) {
+      // TODO: Prevent bubbling of click event. Can we get rid of it?
       event.preventDefault();
       this.dispatchEvent(new CustomEvent('field-click', {
         detail: {

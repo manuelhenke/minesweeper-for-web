@@ -45,6 +45,10 @@ export class MinesweeperGame {
   }
 
   toggleFlag(selectedRow, selectedColumn) {
+    if(this.board.revealedFields[selectedRow][selectedColumn]) {
+      return;
+    }
+
     if (this.board.flags[selectedRow][selectedColumn]) {
       // removing a flag is always possible
       this.board.removeFlag(selectedRow, selectedColumn);
@@ -55,6 +59,10 @@ export class MinesweeperGame {
   }
 
   toggleQuestionMark(selectedRow, selectedColumn) {
+    if(this.board.revealedFields[selectedRow][selectedColumn]) {
+      return;
+    }
+    
     if (this.board.questionMarks[selectedRow][selectedColumn]) {
       this.board.removeQuestionMark(selectedRow, selectedColumn);
     } else {

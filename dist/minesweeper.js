@@ -519,6 +519,10 @@ class MinesweeperGame {
   }
 
   toggleFlag(selectedRow, selectedColumn) {
+    if (this.board.revealedFields[selectedRow][selectedColumn]) {
+      return;
+    }
+
     if (this.board.flags[selectedRow][selectedColumn]) {
       // removing a flag is always possible
       this.board.removeFlag(selectedRow, selectedColumn);
@@ -529,6 +533,10 @@ class MinesweeperGame {
   }
 
   toggleQuestionMark(selectedRow, selectedColumn) {
+    if (this.board.revealedFields[selectedRow][selectedColumn]) {
+      return;
+    }
+
     if (this.board.questionMarks[selectedRow][selectedColumn]) {
       this.board.removeQuestionMark(selectedRow, selectedColumn);
     } else {
@@ -823,6 +831,7 @@ class Minesweeper extends lit_element_s {
     const wasLongPress = event.timeStamp - this.__pressStartTimestamp > 500;
 
     if (this.__game && this.__game.board && !this.__game.isGameOver && this.__pressStartSweeperField === sweeperField) {
+      // TODO: Prevent bubbling of click event. Can we get rid of it?
       event.preventDefault();
       this.dispatchEvent(new CustomEvent('field-click', {
         detail: {
