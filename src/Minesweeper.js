@@ -103,11 +103,19 @@ export class Minesweeper extends LitElement {
       rows: { type: Number },
       bombs: { type: Number },
       /** @type {MinesweeperGame} */
-      __game: { state: true },
-      /** @type {Boolean} */
-      __wasLongPress: {
+      __game: { 
+        state: true, 
+        attribute: false 
+      },
+      /** @type {Number} */
+      __pressStartTimestamp: {
         state: true,
-        type: Boolean,
+        type: Number,
+      },
+      /** @type {HTMLElement} */
+      __pressStartSweeperField: { 
+        state: true, 
+        attribute: false 
       },
       /** @type {Number} */
       __longPressTimer: {
@@ -185,16 +193,14 @@ export class Minesweeper extends LitElement {
   }
 
   /**
-   * @param {Number} selectedRow
-   * @param {Number} selectedColumn
+   * @param {TouchEvent|MouseEvent} event
    */
-  __handleFieldClickStart(selectedRow, selectedColumn) {
-    if (this.__game && this.__game.board && !this.__game.isGameOver) {
-      /** @type {HTMLElement} */
-      const sweeperField = this.renderRoot.getElementById(
-        `sweeper-field-${selectedRow}-${selectedColumn}`
-      );
+  __handleFieldClickStart(event) {
+    const sweeperField = this.__getSweeperFieldFromEvent(event);
+    this.__pressStartSweeperField = sweeperField;
+    this.__pressStartTimestamp = event.timeStamp;
 
+    if (this.__game && this.__game.board && !this.__game.isGameOver) {
       this.__longPressTimer = setTimeout(() => {
         this.__wasLongPress = true;
 
@@ -214,25 +220,35 @@ export class Minesweeper extends LitElement {
     }
   }
 
-  __handleFieldClickEnd() {
+  /**
+   * @param {TouchEvent|MouseEvent} event
+   */
+  __handleFieldClickLeave(event) {
     clearTimeout(this.__longPressTimer);
+    this.__pressStartSweeperField = null;
+    this.__pressStartTimestamp = null;
   }
 
   /**
-   * @param {PointerEvent} event
-   * @param {Number} selectedRow
-   * @param {Number} selectedColumn
+   * @param {TouchEvent|MouseEvent} event
    */
-  __handleFieldClick(event, selectedRow, selectedColumn) {
-    clearTimeout(this.__longPressTimer);
+  __handleFieldClickEnd(event) {
+    const sweeperField = this.__getSweeperFieldFromEvent(event);
+    const wasLongPress = event.timeStamp - this.__pressStartTimestamp > 500;
+
     if (
       this.__game &&
       this.__game.board &&
-      !this.__game.isGameOver
+      !this.__game.isGameOver &&
+      this.__pressStartSweeperField === sweeperField
     ) {
+      event.preventDefault();
+      const selectedRow = parseInt(sweeperField.dataset["row"]),
+        selectedColumn = parseInt(sweeperField.dataset["column"]);
+
       const gameBoard = this.__game.board;
       const hasFlag = gameBoard.flags[selectedRow][selectedColumn];
-      if (this.__wasLongPress || event.ctrlKey || event.altKey || event.metaKey) {
+      if (wasLongPress || event.ctrlKey || event.altKey || event.metaKey) {
         const hasQuestionMark = gameBoard.questionMarks[selectedRow][selectedColumn];
         if (hasQuestionMark || hasFlag) {
           this.__game.toggleQuestionMark(selectedRow, selectedColumn);
@@ -249,7 +265,23 @@ export class Minesweeper extends LitElement {
       this.requestUpdate();
     }
 
-    this.__wasLongPress = false;
+    clearTimeout(this.__longPressTimer);
+    this.__pressStartSweeperField = null;
+    this.__pressStartTimestamp = null;
+  }
+
+  /**
+   * @param {PointerEvent|MouseEvent} event
+   * @returns {HTMLElement}
+   */
+  __getSweeperFieldFromEvent(event) {
+    for (const eventTarget of event.composedPath()) {
+      if(eventTarget.classList && eventTarget.classList.contains("sweeper-field")) {
+        return eventTarget;
+      }
+    }
+
+    return null;
   }
 
   render() {
@@ -310,21 +342,22 @@ export class Minesweeper extends LitElement {
     }
 
     let sweeperFieldClass =
-      isRevealed || hasFlag || this.__game.isGameOver ? 'unselectable' : '';
+      isRevealed || hasFlag || this.__game.isGameOver ? ' unselectable' : '';
 
     return html`<div
-      id="sweeper-field-${rowIndex}-${columnIndex}"
-      class="sweeper-field ${sweeperFieldClass}"
+      class="sweeper-field${sweeperFieldClass}"
 
-      @touchstart="${event => this.__handleFieldClickStart(rowIndex, columnIndex)}"
+      @touchstart="${this.__handleFieldClickStart}"
       @touchend="${this.__handleFieldClickEnd}"
       @touchcancel="${this.__handleFieldClickEnd}"
+      @touchmove="${this.__handleFieldClickLeave}"
 
-      @mousedown="${event => this.__handleFieldClickStart(rowIndex, columnIndex)}"
+      @mousedown="${this.__handleFieldClickStart}"
       @mouseup="${this.__handleFieldClickEnd}"
-      @mouseleave="${this.__handleFieldClickEnd}"
+      @mouseleave="${this.__handleFieldClickLeave}"
 
-      @click="${event => this.__handleFieldClick(event, rowIndex, columnIndex)}"
+      data-row="${rowIndex}"
+      data-column="${columnIndex}"
     >
       ${unsafeSVG(sweeperFieldContent)}
     </div>`;

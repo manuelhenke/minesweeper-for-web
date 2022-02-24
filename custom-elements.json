@@ -53,46 +53,53 @@
               "name": "__handleFieldClickStart",
               "parameters": [
                 {
-                  "name": "selectedRow",
+                  "name": "event",
                   "type": {
-                    "text": "Number"
-                  }
-                },
-                {
-                  "name": "selectedColumn",
-                  "type": {
-                    "text": "Number"
+                    "text": "TouchEvent|MouseEvent"
                   }
                 }
               ]
             },
             {
               "kind": "method",
-              "name": "__handleFieldClickEnd"
-            },
-            {
-              "kind": "method",
-              "name": "__handleFieldClick",
+              "name": "__handleFieldClickLeave",
               "parameters": [
                 {
                   "name": "event",
                   "type": {
-                    "text": "PointerEvent"
-                  }
-                },
-                {
-                  "name": "selectedRow",
-                  "type": {
-                    "text": "Number"
-                  }
-                },
-                {
-                  "name": "selectedColumn",
-                  "type": {
-                    "text": "Number"
+                    "text": "TouchEvent|MouseEvent"
                   }
                 }
               ]
+            },
+            {
+              "kind": "method",
+              "name": "__handleFieldClickEnd",
+              "parameters": [
+                {
+                  "name": "event",
+                  "type": {
+                    "text": "TouchEvent|MouseEvent"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "__getSweeperFieldFromEvent",
+              "parameters": [
+                {
+                  "name": "event",
+                  "type": {
+                    "text": "PointerEvent|MouseEvent"
+                  }
+                }
+              ],
+              "return": {
+                "type": {
+                  "text": "HTMLElement"
+                }
+              }
             },
             {
               "kind": "method",
@@ -154,17 +161,24 @@
               "privacy": "public",
               "type": {
                 "text": "MinesweeperGame"
-              },
-              "attribute": "__game"
+              }
             },
             {
               "kind": "field",
-              "name": "__wasLongPress",
+              "name": "__pressStartTimestamp",
               "privacy": "public",
               "type": {
-                "text": "Boolean"
+                "text": "Number"
               },
-              "attribute": "__wasLongPress"
+              "attribute": "__pressStartTimestamp"
+            },
+            {
+              "kind": "field",
+              "name": "__pressStartSweeperField",
+              "privacy": "public",
+              "type": {
+                "text": "HTMLElement"
+              }
             },
             {
               "kind": "field",
@@ -212,18 +226,11 @@
               "fieldName": "bombs"
             },
             {
-              "name": "__game",
+              "name": "__pressStartTimestamp",
               "type": {
-                "text": "MinesweeperGame"
+                "text": "Number"
               },
-              "fieldName": "__game"
-            },
-            {
-              "name": "__wasLongPress",
-              "type": {
-                "text": "Boolean"
-              },
-              "fieldName": "__wasLongPress"
+              "fieldName": "__pressStartTimestamp"
             },
             {
               "name": "__longPressTimer",
