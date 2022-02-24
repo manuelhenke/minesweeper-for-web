@@ -208,22 +208,8 @@ const directive_t={ATTRIBUTE:1,CHILD:2,PROPERTY:3,BOOLEAN_ATTRIBUTE:4,EVENT:5,EL
 //# sourceMappingURL=unsafe-svg.js.map
 
 ;// CONCATENATED MODULE: ./src/MinesweeperBoard.js
-function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it.return != null) it.return(); } finally { if (didErr) throw err; } } }; }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
-
-var MinesweeperBoard = /*#__PURE__*/function () {
-  function MinesweeperBoard(gameModeConfiguration) {
-    _classCallCheck(this, MinesweeperBoard);
-
+class MinesweeperBoard {
+  constructor(gameModeConfiguration) {
     this.positions = null;
     this.flags = null;
     this.flagCounter = 0;
@@ -234,308 +220,256 @@ var MinesweeperBoard = /*#__PURE__*/function () {
     this.bombs = gameModeConfiguration.bombs;
   }
 
-  _createClass(MinesweeperBoard, [{
-    key: "build",
-    value: function build() {
-      // First: Generate 2d field
-      this.positions = this.generate2dFields(0);
-      this.flags = this.generate2dFields(false);
-      this.flagCounter = 0;
-      this.questionMarks = this.generate2dFields(false);
-      this.revealedFields = this.generate2dFields(false); // Second: Place the bombs on the field
+  build() {
+    // First: Generate 2d field
+    this.positions = this.generate2dFields(0);
+    this.flags = this.generate2dFields(false);
+    this.flagCounter = 0;
+    this.questionMarks = this.generate2dFields(false);
+    this.revealedFields = this.generate2dFields(false); // Second: Place the bombs on the field
 
-      this.placeBombs(); // Third: Calculate the fields number, based on neighbor bombs
+    this.placeBombs(); // Third: Calculate the fields number, based on neighbor bombs
 
-      this.applyFieldNumbers();
-    }
-  }, {
-    key: "generate2dFields",
-    value: function generate2dFields(value) {
-      var _this = this;
+    this.applyFieldNumbers();
+  }
 
-      return Array(this.rows).fill().map(function () {
-        return Array(_this.columns).fill(value);
-      });
-    }
-  }, {
-    key: "placeBombs",
-    value: function placeBombs() {
-      var bombIndices = this.calculateBombIndices();
-      var fieldIndex = 0;
+  generate2dFields(value) {
+    return Array(this.rows).fill().map(() => Array(this.columns).fill(value));
+  }
 
-      for (var i = 0; i < this.rows; i++) {
-        for (var j = 0; j < this.columns; j++) {
-          if (bombIndices.includes(fieldIndex++)) {
-            this.positions[i][j] = 'bomb';
-          }
+  placeBombs() {
+    const bombIndices = this.calculateBombIndices();
+    let fieldIndex = 0;
+
+    for (let i = 0; i < this.rows; i++) {
+      for (let j = 0; j < this.columns; j++) {
+        if (bombIndices.includes(fieldIndex++)) {
+          this.positions[i][j] = 'bomb';
         }
       }
     }
-    /**
-     * Calculates a random set of indices where bombs are located on the field
-     * @returns List of indices of bomb positions
-     */
+  }
+  /**
+   * Calculates a random set of indices where bombs are located on the field
+   * @returns List of indices of bomb positions
+   */
 
-  }, {
-    key: "calculateBombIndices",
-    value: function calculateBombIndices() {
-      var result = [];
-      var size = this.rows * this.columns;
-      var desiredBombAmount = Math.min(this.bombs, size);
 
-      while (result.length != desiredBombAmount) {
-        var newBombPosition = Math.floor(Math.random() * size);
+  calculateBombIndices() {
+    const result = [];
+    const size = this.rows * this.columns;
+    const desiredBombAmount = Math.min(this.bombs, size);
 
-        if (!result.includes(newBombPosition)) {
-          result.push(newBombPosition);
-        }
+    while (result.length != desiredBombAmount) {
+      let newBombPosition = Math.floor(Math.random() * size);
+
+      if (!result.includes(newBombPosition)) {
+        result.push(newBombPosition);
       }
-
-      return result;
     }
-  }, {
-    key: "applyFieldNumbers",
-    value: function applyFieldNumbers() {
-      var _this2 = this;
 
-      for (var row = 0; row < this.rows; row++) {
-        for (var column = 0; column < this.columns; column++) {
-          if (this.positions[row][column] !== 'bomb') {
-            var bombCounter = this.getNeighbors(row, column).filter(function (neighbor) {
-              return _this2.positions[neighbor[0]][neighbor[1]] === 'bomb';
-            }).length;
-            this.positions[row][column] = bombCounter;
-          }
+    return result;
+  }
+
+  applyFieldNumbers() {
+    for (let row = 0; row < this.rows; row++) {
+      for (let column = 0; column < this.columns; column++) {
+        if (this.positions[row][column] !== 'bomb') {
+          const bombCounter = this.getNeighbors(row, column).filter(neighbor => this.positions[neighbor[0]][neighbor[1]] === 'bomb').length;
+          this.positions[row][column] = bombCounter;
         }
       }
     }
-  }, {
-    key: "revealFieldEntry",
-    value: function revealFieldEntry(row, column) {
-      if (this.flags[row][column]) {
-        return null;
-      }
+  }
 
-      if (this.questionMarks[row][column]) {
-        this.questionMarks[row][column] = false;
-      }
-
-      var field = this.positions[row][column];
-
-      if (field === 'bomb') {
-        // position contains bomb
-        this.revealBombs();
-        this.positions[row][column] = 'bomb-explode';
-      } else if (field === 0) {
-        // position contains no bomb and has no neighbor-bombs
-        this.expand(row, column);
-      } else {
-        // position contains no bomb but neighbor-bombs
-        this.revealedFields[row][column] = true;
-      }
-
-      return field;
+  revealFieldEntry(row, column) {
+    if (this.flags[row][column]) {
+      return null;
     }
-  }, {
-    key: "expand",
-    value: function expand(row, column) {
-      var field = this.positions[row][column];
 
-      if (field === 'bomb' || this.revealedFields[row][column]) {
-        return;
-      }
+    if (this.questionMarks[row][column]) {
+      this.questionMarks[row][column] = false;
+    }
 
+    const field = this.positions[row][column];
+
+    if (field === 'bomb') {
+      // position contains bomb
+      this.revealBombs();
+      this.positions[row][column] = 'bomb-explode';
+    } else if (field === 0) {
+      // position contains no bomb and has no neighbor-bombs
+      this.expand(row, column);
+    } else {
+      // position contains no bomb but neighbor-bombs
       this.revealedFields[row][column] = true;
+    }
 
-      if (this.flags[row][column]) {
-        this.removeFlag(row, column);
-      }
+    return field;
+  }
 
-      if (this.questionMarks[row][column]) {
-        this.removeQuestionMark(row, column);
-      }
+  expand(row, column) {
+    const field = this.positions[row][column];
 
-      if (field === 0) {
-        var neighbors = this.getNeighbors(row, column);
+    if (field === 'bomb' || this.revealedFields[row][column]) {
+      return;
+    }
 
-        var _iterator = _createForOfIteratorHelper(neighbors),
-            _step;
+    this.revealedFields[row][column] = true;
 
-        try {
-          for (_iterator.s(); !(_step = _iterator.n()).done;) {
-            var neighbor = _step.value;
-            this.expand(neighbor[0], neighbor[1]);
-          }
-        } catch (err) {
-          _iterator.e(err);
-        } finally {
-          _iterator.f();
-        }
+    if (this.flags[row][column]) {
+      this.removeFlag(row, column);
+    }
+
+    if (this.questionMarks[row][column]) {
+      this.removeQuestionMark(row, column);
+    }
+
+    if (field === 0) {
+      const neighbors = this.getNeighbors(row, column);
+
+      for (const neighbor of neighbors) {
+        this.expand(neighbor[0], neighbor[1]);
       }
     }
-    /**
-     *
-     * @param {number} currentRow
-     * @param {number} currentColumn
-     * @returns {[number, number][]} List of Neighbors, every entry contains a row and a column index
+  }
+  /**
+   *
+   * @param {number} currentRow
+   * @param {number} currentColumn
+   * @returns {[number, number][]} List of Neighbors, every entry contains a row and a column index
+   */
+
+
+  getNeighbors(currentRow, currentColumn) {
+    const neighbors = [];
+    /**xoo
+     * oxo
+     * ooo
      */
 
-  }, {
-    key: "getNeighbors",
-    value: function getNeighbors(currentRow, currentColumn) {
-      var neighbors = [];
-      /**xoo
-       * oxo
-       * ooo
-       */
-
-      if (currentRow > 0 && currentColumn > 0) {
-        neighbors.push([currentRow - 1, currentColumn - 1]);
-      }
-      /**oxo
-       * oxo
-       * ooo
-       */
-
-
-      if (currentRow > 0) {
-        neighbors.push([currentRow - 1, currentColumn]);
-      }
-      /**oox
-       * oxo
-       * ooo
-       */
-
-
-      if (currentRow > 0 && currentColumn < this.columns - 1) {
-        neighbors.push([currentRow - 1, currentColumn + 1]);
-      }
-      /**ooo
-       * oxx
-       * ooo
-       */
-
-
-      if (currentColumn < this.columns - 1) {
-        neighbors.push([currentRow, currentColumn + 1]);
-      }
-      /**ooo
-       * oxo
-       * oox
-       */
-
-
-      if (currentRow < this.rows - 1 && currentColumn < this.columns - 1) {
-        neighbors.push([currentRow + 1, currentColumn + 1]);
-      }
-      /**ooo
-       * oxo
-       * oxo
-       */
-
-
-      if (currentRow < this.rows - 1) {
-        neighbors.push([currentRow + 1, currentColumn]);
-      }
-      /**ooo
-       * oxo
-       * xoo
-       */
-
-
-      if (currentRow < this.rows - 1 && currentColumn > 0) {
-        neighbors.push([currentRow + 1, currentColumn - 1]);
-      }
-      /**ooo
-       * xxo
-       * ooo
-       */
-
-
-      if (currentColumn > 0) {
-        neighbors.push([currentRow, currentColumn - 1]);
-      }
-
-      return neighbors;
+    if (currentRow > 0 && currentColumn > 0) {
+      neighbors.push([currentRow - 1, currentColumn - 1]);
     }
-  }, {
-    key: "addFlag",
-    value: function addFlag(selectedRow, selectedColumn) {
-      if (!this.flags[selectedRow][selectedColumn]) {
-        this.flags[selectedRow][selectedColumn] = true;
-        this.flagCounter++;
-        this.removeQuestionMark(selectedRow, selectedColumn);
-      }
-    }
-  }, {
-    key: "removeFlag",
-    value: function removeFlag(selectedRow, selectedColumn) {
-      if (this.flags[selectedRow][selectedColumn]) {
-        this.flags[selectedRow][selectedColumn] = false;
-        this.flagCounter--;
-      }
-    }
-  }, {
-    key: "addQuestionMark",
-    value: function addQuestionMark(selectedRow, selectedColumn) {
-      if (!this.questionMarks[selectedRow][selectedColumn]) {
-        this.questionMarks[selectedRow][selectedColumn] = true;
-        this.removeFlag(selectedRow, selectedColumn);
-      }
-    }
-  }, {
-    key: "removeQuestionMark",
-    value: function removeQuestionMark(selectedRow, selectedColumn) {
-      if (this.questionMarks[selectedRow][selectedColumn]) {
-        this.questionMarks[selectedRow][selectedColumn] = false;
-      }
-    }
-  }, {
-    key: "revealBombs",
-    value: function revealBombs() {
-      var bombsAsFlags = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
+    /**oxo
+     * oxo
+     * ooo
+     */
 
-      for (var row = 0; row < this.rows; row++) {
-        for (var column = 0; column < this.columns; column++) {
-          if (this.positions[row][column] === 'bomb') {
-            this.revealedFields[row][column] = true;
 
-            if (bombsAsFlags) {
-              this.addFlag(row, column);
-            } else if (this.questionMarks[row][column]) {
-              this.removeQuestionMark(row, column);
-            }
+    if (currentRow > 0) {
+      neighbors.push([currentRow - 1, currentColumn]);
+    }
+    /**oox
+     * oxo
+     * ooo
+     */
+
+
+    if (currentRow > 0 && currentColumn < this.columns - 1) {
+      neighbors.push([currentRow - 1, currentColumn + 1]);
+    }
+    /**ooo
+     * oxx
+     * ooo
+     */
+
+
+    if (currentColumn < this.columns - 1) {
+      neighbors.push([currentRow, currentColumn + 1]);
+    }
+    /**ooo
+     * oxo
+     * oox
+     */
+
+
+    if (currentRow < this.rows - 1 && currentColumn < this.columns - 1) {
+      neighbors.push([currentRow + 1, currentColumn + 1]);
+    }
+    /**ooo
+     * oxo
+     * oxo
+     */
+
+
+    if (currentRow < this.rows - 1) {
+      neighbors.push([currentRow + 1, currentColumn]);
+    }
+    /**ooo
+     * oxo
+     * xoo
+     */
+
+
+    if (currentRow < this.rows - 1 && currentColumn > 0) {
+      neighbors.push([currentRow + 1, currentColumn - 1]);
+    }
+    /**ooo
+     * xxo
+     * ooo
+     */
+
+
+    if (currentColumn > 0) {
+      neighbors.push([currentRow, currentColumn - 1]);
+    }
+
+    return neighbors;
+  }
+
+  addFlag(selectedRow, selectedColumn) {
+    if (!this.flags[selectedRow][selectedColumn]) {
+      this.flags[selectedRow][selectedColumn] = true;
+      this.flagCounter++;
+      this.removeQuestionMark(selectedRow, selectedColumn);
+    }
+  }
+
+  removeFlag(selectedRow, selectedColumn) {
+    if (this.flags[selectedRow][selectedColumn]) {
+      this.flags[selectedRow][selectedColumn] = false;
+      this.flagCounter--;
+    }
+  }
+
+  addQuestionMark(selectedRow, selectedColumn) {
+    if (!this.questionMarks[selectedRow][selectedColumn]) {
+      this.questionMarks[selectedRow][selectedColumn] = true;
+      this.removeFlag(selectedRow, selectedColumn);
+    }
+  }
+
+  removeQuestionMark(selectedRow, selectedColumn) {
+    if (this.questionMarks[selectedRow][selectedColumn]) {
+      this.questionMarks[selectedRow][selectedColumn] = false;
+    }
+  }
+
+  revealBombs() {
+    let bombsAsFlags = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
+
+    for (let row = 0; row < this.rows; row++) {
+      for (let column = 0; column < this.columns; column++) {
+        if (this.positions[row][column] === 'bomb') {
+          this.revealedFields[row][column] = true;
+
+          if (bombsAsFlags) {
+            this.addFlag(row, column);
+          } else if (this.questionMarks[row][column]) {
+            this.removeQuestionMark(row, column);
           }
+        }
 
-          if (this.flags[row][column]) {
-            this.revealedFields[row][column] = true;
-          }
+        if (this.flags[row][column]) {
+          this.revealedFields[row][column] = true;
         }
       }
     }
-  }]);
+  }
 
-  return MinesweeperBoard;
-}();
+}
 ;// CONCATENATED MODULE: ./src/MinesweeperGame.js
-function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || MinesweeperGame_unsupportedIterableToArray(arr) || _nonIterableSpread(); }
-
-function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function MinesweeperGame_unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return MinesweeperGame_arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return MinesweeperGame_arrayLikeToArray(o, minLen); }
-
-function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
-
-function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return MinesweeperGame_arrayLikeToArray(arr); }
-
-function MinesweeperGame_arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-function MinesweeperGame_classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function MinesweeperGame_defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function MinesweeperGame_createClass(Constructor, protoProps, staticProps) { if (protoProps) MinesweeperGame_defineProperties(Constructor.prototype, protoProps); if (staticProps) MinesweeperGame_defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
-
 
 /**
  * @typedef GameModeConfiguration
@@ -544,14 +478,12 @@ function MinesweeperGame_createClass(Constructor, protoProps, staticProps) { if 
  * @property {number} bombs
  */
 
-var MinesweeperGame = /*#__PURE__*/function () {
+class MinesweeperGame {
   /**
    * @param {() => {}} onWinCallback
    * @param {() => {}} onLoseCallback
    */
-  function MinesweeperGame(onWinCallback, onLoseCallback) {
-    MinesweeperGame_classCallCheck(this, MinesweeperGame);
-
+  constructor(onWinCallback, onLoseCallback) {
     this.onWinCallback = onWinCallback;
     this.onLoseCallback = onLoseCallback;
     /**
@@ -567,75 +499,63 @@ var MinesweeperGame = /*#__PURE__*/function () {
     this.isGameOver = true;
   }
 
-  MinesweeperGame_createClass(MinesweeperGame, [{
-    key: "createBoard",
-    value: function createBoard() {
-      var columns = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 9;
-      var rows = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 9;
-      var bombs = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 10;
-      this.gameModeConfiguration = {
-        columns: columns,
-        rows: rows,
-        bombs: bombs
-      };
-      this.board = new MinesweeperBoard(this.gameModeConfiguration);
-      this.board.build();
-      this.isGameOver = false;
+  createBoard() {
+    let columns = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 9;
+    let rows = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 9;
+    let bombs = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 10;
+    this.gameModeConfiguration = {
+      columns: columns,
+      rows: rows,
+      bombs: bombs
+    };
+    this.board = new MinesweeperBoard(this.gameModeConfiguration);
+    this.board.build();
+    this.isGameOver = false;
+  }
+
+  restart() {
+    this.board.build();
+    this.isGameOver = false;
+  }
+
+  toggleFlag(selectedRow, selectedColumn) {
+    if (this.board.flags[selectedRow][selectedColumn]) {
+      // removing a flag is always possible
+      this.board.removeFlag(selectedRow, selectedColumn);
+    } else if (this.board.flagCounter < this.board.bombs) {
+      // it should not be possible to place more flags than bombs
+      this.board.addFlag(selectedRow, selectedColumn);
     }
-  }, {
-    key: "restart",
-    value: function restart() {
-      this.board.build();
-      this.isGameOver = false;
+  }
+
+  toggleQuestionMark(selectedRow, selectedColumn) {
+    if (this.board.questionMarks[selectedRow][selectedColumn]) {
+      this.board.removeQuestionMark(selectedRow, selectedColumn);
+    } else {
+      this.board.addQuestionMark(selectedRow, selectedColumn);
     }
-  }, {
-    key: "toggleFlag",
-    value: function toggleFlag(selectedRow, selectedColumn) {
-      if (this.board.flags[selectedRow][selectedColumn]) {
-        // removing a flag is always possible
-        this.board.removeFlag(selectedRow, selectedColumn);
-      } else if (this.board.flagCounter < this.board.bombs) {
-        // it should not be possible to place more flags than bombs
-        this.board.addFlag(selectedRow, selectedColumn);
-      }
+  }
+
+  selectField(selectedRow, selectedColumn) {
+    const field = this.board.revealFieldEntry(selectedRow, selectedColumn);
+
+    if (field === 'bomb') {
+      this.onLoseCallback();
+      this.isGameOver = true;
+      return;
+    } // flatten the 2d boolean array and count false values
+
+
+    const unrevealedFieldsAmount = [].concat(...this.board.revealedFields).filter(revealedField => !revealedField).length;
+
+    if (unrevealedFieldsAmount === this.board.bombs) {
+      this.board.revealBombs(true);
+      this.onWinCallback();
+      this.isGameOver = true;
     }
-  }, {
-    key: "toggleQuestionMark",
-    value: function toggleQuestionMark(selectedRow, selectedColumn) {
-      if (this.board.questionMarks[selectedRow][selectedColumn]) {
-        this.board.removeQuestionMark(selectedRow, selectedColumn);
-      } else {
-        this.board.addQuestionMark(selectedRow, selectedColumn);
-      }
-    }
-  }, {
-    key: "selectField",
-    value: function selectField(selectedRow, selectedColumn) {
-      var _ref;
+  }
 
-      var field = this.board.revealFieldEntry(selectedRow, selectedColumn);
-
-      if (field === 'bomb') {
-        this.onLoseCallback();
-        this.isGameOver = true;
-        return;
-      } // flatten the 2d boolean array and count false values
-
-
-      var unrevealedFieldsAmount = (_ref = []).concat.apply(_ref, _toConsumableArray(this.board.revealedFields)).filter(function (revealedField) {
-        return !revealedField;
-      }).length;
-
-      if (unrevealedFieldsAmount === this.board.bombs) {
-        this.board.revealBombs(true);
-        this.onWinCallback();
-        this.isGameOver = true;
-      }
-    }
-  }]);
-
-  return MinesweeperGame;
-}();
+}
 // EXTERNAL MODULE: ./assets/icons/bomb.svg
 var bomb = __webpack_require__(415);
 // EXTERNAL MODULE: ./assets/icons/bomb_red.svg
@@ -667,42 +587,6 @@ var number_7 = __webpack_require__(503);
 // EXTERNAL MODULE: ./assets/icons/number-8.svg
 var number_8 = __webpack_require__(321);
 ;// CONCATENATED MODULE: ./src/Minesweeper.js
-function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
-
-var _templateObject, _templateObject2, _templateObject3, _templateObject4, _templateObject5;
-
-function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
-
-function Minesweeper_createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = Minesweeper_unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it.return != null) it.return(); } finally { if (didErr) throw err; } } }; }
-
-function Minesweeper_unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return Minesweeper_arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return Minesweeper_arrayLikeToArray(o, minLen); }
-
-function Minesweeper_arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-function Minesweeper_classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function Minesweeper_defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function Minesweeper_createClass(Constructor, protoProps, staticProps) { if (protoProps) Minesweeper_defineProperties(Constructor.prototype, protoProps); if (staticProps) Minesweeper_defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
-
-function _get() { if (typeof Reflect !== "undefined" && Reflect.get) { _get = Reflect.get; } else { _get = function _get(target, property, receiver) { var base = _superPropBase(target, property); if (!base) return; var desc = Object.getOwnPropertyDescriptor(base, property); if (desc.get) { return desc.get.call(arguments.length < 3 ? target : receiver); } return desc.value; }; } return _get.apply(this, arguments); }
-
-function _superPropBase(object, property) { while (!Object.prototype.hasOwnProperty.call(object, property)) { object = _getPrototypeOf(object); if (object === null) break; } return object; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); Object.defineProperty(subClass, "prototype", { writable: false }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 
@@ -723,317 +607,337 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
-var Minesweeper = /*#__PURE__*/function (_LitElement) {
-  _inherits(Minesweeper, _LitElement);
+class Minesweeper extends lit_element_s {
+  static get styles() {
+    return [r`
+        :host {
+          display: block;
+          border: solid 8px #bdbdbd;
+          max-width: 100%;
+        }
 
-  var _super = _createSuper(Minesweeper);
+        *,
+        *::after,
+        *::before {
+          box-sizing: border-box;
+        }
 
-  function Minesweeper() {
-    var _this;
+        .sweeper-box {
+          display: block;
+          border: 3px solid;
+          border-top-color: rgb(123, 123, 123);
+          border-left-color: rgb(123, 123, 123);
+          border-bottom-color: white;
+          border-right-color: white;
+          background-color: #bdbdbd;
+          overflow-x: auto;
+        }
 
-    Minesweeper_classCallCheck(this, Minesweeper);
+        .sweeper-row {
+          display: block;
+          /** Fontsize of 0 to remove white space between inline-block childs */
+          font-size: 0;
+          white-space: nowrap;
+        }
 
-    _this = _super.call(this);
-    _this.columns = 9;
-    _this.rows = 9;
-    _this.bombs = 10;
-    return _this;
+        .sweeper-field {
+          display: inline-block;
+          user-select: none;
+          -webkit-user-select: none; /* Chrome/Safari */
+          -moz-user-select: none; /* Firefox */
+          -ms-user-select: none; /* IE10+ */
+          height: 40px;
+          width: 40px;
+          object-position: center;
+          object-fit: cover;
+          cursor: pointer;
+        }
+
+        .unselectable {
+          cursor: default;
+        }
+      `];
   }
 
-  Minesweeper_createClass(Minesweeper, [{
-    key: "connectedCallback",
-    value: function connectedCallback() {
-      var _this2 = this;
+  static get properties() {
+    return {
+      restartSelector: {
+        attribute: 'restart-selector',
+        type: String
+      },
+      bombCounterSelector: {
+        attribute: 'bomb-counter-selector',
+        type: String
+      },
+      columns: {
+        type: Number
+      },
+      rows: {
+        type: Number
+      },
+      bombs: {
+        type: Number
+      },
 
-      _get(_getPrototypeOf(Minesweeper.prototype), "connectedCallback", this).call(this);
+      /** @type {MinesweeperGame} */
+      __game: {
+        state: true,
+        attribute: false
+      },
 
-      if (this.restartSelector) {
-        var restartElements = document.querySelectorAll(this.restartSelector);
-        restartElements.forEach(function (restartElement) {
-          restartElement.addEventListener('click', _this2.restartGame.bind(_this2));
-        });
+      /** @type {Number} */
+      __pressStartTimestamp: {
+        state: true,
+        type: Number
+      },
+
+      /** @type {HTMLElement} */
+      __pressStartSweeperField: {
+        state: true,
+        attribute: false
+      },
+
+      /** @type {Number} */
+      __longPressTimer: {
+        state: true,
+        type: Number
       }
+    };
+  }
 
-      this.__game = new MinesweeperGame(this.__gameWonCallback.bind(this), this.__gameLostCallback.bind(this));
+  constructor() {
+    super();
+    this.columns = 9;
+    this.rows = 9;
+    this.bombs = 10;
+  }
 
-      this.__createGameBoard();
+  connectedCallback() {
+    super.connectedCallback();
+
+    if (this.restartSelector) {
+      const restartElements = document.querySelectorAll(this.restartSelector);
+      restartElements.forEach(restartElement => {
+        restartElement.addEventListener('click', this.restartGame.bind(this));
+      });
     }
-  }, {
-    key: "__createGameBoard",
-    value: function __createGameBoard() {
-      if (this.__game) {
-        this.__game.createBoard(this.columns, this.rows, this.bombs);
 
-        this.requestUpdate();
-      }
+    this.__game = new MinesweeperGame(this.__gameWonCallback.bind(this), this.__gameLostCallback.bind(this));
+
+    this.__createGameBoard();
+  }
+
+  __createGameBoard() {
+    if (this.__game) {
+      this.__game.createBoard(this.columns, this.rows, this.bombs);
+
+      this.requestUpdate();
     }
-  }, {
-    key: "__gameWonCallback",
-    value: function __gameWonCallback() {
-      var options = {
-        detail: {},
-        bubbles: true,
-        composed: true
-      };
-      this.dispatchEvent(new CustomEvent('game-won', options));
+  }
+
+  __gameWonCallback() {
+    const options = {
+      detail: {},
+      bubbles: true,
+      composed: true
+    };
+    this.dispatchEvent(new CustomEvent('game-won', options));
+  }
+
+  __gameLostCallback() {
+    const options = {
+      detail: {},
+      bubbles: true,
+      composed: true
+    };
+    this.dispatchEvent(new CustomEvent('game-lost', options));
+  }
+  /**
+   * @param {GameModeConfiguration} gameModeConfiguration
+   */
+
+
+  setGameModeConfiguration(gameModeConfiguration) {
+    this.columns = gameModeConfiguration.columns;
+    this.rows = gameModeConfiguration.rows;
+    this.bombs = gameModeConfiguration.bombs;
+
+    this.__createGameBoard();
+  }
+
+  restartGame() {
+    if (this.__game) {
+      this.__game.restart();
+
+      this.requestUpdate();
     }
-  }, {
-    key: "__gameLostCallback",
-    value: function __gameLostCallback() {
-      var options = {
-        detail: {},
-        bubbles: true,
-        composed: true
-      };
-      this.dispatchEvent(new CustomEvent('game-lost', options));
-    }
-    /**
-     * @param {GameModeConfiguration} gameModeConfiguration
-     */
+  }
+  /**
+   * @param {TouchEvent|MouseEvent} event
+   */
 
-  }, {
-    key: "setGameModeConfiguration",
-    value: function setGameModeConfiguration(gameModeConfiguration) {
-      this.columns = gameModeConfiguration.columns;
-      this.rows = gameModeConfiguration.rows;
-      this.bombs = gameModeConfiguration.bombs;
 
-      this.__createGameBoard();
-    }
-  }, {
-    key: "restartGame",
-    value: function restartGame() {
-      if (this.__game) {
-        this.__game.restart();
+  __handleFieldClickStart(event) {
+    const sweeperField = this.__getSweeperFieldFromEvent(event);
 
-        this.requestUpdate();
-      }
-    }
-    /**
-     * @param {TouchEvent|MouseEvent} event
-     */
+    this.__pressStartSweeperField = sweeperField;
+    this.__pressStartTimestamp = event.timeStamp;
 
-  }, {
-    key: "__handleFieldClickStart",
-    value: function __handleFieldClickStart(event) {
-      var _this3 = this;
+    if (this.__game && this.__game.board && !this.__game.isGameOver) {
+      this.__longPressTimer = setTimeout(() => {
+        this.__wasLongPress = true;
+        let animationInterval = null;
+        let currentScale = 1;
+        animationInterval = setInterval(scale, 2);
 
-      var sweeperField = this.__getSweeperFieldFromEvent(event);
-
-      this.__pressStartSweeperField = sweeperField;
-      this.__pressStartTimestamp = event.timeStamp;
-
-      if (this.__game && this.__game.board && !this.__game.isGameOver) {
-        this.__longPressTimer = setTimeout(function () {
-          _this3.__wasLongPress = true;
-          var animationInterval = null;
-          var currentScale = 1;
-          animationInterval = setInterval(scale, 2);
-
-          function scale() {
-            if (currentScale >= 1.25) {
-              clearInterval(animationInterval);
-              sweeperField.style.transform = "none";
-            } else {
-              currentScale += 0.01;
-              sweeperField.style.transform = "scale(".concat(currentScale, ")");
-            }
+        function scale() {
+          if (currentScale >= 1.25) {
+            clearInterval(animationInterval);
+            sweeperField.style.transform = "none";
+          } else {
+            currentScale += 0.01;
+            sweeperField.style.transform = `scale(${currentScale})`;
           }
-        }, 500);
-      }
+        }
+      }, 500);
     }
-    /**
-     * @param {TouchEvent|MouseEvent} event
-     */
+  }
+  /**
+   * @param {TouchEvent|MouseEvent} event
+   */
 
-  }, {
-    key: "__handleFieldClickLeave",
-    value: function __handleFieldClickLeave(event) {
-      clearTimeout(this.__longPressTimer);
-      this.__pressStartSweeperField = null;
-      this.__pressStartTimestamp = null;
-    }
-    /**
-     * @param {TouchEvent|MouseEvent} event
-     */
 
-  }, {
-    key: "__handleFieldClickEnd",
-    value: function __handleFieldClickEnd(event) {
-      var sweeperField = this.__getSweeperFieldFromEvent(event);
+  __handleFieldClickLeave(event) {
+    clearTimeout(this.__longPressTimer);
+    this.__pressStartSweeperField = null;
+    this.__pressStartTimestamp = null;
+  }
+  /**
+   * @param {TouchEvent|MouseEvent} event
+   */
 
-      var wasLongPress = event.timeStamp - this.__pressStartTimestamp > 500;
 
-      if (this.__game && this.__game.board && !this.__game.isGameOver && this.__pressStartSweeperField === sweeperField) {
-        event.preventDefault();
-        var selectedRow = parseInt(sweeperField.dataset["row"]),
+  __handleFieldClickEnd(event) {
+    const sweeperField = this.__getSweeperFieldFromEvent(event);
+
+    const wasLongPress = event.timeStamp - this.__pressStartTimestamp > 500;
+
+    if (this.__game && this.__game.board && !this.__game.isGameOver && this.__pressStartSweeperField === sweeperField) {
+      event.preventDefault();
+      const selectedRow = parseInt(sweeperField.dataset["row"]),
             selectedColumn = parseInt(sweeperField.dataset["column"]);
-        var gameBoard = this.__game.board;
-        var hasFlag = gameBoard.flags[selectedRow][selectedColumn];
+      const gameBoard = this.__game.board;
+      const hasFlag = gameBoard.flags[selectedRow][selectedColumn];
 
-        if (wasLongPress || event.ctrlKey || event.altKey || event.metaKey) {
-          var hasQuestionMark = gameBoard.questionMarks[selectedRow][selectedColumn];
+      if (wasLongPress || event.ctrlKey || event.altKey || event.metaKey) {
+        const hasQuestionMark = gameBoard.questionMarks[selectedRow][selectedColumn];
 
-          if (hasQuestionMark || hasFlag) {
-            this.__game.toggleQuestionMark(selectedRow, selectedColumn);
-          } else {
-            this.__game.toggleFlag(selectedRow, selectedColumn);
-          }
-        } else if (hasFlag) {
-          // if user performs a regular click on a field with a flag on it cancel it
-          return;
+        if (hasQuestionMark || hasFlag) {
+          this.__game.toggleQuestionMark(selectedRow, selectedColumn);
         } else {
-          this.__game.selectField(selectedRow, selectedColumn);
+          this.__game.toggleFlag(selectedRow, selectedColumn);
         }
-
-        this.requestUpdate();
-      }
-
-      clearTimeout(this.__longPressTimer);
-      this.__pressStartSweeperField = null;
-      this.__pressStartTimestamp = null;
-    }
-    /**
-     * @param {PointerEvent|MouseEvent} event
-     * @returns {HTMLElement}
-     */
-
-  }, {
-    key: "__getSweeperFieldFromEvent",
-    value: function __getSweeperFieldFromEvent(event) {
-      var _iterator = Minesweeper_createForOfIteratorHelper(event.composedPath()),
-          _step;
-
-      try {
-        for (_iterator.s(); !(_step = _iterator.n()).done;) {
-          var eventTarget = _step.value;
-
-          if (eventTarget.classList && eventTarget.classList.contains("sweeper-field")) {
-            return eventTarget;
-          }
-        }
-      } catch (err) {
-        _iterator.e(err);
-      } finally {
-        _iterator.f();
-      }
-
-      return null;
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      var _this4 = this;
-
-      if (!this.__game || !this.__game.board) {
-        return $(_templateObject || (_templateObject = _taggedTemplateLiteral(["No Board :("])));
-      }
-
-      var gameBoard = this.__game.board;
-
-      if (this.bombCounterSelector) {
-        var bombCounterElements = document.querySelectorAll(this.bombCounterSelector);
-        bombCounterElements.forEach(function (bombCounterElement) {
-          bombCounterElement.textContent = gameBoard.bombs - gameBoard.flagCounter;
-        });
-      }
-
-      return $(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["<div class=\"sweeper-box\">\n      ", "\n    </div>"])), gameBoard.positions.map(function (row, rowIndex) {
-        return $(_templateObject3 || (_templateObject3 = _taggedTemplateLiteral(["<div class=\"sweeper-row\">\n            ", "\n          </div>"])), row.map(function (field, columnIndex) {
-          return _this4.getSweeperFieldHtml(rowIndex, columnIndex);
-        }));
-      }));
-    }
-  }, {
-    key: "getSweeperFieldHtml",
-    value: function getSweeperFieldHtml(rowIndex, columnIndex) {
-      var gameBoard = this.__game.board;
-      var isRevealed = gameBoard.revealedFields[rowIndex][columnIndex];
-      var hasFlag = gameBoard.flags[rowIndex][columnIndex];
-      var hasQuestionMark = gameBoard.questionMarks[rowIndex][columnIndex];
-      var sweeperFieldContent = Minesweeper.ICONS.UNOPENED_SQUARE;
-
-      if (isRevealed) {
-        var fieldValue = gameBoard.positions[rowIndex][columnIndex];
-
-        if (fieldValue === 'bomb') {
-          if (hasFlag) {
-            sweeperFieldContent = Minesweeper.ICONS.FLAG;
-          } else {
-            sweeperFieldContent = Minesweeper.ICONS.BOMB;
-          }
-        } else if (fieldValue === 'bomb-explode') {
-          sweeperFieldContent = Minesweeper.ICONS.BOMB_EXPLODE;
-        } else if (hasFlag) {
-          sweeperFieldContent = Minesweeper.ICONS.FLAG_MISSED;
-        } else {
-          sweeperFieldContent = Minesweeper.ICONS["NUMBER_".concat(fieldValue)];
-        }
-      } else if (hasQuestionMark) {
-        sweeperFieldContent = Minesweeper.ICONS.QUESTION_MARK;
       } else if (hasFlag) {
-        sweeperFieldContent = Minesweeper.ICONS.FLAG;
+        // if user performs a regular click on a field with a flag on it cancel it
+        return;
+      } else {
+        this.__game.selectField(selectedRow, selectedColumn);
       }
 
-      var sweeperFieldClass = isRevealed || hasFlag || this.__game.isGameOver ? ' unselectable' : '';
-      return $(_templateObject4 || (_templateObject4 = _taggedTemplateLiteral(["<div\n      class=\"sweeper-field", "\"\n\n      @touchstart=\"", "\"\n      @touchend=\"", "\"\n      @touchcancel=\"", "\"\n      @touchmove=\"", "\"\n\n      @mousedown=\"", "\"\n      @mouseup=\"", "\"\n      @mouseleave=\"", "\"\n\n      data-row=\"", "\"\n      data-column=\"", "\"\n    >\n      ", "\n    </div>"])), sweeperFieldClass, this.__handleFieldClickStart, this.__handleFieldClickEnd, this.__handleFieldClickEnd, this.__handleFieldClickLeave, this.__handleFieldClickStart, this.__handleFieldClickEnd, this.__handleFieldClickLeave, rowIndex, columnIndex, unsafe_svg_o(sweeperFieldContent));
+      this.requestUpdate();
     }
-  }], [{
-    key: "styles",
-    get: function get() {
-      return [r(_templateObject5 || (_templateObject5 = _taggedTemplateLiteral(["\n        :host {\n          display: block;\n          border: solid 8px #bdbdbd;\n          max-width: 100%;\n        }\n\n        *,\n        *::after,\n        *::before {\n          box-sizing: border-box;\n        }\n\n        .sweeper-box {\n          display: block;\n          border: 3px solid;\n          border-top-color: rgb(123, 123, 123);\n          border-left-color: rgb(123, 123, 123);\n          border-bottom-color: white;\n          border-right-color: white;\n          background-color: #bdbdbd;\n          overflow-x: auto;\n        }\n\n        .sweeper-row {\n          display: block;\n          /** Fontsize of 0 to remove white space between inline-block childs */\n          font-size: 0;\n          white-space: nowrap;\n        }\n\n        .sweeper-field {\n          display: inline-block;\n          user-select: none;\n          -webkit-user-select: none; /* Chrome/Safari */\n          -moz-user-select: none; /* Firefox */\n          -ms-user-select: none; /* IE10+ */\n          height: 40px;\n          width: 40px;\n          object-position: center;\n          object-fit: cover;\n          cursor: pointer;\n        }\n\n        .unselectable {\n          cursor: default;\n        }\n      "])))];
+
+    clearTimeout(this.__longPressTimer);
+    this.__pressStartSweeperField = null;
+    this.__pressStartTimestamp = null;
+  }
+  /**
+   * @param {PointerEvent|MouseEvent} event
+   * @returns {HTMLElement}
+   */
+
+
+  __getSweeperFieldFromEvent(event) {
+    for (const eventTarget of event.composedPath()) {
+      if (eventTarget.classList && eventTarget.classList.contains("sweeper-field")) {
+        return eventTarget;
+      }
     }
-  }, {
-    key: "properties",
-    get: function get() {
-      return {
-        restartSelector: {
-          attribute: 'restart-selector',
-          type: String
-        },
-        bombCounterSelector: {
-          attribute: 'bomb-counter-selector',
-          type: String
-        },
-        columns: {
-          type: Number
-        },
-        rows: {
-          type: Number
-        },
-        bombs: {
-          type: Number
-        },
 
-        /** @type {MinesweeperGame} */
-        __game: {
-          state: true,
-          attribute: false
-        },
+    return null;
+  }
 
-        /** @type {Number} */
-        __pressStartTimestamp: {
-          state: true,
-          type: Number
-        },
+  render() {
+    if (!this.__game || !this.__game.board) {
+      return $`No Board :(`;
+    }
 
-        /** @type {HTMLElement} */
-        __pressStartSweeperField: {
-          state: true,
-          attribute: false
-        },
+    const gameBoard = this.__game.board;
 
-        /** @type {Number} */
-        __longPressTimer: {
-          state: true,
-          type: Number
+    if (this.bombCounterSelector) {
+      const bombCounterElements = document.querySelectorAll(this.bombCounterSelector);
+      bombCounterElements.forEach(bombCounterElement => {
+        bombCounterElement.textContent = gameBoard.bombs - gameBoard.flagCounter;
+      });
+    }
+
+    return $`<div class="sweeper-box">
+      ${gameBoard.positions.map((row, rowIndex) => $`<div class="sweeper-row">
+            ${row.map((field, columnIndex) => this.getSweeperFieldHtml(rowIndex, columnIndex))}
+          </div>`)}
+    </div>`;
+  }
+
+  getSweeperFieldHtml(rowIndex, columnIndex) {
+    const gameBoard = this.__game.board;
+    const isRevealed = gameBoard.revealedFields[rowIndex][columnIndex];
+    const hasFlag = gameBoard.flags[rowIndex][columnIndex];
+    const hasQuestionMark = gameBoard.questionMarks[rowIndex][columnIndex];
+    let sweeperFieldContent = Minesweeper.ICONS.UNOPENED_SQUARE;
+
+    if (isRevealed) {
+      const fieldValue = gameBoard.positions[rowIndex][columnIndex];
+
+      if (fieldValue === 'bomb') {
+        if (hasFlag) {
+          sweeperFieldContent = Minesweeper.ICONS.FLAG;
+        } else {
+          sweeperFieldContent = Minesweeper.ICONS.BOMB;
         }
-      };
+      } else if (fieldValue === 'bomb-explode') {
+        sweeperFieldContent = Minesweeper.ICONS.BOMB_EXPLODE;
+      } else if (hasFlag) {
+        sweeperFieldContent = Minesweeper.ICONS.FLAG_MISSED;
+      } else {
+        sweeperFieldContent = Minesweeper.ICONS[`NUMBER_${fieldValue}`];
+      }
+    } else if (hasQuestionMark) {
+      sweeperFieldContent = Minesweeper.ICONS.QUESTION_MARK;
+    } else if (hasFlag) {
+      sweeperFieldContent = Minesweeper.ICONS.FLAG;
     }
-  }]);
 
-  return Minesweeper;
-}(lit_element_s);
+    let sweeperFieldClass = isRevealed || hasFlag || this.__game.isGameOver ? ' unselectable' : '';
+    return $`<div
+      class="sweeper-field${sweeperFieldClass}"
+
+      @touchstart="${this.__handleFieldClickStart}"
+      @touchend="${this.__handleFieldClickEnd}"
+      @touchcancel="${this.__handleFieldClickEnd}"
+      @touchmove="${this.__handleFieldClickLeave}"
+
+      @mousedown="${this.__handleFieldClickStart}"
+      @mouseup="${this.__handleFieldClickEnd}"
+      @mouseleave="${this.__handleFieldClickLeave}"
+
+      data-row="${rowIndex}"
+      data-column="${columnIndex}"
+    >
+      ${unsafe_svg_o(sweeperFieldContent)}
+    </div>`;
+  }
+
+}
 
 _defineProperty(Minesweeper, "ICONS", {
   BOMB: bomb,
