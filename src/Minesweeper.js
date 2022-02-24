@@ -243,6 +243,13 @@ export class Minesweeper extends LitElement {
       this.__pressStartSweeperField === sweeperField
     ) {
       event.preventDefault();
+      this.dispatchEvent(new CustomEvent('field-click', {
+        detail: {
+          field: sweeperField
+        },
+        bubbles: true,
+        composed: true,
+      }));
       const selectedRow = parseInt(sweeperField.dataset["row"]),
         selectedColumn = parseInt(sweeperField.dataset["column"]);
 
@@ -261,7 +268,6 @@ export class Minesweeper extends LitElement {
       } else {
         this.__game.selectField(selectedRow, selectedColumn);
       }
-
       this.requestUpdate();
     }
 

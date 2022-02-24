@@ -824,6 +824,13 @@ class Minesweeper extends lit_element_s {
 
     if (this.__game && this.__game.board && !this.__game.isGameOver && this.__pressStartSweeperField === sweeperField) {
       event.preventDefault();
+      this.dispatchEvent(new CustomEvent('field-click', {
+        detail: {
+          field: sweeperField
+        },
+        bubbles: true,
+        composed: true
+      }));
       const selectedRow = parseInt(sweeperField.dataset["row"]),
             selectedColumn = parseInt(sweeperField.dataset["column"]);
       const gameBoard = this.__game.board;
