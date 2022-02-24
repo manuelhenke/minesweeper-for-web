@@ -1,13 +1,20 @@
+const webpack = require("webpack");
 const path = require('path');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
+/** @type {webpack.Configuration} */
 module.exports = {
   mode: 'production',
   devtool: false,
   entry: {
-    minesweeper: './src/Minesweeper.js',
+    'minesweeper': './src/Minesweeper.js',
+    'minesweeper.min': './src/Minesweeper.js',
   },
   optimization: {
     minimize: false,
+    minimizer: [new UglifyJsPlugin({
+      include: /\.min\.js$/
+    })]
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -17,12 +24,15 @@ module.exports = {
   module: {
     rules: [
       {
-        // HTML for shadow DOM
+        test: /\.m?js$/,
+        exclude: /(node_modules|bower_components)/,
+        loader: 'babel-loader',
+      },
+      {
         test: /\.html$/i,
         loader: 'html-loader',
       },
       {
-        // CSS for shadow DOM
         test: /\.s[ac]ss$/i,
         use: ['css-loader', 'postcss-loader', 'sass-loader'],
         sideEffects: true,
