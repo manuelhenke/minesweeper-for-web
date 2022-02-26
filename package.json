@@ -45,6 +45,20 @@
       [
         "@babel/preset-env"
       ]
+    ],
+    "assumptions": {
+      "setPublicClassFields": true
+    },
+    "plugins": [
+      [
+        "@babel/plugin-proposal-decorators",
+        {
+          "decoratorsBeforeExport": true
+        }
+      ],
+      [
+        "@babel/plugin-proposal-class-properties"
+      ]
     ]
   },
   "browserslist": [
@@ -67,6 +81,8 @@
   },
   "devDependencies": {
     "@babel/core": "^7.17.5",
+    "@babel/plugin-proposal-class-properties": "^7.16.7",
+    "@babel/plugin-proposal-decorators": "^7.17.2",
     "@babel/preset-env": "^7.16.11",
     "@custom-elements-manifest/analyzer": "^0.5.7",
     "@open-wc/eslint-config": "^7.0.0",

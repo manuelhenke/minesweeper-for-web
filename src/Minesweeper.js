@@ -1,4 +1,5 @@
 import { html, css, LitElement } from 'lit';
+import { eventOptions } from 'lit/decorators/event-options.js';
 import { unsafeSVG } from 'lit-html/directives/unsafe-svg.js';
 import { MinesweeperGame } from './MinesweeperGame.js';
 import Bomb from '../assets/icons/bomb.svg';
@@ -195,6 +196,7 @@ export class Minesweeper extends LitElement {
   /**
    * @param {TouchEvent|MouseEvent} event
    */
+   @eventOptions({passive: true})
   __handleFieldClickStart(event) {
     const sweeperField = this.__getSweeperFieldFromEvent(event);
     this.__pressStartSweeperField = sweeperField;
@@ -223,6 +225,7 @@ export class Minesweeper extends LitElement {
   /**
    * @param {TouchEvent|MouseEvent} event
    */
+   @eventOptions({passive: true})
   __handleFieldClickLeave(event) {
     clearTimeout(this.__longPressTimer);
     this.__pressStartSweeperField = null;
@@ -242,8 +245,6 @@ export class Minesweeper extends LitElement {
       !this.__game.isGameOver &&
       this.__pressStartSweeperField === sweeperField
     ) {
-      // TODO: Prevent bubbling of click event. Can we get rid of it?
-      event.preventDefault();
       this.dispatchEvent(new CustomEvent('field-click', {
         detail: {
           field: sweeperField
