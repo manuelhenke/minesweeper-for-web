@@ -31,7 +31,7 @@
     "format": "eslint . --fix && prettier . --write",
     "lint": "eslint . && prettier . --check",
     "prepare": "husky install",
-    "test": "web-test-runner --coverage",
+    "test": "web-test-runner",
     "test:watch": "web-test-runner --watch"
   },
   "commitlint": {
