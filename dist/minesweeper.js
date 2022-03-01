@@ -1054,14 +1054,12 @@ let Minesweeper = _decorate(null, function (_initialize, _LitElement) {
           }
         }
 
-        return $`<div class="svg-container">
-        ${Object.values(icons).map(unsafe_svg_o)}
-      </div>
-      <div class="sweeper-box">
+        return $`<div class="sweeper-box">
         ${gameBoard.positions.map((row, rowIndex) => $`<div class="sweeper-row">
               ${row.map((field, columnIndex) => this.getSweeperFieldHtml(rowIndex, columnIndex))}
             </div>`)}
-      </div>`;
+      </div>
+      <div class="svg-container">${Object.values(icons).map(unsafe_svg_o)}</div> `;
       }
     }, {
       kind: "method",

@@ -307,10 +307,7 @@ export class Minesweeper extends LitElement {
       }
     }
 
-    return html`<div class="svg-container">
-        ${Object.values(Icons).map(unsafeSVG)}
-      </div>
-      <div class="sweeper-box">
+    return html`<div class="sweeper-box">
         ${gameBoard.positions.map(
           (row, rowIndex) =>
             html`<div class="sweeper-row">
@@ -319,7 +316,8 @@ export class Minesweeper extends LitElement {
               )}
             </div>`
         )}
-      </div>`;
+      </div>
+      <div class="svg-container">${Object.values(Icons).map(unsafeSVG)}</div> `;
   }
 
   getSweeperFieldHtml(rowIndex, columnIndex) {
