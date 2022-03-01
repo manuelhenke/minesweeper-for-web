@@ -103,8 +103,15 @@ typings/
 # TernJS port file
 .tern-port
 
-# Editor-related folders
-.vscode
-
 # sass cache
 .sass-cache/
+
+## editors
+/.idea
+/.vscode
+
+## system files
+.DS_Store
+
+## temp folders
+/.tmp/
