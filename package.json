@@ -1,6 +1,6 @@
 {
   "name": "minesweeper-for-web",
-  "version": "2.1.8",
+  "version": "2.1.9",
   "description": "This is the classic microsoft minesweeper for the web.",
   "keywords": [
     "minesweeper",
@@ -116,9 +116,6 @@
     "terser-webpack-plugin": "^5.3.1",
     "webpack": "^5.69.1",
     "webpack-cli": "^4.9.2"
-  },
-  "engines": {
-    "node": ">=v16"
   },
   "customElements": "custom-elements.json",
   "postcss": {
