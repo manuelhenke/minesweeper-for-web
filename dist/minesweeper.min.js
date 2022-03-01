@@ -1,108 +1,108 @@
 /******/ (function() { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
-/***/ 415:
+/***/ 921:
 /***/ (function(module) {
 
-module.exports = "<svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" preserveAspectRatio=\"xMidYMid meet\" viewBox=\"0 0 76 76\"><defs><path d=\"M2 74L2 2L74 2L74 74L74 74L2 74Z\" id=\"e2iiwvZd6v\"></path><mask id=\"maskaXtlGt3qy\" x=\"-2\" y=\"-2\" width=\"80\" height=\"80\" maskUnits=\"userSpaceOnUse\"><rect x=\"-2\" y=\"-2\" width=\"80\" height=\"80\" fill=\"white\"></rect><use xlink:href=\"#e2iiwvZd6v\" opacity=\"1\" fill=\"black\"></use></mask><path d=\"M35.6 6.8L40.4 6.8L40.4 69.2L35.6 69.2L35.6 6.8Z\" id=\"c9eN9knBh\"></path><clipPath id=\"clipd1zPYXGAwy\"><use xlink:href=\"#c9eN9knBh\" opacity=\"1\"></use></clipPath><path d=\"M40.4 16.4L50 16.4L50 59.6L40.4 59.6L40.4 16.4Z\" id=\"gx4drqHvY\"></path><clipPath id=\"clipa2yM9RkR6\"><use xlink:href=\"#gx4drqHvY\" opacity=\"1\"></use></clipPath><path d=\"M50 21.2L54.8 21.2L54.8 54.8L50 54.8L50 21.2Z\" id=\"fgtYUnw8A\"></path><clipPath id=\"clipk32QKT1MaU\"><use xlink:href=\"#fgtYUnw8A\" opacity=\"1\"></use></clipPath><path d=\"M54.8 26L59.6 26L59.6 50L54.8 50L54.8 26Z\" id=\"cgzxabwz1\"></path><clipPath id=\"cliph2KpOi7P9O\"><use xlink:href=\"#cgzxabwz1\" opacity=\"1\"></use></clipPath><path d=\"M59.6 35.6L69.2 35.6L69.2 40.4L59.6 40.4L59.6 35.6Z\" id=\"b3gPwqEoX\"></path><clipPath id=\"clipe23gtVrUJ\"><use xlink:href=\"#b3gPwqEoX\" opacity=\"1\"></use></clipPath><path d=\"M26 16.4L35.6 16.4L35.6 59.6L26 59.6L26 16.4Z\" id=\"ad99VAl8I\"></path><clipPath id=\"clipd1v1rV6sj4\"><use xlink:href=\"#ad99VAl8I\" opacity=\"1\"></use></clipPath><path d=\"M21.2 21.2L26 21.2L26 54.8L21.2 54.8L21.2 21.2Z\" id=\"c13ZaXjO2p\"></path><clipPath id=\"cliph399Xr21VH\"><use xlink:href=\"#c13ZaXjO2p\" opacity=\"1\"></use></clipPath><path d=\"M16.4 26L21.2 26L21.2 50L16.4 50L16.4 26Z\" id=\"b2SwHVIyUf\"></path><clipPath id=\"clipbgmy6Y3Gb\"><use xlink:href=\"#b2SwHVIyUf\" opacity=\"1\"></use></clipPath><path d=\"M6.8 35.6L16.4 35.6L16.4 40.4L6.8 40.4L6.8 35.6Z\" id=\"g3CI8RzO6L\"></path><clipPath id=\"clipb4iPMKkLd9\"><use xlink:href=\"#g3CI8RzO6L\" opacity=\"1\"></use></clipPath><path d=\"M54.8 16.4L59.6 16.4L59.6 21.2L54.8 21.2L54.8 16.4Z\" id=\"bVu929Gr\"></path><clipPath id=\"clipb5eim9AY4T\"><use xlink:href=\"#bVu929Gr\" opacity=\"1\"></use></clipPath><path d=\"M16.4 16.4L21.2 16.4L21.2 21.2L16.4 21.2L16.4 16.4Z\" id=\"bbmkl5w40\"></path><clipPath id=\"clipdILmNb1DZ\"><use xlink:href=\"#bbmkl5w40\" opacity=\"1\"></use></clipPath><path d=\"M54.8 54.8L59.6 54.8L59.6 59.6L54.8 59.6L54.8 54.8Z\" id=\"afRzpmA7F\"></path><clipPath id=\"clipa1MHsUZSGO\"><use xlink:href=\"#afRzpmA7F\" opacity=\"1\"></use></clipPath><path d=\"M16.4 54.8L21.2 54.8L21.2 59.6L16.4 59.6L16.4 54.8Z\" id=\"f34Z0Cg2H2\"></path><clipPath id=\"clipaiMYuA5gL\"><use xlink:href=\"#f34Z0Cg2H2\" opacity=\"1\"></use></clipPath><path d=\"M26 26L35.6 26L35.6 35.6L26 35.6L26 26Z\" id=\"a7XCqe2jKp\"></path></defs><g><g><g><use xlink:href=\"#e2iiwvZd6v\" opacity=\"1\" fill=\"#b9b9b9\" fill-opacity=\"1\"></use><g mask=\"url(#maskaXtlGt3qy)\"><use xlink:href=\"#e2iiwvZd6v\" opacity=\"1\" fill-opacity=\"0\" stroke=\"#757575\" stroke-width=\"4\" stroke-opacity=\"1\"></use></g></g><g><use xlink:href=\"#c9eN9knBh\" opacity=\"1\" fill=\"#000000\" fill-opacity=\"1\"></use><g clip-path=\"url(#clipd1zPYXGAwy)\"><use xlink:href=\"#c9eN9knBh\" opacity=\"1\" fill-opacity=\"0\" stroke=\"#000000\" stroke-width=\"2\" stroke-opacity=\"1\"></use></g></g><g><use xlink:href=\"#gx4drqHvY\" opacity=\"1\" fill=\"#000000\" fill-opacity=\"1\"></use><g clip-path=\"url(#clipa2yM9RkR6)\"><use xlink:href=\"#gx4drqHvY\" opacity=\"1\" fill-opacity=\"0\" stroke=\"#000000\" stroke-width=\"2\" stroke-opacity=\"1\"></use></g></g><g><use xlink:href=\"#fgtYUnw8A\" opacity=\"1\" fill=\"#000000\" fill-opacity=\"1\"></use><g clip-path=\"url(#clipk32QKT1MaU)\"><use xlink:href=\"#fgtYUnw8A\" opacity=\"1\" fill-opacity=\"0\" stroke=\"#000000\" stroke-width=\"2\" stroke-opacity=\"1\"></use></g></g><g><use xlink:href=\"#cgzxabwz1\" opacity=\"1\" fill=\"#000000\" fill-opacity=\"1\"></use><g clip-path=\"url(#cliph2KpOi7P9O)\"><use xlink:href=\"#cgzxabwz1\" opacity=\"1\" fill-opacity=\"0\" stroke=\"#000000\" stroke-width=\"2\" stroke-opacity=\"1\"></use></g></g><g><use xlink:href=\"#b3gPwqEoX\" opacity=\"1\" fill=\"#000000\" fill-opacity=\"1\"></use><g clip-path=\"url(#clipe23gtVrUJ)\"><use xlink:href=\"#b3gPwqEoX\" opacity=\"1\" fill-opacity=\"0\" stroke=\"#000000\" stroke-width=\"2\" stroke-opacity=\"1\"></use></g></g><g><use xlink:href=\"#ad99VAl8I\" opacity=\"1\" fill=\"#000000\" fill-opacity=\"1\"></use><g clip-path=\"url(#clipd1v1rV6sj4)\"><use xlink:href=\"#ad99VAl8I\" opacity=\"1\" fill-opacity=\"0\" stroke=\"#000000\" stroke-width=\"2\" stroke-opacity=\"1\"></use></g></g><g><use xlink:href=\"#c13ZaXjO2p\" opacity=\"1\" fill=\"#000000\" fill-opacity=\"1\"></use><g clip-path=\"url(#cliph399Xr21VH)\"><use xlink:href=\"#c13ZaXjO2p\" opacity=\"1\" fill-opacity=\"0\" stroke=\"#000000\" stroke-width=\"2\" stroke-opacity=\"1\"></use></g></g><g><use xlink:href=\"#b2SwHVIyUf\" opacity=\"1\" fill=\"#000000\" fill-opacity=\"1\"></use><g clip-path=\"url(#clipbgmy6Y3Gb)\"><use xlink:href=\"#b2SwHVIyUf\" opacity=\"1\" fill-opacity=\"0\" stroke=\"#000000\" stroke-width=\"2\" stroke-opacity=\"1\"></use></g></g><g><use xlink:href=\"#g3CI8RzO6L\" opacity=\"1\" fill=\"#000000\" fill-opacity=\"1\"></use><g clip-path=\"url(#clipb4iPMKkLd9)\"><use xlink:href=\"#g3CI8RzO6L\" opacity=\"1\" fill-opacity=\"0\" stroke=\"#000000\" stroke-width=\"2\" stroke-opacity=\"1\"></use></g></g><g><use xlink:href=\"#bVu929Gr\" opacity=\"1\" fill=\"#000000\" fill-opacity=\"1\"></use><g clip-path=\"url(#clipb5eim9AY4T)\"><use xlink:href=\"#bVu929Gr\" opacity=\"1\" fill-opacity=\"0\" stroke=\"#000000\" stroke-width=\"2\" stroke-opacity=\"1\"></use></g></g><g><use xlink:href=\"#bbmkl5w40\" opacity=\"1\" fill=\"#000000\" fill-opacity=\"1\"></use><g clip-path=\"url(#clipdILmNb1DZ)\"><use xlink:href=\"#bbmkl5w40\" opacity=\"1\" fill-opacity=\"0\" stroke=\"#000000\" stroke-width=\"2\" stroke-opacity=\"1\"></use></g></g><g><use xlink:href=\"#afRzpmA7F\" opacity=\"1\" fill=\"#000000\" fill-opacity=\"1\"></use><g clip-path=\"url(#clipa1MHsUZSGO)\"><use xlink:href=\"#afRzpmA7F\" opacity=\"1\" fill-opacity=\"0\" stroke=\"#000000\" stroke-width=\"2\" stroke-opacity=\"1\"></use></g></g><g><use xlink:href=\"#f34Z0Cg2H2\" opacity=\"1\" fill=\"#000000\" fill-opacity=\"1\"></use><g clip-path=\"url(#clipaiMYuA5gL)\"><use xlink:href=\"#f34Z0Cg2H2\" opacity=\"1\" fill-opacity=\"0\" stroke=\"#000000\" stroke-width=\"2\" stroke-opacity=\"1\"></use></g></g><g><use xlink:href=\"#a7XCqe2jKp\" opacity=\"1\" fill=\"#ffffff\" fill-opacity=\"1\"></use></g></g></g></svg>"
+module.exports = "<svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" viewBox=\"0 0 76 76\" preserveAspectRatio=\"xMidYMid meet\" enable-background=\"new 0 0 76 76\"><defs><path d=\"M2 74L2 2L74 2L74 74L74 74L2 74Z\" id=\"e1cjUtGijV\"></path><mask id=\"maske5Vz1Zki6\" x=\"-2\" y=\"-2\" width=\"80\" height=\"80\" maskUnits=\"userSpaceOnUse\"><rect x=\"-2\" y=\"-2\" width=\"80\" height=\"80\" fill=\"white\"></rect><use xlink:href=\"#e1cjUtGijV\" opacity=\"1\" fill=\"black\"></use></mask></defs><g id=\"bomb-explode\"><g><use xlink:href=\"#e1cjUtGijV\" opacity=\"1\" fill=\"#ff0000\" fill-opacity=\"1\"></use><g mask=\"url(#maske5Vz1Zki6)\"><use xlink:href=\"#e1cjUtGijV\" opacity=\"1\" fill-opacity=\"0\" stroke=\"#757575\" stroke-width=\"4\" stroke-opacity=\"1\"></use></g></g><use xlink:href=\"#bomb-element\"></use></g></svg>"
 
 /***/ }),
 
-/***/ 246:
+/***/ 415:
 /***/ (function(module) {
 
-module.exports = "<svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" preserveAspectRatio=\"xMidYMid meet\" viewBox=\"0 0 76 76\"><defs><path d=\"M2 74L2 2L74 2L74 74L74 74L2 74Z\" id=\"e1cjUtGijV\"></path><mask id=\"maske5Vz1Zki6\" x=\"-2\" y=\"-2\" width=\"80\" height=\"80\" maskUnits=\"userSpaceOnUse\"><rect x=\"-2\" y=\"-2\" width=\"80\" height=\"80\" fill=\"white\"></rect><use xlink:href=\"#e1cjUtGijV\" opacity=\"1\" fill=\"black\"></use></mask><path d=\"M35.6 6.8L40.4 6.8L40.4 69.2L35.6 69.2L35.6 6.8Z\" id=\"c9eN9knBh\"></path><clipPath id=\"clipd1zPYXGAwy\"><use xlink:href=\"#c9eN9knBh\" opacity=\"1\"></use></clipPath><path d=\"M40.4 16.4L50 16.4L50 59.6L40.4 59.6L40.4 16.4Z\" id=\"gx4drqHvY\"></path><clipPath id=\"clipa2yM9RkR6\"><use xlink:href=\"#gx4drqHvY\" opacity=\"1\"></use></clipPath><path d=\"M50 21.2L54.8 21.2L54.8 54.8L50 54.8L50 21.2Z\" id=\"fgtYUnw8A\"></path><clipPath id=\"clipk32QKT1MaU\"><use xlink:href=\"#fgtYUnw8A\" opacity=\"1\"></use></clipPath><path d=\"M54.8 26L59.6 26L59.6 50L54.8 50L54.8 26Z\" id=\"cgzxabwz1\"></path><clipPath id=\"cliph2KpOi7P9O\"><use xlink:href=\"#cgzxabwz1\" opacity=\"1\"></use></clipPath><path d=\"M59.6 35.6L69.2 35.6L69.2 40.4L59.6 40.4L59.6 35.6Z\" id=\"b3gPwqEoX\"></path><clipPath id=\"clipe23gtVrUJ\"><use xlink:href=\"#b3gPwqEoX\" opacity=\"1\"></use></clipPath><path d=\"M26 16.4L35.6 16.4L35.6 59.6L26 59.6L26 16.4Z\" id=\"ad99VAl8I\"></path><clipPath id=\"clipd1v1rV6sj4\"><use xlink:href=\"#ad99VAl8I\" opacity=\"1\"></use></clipPath><path d=\"M21.2 21.2L26 21.2L26 54.8L21.2 54.8L21.2 21.2Z\" id=\"c13ZaXjO2p\"></path><clipPath id=\"cliph399Xr21VH\"><use xlink:href=\"#c13ZaXjO2p\" opacity=\"1\"></use></clipPath><path d=\"M16.4 26L21.2 26L21.2 50L16.4 50L16.4 26Z\" id=\"b2SwHVIyUf\"></path><clipPath id=\"clipbgmy6Y3Gb\"><use xlink:href=\"#b2SwHVIyUf\" opacity=\"1\"></use></clipPath><path d=\"M6.8 35.6L16.4 35.6L16.4 40.4L6.8 40.4L6.8 35.6Z\" id=\"g3CI8RzO6L\"></path><clipPath id=\"clipb4iPMKkLd9\"><use xlink:href=\"#g3CI8RzO6L\" opacity=\"1\"></use></clipPath><path d=\"M54.8 16.4L59.6 16.4L59.6 21.2L54.8 21.2L54.8 16.4Z\" id=\"bVu929Gr\"></path><clipPath id=\"clipb5eim9AY4T\"><use xlink:href=\"#bVu929Gr\" opacity=\"1\"></use></clipPath><path d=\"M16.4 16.4L21.2 16.4L21.2 21.2L16.4 21.2L16.4 16.4Z\" id=\"bbmkl5w40\"></path><clipPath id=\"clipdILmNb1DZ\"><use xlink:href=\"#bbmkl5w40\" opacity=\"1\"></use></clipPath><path d=\"M54.8 54.8L59.6 54.8L59.6 59.6L54.8 59.6L54.8 54.8Z\" id=\"afRzpmA7F\"></path><clipPath id=\"clipa1MHsUZSGO\"><use xlink:href=\"#afRzpmA7F\" opacity=\"1\"></use></clipPath><path d=\"M16.4 54.8L21.2 54.8L21.2 59.6L16.4 59.6L16.4 54.8Z\" id=\"f34Z0Cg2H2\"></path><clipPath id=\"clipaiMYuA5gL\"><use xlink:href=\"#f34Z0Cg2H2\" opacity=\"1\"></use></clipPath><path d=\"M26 26L35.6 26L35.6 35.6L26 35.6L26 26Z\" id=\"a7XCqe2jKp\"></path></defs><g><g><g><use xlink:href=\"#e1cjUtGijV\" opacity=\"1\" fill=\"#ff0000\" fill-opacity=\"1\"></use><g mask=\"url(#maske5Vz1Zki6)\"><use xlink:href=\"#e1cjUtGijV\" opacity=\"1\" fill-opacity=\"0\" stroke=\"#757575\" stroke-width=\"4\" stroke-opacity=\"1\"></use></g></g><g><use xlink:href=\"#c9eN9knBh\" opacity=\"1\" fill=\"#000000\" fill-opacity=\"1\"></use><g clip-path=\"url(#clipd1zPYXGAwy)\"><use xlink:href=\"#c9eN9knBh\" opacity=\"1\" fill-opacity=\"0\" stroke=\"#000000\" stroke-width=\"2\" stroke-opacity=\"1\"></use></g></g><g><use xlink:href=\"#gx4drqHvY\" opacity=\"1\" fill=\"#000000\" fill-opacity=\"1\"></use><g clip-path=\"url(#clipa2yM9RkR6)\"><use xlink:href=\"#gx4drqHvY\" opacity=\"1\" fill-opacity=\"0\" stroke=\"#000000\" stroke-width=\"2\" stroke-opacity=\"1\"></use></g></g><g><use xlink:href=\"#fgtYUnw8A\" opacity=\"1\" fill=\"#000000\" fill-opacity=\"1\"></use><g clip-path=\"url(#clipk32QKT1MaU)\"><use xlink:href=\"#fgtYUnw8A\" opacity=\"1\" fill-opacity=\"0\" stroke=\"#000000\" stroke-width=\"2\" stroke-opacity=\"1\"></use></g></g><g><use xlink:href=\"#cgzxabwz1\" opacity=\"1\" fill=\"#000000\" fill-opacity=\"1\"></use><g clip-path=\"url(#cliph2KpOi7P9O)\"><use xlink:href=\"#cgzxabwz1\" opacity=\"1\" fill-opacity=\"0\" stroke=\"#000000\" stroke-width=\"2\" stroke-opacity=\"1\"></use></g></g><g><use xlink:href=\"#b3gPwqEoX\" opacity=\"1\" fill=\"#000000\" fill-opacity=\"1\"></use><g clip-path=\"url(#clipe23gtVrUJ)\"><use xlink:href=\"#b3gPwqEoX\" opacity=\"1\" fill-opacity=\"0\" stroke=\"#000000\" stroke-width=\"2\" stroke-opacity=\"1\"></use></g></g><g><use xlink:href=\"#ad99VAl8I\" opacity=\"1\" fill=\"#000000\" fill-opacity=\"1\"></use><g clip-path=\"url(#clipd1v1rV6sj4)\"><use xlink:href=\"#ad99VAl8I\" opacity=\"1\" fill-opacity=\"0\" stroke=\"#000000\" stroke-width=\"2\" stroke-opacity=\"1\"></use></g></g><g><use xlink:href=\"#c13ZaXjO2p\" opacity=\"1\" fill=\"#000000\" fill-opacity=\"1\"></use><g clip-path=\"url(#cliph399Xr21VH)\"><use xlink:href=\"#c13ZaXjO2p\" opacity=\"1\" fill-opacity=\"0\" stroke=\"#000000\" stroke-width=\"2\" stroke-opacity=\"1\"></use></g></g><g><use xlink:href=\"#b2SwHVIyUf\" opacity=\"1\" fill=\"#000000\" fill-opacity=\"1\"></use><g clip-path=\"url(#clipbgmy6Y3Gb)\"><use xlink:href=\"#b2SwHVIyUf\" opacity=\"1\" fill-opacity=\"0\" stroke=\"#000000\" stroke-width=\"2\" stroke-opacity=\"1\"></use></g></g><g><use xlink:href=\"#g3CI8RzO6L\" opacity=\"1\" fill=\"#000000\" fill-opacity=\"1\"></use><g clip-path=\"url(#clipb4iPMKkLd9)\"><use xlink:href=\"#g3CI8RzO6L\" opacity=\"1\" fill-opacity=\"0\" stroke=\"#000000\" stroke-width=\"2\" stroke-opacity=\"1\"></use></g></g><g><use xlink:href=\"#bVu929Gr\" opacity=\"1\" fill=\"#000000\" fill-opacity=\"1\"></use><g clip-path=\"url(#clipb5eim9AY4T)\"><use xlink:href=\"#bVu929Gr\" opacity=\"1\" fill-opacity=\"0\" stroke=\"#000000\" stroke-width=\"2\" stroke-opacity=\"1\"></use></g></g><g><use xlink:href=\"#bbmkl5w40\" opacity=\"1\" fill=\"#000000\" fill-opacity=\"1\"></use><g clip-path=\"url(#clipdILmNb1DZ)\"><use xlink:href=\"#bbmkl5w40\" opacity=\"1\" fill-opacity=\"0\" stroke=\"#000000\" stroke-width=\"2\" stroke-opacity=\"1\"></use></g></g><g><use xlink:href=\"#afRzpmA7F\" opacity=\"1\" fill=\"#000000\" fill-opacity=\"1\"></use><g clip-path=\"url(#clipa1MHsUZSGO)\"><use xlink:href=\"#afRzpmA7F\" opacity=\"1\" fill-opacity=\"0\" stroke=\"#000000\" stroke-width=\"2\" stroke-opacity=\"1\"></use></g></g><g><use xlink:href=\"#f34Z0Cg2H2\" opacity=\"1\" fill=\"#000000\" fill-opacity=\"1\"></use><g clip-path=\"url(#clipaiMYuA5gL)\"><use xlink:href=\"#f34Z0Cg2H2\" opacity=\"1\" fill-opacity=\"0\" stroke=\"#000000\" stroke-width=\"2\" stroke-opacity=\"1\"></use></g></g><g><use xlink:href=\"#a7XCqe2jKp\" opacity=\"1\" fill=\"#ffffff\" fill-opacity=\"1\"></use></g></g></g></svg>"
+module.exports = "<svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" viewBox=\"0 0 76 76\" preserveAspectRatio=\"xMidYMid meet\" enable-background=\"new 0 0 76 76\"><defs><path d=\"M2 74L2 2L74 2L74 74L74 74L2 74Z\" id=\"e2iiwvZd6v\"></path><mask id=\"maskaXtlGt3qy\" x=\"-2\" y=\"-2\" width=\"80\" height=\"80\" maskUnits=\"userSpaceOnUse\"><rect x=\"-2\" y=\"-2\" width=\"80\" height=\"80\" fill=\"white\"></rect><use xlink:href=\"#e2iiwvZd6v\" opacity=\"1\" fill=\"black\"></use></mask><path d=\"M35.6 6.8L40.4 6.8L40.4 69.2L35.6 69.2L35.6 6.8Z\" id=\"c9eN9knBh\"></path><clipPath id=\"clipd1zPYXGAwy\"><use xlink:href=\"#c9eN9knBh\" opacity=\"1\"></use></clipPath><path d=\"M40.4 16.4L50 16.4L50 59.6L40.4 59.6L40.4 16.4Z\" id=\"gx4drqHvY\"></path><clipPath id=\"clipa2yM9RkR6\"><use xlink:href=\"#gx4drqHvY\" opacity=\"1\"></use></clipPath><path d=\"M50 21.2L54.8 21.2L54.8 54.8L50 54.8L50 21.2Z\" id=\"fgtYUnw8A\"></path><clipPath id=\"clipk32QKT1MaU\"><use xlink:href=\"#fgtYUnw8A\" opacity=\"1\"></use></clipPath><path d=\"M54.8 26L59.6 26L59.6 50L54.8 50L54.8 26Z\" id=\"cgzxabwz1\"></path><clipPath id=\"cliph2KpOi7P9O\"><use xlink:href=\"#cgzxabwz1\" opacity=\"1\"></use></clipPath><path d=\"M59.6 35.6L69.2 35.6L69.2 40.4L59.6 40.4L59.6 35.6Z\" id=\"b3gPwqEoX\"></path><clipPath id=\"clipe23gtVrUJ\"><use xlink:href=\"#b3gPwqEoX\" opacity=\"1\"></use></clipPath><path d=\"M26 16.4L35.6 16.4L35.6 59.6L26 59.6L26 16.4Z\" id=\"ad99VAl8I\"></path><clipPath id=\"clipd1v1rV6sj4\"><use xlink:href=\"#ad99VAl8I\" opacity=\"1\"></use></clipPath><path d=\"M21.2 21.2L26 21.2L26 54.8L21.2 54.8L21.2 21.2Z\" id=\"c13ZaXjO2p\"></path><clipPath id=\"cliph399Xr21VH\"><use xlink:href=\"#c13ZaXjO2p\" opacity=\"1\"></use></clipPath><path d=\"M16.4 26L21.2 26L21.2 50L16.4 50L16.4 26Z\" id=\"b2SwHVIyUf\"></path><clipPath id=\"clipbgmy6Y3Gb\"><use xlink:href=\"#b2SwHVIyUf\" opacity=\"1\"></use></clipPath><path d=\"M6.8 35.6L16.4 35.6L16.4 40.4L6.8 40.4L6.8 35.6Z\" id=\"g3CI8RzO6L\"></path><clipPath id=\"clipb4iPMKkLd9\"><use xlink:href=\"#g3CI8RzO6L\" opacity=\"1\"></use></clipPath><path d=\"M54.8 16.4L59.6 16.4L59.6 21.2L54.8 21.2L54.8 16.4Z\" id=\"bVu929Gr\"></path><clipPath id=\"clipb5eim9AY4T\"><use xlink:href=\"#bVu929Gr\" opacity=\"1\"></use></clipPath><path d=\"M16.4 16.4L21.2 16.4L21.2 21.2L16.4 21.2L16.4 16.4Z\" id=\"bbmkl5w40\"></path><clipPath id=\"clipdILmNb1DZ\"><use xlink:href=\"#bbmkl5w40\" opacity=\"1\"></use></clipPath><path d=\"M54.8 54.8L59.6 54.8L59.6 59.6L54.8 59.6L54.8 54.8Z\" id=\"afRzpmA7F\"></path><clipPath id=\"clipa1MHsUZSGO\"><use xlink:href=\"#afRzpmA7F\" opacity=\"1\"></use></clipPath><path d=\"M16.4 54.8L21.2 54.8L21.2 59.6L16.4 59.6L16.4 54.8Z\" id=\"f34Z0Cg2H2\"></path><clipPath id=\"clipaiMYuA5gL\"><use xlink:href=\"#f34Z0Cg2H2\" opacity=\"1\"></use></clipPath><path d=\"M26 26L35.6 26L35.6 35.6L26 35.6L26 26Z\" id=\"a7XCqe2jKp\"></path></defs><g id=\"bomb\"><g id=\"bomb-background\"><use xlink:href=\"#e2iiwvZd6v\" opacity=\"1\" fill=\"#b9b9b9\" fill-opacity=\"1\"></use><g mask=\"url(#maskaXtlGt3qy)\"><use xlink:href=\"#e2iiwvZd6v\" opacity=\"1\" fill-opacity=\"0\" stroke=\"#757575\" stroke-width=\"4\" stroke-opacity=\"1\"></use></g></g><g id=\"bomb-element\"><g><use xlink:href=\"#c9eN9knBh\" opacity=\"1\" fill=\"#000000\" fill-opacity=\"1\"></use><g clip-path=\"url(#clipd1zPYXGAwy)\"><use xlink:href=\"#c9eN9knBh\" opacity=\"1\" fill-opacity=\"0\" stroke=\"#000000\" stroke-width=\"2\" stroke-opacity=\"1\"></use></g></g><g><use xlink:href=\"#gx4drqHvY\" opacity=\"1\" fill=\"#000000\" fill-opacity=\"1\"></use><g clip-path=\"url(#clipa2yM9RkR6)\"><use xlink:href=\"#gx4drqHvY\" opacity=\"1\" fill-opacity=\"0\" stroke=\"#000000\" stroke-width=\"2\" stroke-opacity=\"1\"></use></g></g><g><use xlink:href=\"#fgtYUnw8A\" opacity=\"1\" fill=\"#000000\" fill-opacity=\"1\"></use><g clip-path=\"url(#clipk32QKT1MaU)\"><use xlink:href=\"#fgtYUnw8A\" opacity=\"1\" fill-opacity=\"0\" stroke=\"#000000\" stroke-width=\"2\" stroke-opacity=\"1\"></use></g></g><g><use xlink:href=\"#cgzxabwz1\" opacity=\"1\" fill=\"#000000\" fill-opacity=\"1\"></use><g clip-path=\"url(#cliph2KpOi7P9O)\"><use xlink:href=\"#cgzxabwz1\" opacity=\"1\" fill-opacity=\"0\" stroke=\"#000000\" stroke-width=\"2\" stroke-opacity=\"1\"></use></g></g><g><use xlink:href=\"#b3gPwqEoX\" opacity=\"1\" fill=\"#000000\" fill-opacity=\"1\"></use><g clip-path=\"url(#clipe23gtVrUJ)\"><use xlink:href=\"#b3gPwqEoX\" opacity=\"1\" fill-opacity=\"0\" stroke=\"#000000\" stroke-width=\"2\" stroke-opacity=\"1\"></use></g></g><g><use xlink:href=\"#ad99VAl8I\" opacity=\"1\" fill=\"#000000\" fill-opacity=\"1\"></use><g clip-path=\"url(#clipd1v1rV6sj4)\"><use xlink:href=\"#ad99VAl8I\" opacity=\"1\" fill-opacity=\"0\" stroke=\"#000000\" stroke-width=\"2\" stroke-opacity=\"1\"></use></g></g><g><use xlink:href=\"#c13ZaXjO2p\" opacity=\"1\" fill=\"#000000\" fill-opacity=\"1\"></use><g clip-path=\"url(#cliph399Xr21VH)\"><use xlink:href=\"#c13ZaXjO2p\" opacity=\"1\" fill-opacity=\"0\" stroke=\"#000000\" stroke-width=\"2\" stroke-opacity=\"1\"></use></g></g><g><use xlink:href=\"#b2SwHVIyUf\" opacity=\"1\" fill=\"#000000\" fill-opacity=\"1\"></use><g clip-path=\"url(#clipbgmy6Y3Gb)\"><use xlink:href=\"#b2SwHVIyUf\" opacity=\"1\" fill-opacity=\"0\" stroke=\"#000000\" stroke-width=\"2\" stroke-opacity=\"1\"></use></g></g><g><use xlink:href=\"#g3CI8RzO6L\" opacity=\"1\" fill=\"#000000\" fill-opacity=\"1\"></use><g clip-path=\"url(#clipb4iPMKkLd9)\"><use xlink:href=\"#g3CI8RzO6L\" opacity=\"1\" fill-opacity=\"0\" stroke=\"#000000\" stroke-width=\"2\" stroke-opacity=\"1\"></use></g></g><g><use xlink:href=\"#bVu929Gr\" opacity=\"1\" fill=\"#000000\" fill-opacity=\"1\"></use><g clip-path=\"url(#clipb5eim9AY4T)\"><use xlink:href=\"#bVu929Gr\" opacity=\"1\" fill-opacity=\"0\" stroke=\"#000000\" stroke-width=\"2\" stroke-opacity=\"1\"></use></g></g><g><use xlink:href=\"#bbmkl5w40\" opacity=\"1\" fill=\"#000000\" fill-opacity=\"1\"></use><g clip-path=\"url(#clipdILmNb1DZ)\"><use xlink:href=\"#bbmkl5w40\" opacity=\"1\" fill-opacity=\"0\" stroke=\"#000000\" stroke-width=\"2\" stroke-opacity=\"1\"></use></g></g><g><use xlink:href=\"#afRzpmA7F\" opacity=\"1\" fill=\"#000000\" fill-opacity=\"1\"></use><g clip-path=\"url(#clipa1MHsUZSGO)\"><use xlink:href=\"#afRzpmA7F\" opacity=\"1\" fill-opacity=\"0\" stroke=\"#000000\" stroke-width=\"2\" stroke-opacity=\"1\"></use></g></g><g><use xlink:href=\"#f34Z0Cg2H2\" opacity=\"1\" fill=\"#000000\" fill-opacity=\"1\"></use><g clip-path=\"url(#clipaiMYuA5gL)\"><use xlink:href=\"#f34Z0Cg2H2\" opacity=\"1\" fill-opacity=\"0\" stroke=\"#000000\" stroke-width=\"2\" stroke-opacity=\"1\"></use></g></g><g><use xlink:href=\"#a7XCqe2jKp\" opacity=\"1\" fill=\"#ffffff\" fill-opacity=\"1\"></use></g></g></g></svg>"
+
+/***/ }),
+
+/***/ 149:
+/***/ (function(module) {
+
+module.exports = "<svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" viewBox=\"0 0 76 76\" preserveAspectRatio=\"xMidYMid meet\" enable-background=\"new 0 0 76 76\"><g id=\"flag-missed\"><use href=\"#bomb\"></use><line stroke-width=\"4\" stroke-linecap=\"undefined\" stroke-linejoin=\"undefined\" id=\"svg_78\" y2=\"72\" x2=\"72\" y1=\"4\" x1=\"4\" stroke=\"#ff0000\" fill=\"none\"></line><line stroke-linecap=\"undefined\" stroke-linejoin=\"undefined\" id=\"svg_79\" y2=\"72\" x2=\"4\" y1=\"4\" x1=\"72\" stroke-width=\"4\" stroke=\"#ff0000\" fill=\"none\"></line></g></svg>"
 
 /***/ }),
 
 /***/ 223:
 /***/ (function(module) {
 
-module.exports = "<svg version=\"1.1\" id=\"レイヤー_1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" x=\"0px\" y=\"0px\" viewBox=\"0 0 76 76\" enable-background=\"new 0 0 76 76\" xml:space=\"preserve\"><g><g><path id=\"rect1313_65_\" fill=\"#FDFCFD\" d=\"M0.009,0h75.982C75.996,0,76,0.004,76,0.009V75.99c0,0.006-0.004,0.01-0.009,0.01H0.009 C0.004,76,0,75.996,0,75.99V0.009C0,0.004,0.004,0,0.009,0z\"></path><path id=\"path1341_65_\" fill=\"#757575\" d=\"M75.99,0C75.995,0,76,0.005,76,0.01v75.981C76,75.996,75.995,76,75.99,76H0.009 C0.004,76,0,75.996,0,75.991L75.99,0z\"></path><polygon id=\"rect1311_65_\" fill=\"#B9B9B9\" points=\"8.508,8.5 67.492,8.5 67.5,8.508 67.5,67.491 67.492,67.5 8.508,67.5 8.5,67.491 8.5,8.508 \"></polygon></g><g><polygon points=\"35.999,55.5 35.999,16.5 40,16.5 40,55.5 35.999,55.5 \"></polygon><polygon fill=\"#FF0000\" points=\"40,13.875 19.375,27 40,40.125 \"></polygon><rect x=\"28.571\" y=\"51.625\" width=\"18.857\" height=\"5.5\"></rect><rect x=\"20.222\" y=\"56.459\" width=\"35.555\" height=\"7.041\"></rect></g></g></svg>"
-
-/***/ }),
-
-/***/ 422:
-/***/ (function(module) {
-
-module.exports = "<svg viewBox=\"0 0 76 76\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" preserveAspectRatio=\"xMidYMid meet\" version=\"1.1\"><defs><path id=\"e2iiwvZd6v\" d=\"m2,74l0,-72l72,0l0,72l0,0l-72,0z\"></path><mask maskUnits=\"userSpaceOnUse\" height=\"80\" width=\"80\" y=\"-2\" x=\"-2\" id=\"maskaXtlGt3qy\"><rect id=\"svg_1\" fill=\"white\" height=\"80\" width=\"80\" y=\"-2\" x=\"-2\"></rect><use id=\"svg_2\" fill=\"black\" xlink:href=\"#e2iiwvZd6v\"></use></mask><path id=\"c9eN9knBh\" d=\"m35.6,6.8l4.8,0l0,62.4l-4.8,0l0,-62.4z\"></path><clipPath id=\"clipd1zPYXGAwy\"><use id=\"svg_3\" xlink:href=\"#c9eN9knBh\"></use></clipPath><path id=\"gx4drqHvY\" d=\"m40.4,16.4l9.6,0l0,43.2l-9.6,0l0,-43.2z\"></path><clipPath id=\"clipa2yM9RkR6\"><use id=\"svg_4\" xlink:href=\"#gx4drqHvY\"></use></clipPath><path id=\"fgtYUnw8A\" d=\"m50,21.2l4.8,0l0,33.6l-4.8,0l0,-33.6z\"></path><clipPath id=\"clipk32QKT1MaU\"><use id=\"svg_5\" xlink:href=\"#fgtYUnw8A\"></use></clipPath><path id=\"cgzxabwz1\" d=\"m54.8,26l4.8,0l0,24l-4.8,0l0,-24z\"></path><clipPath id=\"cliph2KpOi7P9O\"><use id=\"svg_6\" xlink:href=\"#cgzxabwz1\"></use></clipPath><path id=\"b3gPwqEoX\" d=\"m59.6,35.6l9.6,0l0,4.8l-9.6,0l0,-4.8z\"></path><clipPath id=\"clipe23gtVrUJ\"><use id=\"svg_7\" xlink:href=\"#b3gPwqEoX\"></use></clipPath><path id=\"ad99VAl8I\" d=\"m26,16.4l9.6,0l0,43.2l-9.6,0l0,-43.2z\"></path><clipPath id=\"clipd1v1rV6sj4\"><use id=\"svg_8\" xlink:href=\"#ad99VAl8I\"></use></clipPath><path id=\"c13ZaXjO2p\" d=\"m21.2,21.2l4.8,0l0,33.6l-4.8,0l0,-33.6z\"></path><clipPath id=\"cliph399Xr21VH\"><use id=\"svg_9\" xlink:href=\"#c13ZaXjO2p\"></use></clipPath><path id=\"b2SwHVIyUf\" d=\"m16.4,26l4.8,0l0,24l-4.8,0l0,-24z\"></path><clipPath id=\"clipbgmy6Y3Gb\"><use id=\"svg_10\" xlink:href=\"#b2SwHVIyUf\"></use></clipPath><path id=\"g3CI8RzO6L\" d=\"m6.8,35.6l9.6,0l0,4.8l-9.6,0l0,-4.8z\"></path><clipPath id=\"clipb4iPMKkLd9\"><use id=\"svg_11\" xlink:href=\"#g3CI8RzO6L\"></use></clipPath><path id=\"bVu929Gr\" d=\"m54.8,16.4l4.8,0l0,4.8l-4.8,0l0,-4.8z\"></path><clipPath id=\"clipb5eim9AY4T\"><use id=\"svg_12\" xlink:href=\"#bVu929Gr\"></use></clipPath><path id=\"bbmkl5w40\" d=\"m16.4,16.4l4.8,0l0,4.8l-4.8,0l0,-4.8z\"></path><clipPath id=\"clipdILmNb1DZ\"><use id=\"svg_13\" xlink:href=\"#bbmkl5w40\"></use></clipPath><path id=\"afRzpmA7F\" d=\"m54.8,54.8l4.8,0l0,4.8l-4.8,0l0,-4.8z\"></path><clipPath id=\"clipa1MHsUZSGO\"><use id=\"svg_14\" xlink:href=\"#afRzpmA7F\"></use></clipPath><path id=\"f34Z0Cg2H2\" d=\"m16.4,54.8l4.8,0l0,4.8l-4.8,0l0,-4.8z\"></path><clipPath id=\"clipaiMYuA5gL\"><use id=\"svg_15\" xlink:href=\"#f34Z0Cg2H2\"></use></clipPath><path id=\"a7XCqe2jKp\" d=\"m26,26l9.6,0l0,9.6l-9.6,0l0,-9.6z\"></path></defs><g><title> Layer 1 </title><g id=\"svg_16\"><g id=\"svg_17\"><g id=\"svg_18\"><use id=\"svg_19\" fill=\"#b9b9b9\" xlink:href=\"#e2iiwvZd6v\"></use><g id=\"svg_20\" mask=\"url(#maskaXtlGt3qy)\"><use id=\"svg_21\" stroke-width=\"4\" stroke=\"#757575\" fill-opacity=\"0\" xlink:href=\"#e2iiwvZd6v\"></use></g></g><g id=\"svg_22\"><use id=\"svg_23\" fill=\"#000000\" xlink:href=\"#c9eN9knBh\"></use><g id=\"svg_24\" clip-path=\"url(#clipd1zPYXGAwy)\"><use id=\"svg_25\" stroke-width=\"2\" stroke=\"#000000\" fill-opacity=\"0\" xlink:href=\"#c9eN9knBh\"></use></g></g><g id=\"svg_26\"><use id=\"svg_27\" fill=\"#000000\" xlink:href=\"#gx4drqHvY\"></use><g id=\"svg_28\" clip-path=\"url(#clipa2yM9RkR6)\"><use id=\"svg_29\" stroke-width=\"2\" stroke=\"#000000\" fill-opacity=\"0\" xlink:href=\"#gx4drqHvY\"></use></g></g><g id=\"svg_30\"><use id=\"svg_31\" fill=\"#000000\" xlink:href=\"#fgtYUnw8A\"></use><g id=\"svg_32\" clip-path=\"url(#clipk32QKT1MaU)\"><use id=\"svg_33\" stroke-width=\"2\" stroke=\"#000000\" fill-opacity=\"0\" xlink:href=\"#fgtYUnw8A\"></use></g></g><g id=\"svg_34\"><use id=\"svg_35\" fill=\"#000000\" xlink:href=\"#cgzxabwz1\"></use><g id=\"svg_36\" clip-path=\"url(#cliph2KpOi7P9O)\"><use id=\"svg_37\" stroke-width=\"2\" stroke=\"#000000\" fill-opacity=\"0\" xlink:href=\"#cgzxabwz1\"></use></g></g><g id=\"svg_38\"><use id=\"svg_39\" fill=\"#000000\" xlink:href=\"#b3gPwqEoX\"></use><g id=\"svg_40\" clip-path=\"url(#clipe23gtVrUJ)\"><use id=\"svg_41\" stroke-width=\"2\" stroke=\"#000000\" fill-opacity=\"0\" xlink:href=\"#b3gPwqEoX\"></use></g></g><g id=\"svg_42\"><use id=\"svg_43\" fill=\"#000000\" xlink:href=\"#ad99VAl8I\"></use><g id=\"svg_44\" clip-path=\"url(#clipd1v1rV6sj4)\"><use id=\"svg_45\" stroke-width=\"2\" stroke=\"#000000\" fill-opacity=\"0\" xlink:href=\"#ad99VAl8I\"></use></g></g><g id=\"svg_46\"><use id=\"svg_47\" fill=\"#000000\" xlink:href=\"#c13ZaXjO2p\"></use><g id=\"svg_48\" clip-path=\"url(#cliph399Xr21VH)\"><use id=\"svg_49\" stroke-width=\"2\" stroke=\"#000000\" fill-opacity=\"0\" xlink:href=\"#c13ZaXjO2p\"></use></g></g><g id=\"svg_50\"><use id=\"svg_51\" fill=\"#000000\" xlink:href=\"#b2SwHVIyUf\"></use><g id=\"svg_52\" clip-path=\"url(#clipbgmy6Y3Gb)\"><use id=\"svg_53\" stroke-width=\"2\" stroke=\"#000000\" fill-opacity=\"0\" xlink:href=\"#b2SwHVIyUf\"></use></g></g><g id=\"svg_54\"><use id=\"svg_55\" fill=\"#000000\" xlink:href=\"#g3CI8RzO6L\"></use><g id=\"svg_56\" clip-path=\"url(#clipb4iPMKkLd9)\"><use id=\"svg_57\" stroke-width=\"2\" stroke=\"#000000\" fill-opacity=\"0\" xlink:href=\"#g3CI8RzO6L\"></use></g></g><g id=\"svg_58\"><use id=\"svg_59\" fill=\"#000000\" xlink:href=\"#bVu929Gr\"></use><g id=\"svg_60\" clip-path=\"url(#clipb5eim9AY4T)\"><use id=\"svg_61\" stroke-width=\"2\" stroke=\"#000000\" fill-opacity=\"0\" xlink:href=\"#bVu929Gr\"></use></g></g><g id=\"svg_62\"><use id=\"svg_63\" fill=\"#000000\" xlink:href=\"#bbmkl5w40\"></use><g id=\"svg_64\" clip-path=\"url(#clipdILmNb1DZ)\"><use id=\"svg_65\" stroke-width=\"2\" stroke=\"#000000\" fill-opacity=\"0\" xlink:href=\"#bbmkl5w40\"></use></g></g><g id=\"svg_66\"><use id=\"svg_67\" fill=\"#000000\" xlink:href=\"#afRzpmA7F\"></use><g id=\"svg_68\" clip-path=\"url(#clipa1MHsUZSGO)\"><use id=\"svg_69\" stroke-width=\"2\" stroke=\"#000000\" fill-opacity=\"0\" xlink:href=\"#afRzpmA7F\"></use></g></g><g id=\"svg_70\"><use id=\"svg_71\" fill=\"#000000\" xlink:href=\"#f34Z0Cg2H2\"></use><g id=\"svg_72\" clip-path=\"url(#clipaiMYuA5gL)\"><use id=\"svg_73\" stroke-width=\"2\" stroke=\"#000000\" fill-opacity=\"0\" xlink:href=\"#f34Z0Cg2H2\"></use></g></g><g id=\"svg_74\"><use id=\"svg_75\" fill=\"#ffffff\" xlink:href=\"#a7XCqe2jKp\"></use></g></g></g><line stroke-width=\"4\" stroke-linecap=\"undefined\" stroke-linejoin=\"undefined\" id=\"svg_78\" y2=\"72\" x2=\"72\" y1=\"4\" x1=\"4\" stroke=\"#ff0000\" fill=\"none\"></line><line stroke-linecap=\"undefined\" stroke-linejoin=\"undefined\" id=\"svg_79\" y2=\"72\" x2=\"4\" y1=\"4\" x1=\"72\" stroke-width=\"4\" stroke=\"#ff0000\" fill=\"none\"></line></g></svg>"
+module.exports = "<svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" viewBox=\"0 0 76 76\" preserveAspectRatio=\"xMidYMid meet\" enable-background=\"new 0 0 76 76\"><g id=\"flag\"><use href=\"#unopened-square\"></use><g><polygon points=\"35.999,55.5 35.999,16.5 40,16.5 40,55.5 35.999,55.5 \"></polygon><polygon fill=\"#FF0000\" points=\"40,13.875 19.375,27 40,40.125 \"></polygon><rect x=\"28.571\" y=\"51.625\" width=\"18.857\" height=\"5.5\"></rect><rect x=\"20.222\" y=\"56.459\" width=\"35.555\" height=\"7.041\"></rect></g></g></svg>"
 
 /***/ }),
 
 /***/ 583:
 /***/ (function(module) {
 
-module.exports = "<svg version=\"1.1\" id=\"レイヤー_1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" x=\"0px\" y=\"0px\" viewBox=\"0 0 76 76\" enable-background=\"new 0 0 76 76\" xml:space=\"preserve\"><g id=\"rect1313_66_\"><polygon fill=\"#B9B9B9\" points=\"75.001,75.001 1,75.001 1,1 75.001,1 75.001,75.001 \"></polygon><path fill=\"#757575\" d=\"M75.991,0C75.996,0,76,0.004,76,0.009V75.99c0,0.006-0.004,0.01-0.009,0.01H0.009 C0.004,76,0,75.996,0,75.99V0.009C0,0.004,0.004,0,0.009,0H75.991 M74,2H2v72h72V2L74,2z\"></path></g></svg>"
+module.exports = "<svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" viewBox=\"0 0 76 76\" preserveAspectRatio=\"xMidYMid meet\" enable-background=\"new 0 0 76 76\"><g id=\"blank\"><polygon fill=\"#B9B9B9\" points=\"75.001,75.001 1,75.001 1,1 75.001,1 75.001,75.001 \"></polygon><path fill=\"#757575\" d=\"M75.991,0C75.996,0,76,0.004,76,0.009V75.99c0,0.006-0.004,0.01-0.009,0.01H0.009 C0.004,76,0,75.996,0,75.99V0.009C0,0.004,0.004,0,0.009,0H75.991 M74,2H2v72h72V2L74,2z\"></path></g></svg>"
 
 /***/ }),
 
 /***/ 101:
 /***/ (function(module) {
 
-module.exports = "<svg version=\"1.1\" id=\"レイヤー_1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" x=\"0px\" y=\"0px\" viewBox=\"0 0 76 76\" enable-background=\"new 0 0 76 76\" xml:space=\"preserve\"><g id=\"rect1313_66_\"><polygon fill=\"#B9B9B9\" points=\"75.001,75.001 1,75.001 1,1 75.001,1 \"></polygon><path fill=\"#757575\" d=\"M75.991,0C75.996,0,76,0.004,76,0.009V75.99c0,0.006-0.004,0.01-0.009,0.01H0.009 C0.004,76,0,75.996,0,75.99V0.009C0,0.004,0.004,0,0.009,0H75.991 M74,2H2v72h72V2L74,2z\"></path></g><g><polygon fill=\"#0000FF\" points=\"40.857,8.928 18,26.071 18,31.785 32.286,31.785 32.286,54.644 18,54.644 18,66.071 58,66.071 58,54.644 46.571,54.644 46.571,8.928 \"></polygon></g></svg>"
+module.exports = "<svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" viewBox=\"0 0 76 76\" preserveAspectRatio=\"xMidYMid meet\" enable-background=\"new 0 0 76 76\"><g id=\"number-1\"><use href=\"#blank\"></use><polygon fill=\"#0000FF\" points=\"40.857,8.928 18,26.071 18,31.785 32.286,31.785 32.286,54.644 18,54.644 18,66.071 58,66.071 58,54.644 46.571,54.644 46.571,8.928 \"></polygon></g></svg>"
 
 /***/ }),
 
 /***/ 37:
 /***/ (function(module) {
 
-module.exports = "<svg version=\"1.1\" id=\"レイヤー_1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" x=\"0px\" y=\"0px\" viewBox=\"0 0 76 76\" enable-background=\"new 0 0 76 76\" xml:space=\"preserve\"><g id=\"rect1313_66_\"><polygon fill=\"#B9B9B9\" points=\"75.001,75.001 1,75.001 1,1 75.001,1 \"></polygon><path fill=\"#757575\" d=\"M75.991,0C75.996,0,76,0.004,76,0.009V75.99c0,0.006-0.004,0.01-0.009,0.01H0.009 C0.004,76,0,75.996,0,75.99V0.009C0,0.004,0.004,0,0.009,0H75.991 M74,2H2v72h72V2L74,2z\"></path></g><path fill=\"#008200\" d=\"M51.256,26.134v-4.545c0-1.545-1.293-2.796-2.892-2.796H27.393c-1.593,0-2.892,1.251-2.892,2.796v4.545 H8.593v-5.942C8.593,14.011,13.778,9,20.163,9h35.433c6.388,0,11.569,5.011,11.569,11.191c0,4.064,1.287,8.448-2.521,11.417 c-2.649,2.062-5.948,3.822-8.757,5.743c-6.993,4.777-14.083,9.431-21.093,14.188c-0.91,0.621-3.707,3.276-4.87,3.276 c0.012,0,37.602,0,37.602,0V66H8.774c0-4.529-1.605-9.863,2.609-13.253c2.949-2.372,6.773-4.315,9.932-6.502 c8-5.557,16.259-10.779,24.287-16.306C46.188,29.535,51.256,26.874,51.256,26.134z\"></path></svg>"
+module.exports = "<svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" viewBox=\"0 0 76 76\" preserveAspectRatio=\"xMidYMid meet\" enable-background=\"new 0 0 76 76\"><g id=\"number-2\"><use href=\"#blank\"></use><path fill=\"#008200\" d=\"M51.256,26.134v-4.545c0-1.545-1.293-2.796-2.892-2.796H27.393c-1.593,0-2.892,1.251-2.892,2.796v4.545 H8.593v-5.942C8.593,14.011,13.778,9,20.163,9h35.433c6.388,0,11.569,5.011,11.569,11.191c0,4.064,1.287,8.448-2.521,11.417 c-2.649,2.062-5.948,3.822-8.757,5.743c-6.993,4.777-14.083,9.431-21.093,14.188c-0.91,0.621-3.707,3.276-4.87,3.276 c0.012,0,37.602,0,37.602,0V66H8.774c0-4.529-1.605-9.863,2.609-13.253c2.949-2.372,6.773-4.315,9.932-6.502 c8-5.557,16.259-10.779,24.287-16.306C46.188,29.535,51.256,26.874,51.256,26.134z\"></path></g></svg>"
 
 /***/ }),
 
 /***/ 58:
 /***/ (function(module) {
 
-module.exports = "<svg version=\"1.1\" id=\"レイヤー_1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" x=\"0px\" y=\"0px\" viewBox=\"0 0 76 76\" enable-background=\"new 0 0 76 76\" xml:space=\"preserve\"><g id=\"rect1313_66_\"><polygon fill=\"#B9B9B9\" points=\"75.001,75.001 1,75.001 1,1 75.001,1 \"></polygon><path fill=\"#757575\" d=\"M75.991,0C75.996,0,76,0.004,76,0.009V75.99c0,0.006-0.004,0.01-0.009,0.01H0.009 C0.004,76,0,75.996,0,75.99V0.009C0,0.004,0.004,0,0.009,0H75.991 M74,2H2v72h72V2L74,2z\"></path></g><path fill=\"#FF0000\" d=\"M66.322,20.4c0-6.295-5.104-11.4-11.4-11.4H9.678v10.688H48.51c1.575,0,2.85,1.275,2.85,2.85v6.413 c0,1.569-1.274,2.85-2.85,2.85H26.778v12.825H48.51c1.575,0,2.85,1.274,2.85,2.85v6.413c0,1.569-1.274,2.85-2.85,2.85H9.678V66 h45.244c6.296,0,11.4-5.11,11.4-11.4V43.912c0-2.376-0.729-4.586-1.977-6.412c1.247-1.832,1.977-4.036,1.977-6.413V20.4z\"></path></svg>"
+module.exports = "<svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" viewBox=\"0 0 76 76\" preserveAspectRatio=\"xMidYMid meet\" enable-background=\"new 0 0 76 76\"><g id=\"number-3\"><use href=\"#blank\"></use><path fill=\"#FF0000\" d=\"M66.322,20.4c0-6.295-5.104-11.4-11.4-11.4H9.678v10.688H48.51c1.575,0,2.85,1.275,2.85,2.85v6.413 c0,1.569-1.274,2.85-2.85,2.85H26.778v12.825H48.51c1.575,0,2.85,1.274,2.85,2.85v6.413c0,1.569-1.274,2.85-2.85,2.85H9.678V66 h45.244c6.296,0,11.4-5.11,11.4-11.4V43.912c0-2.376-0.729-4.586-1.977-6.412c1.247-1.832,1.977-4.036,1.977-6.413V20.4z\"></path></g></svg>"
 
 /***/ }),
 
 /***/ 206:
 /***/ (function(module) {
 
-module.exports = "<svg version=\"1.1\" id=\"レイヤー_1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" x=\"0px\" y=\"0px\" viewBox=\"0 0 76 76\" enable-background=\"new 0 0 76 76\" xml:space=\"preserve\"><g id=\"rect1313_66_\"><polygon fill=\"#B9B9B9\" points=\"75.001,75.001 1,75.001 1,1 75.001,1 \"></polygon><path fill=\"#757575\" d=\"M75.991,0C75.996,0,76,0.004,76,0.009V75.99c0,0.006-0.004,0.01-0.009,0.01H0.009 C0.004,76,0,75.996,0,75.99V0.009C0,0.004,0.004,0,0.009,0H75.991 M74,2H2v72h72V2L74,2z\"></path></g><polygon fill=\"#000084\" points=\"25.8,9 6.922,42.765 47.584,42.765 47.584,66 63.559,65.637 63.559,42.765 69.078,42.765 69.078,31.873 63.559,31.873 63.559,9 47.584,9 47.584,32.236 29.192,32.236 41.774,9 \"></polygon></svg>"
+module.exports = "<svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" viewBox=\"0 0 76 76\" preserveAspectRatio=\"xMidYMid meet\" enable-background=\"new 0 0 76 76\"><g id=\"number-4\"><use href=\"#blank\"></use><polygon fill=\"#000084\" points=\"25.8,9 6.922,42.765 47.584,42.765 47.584,66 63.559,65.637 63.559,42.765 69.078,42.765 69.078,31.873 63.559,31.873 63.559,9 47.584,9 47.584,32.236 29.192,32.236 41.774,9 \"></polygon></g></svg>"
 
 /***/ }),
 
 /***/ 158:
 /***/ (function(module) {
 
-module.exports = "<svg version=\"1.1\" id=\"レイヤー_1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" x=\"0px\" y=\"0px\" viewBox=\"0 0 76 76\" enable-background=\"new 0 0 76 76\" xml:space=\"preserve\"><g id=\"rect1313_66_\"><polygon fill=\"#B9B9B9\" points=\"75.001,75.001 1,75.001 1,1 75.001,1 \"></polygon><path fill=\"#757575\" d=\"M75.991,0C75.996,0,76,0.004,76,0.009V75.99c0,0.006-0.004,0.01-0.009,0.01H0.009 C0.004,76,0,75.996,0,75.99V0.009C0,0.004,0.004,0,0.009,0H75.991 M74,2H2v72h72V2L74,2z\"></path></g><path fill=\"#840000\" d=\"M60.78,32.065c1.765,0.757,3.006,1.726,3.869,2.922c1.324,1.837,1.736,4.211,1.736,7.139 c0,0.012,0,10.689,0,10.689c0,6.291-2.494,12.48-11.401,13.182H9.497V54.953h39.074c1.576,0,2.851-1.279,2.851-2.85v-6.412 c0-1.57-1.274-2.852-2.851-2.852L9.497,42.852V9.001l57.006,0v11.396H26.031v11.668\"></path></svg>"
+module.exports = "<svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" viewBox=\"0 0 76 76\" preserveAspectRatio=\"xMidYMid meet\" enable-background=\"new 0 0 76 76\"><g id=\"number-5\"><use href=\"#blank\"></use><path fill=\"#840000\" d=\"M60.78,32.065c1.765,0.757,3.006,1.726,3.869,2.922c1.324,1.837,1.736,4.211,1.736,7.139 c0,0.012,0,10.689,0,10.689c0,6.291-2.494,12.48-11.401,13.182H9.497V54.953h39.074c1.576,0,2.851-1.279,2.851-2.85v-6.412 c0-1.57-1.274-2.852-2.851-2.852L9.497,42.852V9.001l57.006,0v11.396H26.031v11.668\"></path></g></svg>"
 
 /***/ }),
 
 /***/ 876:
 /***/ (function(module) {
 
-module.exports = "<svg version=\"1.1\" id=\"レイヤー_1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" x=\"0px\" y=\"0px\" viewBox=\"0 0 76 76\" enable-background=\"new 0 0 76 76\" xml:space=\"preserve\"><g id=\"rect1313_66_\"><polygon fill=\"#B9B9B9\" points=\"75.001,75.001 1,75.001 1,1 75.001,1 \"></polygon><path fill=\"#757575\" d=\"M75.991,0C75.996,0,76,0.004,76,0.009V75.99c0,0.006-0.004,0.01-0.009,0.01H0.009 C0.004,76,0,75.996,0,75.99V0.009C0,0.004,0.004,0,0.009,0H75.991 M74,2H2v72h72V2L74,2z\"></path></g><path fill=\"#008284\" d=\"M66.856,23.967v-3.565c0-6.296-5.109-11.4-11.399-11.4H20.544c-6.29,0-11.4,5.104-11.4,11.4v34.197 c0,6.29,5.11,11.4,11.4,11.4h34.913c6.29,0,11.399-5.11,11.399-11.4V43.911c0-4.984-4.921-12.11-11.405-12.11H27.669 c-1.569,0-2.85-1.28-2.85-2.85v-6.412c0-1.575,1.28-2.851,2.85-2.851h20.663c1.569,0,2.85,1.275,2.85,2.851v1.005L66.856,23.967z M25.531,47.474c0-1.569,1.28-2.85,2.851-2.85h20.662c1.57,0,2.851,1.28,2.851,2.85v6.412c0,1.57-1.28,2.851-2.851,2.851H28.382 c-1.57,0-2.851-1.28-2.851-2.851V47.474z\"></path></svg>"
+module.exports = "<svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" viewBox=\"0 0 76 76\" preserveAspectRatio=\"xMidYMid meet\" enable-background=\"new 0 0 76 76\"><g id=\"number-6\"><use href=\"#blank\"></use><path fill=\"#008284\" d=\"M66.856,23.967v-3.565c0-6.296-5.109-11.4-11.399-11.4H20.544c-6.29,0-11.4,5.104-11.4,11.4v34.197 c0,6.29,5.11,11.4,11.4,11.4h34.913c6.29,0,11.399-5.11,11.399-11.4V43.911c0-4.984-4.921-12.11-11.405-12.11H27.669 c-1.569,0-2.85-1.28-2.85-2.85v-6.412c0-1.575,1.28-2.851,2.85-2.851h20.663c1.569,0,2.85,1.275,2.85,2.851v1.005L66.856,23.967z M25.531,47.474c0-1.569,1.28-2.85,2.851-2.85h20.662c1.57,0,2.851,1.28,2.851,2.85v6.412c0,1.57-1.28,2.851-2.851,2.851H28.382 c-1.57,0-2.851-1.28-2.851-2.851V47.474z\"></path></g></svg>"
 
 /***/ }),
 
 /***/ 503:
 /***/ (function(module) {
 
-module.exports = "<svg version=\"1.1\" id=\"レイヤー_1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" x=\"0px\" y=\"0px\" viewBox=\"0 0 76 76\" enable-background=\"new 0 0 76 76\" xml:space=\"preserve\"><g id=\"rect1313_66_\"><polygon fill=\"#B9B9B9\" points=\"75.001,75.001 1,75.001 1,1 75.001,1 \"></polygon><path fill=\"#757575\" d=\"M75.991,0C75.996,0,76,0.004,76,0.009V75.99c0,0.006-0.004,0.01-0.009,0.01H0.009 C0.004,76,0,75.996,0,75.99V0.009C0,0.004,0.004,0,0.009,0H75.991 M74,2H2v72h72V2L74,2z\"></path></g><polygon fill=\"#840084\" points=\"10.363,9.001 10.363,21.783 44.834,21.78 10.018,65.999 30.464,65.999 65.291,21.78 65.982,9.001 \"></polygon></svg>"
+module.exports = "<svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" viewBox=\"0 0 76 76\" preserveAspectRatio=\"xMidYMid meet\" enable-background=\"new 0 0 76 76\"><g id=\"number-7\"><use href=\"#blank\"></use><polygon fill=\"#840084\" points=\"10.363,9.001 10.363,21.783 44.834,21.78 10.018,65.999 30.464,65.999 65.291,21.78 65.982,9.001 \"></polygon></g></svg>"
 
 /***/ }),
 
 /***/ 321:
 /***/ (function(module) {
 
-module.exports = "<svg version=\"1.1\" id=\"レイヤー_1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" x=\"0px\" y=\"0px\" viewBox=\"0 0 76 76\" enable-background=\"new 0 0 76 76\" xml:space=\"preserve\"><g id=\"rect1313_66_\"><polygon fill=\"#B9B9B9\" points=\"75.001,75.001 1,75.001 1,1 75.001,1 \"></polygon><path fill=\"#757575\" d=\"M75.991,0C75.996,0,76,0.004,76,0.009V75.99c0,0.006-0.004,0.01-0.009,0.01H0.009 C0.004,76,0,75.996,0,75.99V0.009C0,0.004,0.004,0,0.009,0H75.991 M74,2H2v72h72V2L74,2z\"></path></g><path fill=\"#757575\" d=\"M66.856,31.087c0,2.377-0.729,4.581-1.977,6.413c1.247,1.826,1.977,4.036,1.977,6.412V54.6 c0,6.29-5.104,11.4-11.4,11.4H20.544c-6.29,0-11.4-5.11-11.4-11.4V43.912c0-2.376,0.729-4.586,1.982-6.412 c-1.252-1.832-1.982-4.036-1.982-6.413V20.4c0-6.295,5.11-11.4,11.4-11.4h34.912c6.296,0,11.4,5.104,11.4,11.4V31.087z M51.182,22.538c0-1.575-1.275-2.85-2.851-2.85H27.669c-1.57,0-2.851,1.275-2.851,2.85v6.413c0,1.569,1.28,2.85,2.851,2.85h20.662 c1.575,0,2.851-1.28,2.851-2.85V22.538z M51.182,46.05c0-1.575-1.275-2.85-2.851-2.85H27.669c-1.57,0-2.851,1.274-2.851,2.85v6.413 c0,1.569,1.28,2.85,2.851,2.85h20.662c1.575,0,2.851-1.28,2.851-2.85V46.05z\"></path></svg>"
+module.exports = "<svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" viewBox=\"0 0 76 76\" preserveAspectRatio=\"xMidYMid meet\" enable-background=\"new 0 0 76 76\"><g id=\"number-8\"><use href=\"#blank\"></use><path fill=\"#757575\" d=\"M66.856,31.087c0,2.377-0.729,4.581-1.977,6.413c1.247,1.826,1.977,4.036,1.977,6.412V54.6 c0,6.29-5.104,11.4-11.4,11.4H20.544c-6.29,0-11.4-5.11-11.4-11.4V43.912c0-2.376,0.729-4.586,1.982-6.412 c-1.252-1.832-1.982-4.036-1.982-6.413V20.4c0-6.295,5.11-11.4,11.4-11.4h34.912c6.296,0,11.4,5.104,11.4,11.4V31.087z M51.182,22.538c0-1.575-1.275-2.85-2.851-2.85H27.669c-1.57,0-2.851,1.275-2.851,2.85v6.413c0,1.569,1.28,2.85,2.851,2.85h20.662 c1.575,0,2.851-1.28,2.851-2.85V22.538z M51.182,46.05c0-1.575-1.275-2.85-2.851-2.85H27.669c-1.57,0-2.851,1.274-2.851,2.85v6.413 c0,1.569,1.28,2.85,2.851,2.85h20.662c1.575,0,2.851-1.28,2.851-2.85V46.05z\"></path></g></svg>"
 
 /***/ }),
 
-/***/ 746:
+/***/ 86:
 /***/ (function(module) {
 
-module.exports = "<svg version=\"1.1\" id=\"レイヤー_1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" x=\"0px\" y=\"0px\" viewBox=\"0 0 76 76\" enable-background=\"new 0 0 76 76\" xml:space=\"preserve\"><g><g><path id=\"rect1313_65_\" fill=\"#FDFCFD\" d=\"M0.009,0h75.982C75.996,0,76,0.004,76,0.009V75.99c0,0.006-0.004,0.01-0.009,0.01H0.009 C0.004,76,0,75.996,0,75.99V0.009C0,0.004,0.004,0,0.009,0z\"></path><path id=\"path1341_65_\" fill=\"#757575\" d=\"M75.99,0C75.995,0,76,0.005,76,0.01v75.981C76,75.996,75.995,76,75.99,76H0.009 C0.004,76,0,75.996,0,75.991L75.99,0z\"></path><polygon id=\"rect1311_65_\" fill=\"#B9B9B9\" points=\"8.508,8.5 67.492,8.5 67.5,8.508 67.5,67.491 67.492,67.5 8.508,67.5 8.5,67.491 8.5,8.508 \"></polygon></g></g><g><path d=\"M24.684,28.694c0-4.57,1.569-8.347,4.716-11.338c2.219-2.109,5.175-3.164,8.877-3.164c4.065,0,7.213,1.055,9.433,3.164 c2.4,2.285,3.606,5.186,3.606,8.701c0,2.991-1.109,5.537-3.329,7.646c-1.295,1.23-3.052,2.9-5.271,5.01 c-1.664,1.582-2.497,3.955-2.497,7.119h-4.993c0-3.864,0.647-6.765,1.942-8.701c0.924-1.406,2.678-3.337,5.271-5.801 c1.479-1.406,2.22-3.073,2.22-5.01c0-2.461-0.65-4.307-1.942-5.537c-1.109-1.055-2.681-1.582-4.716-1.582 c-1.665,0-3.052,0.527-4.161,1.582c-1.85,1.758-2.774,4.395-2.774,7.91H24.684z M34.671,53.479h6.104v6.328h-6.104V53.479z\"></path></g></svg>"
+module.exports = "<svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" viewBox=\"0 0 76 76\" preserveAspectRatio=\"xMidYMid meet\" enable-background=\"new 0 0 76 76\"><g id=\"question-mark\"><use href=\"#unopened-square\"></use><path d=\"M24.684,28.694c0-4.57,1.569-8.347,4.716-11.338c2.219-2.109,5.175-3.164,8.877-3.164c4.065,0,7.213,1.055,9.433,3.164 c2.4,2.285,3.606,5.186,3.606,8.701c0,2.991-1.109,5.537-3.329,7.646c-1.295,1.23-3.052,2.9-5.271,5.01 c-1.664,1.582-2.497,3.955-2.497,7.119h-4.993c0-3.864,0.647-6.765,1.942-8.701c0.924-1.406,2.678-3.337,5.271-5.801 c1.479-1.406,2.22-3.073,2.22-5.01c0-2.461-0.65-4.307-1.942-5.537c-1.109-1.055-2.681-1.582-4.716-1.582 c-1.665,0-3.052,0.527-4.161,1.582c-1.85,1.758-2.774,4.395-2.774,7.91H24.684z M34.671,53.479h6.104v6.328h-6.104V53.479z\"></path></g></svg>"
 
 /***/ }),
 
-/***/ 297:
+/***/ 897:
 /***/ (function(module) {
 
-module.exports = "<svg version=\"1.1\" id=\"レイヤー_1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" x=\"0px\" y=\"0px\" viewBox=\"0 0 76 76\" enable-background=\"new 0 0 76 76\" xml:space=\"preserve\"><g><g><path id=\"rect1313_65_\" fill=\"#FDFCFD\" d=\"M0.009,0h75.982C75.996,0,76,0.004,76,0.009V75.99c0,0.006-0.004,0.01-0.009,0.01H0.009 C0.004,76,0,75.996,0,75.99V0.009C0,0.004,0.004,0,0.009,0z\"></path><path id=\"path1341_65_\" fill=\"#757575\" d=\"M75.99,0C75.995,0,76,0.005,76,0.01v75.981C76,75.996,75.995,76,75.99,76H0.009 C0.004,76,0,75.996,0,75.991L75.99,0z\"></path><polygon id=\"rect1311_65_\" fill=\"#B9B9B9\" points=\"8.508,8.5 67.492,8.5 67.5,8.508 67.5,67.491 67.492,67.5 8.508,67.5 8.5,67.491 8.5,8.508 \"></polygon></g></g></svg>"
+module.exports = "<svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" viewBox=\"0 0 76 76\" preserveAspectRatio=\"xMidYMid meet\" enable-background=\"new 0 0 76 76\"><g id=\"unopened-square\"><path id=\"rect1313_65_\" fill=\"#FDFCFD\" d=\"M0.009,0h75.982C75.996,0,76,0.004,76,0.009V75.99c0,0.006-0.004,0.01-0.009,0.01H0.009 C0.004,76,0,75.996,0,75.99V0.009C0,0.004,0.004,0,0.009,0z\"></path><path id=\"path1341_65_\" fill=\"#757575\" d=\"M75.99,0C75.995,0,76,0.005,76,0.01v75.981C76,75.996,75.995,76,75.99,76H0.009 C0.004,76,0,75.996,0,75.991L75.99,0z\"></path><polygon id=\"rect1311_65_\" fill=\"#B9B9B9\" points=\"8.508,8.5 67.492,8.5 67.5,8.508 67.5,67.491 67.492,67.5 8.508,67.5 8.5,67.491 8.5,8.508 \"></polygon></g></svg>"
 
 /***/ })
 
@@ -225,6 +225,10 @@ const directive_t={ATTRIBUTE:1,CHILD:2,PROPERTY:3,BOOLEAN_ATTRIBUTE:4,EVENT:5,EL
  */class unsafe_svg_t extends unsafe_html_e{}unsafe_svg_t.directiveName="unsafeSVG",unsafe_svg_t.resultType=2;const unsafe_svg_o=directive_e(unsafe_svg_t);
 //# sourceMappingURL=unsafe-svg.js.map
 
+;// CONCATENATED MODULE: ./node_modules/lit/directives/unsafe-svg.js
+
+//# sourceMappingURL=unsafe-svg.js.map
+
 ;// CONCATENATED MODULE: ./src/MinesweeperBoard.js
 class MinesweeperBoard {
   constructor(gameModeConfiguration) {
@@ -259,11 +263,13 @@ class MinesweeperBoard {
     const bombIndices = this.calculateBombIndices();
     let fieldIndex = 0;
 
-    for (let i = 0; i < this.rows; i++) {
-      for (let j = 0; j < this.columns; j++) {
-        if (bombIndices.includes(fieldIndex++)) {
-          this.positions[i][j] = 'bomb';
+    for (let row = 0; row < this.rows; row += 1) {
+      for (let column = 0; column < this.columns; column += 1) {
+        if (bombIndices.includes(fieldIndex)) {
+          this.positions[row][column] = 'bomb';
         }
+
+        fieldIndex += 1;
       }
     }
   }
@@ -278,8 +284,8 @@ class MinesweeperBoard {
     const size = this.rows * this.columns;
     const desiredBombAmount = Math.min(this.bombs, size);
 
-    while (result.length != desiredBombAmount) {
-      let newBombPosition = Math.floor(Math.random() * size);
+    while (result.length !== desiredBombAmount) {
+      const newBombPosition = Math.floor(Math.random() * size);
 
       if (!result.includes(newBombPosition)) {
         result.push(newBombPosition);
@@ -290,8 +296,8 @@ class MinesweeperBoard {
   }
 
   applyFieldNumbers() {
-    for (let row = 0; row < this.rows; row++) {
-      for (let column = 0; column < this.columns; column++) {
+    for (let row = 0; row < this.rows; row += 1) {
+      for (let column = 0; column < this.columns; column += 1) {
         if (this.positions[row][column] !== 'bomb') {
           const bombCounter = this.getNeighbors(row, column).filter(neighbor => this.positions[neighbor[0]][neighbor[1]] === 'bomb').length;
           this.positions[row][column] = bombCounter;
@@ -361,71 +367,71 @@ class MinesweeperBoard {
 
   getNeighbors(currentRow, currentColumn) {
     const neighbors = [];
-    /**xoo
-     * oxo
-     * ooo
+    /** xoo
+     *  oxo
+     *  ooo
      */
 
     if (currentRow > 0 && currentColumn > 0) {
       neighbors.push([currentRow - 1, currentColumn - 1]);
     }
-    /**oxo
-     * oxo
-     * ooo
+    /** oxo
+     *  oxo
+     *  ooo
      */
 
 
     if (currentRow > 0) {
       neighbors.push([currentRow - 1, currentColumn]);
     }
-    /**oox
-     * oxo
-     * ooo
+    /** oox
+     *  oxo
+     *  ooo
      */
 
 
     if (currentRow > 0 && currentColumn < this.columns - 1) {
       neighbors.push([currentRow - 1, currentColumn + 1]);
     }
-    /**ooo
-     * oxx
-     * ooo
+    /** ooo
+     *  oxx
+     *  ooo
      */
 
 
     if (currentColumn < this.columns - 1) {
       neighbors.push([currentRow, currentColumn + 1]);
     }
-    /**ooo
-     * oxo
-     * oox
+    /** ooo
+     *  oxo
+     *  oox
      */
 
 
     if (currentRow < this.rows - 1 && currentColumn < this.columns - 1) {
       neighbors.push([currentRow + 1, currentColumn + 1]);
     }
-    /**ooo
-     * oxo
-     * oxo
+    /** ooo
+     *  oxo
+     *  oxo
      */
 
 
     if (currentRow < this.rows - 1) {
       neighbors.push([currentRow + 1, currentColumn]);
     }
-    /**ooo
-     * oxo
-     * xoo
+    /** ooo
+     *  oxo
+     *  xoo
      */
 
 
     if (currentRow < this.rows - 1 && currentColumn > 0) {
       neighbors.push([currentRow + 1, currentColumn - 1]);
     }
-    /**ooo
-     * xxo
-     * ooo
+    /** ooo
+     *  xxo
+     *  ooo
      */
 
 
@@ -439,7 +445,7 @@ class MinesweeperBoard {
   addFlag(selectedRow, selectedColumn) {
     if (!this.flags[selectedRow][selectedColumn]) {
       this.flags[selectedRow][selectedColumn] = true;
-      this.flagCounter++;
+      this.flagCounter += 1;
       this.removeQuestionMark(selectedRow, selectedColumn);
     }
   }
@@ -447,7 +453,7 @@ class MinesweeperBoard {
   removeFlag(selectedRow, selectedColumn) {
     if (this.flags[selectedRow][selectedColumn]) {
       this.flags[selectedRow][selectedColumn] = false;
-      this.flagCounter--;
+      this.flagCounter -= 1;
     }
   }
 
@@ -467,8 +473,8 @@ class MinesweeperBoard {
   revealBombs() {
     let bombsAsFlags = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
 
-    for (let row = 0; row < this.rows; row++) {
-      for (let column = 0; column < this.columns; column++) {
+    for (let row = 0; row < this.rows; row += 1) {
+      for (let column = 0; column < this.columns; column += 1) {
         if (this.positions[row][column] === 'bomb') {
           this.revealedFields[row][column] = true;
 
@@ -522,9 +528,9 @@ class MinesweeperGame {
     let rows = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 9;
     let bombs = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 10;
     this.gameModeConfiguration = {
-      columns: columns,
-      rows: rows,
-      bombs: bombs
+      columns,
+      rows,
+      bombs
     };
     this.board = new MinesweeperBoard(this.gameModeConfiguration);
     this.board.build();
@@ -584,16 +590,16 @@ class MinesweeperGame {
 }
 // EXTERNAL MODULE: ./assets/icons/bomb.svg
 var bomb = __webpack_require__(415);
-// EXTERNAL MODULE: ./assets/icons/bomb_red.svg
-var bomb_red = __webpack_require__(246);
+// EXTERNAL MODULE: ./assets/icons/bomb-explode.svg
+var bomb_explode = __webpack_require__(921);
 // EXTERNAL MODULE: ./assets/icons/flag.svg
 var flag = __webpack_require__(223);
-// EXTERNAL MODULE: ./assets/icons/flag_missed.svg
-var flag_missed = __webpack_require__(422);
-// EXTERNAL MODULE: ./assets/icons/questionmark.svg
-var questionmark = __webpack_require__(746);
-// EXTERNAL MODULE: ./assets/icons/unopened_square.svg
-var unopened_square = __webpack_require__(297);
+// EXTERNAL MODULE: ./assets/icons/flag-missed.svg
+var flag_missed = __webpack_require__(149);
+// EXTERNAL MODULE: ./assets/icons/question-mark.svg
+var question_mark = __webpack_require__(86);
+// EXTERNAL MODULE: ./assets/icons/unopened-square.svg
+var unopened_square = __webpack_require__(897);
 // EXTERNAL MODULE: ./assets/icons/number-0.svg
 var number_0 = __webpack_require__(583);
 // EXTERNAL MODULE: ./assets/icons/number-1.svg
@@ -612,6 +618,39 @@ var number_6 = __webpack_require__(876);
 var number_7 = __webpack_require__(503);
 // EXTERNAL MODULE: ./assets/icons/number-8.svg
 var number_8 = __webpack_require__(321);
+;// CONCATENATED MODULE: ./assets/icons/index.js
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* harmony default export */ var icons = ({
+  Bomb: bomb,
+  BombExplode: bomb_explode,
+  Flag: flag,
+  FlagMissed: flag_missed,
+  QuestionMark: question_mark,
+  UnopenedSquare: unopened_square,
+  Number0: number_0,
+  Number1: number_1,
+  Number2: number_2,
+  Number3: number_3,
+  Number4: number_4,
+  Number5: number_5,
+  Number6: number_6,
+  Number7: number_7,
+  Number8: number_8
+});
 ;// CONCATENATED MODULE: ./src/Minesweeper.js
 function _decorate(decorators, factory, superClass, mixins) { var api = _getDecoratorsApi(); if (mixins) { for (var i = 0; i < mixins.length; i++) { api = mixins[i](api); } } var r = factory(function initialize(O) { api.initializeInstanceElements(O, decorated.elements); }, superClass); var decorated = api.decorateClass(_coalesceClassElements(r.d.map(_createElementDescriptor)), decorators); api.initializeClassElements(r.F, decorated.elements); return api.runClassFinishers(r.F, decorated.finishers); }
 
@@ -657,18 +696,9 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
+function getSVGReference(id) {
+  return `<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 76 76" preserveAspectRatio="xMidYMid meet" enable-background="new 0 0 76 76"><use href="#${id}" /></svg>`;
+}
 
 let Minesweeper = _decorate(null, function (_initialize, _LitElement) {
   class Minesweeper extends _LitElement {
@@ -693,21 +723,21 @@ let Minesweeper = _decorate(null, function (_initialize, _LitElement) {
 
       value() {
         return {
-          BOMB: bomb,
-          BOMB_EXPLODE: bomb_red,
-          FLAG: flag,
-          FLAG_MISSED: flag_missed,
-          QUESTION_MARK: questionmark,
-          UNOPENED_SQUARE: unopened_square,
-          NUMBER_0: number_0,
-          NUMBER_1: number_1,
-          NUMBER_2: number_2,
-          NUMBER_3: number_3,
-          NUMBER_4: number_4,
-          NUMBER_5: number_5,
-          NUMBER_6: number_6,
-          NUMBER_7: number_7,
-          NUMBER_8: number_8
+          BOMB: getSVGReference('bomb'),
+          BOMB_EXPLODE: getSVGReference('bomb-explode'),
+          FLAG: getSVGReference('flag'),
+          FLAG_MISSED: getSVGReference('flag-missed'),
+          QUESTION_MARK: getSVGReference('question-mark'),
+          UNOPENED_SQUARE: getSVGReference('unopened-square'),
+          NUMBER_0: getSVGReference('blank'),
+          NUMBER_1: getSVGReference('number-1'),
+          NUMBER_2: getSVGReference('number-2'),
+          NUMBER_3: getSVGReference('number-3'),
+          NUMBER_4: getSVGReference('number-4'),
+          NUMBER_5: getSVGReference('number-5'),
+          NUMBER_6: getSVGReference('number-6'),
+          NUMBER_7: getSVGReference('number-7'),
+          NUMBER_8: getSVGReference('number-8')
         };
       }
 
@@ -727,6 +757,11 @@ let Minesweeper = _decorate(null, function (_initialize, _LitElement) {
         *::after,
         *::before {
           box-sizing: border-box;
+        }
+
+        .svg-container {
+          height: 0;
+          overflow: hidden;
         }
 
         .sweeper-box {
@@ -753,6 +788,7 @@ let Minesweeper = _decorate(null, function (_initialize, _LitElement) {
           -webkit-user-select: none; /* Chrome/Safari */
           -moz-user-select: none; /* Firefox */
           -ms-user-select: none; /* IE10+ */
+          -webkit-tap-highlight-color: transparent; /* for removing the highlight */
           height: 40px;
           width: 40px;
           object-position: center;
@@ -887,6 +923,18 @@ let Minesweeper = _decorate(null, function (_initialize, _LitElement) {
           this.requestUpdate();
         }
       }
+    }, {
+      kind: "method",
+      key: "__resetLongPressStates",
+      value: function __resetLongPressStates() {
+        if (!this.__pressStartSweeperField) {
+          return;
+        }
+
+        clearTimeout(this.__longPressTimer);
+        this.__pressStartSweeperField = null;
+        this.__pressStartTimestamp = null;
+      }
       /**
        * @param {TouchEvent|MouseEvent} event
        */
@@ -898,44 +946,44 @@ let Minesweeper = _decorate(null, function (_initialize, _LitElement) {
       })],
       key: "__handleFieldClickStart",
       value: function __handleFieldClickStart(event) {
-        const sweeperField = this.__getSweeperFieldFromEvent(event);
+        if (typeof window.ontouchstart !== 'undefined' && event.type === 'mousedown') {
+          this.__resetLongPressStates();
 
-        this.__pressStartSweeperField = sweeperField;
+          return;
+        }
+
+        const currentSweeperField = event.currentTarget;
+        this.__pressStartSweeperField = currentSweeperField;
         this.__pressStartTimestamp = event.timeStamp;
 
         if (this.__game && this.__game.board && !this.__game.isGameOver) {
           this.__longPressTimer = setTimeout(() => {
-            this.__wasLongPress = true;
             let animationInterval = null;
+            const flagSvg = currentSweeperField.querySelector('svg');
             let currentScale = 1;
-            animationInterval = setInterval(scale, 2);
 
             function scale() {
               if (currentScale >= 1.25) {
                 clearInterval(animationInterval);
-                sweeperField.style.transform = "none";
+                flagSvg.style.transform = 'none';
               } else {
                 currentScale += 0.01;
-                sweeperField.style.transform = `scale(${currentScale})`;
+                flagSvg.style.transform = `scale(${currentScale})`;
               }
             }
+
+            animationInterval = setInterval(scale, 2);
           }, 500);
         }
       }
-      /**
-       * @param {TouchEvent|MouseEvent} event
-       */
-
     }, {
       kind: "method",
       decorators: [event_options_e({
         passive: true
       })],
       key: "__handleFieldClickLeave",
-      value: function __handleFieldClickLeave(event) {
-        clearTimeout(this.__longPressTimer);
-        this.__pressStartSweeperField = null;
-        this.__pressStartTimestamp = null;
+      value: function __handleFieldClickLeave() {
+        this.__resetLongPressStates();
       }
       /**
        * @param {TouchEvent|MouseEvent} event
@@ -945,20 +993,28 @@ let Minesweeper = _decorate(null, function (_initialize, _LitElement) {
       kind: "method",
       key: "__handleFieldClickEnd",
       value: function __handleFieldClickEnd(event) {
-        const sweeperField = this.__getSweeperFieldFromEvent(event);
+        if (typeof window.ontouchend !== 'undefined' && event.type === 'mouseup') {
+          this.__resetLongPressStates();
 
+          return;
+        }
+
+        const currentSweeperField = event.currentTarget;
         const wasLongPress = event.timeStamp - this.__pressStartTimestamp > 500;
+        const stillSameSweeperField = this.__pressStartSweeperField === currentSweeperField;
 
-        if (this.__game && this.__game.board && !this.__game.isGameOver && this.__pressStartSweeperField === sweeperField) {
+        this.__resetLongPressStates();
+
+        if (this.__game && this.__game.board && !this.__game.isGameOver && stillSameSweeperField) {
           this.dispatchEvent(new CustomEvent('field-click', {
             detail: {
-              field: sweeperField
+              field: currentSweeperField
             },
             bubbles: true,
             composed: true
           }));
-          const selectedRow = parseInt(sweeperField.dataset["row"]),
-                selectedColumn = parseInt(sweeperField.dataset["column"]);
+          const selectedRow = parseInt(currentSweeperField.dataset.row, 10);
+          const selectedColumn = parseInt(currentSweeperField.dataset.column, 10);
           const gameBoard = this.__game.board;
           const hasFlag = gameBoard.flags[selectedRow][selectedColumn];
 
@@ -979,27 +1035,6 @@ let Minesweeper = _decorate(null, function (_initialize, _LitElement) {
 
           this.requestUpdate();
         }
-
-        clearTimeout(this.__longPressTimer);
-        this.__pressStartSweeperField = null;
-        this.__pressStartTimestamp = null;
-      }
-      /**
-       * @param {PointerEvent|MouseEvent} event
-       * @returns {HTMLElement}
-       */
-
-    }, {
-      kind: "method",
-      key: "__getSweeperFieldFromEvent",
-      value: function __getSweeperFieldFromEvent(event) {
-        for (const eventTarget of event.composedPath()) {
-          if (eventTarget.classList && eventTarget.classList.contains("sweeper-field")) {
-            return eventTarget;
-          }
-        }
-
-        return null;
       }
     }, {
       kind: "method",
@@ -1013,16 +1048,20 @@ let Minesweeper = _decorate(null, function (_initialize, _LitElement) {
 
         if (this.bombCounterSelector) {
           const bombCounterElements = document.querySelectorAll(this.bombCounterSelector);
-          bombCounterElements.forEach(bombCounterElement => {
+
+          for (const bombCounterElement of bombCounterElements) {
             bombCounterElement.textContent = gameBoard.bombs - gameBoard.flagCounter;
-          });
+          }
         }
 
-        return $`<div class="sweeper-box">
-      ${gameBoard.positions.map((row, rowIndex) => $`<div class="sweeper-row">
-            ${row.map((field, columnIndex) => this.getSweeperFieldHtml(rowIndex, columnIndex))}
-          </div>`)}
-    </div>`;
+        return $`<div class="svg-container">
+        ${Object.values(icons).map(unsafe_svg_o)}
+      </div>
+      <div class="sweeper-box">
+        ${gameBoard.positions.map((row, rowIndex) => $`<div class="sweeper-row">
+              ${row.map((field, columnIndex) => this.getSweeperFieldHtml(rowIndex, columnIndex))}
+            </div>`)}
+      </div>`;
       }
     }, {
       kind: "method",
@@ -1056,19 +1095,15 @@ let Minesweeper = _decorate(null, function (_initialize, _LitElement) {
           sweeperFieldContent = Minesweeper.ICONS.FLAG;
         }
 
-        let sweeperFieldClass = isRevealed || hasFlag || this.__game.isGameOver ? ' unselectable' : '';
+        const sweeperFieldClass = isRevealed || hasFlag || this.__game.isGameOver ? ' unselectable' : '';
         return $`<div
       class="sweeper-field${sweeperFieldClass}"
-
       @touchstart="${this.__handleFieldClickStart}"
       @touchend="${this.__handleFieldClickEnd}"
-      @touchcancel="${this.__handleFieldClickEnd}"
-      @touchmove="${this.__handleFieldClickLeave}"
-
+      @touchcancel="${this.__handleFieldClickLeave}"
       @mousedown="${this.__handleFieldClickStart}"
       @mouseup="${this.__handleFieldClickEnd}"
       @mouseleave="${this.__handleFieldClickLeave}"
-
       data-row="${rowIndex}"
       data-column="${columnIndex}"
     >

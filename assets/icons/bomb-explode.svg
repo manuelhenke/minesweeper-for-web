@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 76 76" preserveAspectRatio="xMidYMid meet" enable-background="new 0 0 76 76">
+	<defs>
+		<path d="M2 74L2 2L74 2L74 74L74 74L2 74Z" id="e1cjUtGijV">
+		</path>
+		<mask id="maske5Vz1Zki6" x="-2" y="-2" width="80" height="80" maskUnits="userSpaceOnUse">
+			<rect x="-2" y="-2" width="80" height="80" fill="white">
+			</rect>
+			<use xlink:href="#e1cjUtGijV" opacity="1" fill="black">
+			</use>
+		</mask>
+	</defs>
+	<g id="bomb-explode">
+		<g>
+			<use xlink:href="#e1cjUtGijV" opacity="1" fill="#ff0000" fill-opacity="1">
+			</use>
+			<g mask="url(#maske5Vz1Zki6)">
+				<use xlink:href="#e1cjUtGijV" opacity="1" fill-opacity="0" stroke="#757575" stroke-width="4" stroke-opacity="1">
+				</use>
+			</g>
+		</g>
+		<use xlink:href="#bomb-element" />
+	</g>
+</svg>

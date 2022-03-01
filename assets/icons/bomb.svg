@@ -1,6 +1,6 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid meet" viewBox="0 0 76 76" width="76" height="76">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 76 76" preserveAspectRatio="xMidYMid meet" enable-background="new 0 0 76 76">
 	<defs>
 		<path d="M2 74L2 2L74 2L74 74L74 74L2 74Z" id="e2iiwvZd6v">
 		</path>
@@ -91,16 +91,16 @@
 		<path d="M26 26L35.6 26L35.6 35.6L26 35.6L26 26Z" id="a7XCqe2jKp">
 		</path>
 	</defs>
-	<g>
-		<g>
-			<g>
-				<use xlink:href="#e2iiwvZd6v" opacity="1" fill="#b9b9b9" fill-opacity="1">
+	<g id="bomb">
+		<g id="bomb-background">
+			<use xlink:href="#e2iiwvZd6v" opacity="1" fill="#b9b9b9" fill-opacity="1">
+			</use>
+			<g mask="url(#maskaXtlGt3qy)">
+				<use xlink:href="#e2iiwvZd6v" opacity="1" fill-opacity="0" stroke="#757575" stroke-width="4" stroke-opacity="1">
 				</use>
-				<g mask="url(#maskaXtlGt3qy)">
-					<use xlink:href="#e2iiwvZd6v" opacity="1" fill-opacity="0" stroke="#757575" stroke-width="4" stroke-opacity="1">
-					</use>
-				</g>
 			</g>
+		</g>
+		<g id="bomb-element">
 			<g>
 				<use xlink:href="#c9eN9knBh" opacity="1" fill="#000000" fill-opacity="1">
 				</use>

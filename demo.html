@@ -78,28 +78,35 @@
         const minesweeper = document.getElementById('minesweeper');
 
         minesweeper.addEventListener('game-won', () => {
-          window.alert("win")
+          // eslint-disable-next-line no-alert
+          window.alert('win');
         });
 
         minesweeper.addEventListener('game-lost', () => {
+          // eslint-disable-next-line no-alert
           window.alert('lose');
         });
 
         document
           .getElementById('restart-game-button-confirm')
-          .addEventListener('click', (e) => {
+          .addEventListener('click', e => {
             e.preventDefault();
-            if (window.confirm('Are you sure, that you want to restart the game?')) {
+            if (
+              // eslint-disable-next-line no-alert
+              window.confirm('Are you sure, that you want to restart the game?')
+            ) {
               minesweeper.restartGame();
             }
           });
 
         document
           .getElementById('select-game-mode')
-          .addEventListener('change', (e) => {
+          .addEventListener('change', e => {
             e.preventDefault();
 
-            const gameModeConfiguration = getGameModeConfiguration(e.target.value);
+            const gameModeConfiguration = getGameModeConfiguration(
+              e.target.value
+            );
             minesweeper.setGameModeConfiguration(gameModeConfiguration);
           });
       });

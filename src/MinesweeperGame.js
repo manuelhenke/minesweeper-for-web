@@ -29,9 +29,9 @@ export class MinesweeperGame {
 
   createBoard(columns = 9, rows = 9, bombs = 10) {
     this.gameModeConfiguration = {
-      columns: columns,
-      rows: rows,
-      bombs: bombs,
+      columns,
+      rows,
+      bombs,
     };
 
     this.board = new MinesweeperBoard(this.gameModeConfiguration);
@@ -45,7 +45,7 @@ export class MinesweeperGame {
   }
 
   toggleFlag(selectedRow, selectedColumn) {
-    if(this.board.revealedFields[selectedRow][selectedColumn]) {
+    if (this.board.revealedFields[selectedRow][selectedColumn]) {
       return;
     }
 
@@ -59,10 +59,10 @@ export class MinesweeperGame {
   }
 
   toggleQuestionMark(selectedRow, selectedColumn) {
-    if(this.board.revealedFields[selectedRow][selectedColumn]) {
+    if (this.board.revealedFields[selectedRow][selectedColumn]) {
       return;
     }
-    
+
     if (this.board.questionMarks[selectedRow][selectedColumn]) {
       this.board.removeQuestionMark(selectedRow, selectedColumn);
     } else {

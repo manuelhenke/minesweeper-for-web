@@ -35,11 +35,12 @@ export class MinesweeperBoard {
     const bombIndices = this.calculateBombIndices();
 
     let fieldIndex = 0;
-    for (let i = 0; i < this.rows; i++) {
-      for (let j = 0; j < this.columns; j++) {
-        if (bombIndices.includes(fieldIndex++)) {
-          this.positions[i][j] = 'bomb';
+    for (let row = 0; row < this.rows; row += 1) {
+      for (let column = 0; column < this.columns; column += 1) {
+        if (bombIndices.includes(fieldIndex)) {
+          this.positions[row][column] = 'bomb';
         }
+        fieldIndex += 1;
       }
     }
   }
@@ -53,8 +54,8 @@ export class MinesweeperBoard {
     const size = this.rows * this.columns;
     const desiredBombAmount = Math.min(this.bombs, size);
 
-    while (result.length != desiredBombAmount) {
-      let newBombPosition = Math.floor(Math.random() * size);
+    while (result.length !== desiredBombAmount) {
+      const newBombPosition = Math.floor(Math.random() * size);
       if (!result.includes(newBombPosition)) {
         result.push(newBombPosition);
       }
@@ -64,8 +65,8 @@ export class MinesweeperBoard {
   }
 
   applyFieldNumbers() {
-    for (let row = 0; row < this.rows; row++) {
-      for (let column = 0; column < this.columns; column++) {
+    for (let row = 0; row < this.rows; row += 1) {
+      for (let column = 0; column < this.columns; column += 1) {
         if (this.positions[row][column] !== 'bomb') {
           const bombCounter = this.getNeighbors(row, column).filter(
             neighbor => this.positions[neighbor[0]][neighbor[1]] === 'bomb'
@@ -134,65 +135,65 @@ export class MinesweeperBoard {
   getNeighbors(currentRow, currentColumn) {
     const neighbors = [];
 
-    /**xoo
-     * oxo
-     * ooo
+    /** xoo
+     *  oxo
+     *  ooo
      */
     if (currentRow > 0 && currentColumn > 0) {
       neighbors.push([currentRow - 1, currentColumn - 1]);
     }
 
-    /**oxo
-     * oxo
-     * ooo
+    /** oxo
+     *  oxo
+     *  ooo
      */
     if (currentRow > 0) {
       neighbors.push([currentRow - 1, currentColumn]);
     }
 
-    /**oox
-     * oxo
-     * ooo
+    /** oox
+     *  oxo
+     *  ooo
      */
     if (currentRow > 0 && currentColumn < this.columns - 1) {
       neighbors.push([currentRow - 1, currentColumn + 1]);
     }
 
-    /**ooo
-     * oxx
-     * ooo
+    /** ooo
+     *  oxx
+     *  ooo
      */
     if (currentColumn < this.columns - 1) {
       neighbors.push([currentRow, currentColumn + 1]);
     }
 
-    /**ooo
-     * oxo
-     * oox
+    /** ooo
+     *  oxo
+     *  oox
      */
     if (currentRow < this.rows - 1 && currentColumn < this.columns - 1) {
       neighbors.push([currentRow + 1, currentColumn + 1]);
     }
 
-    /**ooo
-     * oxo
-     * oxo
+    /** ooo
+     *  oxo
+     *  oxo
      */
     if (currentRow < this.rows - 1) {
       neighbors.push([currentRow + 1, currentColumn]);
     }
 
-    /**ooo
-     * oxo
-     * xoo
+    /** ooo
+     *  oxo
+     *  xoo
      */
     if (currentRow < this.rows - 1 && currentColumn > 0) {
       neighbors.push([currentRow + 1, currentColumn - 1]);
     }
 
-    /**ooo
-     * xxo
-     * ooo
+    /** ooo
+     *  xxo
+     *  ooo
      */
     if (currentColumn > 0) {
       neighbors.push([currentRow, currentColumn - 1]);
@@ -204,7 +205,7 @@ export class MinesweeperBoard {
   addFlag(selectedRow, selectedColumn) {
     if (!this.flags[selectedRow][selectedColumn]) {
       this.flags[selectedRow][selectedColumn] = true;
-      this.flagCounter++;
+      this.flagCounter += 1;
       this.removeQuestionMark(selectedRow, selectedColumn);
     }
   }
@@ -212,7 +213,7 @@ export class MinesweeperBoard {
   removeFlag(selectedRow, selectedColumn) {
     if (this.flags[selectedRow][selectedColumn]) {
       this.flags[selectedRow][selectedColumn] = false;
-      this.flagCounter--;
+      this.flagCounter -= 1;
     }
   }
 
@@ -230,8 +231,8 @@ export class MinesweeperBoard {
   }
 
   revealBombs(bombsAsFlags = false) {
-    for (let row = 0; row < this.rows; row++) {
-      for (let column = 0; column < this.columns; column++) {
+    for (let row = 0; row < this.rows; row += 1) {
+      for (let column = 0; column < this.columns; column += 1) {
         if (this.positions[row][column] === 'bomb') {
           this.revealedFields[row][column] = true;
           if (bombsAsFlags) {

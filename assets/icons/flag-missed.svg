@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 76 76" preserveAspectRatio="xMidYMid meet" enable-background="new 0 0 76 76">
+	<g id="flag-missed">
+		<use href="#bomb" />
+		<line stroke-width="4" stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_78" y2="72" x2="72" y1="4" x1="4" stroke="#ff0000" fill="none" />
+		<line stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_79" y2="72" x2="4" y1="4" x1="72" stroke-width="4" stroke="#ff0000" fill="none" />
+	</g>
+</svg>
