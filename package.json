@@ -1,6 +1,6 @@
 {
   "name": "minesweeper-for-web",
-  "version": "2.1.9",
+  "version": "2.1.10",
   "description": "This is the classic microsoft minesweeper for the web.",
   "keywords": [
     "minesweeper",
@@ -28,8 +28,8 @@
   "scripts": {
     "analyze": "cem analyze --litelement",
     "build": "webpack -c webpack.cjs",
-    "format": "eslint . --fix && prettier . --write",
-    "lint": "eslint . && prettier . --check",
+    "format": "eslint . --fix && prettier . --write && stylelint ./src/*.scss --fix",
+    "lint": "eslint . && prettier . --check && stylelint ./src/*.scss",
     "prepare": "husky install",
     "test": "web-test-runner",
     "test:watch": "web-test-runner --watch"
@@ -79,7 +79,10 @@
     ]
   },
   "stylelint": {
-    "extends": "stylelint-config-standard"
+    "extends": [
+      "stylelint-config-standard-scss",
+      "stylelint-config-prettier-scss"
+    ]
   },
   "dependencies": {
     "lit": "^2.2.0"
@@ -111,7 +114,8 @@
     "sass": "^1.49.8",
     "sass-loader": "^12.6.0",
     "stylelint": "^14.5.3",
-    "stylelint-config-standard": "^25.0.0",
+    "stylelint-config-prettier-scss": "^0.0.1",
+    "stylelint-config-standard-scss": "^3.0.0",
     "svg-inline-loader": "^0.8.2",
     "terser-webpack-plugin": "^5.3.1",
     "webpack": "^5.69.1",
@@ -120,8 +124,7 @@
   "customElements": "custom-elements.json",
   "postcss": {
     "plugins": {
-      "autoprefixer": {},
-      "stylelint": {}
+      "autoprefixer": {}
     }
   }
 }

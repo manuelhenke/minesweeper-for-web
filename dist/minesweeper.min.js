@@ -1,6 +1,147 @@
 /******/ (function() { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
+/***/ 637:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(81);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(645);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__);
+// Imports
+
+
+var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
+// Module
+___CSS_LOADER_EXPORT___.push([module.id, ":host{display:inline-block;border:solid 8px #bdbdbd;max-width:100%;font-size:0;white-space:nowrap}*,*::after,*::before{box-sizing:border-box}.svg-container{height:0;width:0;overflow:hidden;display:inline-block}.sweeper-container{display:flex;border:3px solid;border-color:#7b7b7b #fff #fff #7b7b7b;background-color:#bdbdbd;overflow-x:auto}.sweeper-box{display:inline-flex;flex-direction:column;place-items:center;place-content:center}.sweeper-row{display:inline-block}.sweeper-field{display:inline-block;-webkit-user-select:none;user-select:none;-webkit-tap-highlight-color:transparent;height:40px;width:40px;-o-object-position:center;object-position:center;-o-object-fit:cover;object-fit:cover;cursor:pointer}.sweeper-field.unselectable{cursor:default}", ""]);
+// Exports
+/* harmony default export */ __webpack_exports__["Z"] = (___CSS_LOADER_EXPORT___);
+
+
+/***/ }),
+
+/***/ 645:
+/***/ (function(module) {
+
+"use strict";
+
+
+/*
+  MIT License http://www.opensource.org/licenses/mit-license.php
+  Author Tobias Koppers @sokra
+*/
+module.exports = function (cssWithMappingToString) {
+  var list = []; // return the list of modules as css string
+
+  list.toString = function toString() {
+    return this.map(function (item) {
+      var content = "";
+      var needLayer = typeof item[5] !== "undefined";
+
+      if (item[4]) {
+        content += "@supports (".concat(item[4], ") {");
+      }
+
+      if (item[2]) {
+        content += "@media ".concat(item[2], " {");
+      }
+
+      if (needLayer) {
+        content += "@layer".concat(item[5].length > 0 ? " ".concat(item[5]) : "", " {");
+      }
+
+      content += cssWithMappingToString(item);
+
+      if (needLayer) {
+        content += "}";
+      }
+
+      if (item[2]) {
+        content += "}";
+      }
+
+      if (item[4]) {
+        content += "}";
+      }
+
+      return content;
+    }).join("");
+  }; // import a list of modules into the list
+
+
+  list.i = function i(modules, media, dedupe, supports, layer) {
+    if (typeof modules === "string") {
+      modules = [[null, modules, undefined]];
+    }
+
+    var alreadyImportedModules = {};
+
+    if (dedupe) {
+      for (var k = 0; k < this.length; k++) {
+        var id = this[k][0];
+
+        if (id != null) {
+          alreadyImportedModules[id] = true;
+        }
+      }
+    }
+
+    for (var _k = 0; _k < modules.length; _k++) {
+      var item = [].concat(modules[_k]);
+
+      if (dedupe && alreadyImportedModules[item[0]]) {
+        continue;
+      }
+
+      if (typeof layer !== "undefined") {
+        if (typeof item[5] === "undefined") {
+          item[5] = layer;
+        } else {
+          item[1] = "@layer".concat(item[5].length > 0 ? " ".concat(item[5]) : "", " {").concat(item[1], "}");
+          item[5] = layer;
+        }
+      }
+
+      if (media) {
+        if (!item[2]) {
+          item[2] = media;
+        } else {
+          item[1] = "@media ".concat(item[2], " {").concat(item[1], "}");
+          item[2] = media;
+        }
+      }
+
+      if (supports) {
+        if (!item[4]) {
+          item[4] = "".concat(supports);
+        } else {
+          item[1] = "@supports (".concat(item[4], ") {").concat(item[1], "}");
+          item[4] = supports;
+        }
+      }
+
+      list.push(item);
+    }
+  };
+
+  return list;
+};
+
+/***/ }),
+
+/***/ 81:
+/***/ (function(module) {
+
+"use strict";
+
+
+module.exports = function (i) {
+  return i[1];
+};
+
+/***/ }),
+
 /***/ 921:
 /***/ (function(module) {
 
@@ -120,7 +261,7 @@ module.exports = "<svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" xmln
 /******/ 		}
 /******/ 		// Create a new module (and put it into the cache)
 /******/ 		var module = __webpack_module_cache__[moduleId] = {
-/******/ 			// no module.id needed
+/******/ 			id: moduleId,
 /******/ 			// no module.loaded needed
 /******/ 			exports: {}
 /******/ 		};
@@ -131,6 +272,36 @@ module.exports = "<svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" xmln
 /******/ 		// Return the exports of the module
 /******/ 		return module.exports;
 /******/ 	}
+/******/ 	
+/************************************************************************/
+/******/ 	/* webpack/runtime/compat get default export */
+/******/ 	!function() {
+/******/ 		// getDefaultExport function for compatibility with non-harmony modules
+/******/ 		__webpack_require__.n = function(module) {
+/******/ 			var getter = module && module.__esModule ?
+/******/ 				function() { return module['default']; } :
+/******/ 				function() { return module; };
+/******/ 			__webpack_require__.d(getter, { a: getter });
+/******/ 			return getter;
+/******/ 		};
+/******/ 	}();
+/******/ 	
+/******/ 	/* webpack/runtime/define property getters */
+/******/ 	!function() {
+/******/ 		// define getter functions for harmony exports
+/******/ 		__webpack_require__.d = function(exports, definition) {
+/******/ 			for(var key in definition) {
+/******/ 				if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
+/******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
+/******/ 				}
+/******/ 			}
+/******/ 		};
+/******/ 	}();
+/******/ 	
+/******/ 	/* webpack/runtime/hasOwnProperty shorthand */
+/******/ 	!function() {
+/******/ 		__webpack_require__.o = function(obj, prop) { return Object.prototype.hasOwnProperty.call(obj, prop); }
+/******/ 	}();
 /******/ 	
 /************************************************************************/
 var __webpack_exports__ = {};
@@ -618,7 +789,7 @@ var number_6 = __webpack_require__(876);
 var number_7 = __webpack_require__(503);
 // EXTERNAL MODULE: ./assets/icons/number-8.svg
 var number_8 = __webpack_require__(321);
-;// CONCATENATED MODULE: ./assets/icons/index.js
+;// CONCATENATED MODULE: ./src/Icons.js
 
 
 
@@ -634,7 +805,7 @@ var number_8 = __webpack_require__(321);
 
 
 
-/* harmony default export */ var icons = ({
+/* harmony default export */ var Icons = ({
   Bomb: bomb,
   BombExplode: bomb_explode,
   Flag: flag,
@@ -651,6 +822,8 @@ var number_8 = __webpack_require__(321);
   Number7: number_7,
   Number8: number_8
 });
+// EXTERNAL MODULE: ./src/minesweeper.scss
+var minesweeper = __webpack_require__(637);
 ;// CONCATENATED MODULE: ./src/Minesweeper.js
 function _decorate(decorators, factory, superClass, mixins) { var api = _getDecoratorsApi(); if (mixins) { for (var i = 0; i < mixins.length; i++) { api = mixins[i](api); } } var r = factory(function initialize(O) { api.initializeInstanceElements(O, decorated.elements); }, superClass); var decorated = api.decorateClass(_coalesceClassElements(r.d.map(_createElementDescriptor)), decorators); api.initializeClassElements(r.F, decorated.elements); return api.runClassFinishers(r.F, decorated.finishers); }
 
@@ -689,6 +862,7 @@ function _get() { if (typeof Reflect !== "undefined" && Reflect.get) { _get = Re
 function _superPropBase(object, property) { while (!Object.prototype.hasOwnProperty.call(object, property)) { object = _getPrototypeOf(object); if (object === null) break; } return object; }
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
 
 
 
@@ -746,60 +920,7 @@ let Minesweeper = _decorate(null, function (_initialize, _LitElement) {
       static: true,
       key: "styles",
       value: function styles() {
-        return [r`
-        :host {
-          display: block;
-          border: solid 8px #bdbdbd;
-          max-width: 100%;
-        }
-
-        *,
-        *::after,
-        *::before {
-          box-sizing: border-box;
-        }
-
-        .svg-container {
-          height: 0;
-          overflow: hidden;
-        }
-
-        .sweeper-box {
-          display: block;
-          border: 3px solid;
-          border-top-color: rgb(123, 123, 123);
-          border-left-color: rgb(123, 123, 123);
-          border-bottom-color: white;
-          border-right-color: white;
-          background-color: #bdbdbd;
-          overflow-x: auto;
-        }
-
-        .sweeper-row {
-          display: block;
-          /** Fontsize of 0 to remove white space between inline-block childs */
-          font-size: 0;
-          white-space: nowrap;
-        }
-
-        .sweeper-field {
-          display: inline-block;
-          user-select: none;
-          -webkit-user-select: none; /* Chrome/Safari */
-          -moz-user-select: none; /* Firefox */
-          -ms-user-select: none; /* IE10+ */
-          -webkit-tap-highlight-color: transparent; /* for removing the highlight */
-          height: 40px;
-          width: 40px;
-          object-position: center;
-          object-fit: cover;
-          cursor: pointer;
-        }
-
-        .unselectable {
-          cursor: default;
-        }
-      `];
+        return o(minesweeper/* default */.Z);
       }
     }, {
       kind: "get",
@@ -927,13 +1048,7 @@ let Minesweeper = _decorate(null, function (_initialize, _LitElement) {
       kind: "method",
       key: "__resetLongPressStates",
       value: function __resetLongPressStates() {
-        if (!this.__pressStartSweeperField) {
-          return;
-        }
-
         clearTimeout(this.__longPressTimer);
-        this.__pressStartSweeperField = null;
-        this.__pressStartTimestamp = null;
       }
       /**
        * @param {TouchEvent|MouseEvent} event
@@ -986,7 +1101,7 @@ let Minesweeper = _decorate(null, function (_initialize, _LitElement) {
         this.__resetLongPressStates();
       }
       /**
-       * @param {TouchEvent|MouseEvent} event
+       * @param {PointerEvent} event
        */
 
     }, {
@@ -1054,12 +1169,15 @@ let Minesweeper = _decorate(null, function (_initialize, _LitElement) {
           }
         }
 
-        return $`<div class="sweeper-box">
-        ${gameBoard.positions.map((row, rowIndex) => $`<div class="sweeper-row">
-              ${row.map((field, columnIndex) => this.getSweeperFieldHtml(rowIndex, columnIndex))}
-            </div>`)}
+        return $`<div class="sweeper-container">
+        <div class="sweeper-box">
+          ${gameBoard.positions.map((row, rowIndex) => $`<div class="sweeper-row">
+                ${row.map((field, columnIndex) => this.getSweeperFieldHtml(rowIndex, columnIndex))}
+              </div>`)}
+        </div>
+        <div class="svg-container">${Object.values(Icons).map(unsafe_svg_o)}</div>
       </div>
-      <div class="svg-container">${Object.values(icons).map(unsafe_svg_o)}</div> `;
+    </div>`;
       }
     }, {
       kind: "method",
@@ -1094,14 +1212,28 @@ let Minesweeper = _decorate(null, function (_initialize, _LitElement) {
         }
 
         const sweeperFieldClass = isRevealed || hasFlag || this.__game.isGameOver ? ' unselectable' : '';
+        const attachEventListener = !isRevealed && !this.__game.isGameOver;
+
+        if (attachEventListener) {
+          // eslint-disable-next-line lit-a11y/click-events-have-key-events
+          return $`<div
+        class="sweeper-field${sweeperFieldClass}"
+        @touchstart="${this.__handleFieldClickStart}"
+        @touchend="${this.__handleFieldClickLeave}"
+        @touchcancel="${this.__handleFieldClickLeave}"
+        @mousedown="${this.__handleFieldClickStart}"
+        @mouseup="${this.__handleFieldClickLeave}"
+        @mouseleave="${this.__handleFieldClickLeave}"
+        @click="${this.__handleFieldClickEnd}"
+        data-row="${rowIndex}"
+        data-column="${columnIndex}"
+      >
+        ${unsafe_svg_o(sweeperFieldContent)}
+      </div>`;
+        }
+
         return $`<div
       class="sweeper-field${sweeperFieldClass}"
-      @touchstart="${this.__handleFieldClickStart}"
-      @touchend="${this.__handleFieldClickEnd}"
-      @touchcancel="${this.__handleFieldClickLeave}"
-      @mousedown="${this.__handleFieldClickStart}"
-      @mouseup="${this.__handleFieldClickEnd}"
-      @mouseleave="${this.__handleFieldClickLeave}"
       data-row="${rowIndex}"
       data-column="${columnIndex}"
     >

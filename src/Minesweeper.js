@@ -1,8 +1,9 @@
-import { html, css, LitElement } from 'lit';
+import { html, unsafeCSS, LitElement } from 'lit';
 import { eventOptions } from 'lit/decorators/event-options.js';
 import { unsafeSVG } from 'lit/directives/unsafe-svg.js';
 import { MinesweeperGame } from './MinesweeperGame.js';
-import Icons from '../assets/icons/index.js';
+import Icons from './Icons.js';
+import Style from './minesweeper.scss';
 
 function getSVGReference(id) {
   return `<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 76 76" preserveAspectRatio="xMidYMid meet" enable-background="new 0 0 76 76"><use href="#${id}" /></svg>`;
@@ -28,62 +29,7 @@ export class Minesweeper extends LitElement {
   };
 
   static get styles() {
-    return [
-      css`
-        :host {
-          display: block;
-          border: solid 8px #bdbdbd;
-          max-width: 100%;
-        }
-
-        *,
-        *::after,
-        *::before {
-          box-sizing: border-box;
-        }
-
-        .svg-container {
-          height: 0;
-          overflow: hidden;
-        }
-
-        .sweeper-box {
-          display: block;
-          border: 3px solid;
-          border-top-color: rgb(123, 123, 123);
-          border-left-color: rgb(123, 123, 123);
-          border-bottom-color: white;
-          border-right-color: white;
-          background-color: #bdbdbd;
-          overflow-x: auto;
-        }
-
-        .sweeper-row {
-          display: block;
-          /** Fontsize of 0 to remove white space between inline-block childs */
-          font-size: 0;
-          white-space: nowrap;
-        }
-
-        .sweeper-field {
-          display: inline-block;
-          user-select: none;
-          -webkit-user-select: none; /* Chrome/Safari */
-          -moz-user-select: none; /* Firefox */
-          -ms-user-select: none; /* IE10+ */
-          -webkit-tap-highlight-color: transparent; /* for removing the highlight */
-          height: 40px;
-          width: 40px;
-          object-position: center;
-          object-fit: cover;
-          cursor: pointer;
-        }
-
-        .unselectable {
-          cursor: default;
-        }
-      `,
-    ];
+    return unsafeCSS(Style);
   }
 
   static get properties() {
@@ -190,12 +136,7 @@ export class Minesweeper extends LitElement {
   }
 
   __resetLongPressStates() {
-    if (!this.__pressStartSweeperField) {
-      return;
-    }
     clearTimeout(this.__longPressTimer);
-    this.__pressStartSweeperField = null;
-    this.__pressStartTimestamp = null;
   }
 
   /**
@@ -239,7 +180,7 @@ export class Minesweeper extends LitElement {
   }
 
   /**
-   * @param {TouchEvent|MouseEvent} event
+   * @param {PointerEvent} event
    */
   __handleFieldClickEnd(event) {
     if (typeof window.ontouchend !== 'undefined' && event.type === 'mouseup') {
@@ -307,17 +248,20 @@ export class Minesweeper extends LitElement {
       }
     }
 
-    return html`<div class="sweeper-box">
-        ${gameBoard.positions.map(
-          (row, rowIndex) =>
-            html`<div class="sweeper-row">
-              ${row.map((field, columnIndex) =>
-                this.getSweeperFieldHtml(rowIndex, columnIndex)
-              )}
-            </div>`
-        )}
+    return html`<div class="sweeper-container">
+        <div class="sweeper-box">
+          ${gameBoard.positions.map(
+            (row, rowIndex) =>
+              html`<div class="sweeper-row">
+                ${row.map((field, columnIndex) =>
+                  this.getSweeperFieldHtml(rowIndex, columnIndex)
+                )}
+              </div>`
+          )}
+        </div>
+        <div class="svg-container">${Object.values(Icons).map(unsafeSVG)}</div>
       </div>
-      <div class="svg-container">${Object.values(Icons).map(unsafeSVG)}</div> `;
+    </div>`;
   }
 
   getSweeperFieldHtml(rowIndex, columnIndex) {
@@ -350,15 +294,28 @@ export class Minesweeper extends LitElement {
 
     const sweeperFieldClass =
       isRevealed || hasFlag || this.__game.isGameOver ? ' unselectable' : '';
+    const attachEventListener = !isRevealed && !this.__game.isGameOver;
+
+    if (attachEventListener) {
+      // eslint-disable-next-line lit-a11y/click-events-have-key-events
+      return html`<div
+        class="sweeper-field${sweeperFieldClass}"
+        @touchstart="${this.__handleFieldClickStart}"
+        @touchend="${this.__handleFieldClickLeave}"
+        @touchcancel="${this.__handleFieldClickLeave}"
+        @mousedown="${this.__handleFieldClickStart}"
+        @mouseup="${this.__handleFieldClickLeave}"
+        @mouseleave="${this.__handleFieldClickLeave}"
+        @click="${this.__handleFieldClickEnd}"
+        data-row="${rowIndex}"
+        data-column="${columnIndex}"
+      >
+        ${unsafeSVG(sweeperFieldContent)}
+      </div>`;
+    }
 
     return html`<div
       class="sweeper-field${sweeperFieldClass}"
-      @touchstart="${this.__handleFieldClickStart}"
-      @touchend="${this.__handleFieldClickEnd}"
-      @touchcancel="${this.__handleFieldClickLeave}"
-      @mousedown="${this.__handleFieldClickStart}"
-      @mouseup="${this.__handleFieldClickEnd}"
-      @mouseleave="${this.__handleFieldClickLeave}"
       data-row="${rowIndex}"
       data-column="${columnIndex}"
     >

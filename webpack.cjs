@@ -31,10 +31,6 @@ module.exports = {
         loader: 'babel-loader',
       },
       {
-        test: /\.html$/i,
-        loader: 'html-loader',
-      },
-      {
         test: /\.s[ac]ss$/i,
         use: ['css-loader', 'postcss-loader', 'sass-loader'],
         sideEffects: true,

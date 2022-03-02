@@ -1,0 +1,56 @@
+:host {
+  display: inline-block;
+  border: solid 8px #bdbdbd;
+  max-width: 100%;
+
+  // Fontsize of 0 to remove white space between inline-block childs
+  font-size: 0;
+  white-space: nowrap;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
+.svg-container {
+  height: 0;
+  width: 0;
+  overflow: hidden;
+  display: inline-block;
+}
+
+.sweeper-container {
+  display: flex;
+  border: 3px solid;
+  border-color: rgb(123 123 123) white white rgb(123 123 123);
+  background-color: #bdbdbd;
+  overflow-x: auto;
+}
+
+.sweeper-box {
+  display: inline-flex;
+  flex-direction: column;
+  place-items: center;
+  place-content: center;
+}
+
+.sweeper-row {
+  display: inline-block;
+}
+
+.sweeper-field {
+  display: inline-block;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent; /* for removing the highlight */
+  height: 40px;
+  width: 40px;
+  object-position: center;
+  object-fit: cover;
+  cursor: pointer;
+
+  &.unselectable {
+    cursor: default;
+  }
+}
