@@ -14,7 +14,7 @@
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ":host{display:inline-block;border:solid 8px #bdbdbd;max-width:100%;font-size:0;white-space:nowrap}*,*::after,*::before{box-sizing:border-box}.svg-container{height:0;width:0;overflow:hidden;display:inline-block}.sweeper-container{display:flex;border:3px solid;border-color:#7b7b7b #fff #fff #7b7b7b;background-color:#bdbdbd;overflow-x:auto}.sweeper-box{display:inline-flex;flex-direction:column;place-items:center;place-content:center}.sweeper-row{display:inline-block}.sweeper-field{display:inline-block;-webkit-user-select:none;user-select:none;-webkit-tap-highlight-color:transparent;height:40px;width:40px;-o-object-position:center;object-position:center;-o-object-fit:cover;object-fit:cover;cursor:pointer}.sweeper-field.unselectable{cursor:default}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ":host{display:inline-block;border:solid 8px #bdbdbd;max-width:100%;font-size:0;white-space:nowrap}*,*::after,*::before{-webkit-box-sizing:border-box;box-sizing:border-box}.svg-container{height:0;width:0;overflow:hidden;display:inline-block}.sweeper-container{display:-webkit-box;display:-ms-flexbox;display:flex;border:3px solid;border-color:#7b7b7b #fff #fff #7b7b7b;background-color:#bdbdbd;overflow-x:auto}.sweeper-box{display:-webkit-inline-box;display:-ms-inline-flexbox;display:inline-flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;place-items:center;place-content:center}.sweeper-row{display:inline-block}.sweeper-field{display:inline-block;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;-webkit-tap-highlight-color:transparent;height:40px;width:40px;-o-object-position:center;object-position:center;-o-object-fit:cover;object-fit:cover;cursor:pointer}.sweeper-field.unselectable{cursor:default}", ""]);
 // Exports
 /* harmony default export */ __webpack_exports__["Z"] = (___CSS_LOADER_EXPORT___);
 
@@ -401,8 +401,22 @@ const directive_t={ATTRIBUTE:1,CHILD:2,PROPERTY:3,BOOLEAN_ATTRIBUTE:4,EVENT:5,EL
 //# sourceMappingURL=unsafe-svg.js.map
 
 ;// CONCATENATED MODULE: ./src/MinesweeperBoard.js
-class MinesweeperBoard {
-  constructor(gameModeConfiguration) {
+function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+
+var MinesweeperBoard = /*#__PURE__*/function () {
+  function MinesweeperBoard(gameModeConfiguration) {
+    _classCallCheck(this, MinesweeperBoard);
+
     this.positions = null;
     this.flags = null;
     this.flagCounter = 0;
@@ -413,258 +427,310 @@ class MinesweeperBoard {
     this.bombs = gameModeConfiguration.bombs;
   }
 
-  build() {
-    // First: Generate 2d field
-    this.positions = this.generate2dFields(0);
-    this.flags = this.generate2dFields(false);
-    this.flagCounter = 0;
-    this.questionMarks = this.generate2dFields(false);
-    this.revealedFields = this.generate2dFields(false); // Second: Place the bombs on the field
+  _createClass(MinesweeperBoard, [{
+    key: "build",
+    value: function build() {
+      // First: Generate 2d field
+      this.positions = this.generate2dFields(0);
+      this.flags = this.generate2dFields(false);
+      this.flagCounter = 0;
+      this.questionMarks = this.generate2dFields(false);
+      this.revealedFields = this.generate2dFields(false); // Second: Place the bombs on the field
 
-    this.placeBombs(); // Third: Calculate the fields number, based on neighbor bombs
+      this.placeBombs(); // Third: Calculate the fields number, based on neighbor bombs
 
-    this.applyFieldNumbers();
-  }
-
-  generate2dFields(value) {
-    return Array(this.rows).fill().map(() => Array(this.columns).fill(value));
-  }
-
-  placeBombs() {
-    const bombIndices = this.calculateBombIndices();
-    let fieldIndex = 0;
-
-    for (let row = 0; row < this.rows; row += 1) {
-      for (let column = 0; column < this.columns; column += 1) {
-        if (bombIndices.includes(fieldIndex)) {
-          this.positions[row][column] = 'bomb';
-        }
-
-        fieldIndex += 1;
-      }
+      this.applyFieldNumbers();
     }
-  }
-  /**
-   * Calculates a random set of indices where bombs are located on the field
-   * @returns List of indices of bomb positions
-   */
+  }, {
+    key: "generate2dFields",
+    value: function generate2dFields(value) {
+      var _this = this;
 
-
-  calculateBombIndices() {
-    const result = [];
-    const size = this.rows * this.columns;
-    const desiredBombAmount = Math.min(this.bombs, size);
-
-    while (result.length !== desiredBombAmount) {
-      const newBombPosition = Math.floor(Math.random() * size);
-
-      if (!result.includes(newBombPosition)) {
-        result.push(newBombPosition);
-      }
+      return Array(this.rows).fill().map(function () {
+        return Array(_this.columns).fill(value);
+      });
     }
+  }, {
+    key: "placeBombs",
+    value: function placeBombs() {
+      var bombIndices = this.calculateBombIndices();
+      var fieldIndex = 0;
 
-    return result;
-  }
+      for (var row = 0; row < this.rows; row += 1) {
+        for (var column = 0; column < this.columns; column += 1) {
+          if (bombIndices.includes(fieldIndex)) {
+            this.positions[row][column] = 'bomb';
+          }
 
-  applyFieldNumbers() {
-    for (let row = 0; row < this.rows; row += 1) {
-      for (let column = 0; column < this.columns; column += 1) {
-        if (this.positions[row][column] !== 'bomb') {
-          const bombCounter = this.getNeighbors(row, column).filter(neighbor => this.positions[neighbor[0]][neighbor[1]] === 'bomb').length;
-          this.positions[row][column] = bombCounter;
+          fieldIndex += 1;
         }
       }
     }
-  }
+    /**
+     * Calculates a random set of indices where bombs are located on the field
+     * @returns List of indices of bomb positions
+     */
 
-  revealFieldEntry(row, column) {
-    if (this.flags[row][column]) {
-      return null;
-    }
+  }, {
+    key: "calculateBombIndices",
+    value: function calculateBombIndices() {
+      var result = [];
+      var size = this.rows * this.columns;
+      var desiredBombAmount = Math.min(this.bombs, size);
 
-    if (this.questionMarks[row][column]) {
-      this.questionMarks[row][column] = false;
-    }
+      while (result.length !== desiredBombAmount) {
+        var newBombPosition = Math.floor(Math.random() * size);
 
-    const field = this.positions[row][column];
-
-    if (field === 'bomb') {
-      // position contains bomb
-      this.revealBombs();
-      this.positions[row][column] = 'bomb-explode';
-    } else if (field === 0) {
-      // position contains no bomb and has no neighbor-bombs
-      this.expand(row, column);
-    } else {
-      // position contains no bomb but neighbor-bombs
-      this.revealedFields[row][column] = true;
-    }
-
-    return field;
-  }
-
-  expand(row, column) {
-    const field = this.positions[row][column];
-
-    if (field === 'bomb' || this.revealedFields[row][column]) {
-      return;
-    }
-
-    this.revealedFields[row][column] = true;
-
-    if (this.flags[row][column]) {
-      this.removeFlag(row, column);
-    }
-
-    if (this.questionMarks[row][column]) {
-      this.removeQuestionMark(row, column);
-    }
-
-    if (field === 0) {
-      const neighbors = this.getNeighbors(row, column);
-
-      for (const neighbor of neighbors) {
-        this.expand(neighbor[0], neighbor[1]);
+        if (!result.includes(newBombPosition)) {
+          result.push(newBombPosition);
+        }
       }
+
+      return result;
     }
-  }
-  /**
-   *
-   * @param {number} currentRow
-   * @param {number} currentColumn
-   * @returns {[number, number][]} List of Neighbors, every entry contains a row and a column index
-   */
+  }, {
+    key: "applyFieldNumbers",
+    value: function applyFieldNumbers() {
+      var _this2 = this;
 
-
-  getNeighbors(currentRow, currentColumn) {
-    const neighbors = [];
-    /** xoo
-     *  oxo
-     *  ooo
-     */
-
-    if (currentRow > 0 && currentColumn > 0) {
-      neighbors.push([currentRow - 1, currentColumn - 1]);
-    }
-    /** oxo
-     *  oxo
-     *  ooo
-     */
-
-
-    if (currentRow > 0) {
-      neighbors.push([currentRow - 1, currentColumn]);
-    }
-    /** oox
-     *  oxo
-     *  ooo
-     */
-
-
-    if (currentRow > 0 && currentColumn < this.columns - 1) {
-      neighbors.push([currentRow - 1, currentColumn + 1]);
-    }
-    /** ooo
-     *  oxx
-     *  ooo
-     */
-
-
-    if (currentColumn < this.columns - 1) {
-      neighbors.push([currentRow, currentColumn + 1]);
-    }
-    /** ooo
-     *  oxo
-     *  oox
-     */
-
-
-    if (currentRow < this.rows - 1 && currentColumn < this.columns - 1) {
-      neighbors.push([currentRow + 1, currentColumn + 1]);
-    }
-    /** ooo
-     *  oxo
-     *  oxo
-     */
-
-
-    if (currentRow < this.rows - 1) {
-      neighbors.push([currentRow + 1, currentColumn]);
-    }
-    /** ooo
-     *  oxo
-     *  xoo
-     */
-
-
-    if (currentRow < this.rows - 1 && currentColumn > 0) {
-      neighbors.push([currentRow + 1, currentColumn - 1]);
-    }
-    /** ooo
-     *  xxo
-     *  ooo
-     */
-
-
-    if (currentColumn > 0) {
-      neighbors.push([currentRow, currentColumn - 1]);
-    }
-
-    return neighbors;
-  }
-
-  addFlag(selectedRow, selectedColumn) {
-    if (!this.flags[selectedRow][selectedColumn]) {
-      this.flags[selectedRow][selectedColumn] = true;
-      this.flagCounter += 1;
-      this.removeQuestionMark(selectedRow, selectedColumn);
-    }
-  }
-
-  removeFlag(selectedRow, selectedColumn) {
-    if (this.flags[selectedRow][selectedColumn]) {
-      this.flags[selectedRow][selectedColumn] = false;
-      this.flagCounter -= 1;
-    }
-  }
-
-  addQuestionMark(selectedRow, selectedColumn) {
-    if (!this.questionMarks[selectedRow][selectedColumn]) {
-      this.questionMarks[selectedRow][selectedColumn] = true;
-      this.removeFlag(selectedRow, selectedColumn);
-    }
-  }
-
-  removeQuestionMark(selectedRow, selectedColumn) {
-    if (this.questionMarks[selectedRow][selectedColumn]) {
-      this.questionMarks[selectedRow][selectedColumn] = false;
-    }
-  }
-
-  revealBombs() {
-    let bombsAsFlags = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
-
-    for (let row = 0; row < this.rows; row += 1) {
-      for (let column = 0; column < this.columns; column += 1) {
-        if (this.positions[row][column] === 'bomb') {
-          this.revealedFields[row][column] = true;
-
-          if (bombsAsFlags) {
-            this.addFlag(row, column);
-          } else if (this.questionMarks[row][column]) {
-            this.removeQuestionMark(row, column);
+      for (var row = 0; row < this.rows; row += 1) {
+        for (var column = 0; column < this.columns; column += 1) {
+          if (this.positions[row][column] !== 'bomb') {
+            var bombCounter = this.getNeighbors(row, column).filter(function (neighbor) {
+              return _this2.positions[neighbor[0]][neighbor[1]] === 'bomb';
+            }).length;
+            this.positions[row][column] = bombCounter;
           }
         }
+      }
+    }
+  }, {
+    key: "revealFieldEntry",
+    value: function revealFieldEntry(row, column) {
+      if (this.flags[row][column]) {
+        return null;
+      }
 
-        if (this.flags[row][column]) {
-          this.revealedFields[row][column] = true;
+      if (this.questionMarks[row][column]) {
+        this.questionMarks[row][column] = false;
+      }
+
+      var field = this.positions[row][column];
+
+      if (field === 'bomb') {
+        // position contains bomb
+        this.revealBombs();
+        this.positions[row][column] = 'bomb-explode';
+      } else if (field === 0) {
+        // position contains no bomb and has no neighbor-bombs
+        this.expand(row, column);
+      } else {
+        // position contains no bomb but neighbor-bombs
+        this.revealedFields[row][column] = true;
+      }
+
+      return field;
+    }
+  }, {
+    key: "expand",
+    value: function expand(row, column) {
+      var field = this.positions[row][column];
+
+      if (field === 'bomb' || this.revealedFields[row][column]) {
+        return;
+      }
+
+      this.revealedFields[row][column] = true;
+
+      if (this.flags[row][column]) {
+        this.removeFlag(row, column);
+      }
+
+      if (this.questionMarks[row][column]) {
+        this.removeQuestionMark(row, column);
+      }
+
+      if (field === 0) {
+        var neighbors = this.getNeighbors(row, column);
+
+        var _iterator = _createForOfIteratorHelper(neighbors),
+            _step;
+
+        try {
+          for (_iterator.s(); !(_step = _iterator.n()).done;) {
+            var neighbor = _step.value;
+            this.expand(neighbor[0], neighbor[1]);
+          }
+        } catch (err) {
+          _iterator.e(err);
+        } finally {
+          _iterator.f();
         }
       }
     }
-  }
+    /**
+     *
+     * @param {number} currentRow
+     * @param {number} currentColumn
+     * @returns {[number, number][]} List of Neighbors, every entry contains a row and a column index
+     */
 
-}
+  }, {
+    key: "getNeighbors",
+    value: function getNeighbors(currentRow, currentColumn) {
+      var neighbors = [];
+      /** xoo
+       *  oxo
+       *  ooo
+       */
+
+      if (currentRow > 0 && currentColumn > 0) {
+        neighbors.push([currentRow - 1, currentColumn - 1]);
+      }
+      /** oxo
+       *  oxo
+       *  ooo
+       */
+
+
+      if (currentRow > 0) {
+        neighbors.push([currentRow - 1, currentColumn]);
+      }
+      /** oox
+       *  oxo
+       *  ooo
+       */
+
+
+      if (currentRow > 0 && currentColumn < this.columns - 1) {
+        neighbors.push([currentRow - 1, currentColumn + 1]);
+      }
+      /** ooo
+       *  oxx
+       *  ooo
+       */
+
+
+      if (currentColumn < this.columns - 1) {
+        neighbors.push([currentRow, currentColumn + 1]);
+      }
+      /** ooo
+       *  oxo
+       *  oox
+       */
+
+
+      if (currentRow < this.rows - 1 && currentColumn < this.columns - 1) {
+        neighbors.push([currentRow + 1, currentColumn + 1]);
+      }
+      /** ooo
+       *  oxo
+       *  oxo
+       */
+
+
+      if (currentRow < this.rows - 1) {
+        neighbors.push([currentRow + 1, currentColumn]);
+      }
+      /** ooo
+       *  oxo
+       *  xoo
+       */
+
+
+      if (currentRow < this.rows - 1 && currentColumn > 0) {
+        neighbors.push([currentRow + 1, currentColumn - 1]);
+      }
+      /** ooo
+       *  xxo
+       *  ooo
+       */
+
+
+      if (currentColumn > 0) {
+        neighbors.push([currentRow, currentColumn - 1]);
+      }
+
+      return neighbors;
+    }
+  }, {
+    key: "addFlag",
+    value: function addFlag(selectedRow, selectedColumn) {
+      if (!this.flags[selectedRow][selectedColumn]) {
+        this.flags[selectedRow][selectedColumn] = true;
+        this.flagCounter += 1;
+        this.removeQuestionMark(selectedRow, selectedColumn);
+      }
+    }
+  }, {
+    key: "removeFlag",
+    value: function removeFlag(selectedRow, selectedColumn) {
+      if (this.flags[selectedRow][selectedColumn]) {
+        this.flags[selectedRow][selectedColumn] = false;
+        this.flagCounter -= 1;
+      }
+    }
+  }, {
+    key: "addQuestionMark",
+    value: function addQuestionMark(selectedRow, selectedColumn) {
+      if (!this.questionMarks[selectedRow][selectedColumn]) {
+        this.questionMarks[selectedRow][selectedColumn] = true;
+        this.removeFlag(selectedRow, selectedColumn);
+      }
+    }
+  }, {
+    key: "removeQuestionMark",
+    value: function removeQuestionMark(selectedRow, selectedColumn) {
+      if (this.questionMarks[selectedRow][selectedColumn]) {
+        this.questionMarks[selectedRow][selectedColumn] = false;
+      }
+    }
+  }, {
+    key: "revealBombs",
+    value: function revealBombs() {
+      var bombsAsFlags = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
+
+      for (var row = 0; row < this.rows; row += 1) {
+        for (var column = 0; column < this.columns; column += 1) {
+          if (this.positions[row][column] === 'bomb') {
+            this.revealedFields[row][column] = true;
+
+            if (bombsAsFlags) {
+              this.addFlag(row, column);
+            } else if (this.questionMarks[row][column]) {
+              this.removeQuestionMark(row, column);
+            }
+          }
+
+          if (this.flags[row][column]) {
+            this.revealedFields[row][column] = true;
+          }
+        }
+      }
+    }
+  }]);
+
+  return MinesweeperBoard;
+}();
 ;// CONCATENATED MODULE: ./src/MinesweeperGame.js
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || MinesweeperGame_unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function MinesweeperGame_unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return MinesweeperGame_arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return MinesweeperGame_arrayLikeToArray(o, minLen); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return MinesweeperGame_arrayLikeToArray(arr); }
+
+function MinesweeperGame_arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function MinesweeperGame_classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function MinesweeperGame_defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function MinesweeperGame_createClass(Constructor, protoProps, staticProps) { if (protoProps) MinesweeperGame_defineProperties(Constructor.prototype, protoProps); if (staticProps) MinesweeperGame_defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+
 
 /**
  * @typedef GameModeConfiguration
@@ -673,12 +739,14 @@ class MinesweeperBoard {
  * @property {number} bombs
  */
 
-class MinesweeperGame {
+var MinesweeperGame = /*#__PURE__*/function () {
   /**
    * @param {() => {}} onWinCallback
    * @param {() => {}} onLoseCallback
    */
-  constructor(onWinCallback, onLoseCallback) {
+  function MinesweeperGame(onWinCallback, onLoseCallback) {
+    MinesweeperGame_classCallCheck(this, MinesweeperGame);
+
     this.onWinCallback = onWinCallback;
     this.onLoseCallback = onLoseCallback;
     /**
@@ -694,71 +762,83 @@ class MinesweeperGame {
     this.isGameOver = true;
   }
 
-  createBoard() {
-    let columns = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 9;
-    let rows = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 9;
-    let bombs = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 10;
-    this.gameModeConfiguration = {
-      columns,
-      rows,
-      bombs
-    };
-    this.board = new MinesweeperBoard(this.gameModeConfiguration);
-    this.board.build();
-    this.isGameOver = false;
-  }
-
-  restart() {
-    this.board.build();
-    this.isGameOver = false;
-  }
-
-  toggleFlag(selectedRow, selectedColumn) {
-    if (this.board.revealedFields[selectedRow][selectedColumn]) {
-      return;
+  MinesweeperGame_createClass(MinesweeperGame, [{
+    key: "createBoard",
+    value: function createBoard() {
+      var columns = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 9;
+      var rows = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 9;
+      var bombs = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 10;
+      this.gameModeConfiguration = {
+        columns: columns,
+        rows: rows,
+        bombs: bombs
+      };
+      this.board = new MinesweeperBoard(this.gameModeConfiguration);
+      this.board.build();
+      this.isGameOver = false;
     }
-
-    if (this.board.flags[selectedRow][selectedColumn]) {
-      // removing a flag is always possible
-      this.board.removeFlag(selectedRow, selectedColumn);
-    } else if (this.board.flagCounter < this.board.bombs) {
-      // it should not be possible to place more flags than bombs
-      this.board.addFlag(selectedRow, selectedColumn);
+  }, {
+    key: "restart",
+    value: function restart() {
+      this.board.build();
+      this.isGameOver = false;
     }
-  }
+  }, {
+    key: "toggleFlag",
+    value: function toggleFlag(selectedRow, selectedColumn) {
+      if (this.board.revealedFields[selectedRow][selectedColumn]) {
+        return;
+      }
 
-  toggleQuestionMark(selectedRow, selectedColumn) {
-    if (this.board.revealedFields[selectedRow][selectedColumn]) {
-      return;
+      if (this.board.flags[selectedRow][selectedColumn]) {
+        // removing a flag is always possible
+        this.board.removeFlag(selectedRow, selectedColumn);
+      } else if (this.board.flagCounter < this.board.bombs) {
+        // it should not be possible to place more flags than bombs
+        this.board.addFlag(selectedRow, selectedColumn);
+      }
     }
+  }, {
+    key: "toggleQuestionMark",
+    value: function toggleQuestionMark(selectedRow, selectedColumn) {
+      if (this.board.revealedFields[selectedRow][selectedColumn]) {
+        return;
+      }
 
-    if (this.board.questionMarks[selectedRow][selectedColumn]) {
-      this.board.removeQuestionMark(selectedRow, selectedColumn);
-    } else {
-      this.board.addQuestionMark(selectedRow, selectedColumn);
+      if (this.board.questionMarks[selectedRow][selectedColumn]) {
+        this.board.removeQuestionMark(selectedRow, selectedColumn);
+      } else {
+        this.board.addQuestionMark(selectedRow, selectedColumn);
+      }
     }
-  }
+  }, {
+    key: "selectField",
+    value: function selectField(selectedRow, selectedColumn) {
+      var _ref;
 
-  selectField(selectedRow, selectedColumn) {
-    const field = this.board.revealFieldEntry(selectedRow, selectedColumn);
+      var field = this.board.revealFieldEntry(selectedRow, selectedColumn);
 
-    if (field === 'bomb') {
-      this.onLoseCallback();
-      this.isGameOver = true;
-      return;
-    } // flatten the 2d boolean array and count false values
+      if (field === 'bomb') {
+        this.onLoseCallback();
+        this.isGameOver = true;
+        return;
+      } // flatten the 2d boolean array and count false values
 
 
-    const unrevealedFieldsAmount = [].concat(...this.board.revealedFields).filter(revealedField => !revealedField).length;
+      var unrevealedFieldsAmount = (_ref = []).concat.apply(_ref, _toConsumableArray(this.board.revealedFields)).filter(function (revealedField) {
+        return !revealedField;
+      }).length;
 
-    if (unrevealedFieldsAmount === this.board.bombs) {
-      this.board.revealBombs(true);
-      this.onWinCallback();
-      this.isGameOver = true;
+      if (unrevealedFieldsAmount === this.board.bombs) {
+        this.board.revealBombs(true);
+        this.onWinCallback();
+        this.isGameOver = true;
+      }
     }
-  }
+  }]);
 
-}
+  return MinesweeperGame;
+}();
 // EXTERNAL MODULE: ./assets/icons/bomb.svg
 var bomb = __webpack_require__(415);
 // EXTERNAL MODULE: ./assets/icons/bomb-explode.svg
@@ -825,15 +905,41 @@ var number_8 = __webpack_require__(321);
 // EXTERNAL MODULE: ./src/minesweeper.scss
 var minesweeper = __webpack_require__(637);
 ;// CONCATENATED MODULE: ./src/Minesweeper.js
+function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
+
+var _templateObject, _templateObject2, _templateObject3, _templateObject4, _templateObject5;
+
+function Minesweeper_createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = Minesweeper_unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
+
+function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+function Minesweeper_defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function Minesweeper_createClass(Constructor, protoProps, staticProps) { if (protoProps) Minesweeper_defineProperties(Constructor.prototype, protoProps); if (staticProps) Minesweeper_defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+
+function Minesweeper_classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); Object.defineProperty(subClass, "prototype", { writable: false }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
 function _decorate(decorators, factory, superClass, mixins) { var api = _getDecoratorsApi(); if (mixins) { for (var i = 0; i < mixins.length; i++) { api = mixins[i](api); } } var r = factory(function initialize(O) { api.initializeInstanceElements(O, decorated.elements); }, superClass); var decorated = api.decorateClass(_coalesceClassElements(r.d.map(_createElementDescriptor)), decorators); api.initializeClassElements(r.F, decorated.elements); return api.runClassFinishers(r.F, decorated.finishers); }
 
-function _getDecoratorsApi() { _getDecoratorsApi = function () { return api; }; var api = { elementsDefinitionOrder: [["method"], ["field"]], initializeInstanceElements: function (O, elements) { ["method", "field"].forEach(function (kind) { elements.forEach(function (element) { if (element.kind === kind && element.placement === "own") { this.defineClassElement(O, element); } }, this); }, this); }, initializeClassElements: function (F, elements) { var proto = F.prototype; ["method", "field"].forEach(function (kind) { elements.forEach(function (element) { var placement = element.placement; if (element.kind === kind && (placement === "static" || placement === "prototype")) { var receiver = placement === "static" ? F : proto; this.defineClassElement(receiver, element); } }, this); }, this); }, defineClassElement: function (receiver, element) { var descriptor = element.descriptor; if (element.kind === "field") { var initializer = element.initializer; descriptor = { enumerable: descriptor.enumerable, writable: descriptor.writable, configurable: descriptor.configurable, value: initializer === void 0 ? void 0 : initializer.call(receiver) }; } Object.defineProperty(receiver, element.key, descriptor); }, decorateClass: function (elements, decorators) { var newElements = []; var finishers = []; var placements = { static: [], prototype: [], own: [] }; elements.forEach(function (element) { this.addElementPlacement(element, placements); }, this); elements.forEach(function (element) { if (!_hasDecorators(element)) return newElements.push(element); var elementFinishersExtras = this.decorateElement(element, placements); newElements.push(elementFinishersExtras.element); newElements.push.apply(newElements, elementFinishersExtras.extras); finishers.push.apply(finishers, elementFinishersExtras.finishers); }, this); if (!decorators) { return { elements: newElements, finishers: finishers }; } var result = this.decorateConstructor(newElements, decorators); finishers.push.apply(finishers, result.finishers); result.finishers = finishers; return result; }, addElementPlacement: function (element, placements, silent) { var keys = placements[element.placement]; if (!silent && keys.indexOf(element.key) !== -1) { throw new TypeError("Duplicated element (" + element.key + ")"); } keys.push(element.key); }, decorateElement: function (element, placements) { var extras = []; var finishers = []; for (var decorators = element.decorators, i = decorators.length - 1; i >= 0; i--) { var keys = placements[element.placement]; keys.splice(keys.indexOf(element.key), 1); var elementObject = this.fromElementDescriptor(element); var elementFinisherExtras = this.toElementFinisherExtras((0, decorators[i])(elementObject) || elementObject); element = elementFinisherExtras.element; this.addElementPlacement(element, placements); if (elementFinisherExtras.finisher) { finishers.push(elementFinisherExtras.finisher); } var newExtras = elementFinisherExtras.extras; if (newExtras) { for (var j = 0; j < newExtras.length; j++) { this.addElementPlacement(newExtras[j], placements); } extras.push.apply(extras, newExtras); } } return { element: element, finishers: finishers, extras: extras }; }, decorateConstructor: function (elements, decorators) { var finishers = []; for (var i = decorators.length - 1; i >= 0; i--) { var obj = this.fromClassDescriptor(elements); var elementsAndFinisher = this.toClassDescriptor((0, decorators[i])(obj) || obj); if (elementsAndFinisher.finisher !== undefined) { finishers.push(elementsAndFinisher.finisher); } if (elementsAndFinisher.elements !== undefined) { elements = elementsAndFinisher.elements; for (var j = 0; j < elements.length - 1; j++) { for (var k = j + 1; k < elements.length; k++) { if (elements[j].key === elements[k].key && elements[j].placement === elements[k].placement) { throw new TypeError("Duplicated element (" + elements[j].key + ")"); } } } } } return { elements: elements, finishers: finishers }; }, fromElementDescriptor: function (element) { var obj = { kind: element.kind, key: element.key, placement: element.placement, descriptor: element.descriptor }; var desc = { value: "Descriptor", configurable: true }; Object.defineProperty(obj, Symbol.toStringTag, desc); if (element.kind === "field") obj.initializer = element.initializer; return obj; }, toElementDescriptors: function (elementObjects) { if (elementObjects === undefined) return; return _toArray(elementObjects).map(function (elementObject) { var element = this.toElementDescriptor(elementObject); this.disallowProperty(elementObject, "finisher", "An element descriptor"); this.disallowProperty(elementObject, "extras", "An element descriptor"); return element; }, this); }, toElementDescriptor: function (elementObject) { var kind = String(elementObject.kind); if (kind !== "method" && kind !== "field") { throw new TypeError('An element descriptor\'s .kind property must be either "method" or' + ' "field", but a decorator created an element descriptor with' + ' .kind "' + kind + '"'); } var key = _toPropertyKey(elementObject.key); var placement = String(elementObject.placement); if (placement !== "static" && placement !== "prototype" && placement !== "own") { throw new TypeError('An element descriptor\'s .placement property must be one of "static",' + ' "prototype" or "own", but a decorator created an element descriptor' + ' with .placement "' + placement + '"'); } var descriptor = elementObject.descriptor; this.disallowProperty(elementObject, "elements", "An element descriptor"); var element = { kind: kind, key: key, placement: placement, descriptor: Object.assign({}, descriptor) }; if (kind !== "field") { this.disallowProperty(elementObject, "initializer", "A method descriptor"); } else { this.disallowProperty(descriptor, "get", "The property descriptor of a field descriptor"); this.disallowProperty(descriptor, "set", "The property descriptor of a field descriptor"); this.disallowProperty(descriptor, "value", "The property descriptor of a field descriptor"); element.initializer = elementObject.initializer; } return element; }, toElementFinisherExtras: function (elementObject) { var element = this.toElementDescriptor(elementObject); var finisher = _optionalCallableProperty(elementObject, "finisher"); var extras = this.toElementDescriptors(elementObject.extras); return { element: element, finisher: finisher, extras: extras }; }, fromClassDescriptor: function (elements) { var obj = { kind: "class", elements: elements.map(this.fromElementDescriptor, this) }; var desc = { value: "Descriptor", configurable: true }; Object.defineProperty(obj, Symbol.toStringTag, desc); return obj; }, toClassDescriptor: function (obj) { var kind = String(obj.kind); if (kind !== "class") { throw new TypeError('A class descriptor\'s .kind property must be "class", but a decorator' + ' created a class descriptor with .kind "' + kind + '"'); } this.disallowProperty(obj, "key", "A class descriptor"); this.disallowProperty(obj, "placement", "A class descriptor"); this.disallowProperty(obj, "descriptor", "A class descriptor"); this.disallowProperty(obj, "initializer", "A class descriptor"); this.disallowProperty(obj, "extras", "A class descriptor"); var finisher = _optionalCallableProperty(obj, "finisher"); var elements = this.toElementDescriptors(obj.elements); return { elements: elements, finisher: finisher }; }, runClassFinishers: function (constructor, finishers) { for (var i = 0; i < finishers.length; i++) { var newConstructor = (0, finishers[i])(constructor); if (newConstructor !== undefined) { if (typeof newConstructor !== "function") { throw new TypeError("Finishers must return a constructor."); } constructor = newConstructor; } } return constructor; }, disallowProperty: function (obj, name, objectType) { if (obj[name] !== undefined) { throw new TypeError(objectType + " can't have a ." + name + " property."); } } }; return api; }
+function _getDecoratorsApi() { _getDecoratorsApi = function _getDecoratorsApi() { return api; }; var api = { elementsDefinitionOrder: [["method"], ["field"]], initializeInstanceElements: function initializeInstanceElements(O, elements) { ["method", "field"].forEach(function (kind) { elements.forEach(function (element) { if (element.kind === kind && element.placement === "own") { this.defineClassElement(O, element); } }, this); }, this); }, initializeClassElements: function initializeClassElements(F, elements) { var proto = F.prototype; ["method", "field"].forEach(function (kind) { elements.forEach(function (element) { var placement = element.placement; if (element.kind === kind && (placement === "static" || placement === "prototype")) { var receiver = placement === "static" ? F : proto; this.defineClassElement(receiver, element); } }, this); }, this); }, defineClassElement: function defineClassElement(receiver, element) { var descriptor = element.descriptor; if (element.kind === "field") { var initializer = element.initializer; descriptor = { enumerable: descriptor.enumerable, writable: descriptor.writable, configurable: descriptor.configurable, value: initializer === void 0 ? void 0 : initializer.call(receiver) }; } Object.defineProperty(receiver, element.key, descriptor); }, decorateClass: function decorateClass(elements, decorators) { var newElements = []; var finishers = []; var placements = { "static": [], prototype: [], own: [] }; elements.forEach(function (element) { this.addElementPlacement(element, placements); }, this); elements.forEach(function (element) { if (!_hasDecorators(element)) return newElements.push(element); var elementFinishersExtras = this.decorateElement(element, placements); newElements.push(elementFinishersExtras.element); newElements.push.apply(newElements, elementFinishersExtras.extras); finishers.push.apply(finishers, elementFinishersExtras.finishers); }, this); if (!decorators) { return { elements: newElements, finishers: finishers }; } var result = this.decorateConstructor(newElements, decorators); finishers.push.apply(finishers, result.finishers); result.finishers = finishers; return result; }, addElementPlacement: function addElementPlacement(element, placements, silent) { var keys = placements[element.placement]; if (!silent && keys.indexOf(element.key) !== -1) { throw new TypeError("Duplicated element (" + element.key + ")"); } keys.push(element.key); }, decorateElement: function decorateElement(element, placements) { var extras = []; var finishers = []; for (var decorators = element.decorators, i = decorators.length - 1; i >= 0; i--) { var keys = placements[element.placement]; keys.splice(keys.indexOf(element.key), 1); var elementObject = this.fromElementDescriptor(element); var elementFinisherExtras = this.toElementFinisherExtras((0, decorators[i])(elementObject) || elementObject); element = elementFinisherExtras.element; this.addElementPlacement(element, placements); if (elementFinisherExtras.finisher) { finishers.push(elementFinisherExtras.finisher); } var newExtras = elementFinisherExtras.extras; if (newExtras) { for (var j = 0; j < newExtras.length; j++) { this.addElementPlacement(newExtras[j], placements); } extras.push.apply(extras, newExtras); } } return { element: element, finishers: finishers, extras: extras }; }, decorateConstructor: function decorateConstructor(elements, decorators) { var finishers = []; for (var i = decorators.length - 1; i >= 0; i--) { var obj = this.fromClassDescriptor(elements); var elementsAndFinisher = this.toClassDescriptor((0, decorators[i])(obj) || obj); if (elementsAndFinisher.finisher !== undefined) { finishers.push(elementsAndFinisher.finisher); } if (elementsAndFinisher.elements !== undefined) { elements = elementsAndFinisher.elements; for (var j = 0; j < elements.length - 1; j++) { for (var k = j + 1; k < elements.length; k++) { if (elements[j].key === elements[k].key && elements[j].placement === elements[k].placement) { throw new TypeError("Duplicated element (" + elements[j].key + ")"); } } } } } return { elements: elements, finishers: finishers }; }, fromElementDescriptor: function fromElementDescriptor(element) { var obj = { kind: element.kind, key: element.key, placement: element.placement, descriptor: element.descriptor }; var desc = { value: "Descriptor", configurable: true }; Object.defineProperty(obj, Symbol.toStringTag, desc); if (element.kind === "field") obj.initializer = element.initializer; return obj; }, toElementDescriptors: function toElementDescriptors(elementObjects) { if (elementObjects === undefined) return; return _toArray(elementObjects).map(function (elementObject) { var element = this.toElementDescriptor(elementObject); this.disallowProperty(elementObject, "finisher", "An element descriptor"); this.disallowProperty(elementObject, "extras", "An element descriptor"); return element; }, this); }, toElementDescriptor: function toElementDescriptor(elementObject) { var kind = String(elementObject.kind); if (kind !== "method" && kind !== "field") { throw new TypeError('An element descriptor\'s .kind property must be either "method" or' + ' "field", but a decorator created an element descriptor with' + ' .kind "' + kind + '"'); } var key = _toPropertyKey(elementObject.key); var placement = String(elementObject.placement); if (placement !== "static" && placement !== "prototype" && placement !== "own") { throw new TypeError('An element descriptor\'s .placement property must be one of "static",' + ' "prototype" or "own", but a decorator created an element descriptor' + ' with .placement "' + placement + '"'); } var descriptor = elementObject.descriptor; this.disallowProperty(elementObject, "elements", "An element descriptor"); var element = { kind: kind, key: key, placement: placement, descriptor: Object.assign({}, descriptor) }; if (kind !== "field") { this.disallowProperty(elementObject, "initializer", "A method descriptor"); } else { this.disallowProperty(descriptor, "get", "The property descriptor of a field descriptor"); this.disallowProperty(descriptor, "set", "The property descriptor of a field descriptor"); this.disallowProperty(descriptor, "value", "The property descriptor of a field descriptor"); element.initializer = elementObject.initializer; } return element; }, toElementFinisherExtras: function toElementFinisherExtras(elementObject) { var element = this.toElementDescriptor(elementObject); var finisher = _optionalCallableProperty(elementObject, "finisher"); var extras = this.toElementDescriptors(elementObject.extras); return { element: element, finisher: finisher, extras: extras }; }, fromClassDescriptor: function fromClassDescriptor(elements) { var obj = { kind: "class", elements: elements.map(this.fromElementDescriptor, this) }; var desc = { value: "Descriptor", configurable: true }; Object.defineProperty(obj, Symbol.toStringTag, desc); return obj; }, toClassDescriptor: function toClassDescriptor(obj) { var kind = String(obj.kind); if (kind !== "class") { throw new TypeError('A class descriptor\'s .kind property must be "class", but a decorator' + ' created a class descriptor with .kind "' + kind + '"'); } this.disallowProperty(obj, "key", "A class descriptor"); this.disallowProperty(obj, "placement", "A class descriptor"); this.disallowProperty(obj, "descriptor", "A class descriptor"); this.disallowProperty(obj, "initializer", "A class descriptor"); this.disallowProperty(obj, "extras", "A class descriptor"); var finisher = _optionalCallableProperty(obj, "finisher"); var elements = this.toElementDescriptors(obj.elements); return { elements: elements, finisher: finisher }; }, runClassFinishers: function runClassFinishers(constructor, finishers) { for (var i = 0; i < finishers.length; i++) { var newConstructor = (0, finishers[i])(constructor); if (newConstructor !== undefined) { if (typeof newConstructor !== "function") { throw new TypeError("Finishers must return a constructor."); } constructor = newConstructor; } } return constructor; }, disallowProperty: function disallowProperty(obj, name, objectType) { if (obj[name] !== undefined) { throw new TypeError(objectType + " can't have a ." + name + " property."); } } }; return api; }
 
-function _createElementDescriptor(def) { var key = _toPropertyKey(def.key); var descriptor; if (def.kind === "method") { descriptor = { value: def.value, writable: true, configurable: true, enumerable: false }; } else if (def.kind === "get") { descriptor = { get: def.value, configurable: true, enumerable: false }; } else if (def.kind === "set") { descriptor = { set: def.value, configurable: true, enumerable: false }; } else if (def.kind === "field") { descriptor = { configurable: true, writable: true, enumerable: true }; } var element = { kind: def.kind === "field" ? "field" : "method", key: key, placement: def.static ? "static" : def.kind === "field" ? "own" : "prototype", descriptor: descriptor }; if (def.decorators) element.decorators = def.decorators; if (def.kind === "field") element.initializer = def.value; return element; }
+function _createElementDescriptor(def) { var key = _toPropertyKey(def.key); var descriptor; if (def.kind === "method") { descriptor = { value: def.value, writable: true, configurable: true, enumerable: false }; } else if (def.kind === "get") { descriptor = { get: def.value, configurable: true, enumerable: false }; } else if (def.kind === "set") { descriptor = { set: def.value, configurable: true, enumerable: false }; } else if (def.kind === "field") { descriptor = { configurable: true, writable: true, enumerable: true }; } var element = { kind: def.kind === "field" ? "field" : "method", key: key, placement: def["static"] ? "static" : def.kind === "field" ? "own" : "prototype", descriptor: descriptor }; if (def.decorators) element.decorators = def.decorators; if (def.kind === "field") element.initializer = def.value; return element; }
 
 function _coalesceGetterSetter(element, other) { if (element.descriptor.get !== undefined) { other.descriptor.get = element.descriptor.get; } else { other.descriptor.set = element.descriptor.set; } }
 
-function _coalesceClassElements(elements) { var newElements = []; var isSameElement = function (other) { return other.kind === "method" && other.key === element.key && other.placement === element.placement; }; for (var i = 0; i < elements.length; i++) { var element = elements[i]; var other; if (element.kind === "method" && (other = newElements.find(isSameElement))) { if (_isDataDescriptor(element.descriptor) || _isDataDescriptor(other.descriptor)) { if (_hasDecorators(element) || _hasDecorators(other)) { throw new ReferenceError("Duplicated methods (" + element.key + ") can't be decorated."); } other.descriptor = element.descriptor; } else { if (_hasDecorators(element)) { if (_hasDecorators(other)) { throw new ReferenceError("Decorators can't be placed on different accessors with for " + "the same property (" + element.key + ")."); } other.decorators = element.decorators; } _coalesceGetterSetter(element, other); } } else { newElements.push(element); } } return newElements; }
+function _coalesceClassElements(elements) { var newElements = []; var isSameElement = function isSameElement(other) { return other.kind === "method" && other.key === element.key && other.placement === element.placement; }; for (var i = 0; i < elements.length; i++) { var element = elements[i]; var other; if (element.kind === "method" && (other = newElements.find(isSameElement))) { if (_isDataDescriptor(element.descriptor) || _isDataDescriptor(other.descriptor)) { if (_hasDecorators(element) || _hasDecorators(other)) { throw new ReferenceError("Duplicated methods (" + element.key + ") can't be decorated."); } other.descriptor = element.descriptor; } else { if (_hasDecorators(element)) { if (_hasDecorators(other)) { throw new ReferenceError("Decorators can't be placed on different accessors with for " + "the same property (" + element.key + ")."); } other.decorators = element.decorators; } _coalesceGetterSetter(element, other); } } else { newElements.push(element); } } return newElements; }
 
 function _hasDecorators(element) { return element.decorators && element.decorators.length; }
 
@@ -841,19 +947,19 @@ function _isDataDescriptor(desc) { return desc !== undefined && !(desc.value ===
 
 function _optionalCallableProperty(obj, name) { var value = obj[name]; if (value !== undefined && typeof value !== "function") { throw new TypeError("Expected '" + name + "' to be a function"); } return value; }
 
-function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return typeof key === "symbol" ? key : String(key); }
+function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
 
-function _toPrimitive(input, hint) { if (typeof input !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (typeof res !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
+function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
 
-function _toArray(arr) { return _arrayWithHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableRest(); }
+function _toArray(arr) { return _arrayWithHoles(arr) || Minesweeper_iterableToArray(arr) || Minesweeper_unsupportedIterableToArray(arr) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+function Minesweeper_unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return Minesweeper_arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return Minesweeper_arrayLikeToArray(o, minLen); }
 
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
+function Minesweeper_arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
-function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
+function Minesweeper_iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
@@ -871,31 +977,40 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 function getSVGReference(id) {
-  return `<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 76 76" preserveAspectRatio="xMidYMid meet" enable-background="new 0 0 76 76"><use href="#${id}" /></svg>`;
+  return "<svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" viewBox=\"0 0 76 76\" preserveAspectRatio=\"xMidYMid meet\" enable-background=\"new 0 0 76 76\"><use href=\"#".concat(id, "\" /></svg>");
 }
 
-let Minesweeper = _decorate(null, function (_initialize, _LitElement) {
-  class Minesweeper extends _LitElement {
-    constructor() {
-      super();
+var Minesweeper = _decorate(null, function (_initialize, _LitElement) {
+  var Minesweeper = /*#__PURE__*/function (_LitElement2) {
+    _inherits(Minesweeper, _LitElement2);
 
-      _initialize(this);
+    var _super = _createSuper(Minesweeper);
 
-      this.columns = 9;
-      this.rows = 9;
-      this.bombs = 10;
+    function Minesweeper() {
+      var _this;
+
+      Minesweeper_classCallCheck(this, Minesweeper);
+
+      _this = _super.call(this);
+
+      _initialize(_assertThisInitialized(_this));
+
+      _this.columns = 9;
+      _this.rows = 9;
+      _this.bombs = 10;
+      return _this;
     }
 
-  }
+    return Minesweeper_createClass(Minesweeper);
+  }(_LitElement);
 
   return {
     F: Minesweeper,
     d: [{
       kind: "field",
-      static: true,
+      "static": true,
       key: "ICONS",
-
-      value() {
+      value: function value() {
         return {
           BOMB: getSVGReference('bomb'),
           BOMB_EXPLODE: getSVGReference('bomb-explode'),
@@ -914,17 +1029,16 @@ let Minesweeper = _decorate(null, function (_initialize, _LitElement) {
           NUMBER_8: getSVGReference('number-8')
         };
       }
-
     }, {
       kind: "get",
-      static: true,
+      "static": true,
       key: "styles",
       value: function styles() {
         return o(minesweeper/* default */.Z);
       }
     }, {
       kind: "get",
-      static: true,
+      "static": true,
       key: "properties",
       value: function properties() {
         return {
@@ -975,12 +1089,14 @@ let Minesweeper = _decorate(null, function (_initialize, _LitElement) {
       kind: "method",
       key: "connectedCallback",
       value: function connectedCallback() {
+        var _this2 = this;
+
         _get(_getPrototypeOf(Minesweeper.prototype), "connectedCallback", this).call(this);
 
         if (this.restartSelector) {
-          const restartElements = document.querySelectorAll(this.restartSelector);
-          restartElements.forEach(restartElement => {
-            restartElement.addEventListener('click', this.restartGame.bind(this));
+          var restartElements = document.querySelectorAll(this.restartSelector);
+          restartElements.forEach(function (restartElement) {
+            restartElement.addEventListener('click', _this2.restartGame.bind(_this2));
           });
         }
 
@@ -1002,7 +1118,7 @@ let Minesweeper = _decorate(null, function (_initialize, _LitElement) {
       kind: "method",
       key: "__gameWonCallback",
       value: function __gameWonCallback() {
-        const options = {
+        var options = {
           detail: {},
           bubbles: true,
           composed: true
@@ -1013,7 +1129,7 @@ let Minesweeper = _decorate(null, function (_initialize, _LitElement) {
       kind: "method",
       key: "__gameLostCallback",
       value: function __gameLostCallback() {
-        const options = {
+        var options = {
           detail: {},
           bubbles: true,
           composed: true
@@ -1067,15 +1183,15 @@ let Minesweeper = _decorate(null, function (_initialize, _LitElement) {
           return;
         }
 
-        const currentSweeperField = event.currentTarget;
+        var currentSweeperField = event.currentTarget;
         this.__pressStartSweeperField = currentSweeperField;
         this.__pressStartTimestamp = event.timeStamp;
 
         if (this.__game && this.__game.board && !this.__game.isGameOver) {
-          this.__longPressTimer = setTimeout(() => {
-            let animationInterval = null;
-            const flagSvg = currentSweeperField.querySelector('svg');
-            let currentScale = 1;
+          this.__longPressTimer = setTimeout(function () {
+            var animationInterval = null;
+            var flagSvg = currentSweeperField.querySelector('svg');
+            var currentScale = 1;
 
             function scale() {
               if (currentScale >= 1.25) {
@@ -1083,7 +1199,7 @@ let Minesweeper = _decorate(null, function (_initialize, _LitElement) {
                 flagSvg.style.transform = 'none';
               } else {
                 currentScale += 0.01;
-                flagSvg.style.transform = `scale(${currentScale})`;
+                flagSvg.style.transform = "scale(".concat(currentScale, ")");
               }
             }
 
@@ -1108,15 +1224,10 @@ let Minesweeper = _decorate(null, function (_initialize, _LitElement) {
       kind: "method",
       key: "__handleFieldClickEnd",
       value: function __handleFieldClickEnd(event) {
-        if (typeof window.ontouchend !== 'undefined' && event.type === 'mouseup') {
-          this.__resetLongPressStates();
-
-          return;
-        }
-
-        const currentSweeperField = event.currentTarget;
-        const wasLongPress = event.timeStamp - this.__pressStartTimestamp > 500;
-        const stillSameSweeperField = this.__pressStartSweeperField === currentSweeperField;
+        event.preventDefault();
+        var currentSweeperField = event.currentTarget;
+        var wasLongPress = event.timeStamp - this.__pressStartTimestamp > 500;
+        var stillSameSweeperField = this.__pressStartSweeperField === currentSweeperField;
 
         this.__resetLongPressStates();
 
@@ -1128,13 +1239,13 @@ let Minesweeper = _decorate(null, function (_initialize, _LitElement) {
             bubbles: true,
             composed: true
           }));
-          const selectedRow = parseInt(currentSweeperField.dataset.row, 10);
-          const selectedColumn = parseInt(currentSweeperField.dataset.column, 10);
-          const gameBoard = this.__game.board;
-          const hasFlag = gameBoard.flags[selectedRow][selectedColumn];
+          var selectedRow = parseInt(currentSweeperField.dataset.row, 10);
+          var selectedColumn = parseInt(currentSweeperField.dataset.column, 10);
+          var gameBoard = this.__game.board;
+          var hasFlag = gameBoard.flags[selectedRow][selectedColumn];
 
           if (wasLongPress || event.ctrlKey || event.altKey || event.metaKey) {
-            const hasQuestionMark = gameBoard.questionMarks[selectedRow][selectedColumn];
+            var hasQuestionMark = gameBoard.questionMarks[selectedRow][selectedColumn];
 
             if (hasQuestionMark || hasFlag) {
               this.__game.toggleQuestionMark(selectedRow, selectedColumn);
@@ -1155,42 +1266,50 @@ let Minesweeper = _decorate(null, function (_initialize, _LitElement) {
       kind: "method",
       key: "render",
       value: function render() {
+        var _this3 = this;
+
         if (!this.__game || !this.__game.board) {
-          return $`No Board :(`;
+          return $(_templateObject || (_templateObject = _taggedTemplateLiteral(["No Board :("])));
         }
 
-        const gameBoard = this.__game.board;
+        var gameBoard = this.__game.board;
 
         if (this.bombCounterSelector) {
-          const bombCounterElements = document.querySelectorAll(this.bombCounterSelector);
+          var bombCounterElements = document.querySelectorAll(this.bombCounterSelector);
 
-          for (const bombCounterElement of bombCounterElements) {
-            bombCounterElement.textContent = gameBoard.bombs - gameBoard.flagCounter;
+          var _iterator = Minesweeper_createForOfIteratorHelper(bombCounterElements),
+              _step;
+
+          try {
+            for (_iterator.s(); !(_step = _iterator.n()).done;) {
+              var bombCounterElement = _step.value;
+              bombCounterElement.textContent = gameBoard.bombs - gameBoard.flagCounter;
+            }
+          } catch (err) {
+            _iterator.e(err);
+          } finally {
+            _iterator.f();
           }
         }
 
-        return $`<div class="sweeper-container">
-        <div class="sweeper-box">
-          ${gameBoard.positions.map((row, rowIndex) => $`<div class="sweeper-row">
-                ${row.map((field, columnIndex) => this.getSweeperFieldHtml(rowIndex, columnIndex))}
-              </div>`)}
-        </div>
-        <div class="svg-container">${Object.values(Icons).map(unsafe_svg_o)}</div>
-      </div>
-    </div>`;
+        return $(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["<div class=\"sweeper-container\">\n        <div class=\"sweeper-box\">\n          ", "\n        </div>\n        <div class=\"svg-container\">", "</div>\n      </div>\n    </div>"])), gameBoard.positions.map(function (row, rowIndex) {
+          return $(_templateObject3 || (_templateObject3 = _taggedTemplateLiteral(["<div class=\"sweeper-row\">\n                ", "\n              </div>"])), row.map(function (field, columnIndex) {
+            return _this3.getSweeperFieldHtml(rowIndex, columnIndex);
+          }));
+        }), Object.values(Icons).map(unsafe_svg_o));
       }
     }, {
       kind: "method",
       key: "getSweeperFieldHtml",
       value: function getSweeperFieldHtml(rowIndex, columnIndex) {
-        const gameBoard = this.__game.board;
-        const isRevealed = gameBoard.revealedFields[rowIndex][columnIndex];
-        const hasFlag = gameBoard.flags[rowIndex][columnIndex];
-        const hasQuestionMark = gameBoard.questionMarks[rowIndex][columnIndex];
-        let sweeperFieldContent = Minesweeper.ICONS.UNOPENED_SQUARE;
+        var gameBoard = this.__game.board;
+        var isRevealed = gameBoard.revealedFields[rowIndex][columnIndex];
+        var hasFlag = gameBoard.flags[rowIndex][columnIndex];
+        var hasQuestionMark = gameBoard.questionMarks[rowIndex][columnIndex];
+        var sweeperFieldContent = Minesweeper.ICONS.UNOPENED_SQUARE;
 
         if (isRevealed) {
-          const fieldValue = gameBoard.positions[rowIndex][columnIndex];
+          var fieldValue = gameBoard.positions[rowIndex][columnIndex];
 
           if (fieldValue === 'bomb') {
             if (hasFlag) {
@@ -1203,7 +1322,7 @@ let Minesweeper = _decorate(null, function (_initialize, _LitElement) {
           } else if (hasFlag) {
             sweeperFieldContent = Minesweeper.ICONS.FLAG_MISSED;
           } else {
-            sweeperFieldContent = Minesweeper.ICONS[`NUMBER_${fieldValue}`];
+            sweeperFieldContent = Minesweeper.ICONS["NUMBER_".concat(fieldValue)];
           }
         } else if (hasQuestionMark) {
           sweeperFieldContent = Minesweeper.ICONS.QUESTION_MARK;
@@ -1211,34 +1330,15 @@ let Minesweeper = _decorate(null, function (_initialize, _LitElement) {
           sweeperFieldContent = Minesweeper.ICONS.FLAG;
         }
 
-        const sweeperFieldClass = isRevealed || hasFlag || this.__game.isGameOver ? ' unselectable' : '';
-        const attachEventListener = !isRevealed && !this.__game.isGameOver;
+        var sweeperFieldClass = isRevealed || hasFlag || this.__game.isGameOver ? ' unselectable' : '';
+        var attachEventListener = !isRevealed && !this.__game.isGameOver;
 
         if (attachEventListener) {
           // eslint-disable-next-line lit-a11y/click-events-have-key-events
-          return $`<div
-        class="sweeper-field${sweeperFieldClass}"
-        @touchstart="${this.__handleFieldClickStart}"
-        @touchend="${this.__handleFieldClickLeave}"
-        @touchcancel="${this.__handleFieldClickLeave}"
-        @mousedown="${this.__handleFieldClickStart}"
-        @mouseup="${this.__handleFieldClickLeave}"
-        @mouseleave="${this.__handleFieldClickLeave}"
-        @click="${this.__handleFieldClickEnd}"
-        data-row="${rowIndex}"
-        data-column="${columnIndex}"
-      >
-        ${unsafe_svg_o(sweeperFieldContent)}
-      </div>`;
+          return $(_templateObject4 || (_templateObject4 = _taggedTemplateLiteral(["<div\n        class=\"sweeper-field", "\"\n        @touchstart=\"", "\"\n        @touchend=\"", "\"\n        @touchcancel=\"", "\"\n        @mousedown=\"", "\"\n        @mouseup=\"", "\"\n        @mouseleave=\"", "\"\n        @click=\"", "\"\n        data-row=\"", "\"\n        data-column=\"", "\"\n      >\n        ", "\n      </div>"])), sweeperFieldClass, this.__handleFieldClickStart, this.__handleFieldClickLeave, this.__handleFieldClickLeave, this.__handleFieldClickStart, this.__handleFieldClickLeave, this.__handleFieldClickLeave, this.__handleFieldClickEnd, rowIndex, columnIndex, unsafe_svg_o(sweeperFieldContent));
         }
 
-        return $`<div
-      class="sweeper-field${sweeperFieldClass}"
-      data-row="${rowIndex}"
-      data-column="${columnIndex}"
-    >
-      ${unsafe_svg_o(sweeperFieldContent)}
-    </div>`;
+        return $(_templateObject5 || (_templateObject5 = _taggedTemplateLiteral(["<div\n      class=\"sweeper-field", "\"\n      data-row=\"", "\"\n      data-column=\"", "\"\n    >\n      ", "\n    </div>"])), sweeperFieldClass, rowIndex, columnIndex, unsafe_svg_o(sweeperFieldContent));
       }
     }]
   };

@@ -1,6 +1,6 @@
 {
   "name": "minesweeper-for-web",
-  "version": "2.1.10",
+  "version": "2.1.11",
   "description": "This is the classic microsoft minesweeper for the web.",
   "keywords": [
     "minesweeper",
@@ -59,9 +59,7 @@
     ]
   },
   "browserslist": [
-    "last 2 years",
-    "> 1%",
-    "not dead"
+    "last 4 version"
   ],
   "prettier": {
     "arrowParens": "avoid",

@@ -183,10 +183,7 @@ export class Minesweeper extends LitElement {
    * @param {PointerEvent} event
    */
   __handleFieldClickEnd(event) {
-    if (typeof window.ontouchend !== 'undefined' && event.type === 'mouseup') {
-      this.__resetLongPressStates();
-      return;
-    }
+    event.preventDefault();
     const currentSweeperField = event.currentTarget;
     const wasLongPress = event.timeStamp - this.__pressStartTimestamp > 500;
     const stillSameSweeperField =
