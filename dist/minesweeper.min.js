@@ -969,6 +969,7 @@ function _superPropBase(object, property) { while (!Object.prototype.hasOwnPrope
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
+/* eslint-disable lit-a11y/click-events-have-key-events */
 
 
 
@@ -1224,7 +1225,6 @@ var Minesweeper = _decorate(null, function (_initialize, _LitElement) {
       kind: "method",
       key: "__handleFieldClickEnd",
       value: function __handleFieldClickEnd(event) {
-        event.preventDefault();
         var currentSweeperField = event.currentTarget;
         var wasLongPress = event.timeStamp - this.__pressStartTimestamp > 500;
         var stillSameSweeperField = this.__pressStartSweeperField === currentSweeperField;
@@ -1292,7 +1292,9 @@ var Minesweeper = _decorate(null, function (_initialize, _LitElement) {
           }
         }
 
-        return $(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["<div class=\"sweeper-container\">\n        <div class=\"sweeper-box\">\n          ", "\n        </div>\n        <div class=\"svg-container\">", "</div>\n      </div>\n    </div>"])), gameBoard.positions.map(function (row, rowIndex) {
+        return $(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["<div class=\"sweeper-container\">\n        <div class=\"sweeper-box\" @click=\"", "\">\n          ", "\n        </div>\n        <div class=\"svg-container\">", "</div>\n      </div>\n    </div>"])), function (event) {
+          return event.preventDefault();
+        }, gameBoard.positions.map(function (row, rowIndex) {
           return $(_templateObject3 || (_templateObject3 = _taggedTemplateLiteral(["<div class=\"sweeper-row\">\n                ", "\n              </div>"])), row.map(function (field, columnIndex) {
             return _this3.getSweeperFieldHtml(rowIndex, columnIndex);
           }));
@@ -1334,7 +1336,6 @@ var Minesweeper = _decorate(null, function (_initialize, _LitElement) {
         var attachEventListener = !isRevealed && !this.__game.isGameOver;
 
         if (attachEventListener) {
-          // eslint-disable-next-line lit-a11y/click-events-have-key-events
           return $(_templateObject4 || (_templateObject4 = _taggedTemplateLiteral(["<div\n        class=\"sweeper-field", "\"\n        @touchstart=\"", "\"\n        @touchend=\"", "\"\n        @touchcancel=\"", "\"\n        @mousedown=\"", "\"\n        @mouseup=\"", "\"\n        @mouseleave=\"", "\"\n        @click=\"", "\"\n        data-row=\"", "\"\n        data-column=\"", "\"\n      >\n        ", "\n      </div>"])), sweeperFieldClass, this.__handleFieldClickStart, this.__handleFieldClickLeave, this.__handleFieldClickLeave, this.__handleFieldClickStart, this.__handleFieldClickLeave, this.__handleFieldClickLeave, this.__handleFieldClickEnd, rowIndex, columnIndex, unsafe_svg_o(sweeperFieldContent));
         }
 

@@ -1,3 +1,4 @@
+/* eslint-disable lit-a11y/click-events-have-key-events */
 import { html, unsafeCSS, LitElement } from 'lit';
 import { eventOptions } from 'lit/decorators/event-options.js';
 import { unsafeSVG } from 'lit/directives/unsafe-svg.js';
@@ -183,7 +184,6 @@ export class Minesweeper extends LitElement {
    * @param {PointerEvent} event
    */
   __handleFieldClickEnd(event) {
-    event.preventDefault();
     const currentSweeperField = event.currentTarget;
     const wasLongPress = event.timeStamp - this.__pressStartTimestamp > 500;
     const stillSameSweeperField =
@@ -246,7 +246,7 @@ export class Minesweeper extends LitElement {
     }
 
     return html`<div class="sweeper-container">
-        <div class="sweeper-box">
+        <div class="sweeper-box" @click="${event => event.preventDefault()}">
           ${gameBoard.positions.map(
             (row, rowIndex) =>
               html`<div class="sweeper-row">
@@ -294,7 +294,6 @@ export class Minesweeper extends LitElement {
     const attachEventListener = !isRevealed && !this.__game.isGameOver;
 
     if (attachEventListener) {
-      // eslint-disable-next-line lit-a11y/click-events-have-key-events
       return html`<div
         class="sweeper-field${sweeperFieldClass}"
         @touchstart="${this.__handleFieldClickStart}"
