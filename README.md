@@ -172,7 +172,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
 # Example
 
-You can take a look at [demo.html](index.html) to get a full example.
+You can try it at [CodePen](https://codepen.io/manuelhenke/pen/ExoPKLZ) or just take a look at the [demo.html](demo.html) included in this project.
 ![Example Image](minesweeper-example.png)
 
 # Icons Copyright
