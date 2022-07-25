@@ -1,4 +1,5 @@
 [![Publish to NPM](https://github.com/manuelhenke/minesweeper-for-web/actions/workflows/publish.yml/badge.svg)](https://github.com/manuelhenke/minesweeper-for-web/actions/workflows/publish.yml)
+[![NPM version](https://img.shields.io/npm/v/minesweeper-for-web.svg?style=flat)](https://www.npmjs.com/package/minesweeper-for-web)
 
 # minesweeper-for-web
 
