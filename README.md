@@ -1,4 +1,7 @@
-[![Publish to NPM](https://github.com/manuelhenke/minesweeper-for-web/actions/workflows/publish.yml/badge.svg)](https://github.com/manuelhenke/minesweeper-for-web/actions/workflows/publish.yml)
+[![CI](https://github.com/manuelhenke/minesweeper-for-web/actions/workflows/ci.yml/badge.svg)](https://github.com/manuelhenke/minesweeper-for-web/actions/workflows/ci.yml)
+[![Publish NPM package](https://github.com/manuelhenke/minesweeper-for-web/actions/workflows/publish.yml/badge.svg)](https://github.com/manuelhenke/minesweeper-for-web/actions/workflows/publish.yml)
+[![CodeQL](https://github.com/manuelhenke/minesweeper-for-web/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/manuelhenke/minesweeper-for-web/actions/workflows/codeql-analysis.yml)
+[![License](https://img.shields.io/github/license/manuelhenke/minesweeper-for-web)](./LICENSE)
 [![NPM version](https://img.shields.io/npm/v/minesweeper-for-web.svg?style=flat)](https://www.npmjs.com/package/minesweeper-for-web)
 
 # minesweeper-for-web
@@ -178,7 +181,11 @@ window.addEventListener('DOMContentLoaded', () => {
 You can try it at [CodePen](https://codepen.io/manuelhenke/pen/ExoPKLZ) or just take a look at the [demo.html](demo.html) included in this project.
 ![Example Image](minesweeper-example.png)
 
-# Icons Copyright
+# License
+
+[MIT License](./LICENSE)
+
+## Icons Copyright
 
 All rights for the icons used in this project belongs to their original creators: https://commons.wikimedia.org/wiki/Category:Minesweeper
 The icons "bomb_red.svg" and "bomb.svg" are based on "number-0.svg" and "flag_missed.svg" is based on "bomb.svg".
