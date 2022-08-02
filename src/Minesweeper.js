@@ -1,5 +1,6 @@
 /* eslint-disable lit-a11y/click-events-have-key-events */
 import { html, unsafeCSS, LitElement } from 'lit';
+import { customElement } from 'lit/decorators/custom-element.js';
 import { eventOptions } from 'lit/decorators/event-options.js';
 import { unsafeSVG } from 'lit/directives/unsafe-svg.js';
 import { MinesweeperGame } from './MinesweeperGame.js';
@@ -10,6 +11,7 @@ function getSVGReference(id) {
   return `<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 76 76" preserveAspectRatio="xMidYMid meet" enable-background="new 0 0 76 76"><use href="#${id}" /></svg>`;
 }
 
+@customElement('minesweeper-game')
 export class Minesweeper extends LitElement {
   static ICONS = {
     BOMB: getSVGReference('bomb'),
@@ -77,7 +79,9 @@ export class Minesweeper extends LitElement {
   }
 
   connectedCallback() {
-    super.connectedCallback();
+    if (super.connectedCallback) {
+      super.connectedCallback();
+    }
 
     if (this.restartSelector) {
       const restartElements = document.querySelectorAll(this.restartSelector);
@@ -319,5 +323,3 @@ export class Minesweeper extends LitElement {
     </div>`;
   }
 }
-
-window.customElements.define('minesweeper-game', Minesweeper);
