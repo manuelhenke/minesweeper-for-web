@@ -8,7 +8,7 @@
 
 This is the classic Microsoft Minesweeper-Game as a WebComponent. Once you integrate it as described further, the game just follows the [standard rules](https://www.instructables.com/id/How-to-beat-Minesweeper/). To place a flag just press `ctrl`, `alt` or the meta key while clicking on a field.
 
-# Getting Started
+## Getting Started
 
 Install the package via `npm` or `yarn` and deliver the script to the user.
 This can be done via `import`, `require` or just inserting a `script` tag.
@@ -21,9 +21,9 @@ npm i minesweeper-for-web
 yarn add minesweeper-for-web
 ```
 
-# Usage
+## Usage
 
-## Basic usage
+### Basic usage
 
 Just a basic 9x9 / 10 Mines minesweeper game. You can **combine** further examples.
 
@@ -31,7 +31,7 @@ Just a basic 9x9 / 10 Mines minesweeper game. You can **combine** further exampl
 <minesweeper-game></minesweeper-game>
 ```
 
-## Provide left-bomb-counter container
+### Provide left-bomb-counter container
 
 To keep the user informed how many mines are there left, after subtracting the number of placed flags, just provide a container for the counter.
 
@@ -40,7 +40,7 @@ To keep the user informed how many mines are there left, after subtracting the n
 <minesweeper-game bomb-counter-selector="#bomb-counter"></minesweeper-game>
 ```
 
-## Provide a restart button
+### Provide a restart button
 
 You can provide a selector where a "click"-event will be attached to, to restart the game.
 
@@ -49,7 +49,7 @@ You can provide a selector where a "click"-event will be attached to, to restart
 <button id="restart-game-button">Restart!</button>
 ```
 
-## Trigger Restart via JavaScript
+### Trigger Restart via JavaScript
 
 You can write your own custom logic to restart the game.
 
@@ -73,7 +73,7 @@ window.addEventListener('DOMContentLoaded', () => {
 });
 ```
 
-## Custom win/lose callbacks
+### Custom win/lose callbacks
 
 You can attach EventListener for the win-/lose-events.
 
@@ -95,7 +95,7 @@ window.addEventListener('DOMContentLoaded', () => {
 });
 ```
 
-## Custom win/lose callbacks
+### Custom win/lose callbacks
 
 You can attach EventListener for the win-/lose-events.
 
@@ -117,7 +117,7 @@ window.addEventListener('DOMContentLoaded', () => {
 });
 ```
 
-## Different initial game configurations
+### Different initial game configurations
 
 Of course you can provide different configurations for the game.
 
@@ -125,7 +125,7 @@ Of course you can provide different configurations for the game.
 <minesweeper-game rows="30" columns="16" bombs="99"></minesweeper-game>
 ```
 
-## Providing a selectable gamemode
+### Providing a selectable gamemode
 
 Furthermore you can implement some own logic to create a selectable gamemode
 
@@ -176,16 +176,16 @@ window.addEventListener('DOMContentLoaded', () => {
 });
 ```
 
-# Example
+## Example
 
 You can try it at [CodePen](https://codepen.io/manuelhenke/pen/ExoPKLZ) or just take a look at the [demo.html](demo.html) included in this project.
 ![Example Image](minesweeper-example.png)
 
-# License
+## License
 
 [MIT License](./LICENSE)
 
-## Icons Copyright
+### Icons Copyright
 
 All rights for the icons used in this project belongs to their original creators: https://commons.wikimedia.org/wiki/Category:Minesweeper
 The icons "bomb_red.svg" and "bomb.svg" are based on "number-0.svg" and "flag_missed.svg" is based on "bomb.svg".
