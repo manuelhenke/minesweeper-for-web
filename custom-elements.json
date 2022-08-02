@@ -4,6 +4,20 @@
   "modules": [
     {
       "kind": "javascript-module",
+      "path": "src/Icons.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "module": "src/Icons.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/Minesweeper.js",
       "declarations": [
         {
@@ -18,7 +32,7 @@
                 "text": "object"
               },
               "static": true,
-              "default": "{\n    BOMB: Bomb,\n    BOMB_EXPLODE: BombExplode,\n    FLAG: Flag,\n    FLAG_MISSED: FlagMissed,\n    QUESTION_MARK: QuestionMark,\n    UNOPENED_SQUARE: UnopenedSquare,\n    NUMBER_0: Number0,\n    NUMBER_1: Number1,\n    NUMBER_2: Number2,\n    NUMBER_3: Number3,\n    NUMBER_4: Number4,\n    NUMBER_5: Number5,\n    NUMBER_6: Number6,\n    NUMBER_7: Number7,\n    NUMBER_8: Number8,\n  }"
+              "default": "{\n    BOMB: getSVGReference('bomb'),\n    BOMB_EXPLODE: getSVGReference('bomb-explode'),\n    FLAG: getSVGReference('flag'),\n    FLAG_MISSED: getSVGReference('flag-missed'),\n    QUESTION_MARK: getSVGReference('question-mark'),\n    UNOPENED_SQUARE: getSVGReference('unopened-square'),\n    NUMBER_0: getSVGReference('blank'),\n    NUMBER_1: getSVGReference('number-1'),\n    NUMBER_2: getSVGReference('number-2'),\n    NUMBER_3: getSVGReference('number-3'),\n    NUMBER_4: getSVGReference('number-4'),\n    NUMBER_5: getSVGReference('number-5'),\n    NUMBER_6: getSVGReference('number-6'),\n    NUMBER_7: getSVGReference('number-7'),\n    NUMBER_8: getSVGReference('number-8'),\n  }"
             },
             {
               "kind": "method",
@@ -50,6 +64,10 @@
             },
             {
               "kind": "method",
+              "name": "__resetLongPressStates"
+            },
+            {
+              "kind": "method",
               "name": "__handleFieldClickStart",
               "parameters": [
                 {
@@ -62,15 +80,7 @@
             },
             {
               "kind": "method",
-              "name": "__handleFieldClickLeave",
-              "parameters": [
-                {
-                  "name": "event",
-                  "type": {
-                    "text": "TouchEvent|MouseEvent"
-                  }
-                }
-              ]
+              "name": "__handleFieldClickLeave"
             },
             {
               "kind": "method",
@@ -79,27 +89,10 @@
                 {
                   "name": "event",
                   "type": {
-                    "text": "TouchEvent|MouseEvent"
+                    "text": "PointerEvent"
                   }
                 }
               ]
-            },
-            {
-              "kind": "method",
-              "name": "__getSweeperFieldFromEvent",
-              "parameters": [
-                {
-                  "name": "event",
-                  "type": {
-                    "text": "PointerEvent|MouseEvent"
-                  }
-                }
-              ],
-              "return": {
-                "type": {
-                  "text": "HTMLElement"
-                }
-              }
             },
             {
               "kind": "method",
@@ -116,31 +109,31 @@
             {
               "kind": "field",
               "name": "columns",
+              "privacy": "public",
               "type": {
                 "text": "number"
               },
               "default": "9",
-              "privacy": "public",
               "attribute": "columns"
             },
             {
               "kind": "field",
               "name": "rows",
+              "privacy": "public",
               "type": {
                 "text": "number"
               },
               "default": "9",
-              "privacy": "public",
               "attribute": "rows"
             },
             {
               "kind": "field",
               "name": "bombs",
+              "privacy": "public",
               "type": {
                 "text": "number"
               },
               "default": "10",
-              "privacy": "public",
               "attribute": "bombs"
             },
             {
@@ -221,14 +214,26 @@
             },
             {
               "name": "columns",
+              "type": {
+                "text": "number"
+              },
+              "default": "9",
               "fieldName": "columns"
             },
             {
               "name": "rows",
+              "type": {
+                "text": "number"
+              },
+              "default": "9",
               "fieldName": "rows"
             },
             {
               "name": "bombs",
+              "type": {
+                "text": "number"
+              },
+              "default": "10",
               "fieldName": "bombs"
             },
             {
