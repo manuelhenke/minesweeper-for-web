@@ -1,0 +1,106 @@
+name: 'Release new version'
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+  workflow_dispatch:
+
+jobs:
+  check-release:
+    name: Check Release
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - name: Checkout 🛎
+        id: checkout
+        uses: actions/checkout@master
+
+      - name: Wait for other checks to succeed
+        uses: lewagon/wait-on-check-action@v1.0.0
+        with:
+          ref: ${{ github.ref }}
+          running-workflow-name: 'Check Release'
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          wait-interval: 10
+
+      - name: Publish to npm 📩
+        id: npm-publish
+        uses: JS-DevTools/npm-publish@v1
+        with:
+          token: ${{ secrets.NPM_TOKEN }}
+          dry-run: true
+          check-version: true
+
+      - if: steps.npm-publish.outputs.type == 'none'
+        name: Check new version
+        uses: actions/github-script@v3
+        with:
+          script: |
+            core.setFailed('No new version in package.json detected')
+
+  create-release:
+    name: Create Release
+    needs: check-release
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - name: Checkout 🛎
+        id: checkout
+        uses: actions/checkout@master
+
+      - name: Setup node env 🏗
+        id: setup
+        uses: actions/setup-node@v3
+        with:
+          node-version-file: '.nvmrc'
+
+      - name: Get yarn cache directory path 🔃
+        id: yarn-cache-dir-path
+        run: echo "::set-output name=dir::$(yarn cache dir)"
+
+      - name: Cache node_modules 📦
+        uses: actions/cache@v3.0.5
+        id: yarn-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
+        with:
+          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+
+      - name: Install dependencies 👨🏻‍💻
+        id: install
+        run: yarn install --frozen-lockfile
+
+      - name: Build 🛠
+        id: build
+        run: yarn build
+
+      - name: Create Draft Release
+        id: create-draft-release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: Release ${{ github.ref }}
+          draft: true
+
+      - name: Zip Release Asset # This would actually build your project, using zip for an example artifact
+        id: zip-release-asset
+        run: |
+          zip --junk-paths -r release-asset.zip dist
+
+      - name: Upload Release Asset
+        id: upload-release-asset
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create-draft-release.outputs.upload_url }}
+          asset_path: ./release-asset.zip
+          asset_name: release-asset.zip
+          asset_content_type: application/zip
