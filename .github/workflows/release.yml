@@ -32,7 +32,7 @@ jobs:
         with:
           token: ${{ secrets.NPM_TOKEN }}
           dry-run: true
-          greater-version-only: true
+          check-version: true
 
       - if: steps.npm-publish.outputs.type == 'none'
         name: Check new version

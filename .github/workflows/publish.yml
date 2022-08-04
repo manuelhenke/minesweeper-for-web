@@ -50,4 +50,4 @@ jobs:
         with:
           token: ${{ secrets.NPM_TOKEN }}
           dry-run: false
-          greater-version-only: true
+          check-version: false
