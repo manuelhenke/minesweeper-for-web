@@ -1,5 +1,4 @@
 [![CI](https://github.com/manuelhenke/minesweeper-for-web/actions/workflows/ci.yml/badge.svg)](https://github.com/manuelhenke/minesweeper-for-web/actions/workflows/ci.yml)
-[![Publish NPM package](https://github.com/manuelhenke/minesweeper-for-web/actions/workflows/publish.yml/badge.svg)](https://github.com/manuelhenke/minesweeper-for-web/actions/workflows/publish.yml)
 [![CodeQL](https://github.com/manuelhenke/minesweeper-for-web/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/manuelhenke/minesweeper-for-web/actions/workflows/codeql-analysis.yml)
 [![License](https://img.shields.io/github/license/manuelhenke/minesweeper-for-web)](./LICENSE)
 [![NPM version](https://img.shields.io/npm/v/minesweeper-for-web.svg?style=flat)](https://www.npmjs.com/package/minesweeper-for-web)
