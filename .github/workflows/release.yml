@@ -104,26 +104,12 @@ jobs:
 
       - name: Create Draft Release
         id: create-draft-release
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        uses: softprops/action-gh-release@v1
         with:
-          tag_name: ${{ github.ref }}
-          release_name: Release ${{ github.ref }}
           draft: true
-
-      - name: Zip Release Asset # This would actually build your project, using zip for an example artifact
-        id: zip-release-asset
-        run: |
-          zip --junk-paths -r release-asset.zip dist
-
-      - name: Upload Release Asset
-        id: upload-release-asset
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ steps.create-draft-release.outputs.upload_url }}
-          asset_path: ./release-asset.zip
-          asset_name: release-asset.zip
-          asset_content_type: application/zip
+          prerelease: false
+          generate_release_notes: true
+          fail_on_unmatched_files: true
+          files: |
+            ./dist/minesweeper.js
+            ./dist/minesweeper.min.js
