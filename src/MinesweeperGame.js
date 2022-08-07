@@ -82,7 +82,7 @@ export class MinesweeperGame {
     // flatten the 2d boolean array and count false values
     const unrevealedFieldsAmount = []
       .concat(...this.board.revealedFields)
-      .filter(revealedField => !revealedField).length;
+      .filter((revealedField) => !revealedField).length;
 
     if (unrevealedFieldsAmount === this.board.bombs) {
       this.board.revealBombs(true);

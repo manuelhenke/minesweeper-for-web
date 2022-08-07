@@ -87,28 +87,22 @@
           window.alert('lose');
         });
 
-        document
-          .getElementById('restart-game-button-confirm')
-          .addEventListener('click', e => {
-            e.preventDefault();
-            if (
-              // eslint-disable-next-line no-alert
-              window.confirm('Are you sure, that you want to restart the game?')
-            ) {
-              minesweeper.restartGame();
-            }
-          });
+        document.getElementById('restart-game-button-confirm').addEventListener('click', (e) => {
+          e.preventDefault();
+          if (
+            // eslint-disable-next-line no-alert
+            window.confirm('Are you sure, that you want to restart the game?')
+          ) {
+            minesweeper.restartGame();
+          }
+        });
 
-        document
-          .getElementById('select-game-mode')
-          .addEventListener('change', e => {
-            e.preventDefault();
+        document.getElementById('select-game-mode').addEventListener('change', (e) => {
+          e.preventDefault();
 
-            const gameModeConfiguration = getGameModeConfiguration(
-              e.target.value
-            );
-            minesweeper.setGameModeConfiguration(gameModeConfiguration);
-          });
+          const gameModeConfiguration = getGameModeConfiguration(e.target.value);
+          minesweeper.setGameModeConfiguration(gameModeConfiguration);
+        });
       });
     </script>
   </body>

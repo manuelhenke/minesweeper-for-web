@@ -61,14 +61,12 @@ You can write your own custom logic to restart the game.
 window.addEventListener('DOMContentLoaded', () => {
   const minesweeper = document.getElementById('minesweeper');
 
-  document
-    .getElementById('restart-game-button-confirm')
-    .addEventListener('click', e => {
-      e.preventDefault();
-      if (window.confirm('Are you sure, that you want to restart the game?')) {
-        minesweeper.restartGame();
-      }
-    });
+  document.getElementById('restart-game-button-confirm').addEventListener('click', (e) => {
+    e.preventDefault();
+    if (window.confirm('Are you sure, that you want to restart the game?')) {
+      minesweeper.restartGame();
+    }
+  });
 });
 ```
 
@@ -106,7 +104,7 @@ You can attach EventListener for the win-/lose-events.
 window.addEventListener('DOMContentLoaded', () => {
   const minesweeper = document.getElementById('minesweeper');
 
-  minesweeper.addEventListener('field-click', event => {
+  minesweeper.addEventListener('field-click', (event) => {
     // event.detail.field containts the html element of the clicked field
     // It has the data-row and data-column attributes
     // Currently there is no clean way to identify which type of field it is:
@@ -166,7 +164,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
   const minesweeper = document.getElementById('minesweeper');
 
-  document.getElementById('select-game-mode').addEventListener('change', e => {
+  document.getElementById('select-game-mode').addEventListener('change', (e) => {
     e.preventDefault();
 
     const gameModeConfiguration = getGameModeConfiguration(e.target.value);

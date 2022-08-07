@@ -85,7 +85,7 @@ export class Minesweeper extends LitElement {
 
     if (this.restartSelector) {
       const restartElements = document.querySelectorAll(this.restartSelector);
-      restartElements.forEach(restartElement => {
+      restartElements.forEach((restartElement) => {
         restartElement.addEventListener('click', this.restartGame.bind(this));
       });
     }
@@ -149,10 +149,7 @@ export class Minesweeper extends LitElement {
    */
   @eventOptions({ passive: true })
   __handleFieldClickStart(event) {
-    if (
-      typeof window.ontouchstart !== 'undefined' &&
-      event.type === 'mousedown'
-    ) {
+    if (typeof window.ontouchstart !== 'undefined' && event.type === 'mousedown') {
       this.__resetLongPressStates();
       return;
     }
@@ -190,16 +187,10 @@ export class Minesweeper extends LitElement {
   __handleFieldClickEnd(event) {
     const currentSweeperField = event.currentTarget;
     const wasLongPress = event.timeStamp - this.__pressStartTimestamp > 500;
-    const stillSameSweeperField =
-      this.__pressStartSweeperField === currentSweeperField;
+    const stillSameSweeperField = this.__pressStartSweeperField === currentSweeperField;
     this.__resetLongPressStates();
 
-    if (
-      this.__game &&
-      this.__game.board &&
-      !this.__game.isGameOver &&
-      stillSameSweeperField
-    ) {
+    if (this.__game && this.__game.board && !this.__game.isGameOver && stillSameSweeperField) {
       this.dispatchEvent(
         new CustomEvent('field-click', {
           detail: {
@@ -215,8 +206,7 @@ export class Minesweeper extends LitElement {
       const gameBoard = this.__game.board;
       const hasFlag = gameBoard.flags[selectedRow][selectedColumn];
       if (wasLongPress || event.ctrlKey || event.altKey || event.metaKey) {
-        const hasQuestionMark =
-          gameBoard.questionMarks[selectedRow][selectedColumn];
+        const hasQuestionMark = gameBoard.questionMarks[selectedRow][selectedColumn];
         if (hasQuestionMark || hasFlag) {
           this.__game.toggleQuestionMark(selectedRow, selectedColumn);
         } else {
@@ -240,23 +230,18 @@ export class Minesweeper extends LitElement {
     const gameBoard = this.__game.board;
 
     if (this.bombCounterSelector) {
-      const bombCounterElements = document.querySelectorAll(
-        this.bombCounterSelector
-      );
+      const bombCounterElements = document.querySelectorAll(this.bombCounterSelector);
       for (const bombCounterElement of bombCounterElements) {
-        bombCounterElement.textContent =
-          gameBoard.bombs - gameBoard.flagCounter;
+        bombCounterElement.textContent = gameBoard.bombs - gameBoard.flagCounter;
       }
     }
 
     return html`<div class="sweeper-container">
-        <div class="sweeper-box" @click="${event => event.preventDefault()}">
+        <div class="sweeper-box" @click="${(event) => event.preventDefault()}">
           ${gameBoard.positions.map(
             (row, rowIndex) =>
               html`<div class="sweeper-row">
-                ${row.map((field, columnIndex) =>
-                  this.getSweeperFieldHtml(rowIndex, columnIndex)
-                )}
+                ${row.map((field, columnIndex) => this.getSweeperFieldHtml(rowIndex, columnIndex))}
               </div>`
           )}
         </div>
@@ -265,33 +250,43 @@ export class Minesweeper extends LitElement {
     </div>`;
   }
 
-  getSweeperFieldHtml(rowIndex, columnIndex) {
+  getSweeperFieldSvg(rowIndex, columnIndex) {
     const gameBoard = this.__game.board;
     const isRevealed = gameBoard.revealedFields[rowIndex][columnIndex];
-    const hasFlag = gameBoard.flags[rowIndex][columnIndex];
     const hasQuestionMark = gameBoard.questionMarks[rowIndex][columnIndex];
+    const hasFlag = gameBoard.flags[rowIndex][columnIndex];
 
-    let sweeperFieldContent = Minesweeper.ICONS.UNOPENED_SQUARE;
+    let sweeperFieldSvg = Minesweeper.ICONS.UNOPENED_SQUARE;
     if (isRevealed) {
       const fieldValue = gameBoard.positions[rowIndex][columnIndex];
       if (fieldValue === 'bomb') {
         if (hasFlag) {
-          sweeperFieldContent = Minesweeper.ICONS.FLAG;
+          sweeperFieldSvg = Minesweeper.ICONS.FLAG;
         } else {
-          sweeperFieldContent = Minesweeper.ICONS.BOMB;
+          sweeperFieldSvg = Minesweeper.ICONS.BOMB;
         }
       } else if (fieldValue === 'bomb-explode') {
-        sweeperFieldContent = Minesweeper.ICONS.BOMB_EXPLODE;
+        sweeperFieldSvg = Minesweeper.ICONS.BOMB_EXPLODE;
       } else if (hasFlag) {
-        sweeperFieldContent = Minesweeper.ICONS.FLAG_MISSED;
+        sweeperFieldSvg = Minesweeper.ICONS.FLAG_MISSED;
       } else {
-        sweeperFieldContent = Minesweeper.ICONS[`NUMBER_${fieldValue}`];
+        sweeperFieldSvg = Minesweeper.ICONS[`NUMBER_${fieldValue}`];
       }
     } else if (hasQuestionMark) {
-      sweeperFieldContent = Minesweeper.ICONS.QUESTION_MARK;
+      sweeperFieldSvg = Minesweeper.ICONS.QUESTION_MARK;
     } else if (hasFlag) {
-      sweeperFieldContent = Minesweeper.ICONS.FLAG;
+      sweeperFieldSvg = Minesweeper.ICONS.FLAG;
     }
+
+    return sweeperFieldSvg;
+  }
+
+  getSweeperFieldHtml(rowIndex, columnIndex) {
+    const gameBoard = this.__game.board;
+    const isRevealed = gameBoard.revealedFields[rowIndex][columnIndex];
+    const hasFlag = gameBoard.flags[rowIndex][columnIndex];
+
+    const sweeperFieldSvg = this.getSweeperFieldSvg(rowIndex, columnIndex);
 
     const sweeperFieldClass =
       isRevealed || hasFlag || this.__game.isGameOver ? ' unselectable' : '';
@@ -310,7 +305,7 @@ export class Minesweeper extends LitElement {
         data-row="${rowIndex}"
         data-column="${columnIndex}"
       >
-        ${unsafeSVG(sweeperFieldContent)}
+        ${unsafeSVG(sweeperFieldSvg)}
       </div>`;
     }
 
@@ -319,7 +314,7 @@ export class Minesweeper extends LitElement {
       data-row="${rowIndex}"
       data-column="${columnIndex}"
     >
-      ${unsafeSVG(sweeperFieldContent)}
+      ${unsafeSVG(sweeperFieldSvg)}
     </div>`;
   }
 }

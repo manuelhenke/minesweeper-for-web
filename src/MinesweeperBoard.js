@@ -69,7 +69,7 @@ export class MinesweeperBoard {
       for (let column = 0; column < this.columns; column += 1) {
         if (this.positions[row][column] !== 'bomb') {
           const bombCounter = this.getNeighbors(row, column).filter(
-            neighbor => this.positions[neighbor[0]][neighbor[1]] === 'bomb'
+            (neighbor) => this.positions[neighbor[0]][neighbor[1]] === 'bomb'
           ).length;
           this.positions[row][column] = bombCounter;
         }
