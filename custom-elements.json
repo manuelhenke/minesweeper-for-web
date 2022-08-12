@@ -96,6 +96,18 @@
             },
             {
               "kind": "method",
+              "name": "getSweeperFieldSvg",
+              "parameters": [
+                {
+                  "name": "rowIndex"
+                },
+                {
+                  "name": "columnIndex"
+                }
+              ]
+            },
+            {
+              "kind": "method",
               "name": "getSweeperFieldHtml",
               "parameters": [
                 {
