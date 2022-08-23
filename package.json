@@ -23,8 +23,9 @@
     "url": "https://henkebyte.com/"
   },
   "type": "module",
-  "main": "dist/minesweeper.js",
-  "module": "dist/minesweeper.js",
+  "main": "src/minesweeper.js",
+  "module": "src/minesweeper.js",
+  "browser": "dist/minesweeper.js",
   "files": [
     "dist"
   ],
@@ -53,7 +54,6 @@
     "@babel/plugin-proposal-class-properties": "^7.16.7",
     "@babel/plugin-proposal-decorators": "^7.17.2",
     "@babel/preset-env": "^7.16.11",
-    "@commitlint/cli": "^17.0.3",
     "@commitlint/config-conventional": "^17.0.3",
     "@custom-elements-manifest/analyzer": "^0.6.3",
     "@open-wc/eslint-config": "^8.0.2",

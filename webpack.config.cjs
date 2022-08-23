@@ -12,7 +12,7 @@ module.exports = {
     'minesweeper.min': './src/minesweeper.js',
   },
   optimization: {
-    minimize: false,
+    minimize: true,
     minimizer: [
       new TerserPlugin({
         include: /\.min\.js$/,
