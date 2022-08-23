@@ -1,4 +1,4 @@
-import { MinesweeperBoard } from './MinesweeperBoard.js';
+import { MinesweeperBoard } from './minesweeper-board.js';
 
 /**
  * @typedef GameModeConfiguration
@@ -18,11 +18,11 @@ export class MinesweeperGame {
     /**
      * @type {MinesweeperBoard}
      */
-    this.board = null;
+    this.board = undefined;
     /**
      * @type {GameModeConfiguration}
      */
-    this.gameModeConfiguration = null;
+    this.gameModeConfiguration = undefined;
 
     this.isGameOver = true;
   }
@@ -71,17 +71,17 @@ export class MinesweeperGame {
   }
 
   selectField(selectedRow, selectedColumn) {
-    const field = this.board.revealFieldEntry(selectedRow, selectedColumn);
+    const wasBomb = this.board.revealFieldEntry(selectedRow, selectedColumn);
 
-    if (field === 'bomb') {
+    if (wasBomb) {
       this.onLoseCallback();
       this.isGameOver = true;
       return;
     }
 
     // flatten the 2d boolean array and count false values
-    const unrevealedFieldsAmount = []
-      .concat(...this.board.revealedFields)
+    const unrevealedFieldsAmount = this.board.revealedFields
+      .flat()
       .filter((revealedField) => !revealedField).length;
 
     if (unrevealedFieldsAmount === this.board.bombs) {

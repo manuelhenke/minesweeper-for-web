@@ -1,4 +1,5 @@
-const path = require('path');
+/* eslint-disable import/no-extraneous-dependencies */
+const path = require('node:path');
 const TerserPlugin = require('terser-webpack-plugin');
 
 /** @type {require('webpack').Configuration} */
@@ -6,8 +7,8 @@ module.exports = {
   mode: 'production',
   devtool: false,
   entry: {
-    minesweeper: './src/Minesweeper.js',
-    'minesweeper.min': './src/Minesweeper.js',
+    minesweeper: './src/minesweeper.js',
+    'minesweeper.min': './src/minesweeper.js',
   },
   optimization: {
     minimize: false,

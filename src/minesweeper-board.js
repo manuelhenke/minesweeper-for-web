@@ -1,10 +1,15 @@
+export const FIELD_KEYS = {
+  BOMB: 'bomb',
+  BOMB_EXPLODE: 'bomb-explode',
+};
+
 export class MinesweeperBoard {
   constructor(gameModeConfiguration) {
-    this.positions = null;
-    this.flags = null;
+    this.positions = undefined;
+    this.flags = undefined;
     this.flagCounter = 0;
-    this.questionMarks = null;
-    this.revealedFields = null;
+    this.questionMarks = undefined;
+    this.revealedFields = undefined;
     this.rows = gameModeConfiguration.rows;
     this.columns = gameModeConfiguration.columns;
     this.bombs = gameModeConfiguration.bombs;
@@ -26,9 +31,9 @@ export class MinesweeperBoard {
   }
 
   generate2dFields(value) {
-    return Array(this.rows)
+    return Array.from({ length: this.rows })
       .fill()
-      .map(() => Array(this.columns).fill(value));
+      .map(() => Array.from({ length: this.columns }).fill(value));
   }
 
   placeBombs() {
@@ -38,7 +43,7 @@ export class MinesweeperBoard {
     for (let row = 0; row < this.rows; row += 1) {
       for (let column = 0; column < this.columns; column += 1) {
         if (bombIndices.includes(fieldIndex)) {
-          this.positions[row][column] = 'bomb';
+          this.positions[row][column] = FIELD_KEYS.BOMB;
         }
         fieldIndex += 1;
       }
@@ -67,9 +72,9 @@ export class MinesweeperBoard {
   applyFieldNumbers() {
     for (let row = 0; row < this.rows; row += 1) {
       for (let column = 0; column < this.columns; column += 1) {
-        if (this.positions[row][column] !== 'bomb') {
+        if (this.positions[row][column] !== FIELD_KEYS.BOMB) {
           const bombCounter = this.getNeighbors(row, column).filter(
-            (neighbor) => this.positions[neighbor[0]][neighbor[1]] === 'bomb'
+            (neighbor) => this.positions[neighbor[0]][neighbor[1]] === FIELD_KEYS.BOMB
           ).length;
           this.positions[row][column] = bombCounter;
         }
@@ -79,7 +84,7 @@ export class MinesweeperBoard {
 
   revealFieldEntry(row, column) {
     if (this.flags[row][column]) {
-      return null;
+      return false;
     }
     if (this.questionMarks[row][column]) {
       this.questionMarks[row][column] = false;
@@ -87,10 +92,10 @@ export class MinesweeperBoard {
 
     const field = this.positions[row][column];
 
-    if (field === 'bomb') {
+    if (field === FIELD_KEYS.BOMB) {
       // position contains bomb
       this.revealBombs();
-      this.positions[row][column] = 'bomb-explode';
+      this.positions[row][column] = FIELD_KEYS.BOMB_EXPLODE;
     } else if (field === 0) {
       // position contains no bomb and has no neighbor-bombs
       this.expand(row, column);
@@ -99,13 +104,13 @@ export class MinesweeperBoard {
       this.revealedFields[row][column] = true;
     }
 
-    return field;
+    return field === FIELD_KEYS.BOMB;
   }
 
   expand(row, column) {
     const field = this.positions[row][column];
 
-    if (field === 'bomb' || this.revealedFields[row][column]) {
+    if (field === FIELD_KEYS.BOMB || this.revealedFields[row][column]) {
       return;
     }
 
@@ -233,7 +238,7 @@ export class MinesweeperBoard {
   revealBombs(bombsAsFlags = false) {
     for (let row = 0; row < this.rows; row += 1) {
       for (let column = 0; column < this.columns; column += 1) {
-        if (this.positions[row][column] === 'bomb') {
+        if (this.positions[row][column] === FIELD_KEYS.BOMB) {
           this.revealedFields[row][column] = true;
           if (bombsAsFlags) {
             this.addFlag(row, column);

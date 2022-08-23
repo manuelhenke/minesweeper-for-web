@@ -3,11 +3,13 @@ import { html, unsafeCSS, LitElement } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { eventOptions } from 'lit/decorators/event-options.js';
 import { unsafeSVG } from 'lit/directives/unsafe-svg.js';
-import { MinesweeperGame } from './MinesweeperGame.js';
-import Icons from './Icons.js';
+import { MinesweeperGame } from './minesweeper-game.js';
+import Icons from './icons.js';
 import Style from './minesweeper.scss';
+import { FIELD_KEYS } from './minesweeper-board.js';
 
 function getSVGReference(id) {
+  // eslint-disable-next-line no-secrets/no-secrets
   return `<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 76 76" preserveAspectRatio="xMidYMid meet" enable-background="new 0 0 76 76"><use href="#${id}" /></svg>`;
 }
 
@@ -159,7 +161,7 @@ export class Minesweeper extends LitElement {
 
     if (this.__game && this.__game.board && !this.__game.isGameOver) {
       this.__longPressTimer = setTimeout(() => {
-        let animationInterval = null;
+        let animationInterval;
         const flagSvg = currentSweeperField.querySelector('svg');
         let currentScale = 1;
         function scale() {
@@ -200,8 +202,8 @@ export class Minesweeper extends LitElement {
           composed: true,
         })
       );
-      const selectedRow = parseInt(currentSweeperField.dataset.row, 10);
-      const selectedColumn = parseInt(currentSweeperField.dataset.column, 10);
+      const selectedRow = Number.parseInt(currentSweeperField.dataset.row, 10);
+      const selectedColumn = Number.parseInt(currentSweeperField.dataset.column, 10);
 
       const gameBoard = this.__game.board;
       const hasFlag = gameBoard.flags[selectedRow][selectedColumn];
@@ -236,18 +238,26 @@ export class Minesweeper extends LitElement {
       }
     }
 
-    return html`<div class="sweeper-container">
-        <div class="sweeper-box" @click="${(event) => event.preventDefault()}">
-          ${gameBoard.positions.map(
-            (row, rowIndex) =>
-              html`<div class="sweeper-row">
-                ${row.map((field, columnIndex) => this.getSweeperFieldHtml(rowIndex, columnIndex))}
-              </div>`
-          )}
-        </div>
-        <div class="svg-container">${Object.values(Icons).map(unsafeSVG)}</div>
-      </div>
-    </div>`;
+    return html`
+      <div class="sweeper-container">
+              <div class="sweeper-box" @click="${(event) => event.preventDefault()}">
+                ${gameBoard.positions.map(
+                  (row, rowIndex) =>
+                    html`
+                      <div class="sweeper-row">
+                        ${row.map((field, columnIndex) =>
+                          this.getSweeperFieldHtml(rowIndex, columnIndex)
+                        )}
+                      </div>
+                    `
+                )}
+              </div>
+              <div class="svg-container">${Object.values(Icons).map((element) =>
+                unsafeSVG(element)
+              )}</div>
+            </div>
+          </div>
+    `;
   }
 
   getSweeperFieldSvg(rowIndex, columnIndex) {
@@ -259,13 +269,9 @@ export class Minesweeper extends LitElement {
     let sweeperFieldSvg = Minesweeper.ICONS.UNOPENED_SQUARE;
     if (isRevealed) {
       const fieldValue = gameBoard.positions[rowIndex][columnIndex];
-      if (fieldValue === 'bomb') {
-        if (hasFlag) {
-          sweeperFieldSvg = Minesweeper.ICONS.FLAG;
-        } else {
-          sweeperFieldSvg = Minesweeper.ICONS.BOMB;
-        }
-      } else if (fieldValue === 'bomb-explode') {
+      if (fieldValue === FIELD_KEYS.BOMB) {
+        sweeperFieldSvg = hasFlag ? Minesweeper.ICONS.FLAG : Minesweeper.ICONS.BOMB;
+      } else if (fieldValue === FIELD_KEYS.BOMB_EXPLODE) {
         sweeperFieldSvg = Minesweeper.ICONS.BOMB_EXPLODE;
       } else if (hasFlag) {
         sweeperFieldSvg = Minesweeper.ICONS.FLAG_MISSED;
@@ -293,28 +299,32 @@ export class Minesweeper extends LitElement {
     const attachEventListener = !isRevealed && !this.__game.isGameOver;
 
     if (attachEventListener) {
-      return html`<div
+      return html`
+        <div
+          class="sweeper-field${sweeperFieldClass}"
+          @touchstart="${this.__handleFieldClickStart}"
+          @touchend="${this.__handleFieldClickLeave}"
+          @touchcancel="${this.__handleFieldClickLeave}"
+          @mousedown="${this.__handleFieldClickStart}"
+          @mouseup="${this.__handleFieldClickLeave}"
+          @mouseleave="${this.__handleFieldClickLeave}"
+          @click="${this.__handleFieldClickEnd}"
+          data-row="${rowIndex}"
+          data-column="${columnIndex}"
+        >
+          ${unsafeSVG(sweeperFieldSvg)}
+        </div>
+      `;
+    }
+
+    return html`
+      <div
         class="sweeper-field${sweeperFieldClass}"
-        @touchstart="${this.__handleFieldClickStart}"
-        @touchend="${this.__handleFieldClickLeave}"
-        @touchcancel="${this.__handleFieldClickLeave}"
-        @mousedown="${this.__handleFieldClickStart}"
-        @mouseup="${this.__handleFieldClickLeave}"
-        @mouseleave="${this.__handleFieldClickLeave}"
-        @click="${this.__handleFieldClickEnd}"
         data-row="${rowIndex}"
         data-column="${columnIndex}"
       >
         ${unsafeSVG(sweeperFieldSvg)}
-      </div>`;
-    }
-
-    return html`<div
-      class="sweeper-field${sweeperFieldClass}"
-      data-row="${rowIndex}"
-      data-column="${columnIndex}"
-    >
-      ${unsafeSVG(sweeperFieldSvg)}
-    </div>`;
+      </div>
+    `;
   }
 }

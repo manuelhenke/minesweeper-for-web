@@ -4,8 +4,8 @@ import '../dist/minesweeper.js';
 
 describe('Minesweeper', () => {
   it('passes the a11y audit', async () => {
-    const el = await fixture(`<minesweeper-game></minesweeper-game>`);
+    const element = await fixture(`<minesweeper-game></minesweeper-game>`);
 
-    await expect(el).shadowDom.to.be.accessible();
+    expect(element).shadowDom.to.be.accessible();
   });
 });
