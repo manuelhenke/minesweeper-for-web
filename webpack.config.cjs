@@ -5,8 +5,8 @@ const TerserPlugin = require('terser-webpack-plugin');
 /** @type {require('webpack').Configuration} */
 module.exports = {
   mode: 'production',
-  devtool: false,
   cache: false,
+  devtool: false,
   entry: {
     minesweeper: './src/minesweeper.js',
     'minesweeper.min': './src/minesweeper.js',
@@ -23,6 +23,9 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
     filename: '[name].js',
     clean: true,
+  },
+  resolve: {
+    extensions: ['.ts', '.js'],
   },
   module: {
     rules: [
