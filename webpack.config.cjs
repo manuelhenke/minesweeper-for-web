@@ -6,6 +6,7 @@ const TerserPlugin = require('terser-webpack-plugin');
 module.exports = {
   mode: 'production',
   devtool: false,
+  cache: false,
   entry: {
     minesweeper: './src/minesweeper.js',
     'minesweeper.min': './src/minesweeper.js',
