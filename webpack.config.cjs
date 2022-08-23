@@ -8,8 +8,8 @@ module.exports = {
   cache: false,
   devtool: false,
   entry: {
-    minesweeper: './src/minesweeper.js',
-    'minesweeper.min': './src/minesweeper.js',
+    minesweeper: path.resolve(__dirname, './src/minesweeper.js'),
+    'minesweeper.min': path.resolve(__dirname, './src/minesweeper.js'),
   },
   optimization: {
     minimize: true,
