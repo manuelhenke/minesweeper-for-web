@@ -1,7 +1,6 @@
 /* eslint-disable lit-a11y/click-events-have-key-events */
 import { html, unsafeCSS, LitElement } from 'lit';
-import { customElement } from 'lit/decorators/custom-element.js';
-import { eventOptions } from 'lit/decorators/event-options.js';
+import { customElement, eventOptions } from 'lit/decorators.js';
 import { unsafeSVG } from 'lit/directives/unsafe-svg.js';
 import { MinesweeperGame } from './minesweeper-game.js';
 import Icons from './icons.js';
