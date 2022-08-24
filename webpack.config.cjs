@@ -7,7 +7,7 @@ module.exports = {
   mode: 'production',
   cache: false,
   devtool: false,
-  context: path.resolve(__dirname, './'),
+  context: __dirname,
   entry: {
     minesweeper: './src/minesweeper.js',
     'minesweeper.min': './src/minesweeper.js',
