@@ -7,10 +7,10 @@ module.exports = {
   mode: 'production',
   cache: false,
   devtool: false,
-  context: './',
+  context: path.resolve(__dirname, './'),
   entry: {
-    minesweeper: path.resolve(__dirname, './src/minesweeper.js'),
-    'minesweeper.min': path.resolve(__dirname, './src/minesweeper.js'),
+    minesweeper: './src/minesweeper.js',
+    'minesweeper.min': './src/minesweeper.js',
   },
   optimization: {
     minimize: true,
@@ -21,7 +21,7 @@ module.exports = {
     ],
   },
   output: {
-    path: path.resolve(__dirname, './dist'),
+    path: './dist',
     filename: '[name].js',
     clean: true,
   },
