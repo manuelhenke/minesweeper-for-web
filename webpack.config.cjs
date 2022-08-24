@@ -7,7 +7,6 @@ module.exports = {
   mode: 'production',
   cache: false,
   devtool: false,
-  context: __dirname,
   entry: {
     minesweeper: './src/minesweeper.js',
     'minesweeper.min': './src/minesweeper.js',
@@ -24,9 +23,6 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
     filename: '[name].js',
     clean: true,
-  },
-  resolve: {
-    extensions: ['.ts', '.js'],
   },
   module: {
     rules: [
