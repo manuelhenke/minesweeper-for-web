@@ -36,48 +36,55 @@ export class Minesweeper extends LitElement {
     return unsafeCSS(Style);
   }
 
-  static get properties() {
-    return {
-      restartSelector: {
-        attribute: 'restart-selector',
-        type: String,
-      },
-      bombCounterSelector: {
-        attribute: 'bomb-counter-selector',
-        type: String,
-      },
-      columns: { type: Number },
-      rows: { type: Number },
-      bombs: { type: Number },
-      /** @type {MinesweeperGame} */
-      __game: {
-        state: true,
-        attribute: false,
-      },
-      /** @type {Number} */
-      __pressStartTimestamp: {
-        state: true,
-        type: Number,
-      },
-      /** @type {HTMLElement} */
-      __pressStartSweeperField: {
-        state: true,
-        attribute: false,
-      },
-      /** @type {Number} */
-      __longPressTimer: {
-        state: true,
-        type: Number,
-      },
-    };
-  }
+  /** @type {string} */
+  @property({
+    attribute: 'restart-selector',
+    type: String,
+  })
+  restartSelector;
 
-  constructor() {
-    super();
-    this.columns = 9;
-    this.rows = 9;
-    this.bombs = 10;
-  }
+  /** @type {string} */
+  @property({
+    attribute: 'bomb-counter-selector',
+    type: String,
+  })
+  bombCounterSelector;
+
+  /** @type {number} */
+  @property({
+    type: Number,
+  })
+  columns = 9;
+
+  /** @type {number} */
+  @property({
+    type: Number,
+  })
+  rows = 9;
+
+  /** @type {number} */
+  @property({
+    type: Number,
+  })
+  bombs = 10;
+
+  /** @type {MinesweeperGame} */
+  @state({})
+  _game;
+
+  /** @type {Number} */
+  @state({})
+  _pressStartTimestamp;
+
+  /** @type {HTMLElement} */
+  @state({})
+  _pressStartSweeperField;
+
+  /** @type {Number} */
+  @state({})
+  _longPressTimer;
+
+
 
   connectedCallback() {
     if (super.connectedCallback) {
@@ -91,37 +98,36 @@ export class Minesweeper extends LitElement {
       });
     }
 
-    this.__game = new MinesweeperGame(
-      this.__gameWonCallback.bind(this),
-      this.__gameLostCallback.bind(this)
+    this._game = new MinesweeperGame(
+      this._gameWonCallback.bind(this),
+      this._gameLostCallback.bind(this)
     );
 
-    this.__createGameBoard();
+    this._createGameBoard();
   }
 
+  disconnectedCallback() {
+    if (super.disconnectedCallback) {
+      super.disconnectedCallback();
+    }
+  }
   __createGameBoard() {
     if (this.__game) {
       this.__game.createBoard(this.columns, this.rows, this.bombs);
+
+  _createGameBoard() {
+    if (this._game) {
+      this._game.createBoard(this.columns, this.rows, this.bombs);
       this.requestUpdate();
     }
   }
 
-  __gameWonCallback() {
-    const options = {
-      detail: {},
-      bubbles: true,
-      composed: true,
-    };
-    this.dispatchEvent(new CustomEvent('game-won', options));
+  _gameWonCallback() {
+    this.dispatchEvent('game-won');
   }
 
-  __gameLostCallback() {
-    const options = {
-      detail: {},
-      bubbles: true,
-      composed: true,
-    };
-    this.dispatchEvent(new CustomEvent('game-lost', options));
+  _gameLostCallback() {
+    this.dispatchEvent('game-lost');
   }
 
   /**
@@ -131,35 +137,58 @@ export class Minesweeper extends LitElement {
     this.columns = gameModeConfiguration.columns;
     this.rows = gameModeConfiguration.rows;
     this.bombs = gameModeConfiguration.bombs;
-    this.__createGameBoard();
+    this._createGameBoard();
   }
 
   restartGame() {
-    if (this.__game) {
-      this.__game.restart();
+    if (this._game) {
+      this._game.restart();
       this.requestUpdate();
     }
   }
 
-  __resetLongPressStates() {
-    clearTimeout(this.__longPressTimer);
+  /**
+   * @param {string} type
+   * @param {CustomEventInit} [eventInitDict]
+   */
+  dispatchEvent(type, eventInitDict = {}) {
+    const { detail, ...eventInitDictWithoutDetail } = eventInitDict;
+
+    return super.dispatchEvent(
+      new CustomEvent(type, {
+        detail: {
+          game: {
+            ...JSON.parse(JSON.stringify(this._game)), // deep copy
+          },
+          ...detail,
+        },
+        bubbles: true,
+        composed: true,
+        cancelable: false,
+        ...eventInitDictWithoutDetail,
+      })
+    );
+  }
+
+  _resetLongPressStates() {
+    clearTimeout(this._longPressTimer);
   }
 
   /**
    * @param {TouchEvent|MouseEvent} event
    */
   @eventOptions({ passive: true })
-  __handleFieldClickStart(event) {
+  _handleFieldClickStart(event) {
     if (typeof window.ontouchstart !== 'undefined' && event.type === 'mousedown') {
-      this.__resetLongPressStates();
+      this._resetLongPressStates();
       return;
     }
     const currentSweeperField = event.currentTarget;
-    this.__pressStartSweeperField = currentSweeperField;
-    this.__pressStartTimestamp = event.timeStamp;
+    this._pressStartSweeperField = currentSweeperField;
+    this._pressStartTimestamp = event.timeStamp;
 
-    if (this.__game && this.__game.board && !this.__game.isGameOver) {
-      this.__longPressTimer = setTimeout(() => {
+    if (this._game && this._game.board && !this._game.isGameOver) {
+      this._longPressTimer = setTimeout(() => {
         let animationInterval;
         const flagSvg = currentSweeperField.querySelector('svg');
         let currentScale = 1;
@@ -178,96 +207,97 @@ export class Minesweeper extends LitElement {
   }
 
   @eventOptions({ passive: true })
-  __handleFieldClickLeave() {
-    this.__resetLongPressStates();
+  _handleFieldClickLeave() {
+    this._resetLongPressStates();
   }
 
   /**
    * @param {PointerEvent} event
    */
-  __handleFieldClickEnd(event) {
+  _handleFieldClickEnd(event) {
     const currentSweeperField = event.currentTarget;
-    const wasLongPress = event.timeStamp - this.__pressStartTimestamp > 500;
-    const stillSameSweeperField = this.__pressStartSweeperField === currentSweeperField;
-    this.__resetLongPressStates();
+    const wasLongPress = event.timeStamp - this._pressStartTimestamp > 500;
+    const stillSameSweeperField = this._pressStartSweeperField === currentSweeperField;
+    this._resetLongPressStates();
 
-    if (this.__game && this.__game.board && !this.__game.isGameOver && stillSameSweeperField) {
-      this.dispatchEvent(
-        new CustomEvent('field-click', {
-          detail: {
-            field: currentSweeperField,
-          },
-          bubbles: true,
-          composed: true,
-        })
-      );
-      const selectedRow = Number.parseInt(currentSweeperField.dataset.row, 10);
-      const selectedColumn = Number.parseInt(currentSweeperField.dataset.column, 10);
-
-      const gameBoard = this.__game.board;
-      const hasFlag = gameBoard.flags[selectedRow][selectedColumn];
-      if (wasLongPress || event.ctrlKey || event.altKey || event.metaKey) {
-        const hasQuestionMark = gameBoard.questionMarks[selectedRow][selectedColumn];
-        if (hasQuestionMark || hasFlag) {
-          this.__game.toggleQuestionMark(selectedRow, selectedColumn);
-        } else {
-          this.__game.toggleFlag(selectedRow, selectedColumn);
-        }
-      } else if (hasFlag) {
-        // if user performs a regular click on a field with a flag on it cancel it
-        return;
-      } else {
-        this.__game.selectField(selectedRow, selectedColumn);
-      }
-      this.requestUpdate();
+    if (!this._game || !this._game.board || this._game.isGameOver || !stillSameSweeperField) {
+      return;
     }
+
+    const allowed = this.dispatchEvent('field-click', {
+      detail: {
+        field: currentSweeperField,
+      },
+      cancelable: true,
+    });
+
+    if (!allowed) {
+      return;
+    }
+
+    const selectedRow = Number.parseInt(currentSweeperField.dataset.row, 10);
+    const selectedColumn = Number.parseInt(currentSweeperField.dataset.column, 10);
+
+    const { flags, questionMarks } = this._game.board;
+    const hasFlag = flags[selectedRow][selectedColumn];
+    if (wasLongPress || event.ctrlKey || event.altKey || event.metaKey) {
+      const hasQuestionMark = questionMarks[selectedRow][selectedColumn];
+      if (hasQuestionMark || hasFlag) {
+        this._game.toggleQuestionMark(selectedRow, selectedColumn);
+      } else {
+        this._game.toggleFlag(selectedRow, selectedColumn);
+      }
+    } else if (!hasFlag) {
+      // if user performs a regular click on a field with a flag on it cancel it
+      this._game.selectField(selectedRow, selectedColumn);
+    }
+    this.requestUpdate();
   }
 
   render() {
-    if (!this.__game || !this.__game.board) {
+    if (!this._game || !this._game.board) {
       return html`No Board :(`;
     }
 
-    const gameBoard = this.__game.board;
+    const { bombs, flagCounter, positions } = this._game.board;
 
     if (this.bombCounterSelector) {
       const bombCounterElements = document.querySelectorAll(this.bombCounterSelector);
       for (const bombCounterElement of bombCounterElements) {
-        bombCounterElement.textContent = gameBoard.bombs - gameBoard.flagCounter;
+        bombCounterElement.textContent = bombs - flagCounter;
       }
     }
 
     return html`
       <div class="sweeper-container">
-              <div class="sweeper-box" @click="${(event) => event.preventDefault()}">
-                ${gameBoard.positions.map(
-                  (row, rowIndex) =>
-                    html`
-                      <div class="sweeper-row">
-                        ${row.map((field, columnIndex) =>
-                          this.getSweeperFieldHtml(rowIndex, columnIndex)
-                        )}
-                      </div>
-                    `
-                )}
-              </div>
-              <div class="svg-container">${Object.values(Icons).map((element) =>
-                unsafeSVG(element)
-              )}</div>
-            </div>
-          </div>
+        <div class="sweeper-box" @click="${(event) => event.preventDefault()}">
+          ${positions.map(
+            (row, rowIndex) =>
+              html`
+                <div class="sweeper-row">
+                  ${row.map((field, columnIndex) =>
+                    this._getSweeperFieldHtml(rowIndex, columnIndex)
+                  )}
+                </div>
+              `
+          )}
+        </div>
+        <div class="svg-container">
+          ${Object.values(Icons).map((element) => unsafeSVG(element))}
+        </div>
+      </div>
     `;
   }
 
-  getSweeperFieldSvg(rowIndex, columnIndex) {
-    const gameBoard = this.__game.board;
-    const isRevealed = gameBoard.revealedFields[rowIndex][columnIndex];
-    const hasQuestionMark = gameBoard.questionMarks[rowIndex][columnIndex];
-    const hasFlag = gameBoard.flags[rowIndex][columnIndex];
+  _getSweeperFieldSvg(rowIndex, columnIndex) {
+    const { revealedFields, questionMarks, flags, positions } = this._game.board;
+    const isRevealed = revealedFields[rowIndex][columnIndex];
+    const hasQuestionMark = questionMarks[rowIndex][columnIndex];
+    const hasFlag = flags[rowIndex][columnIndex];
 
     let sweeperFieldSvg = Minesweeper.ICONS.UNOPENED_SQUARE;
     if (isRevealed) {
-      const fieldValue = gameBoard.positions[rowIndex][columnIndex];
+      const fieldValue = positions[rowIndex][columnIndex];
       if (fieldValue === FIELD_KEYS.BOMB) {
         sweeperFieldSvg = hasFlag ? Minesweeper.ICONS.FLAG : Minesweeper.ICONS.BOMB;
       } else if (fieldValue === FIELD_KEYS.BOMB_EXPLODE) {
@@ -286,28 +316,32 @@ export class Minesweeper extends LitElement {
     return sweeperFieldSvg;
   }
 
-  getSweeperFieldHtml(rowIndex, columnIndex) {
-    const gameBoard = this.__game.board;
-    const isRevealed = gameBoard.revealedFields[rowIndex][columnIndex];
-    const hasFlag = gameBoard.flags[rowIndex][columnIndex];
+  _getSweeperFieldHtml(rowIndex, columnIndex) {
+    const {
+      isGameOver,
+      board: { revealedFields, flags },
+    } = this._game;
+    const isRevealed = revealedFields[rowIndex][columnIndex];
+    const hasFlag = flags[rowIndex][columnIndex];
 
-    const sweeperFieldSvg = this.getSweeperFieldSvg(rowIndex, columnIndex);
+    const sweeperFieldSvg = this._getSweeperFieldSvg(rowIndex, columnIndex);
 
-    const sweeperFieldClass =
-      isRevealed || hasFlag || this.__game.isGameOver ? ' unselectable' : '';
-    const attachEventListener = !isRevealed && !this.__game.isGameOver;
+    const sweeperFieldClass = isRevealed || hasFlag || isGameOver
+        ? ' unselectable'
+        : '';
+    const attachEventListener = !isRevealed && !isGameOver;
 
     if (attachEventListener) {
       return html`
         <div
           class="sweeper-field${sweeperFieldClass}"
-          @touchstart="${this.__handleFieldClickStart}"
-          @touchend="${this.__handleFieldClickLeave}"
-          @touchcancel="${this.__handleFieldClickLeave}"
-          @mousedown="${this.__handleFieldClickStart}"
-          @mouseup="${this.__handleFieldClickLeave}"
-          @mouseleave="${this.__handleFieldClickLeave}"
-          @click="${this.__handleFieldClickEnd}"
+          @touchstart="${this._handleFieldClickStart}"
+          @touchend="${this._handleFieldClickLeave}"
+          @touchcancel="${this._handleFieldClickLeave}"
+          @mousedown="${this._handleFieldClickStart}"
+          @mouseup="${this._handleFieldClickLeave}"
+          @mouseleave="${this._handleFieldClickLeave}"
+          @click="${this._handleFieldClickEnd}"
           data-row="${rowIndex}"
           data-column="${columnIndex}"
         >
@@ -316,6 +350,7 @@ export class Minesweeper extends LitElement {
       `;
     }
 
+    // game is over or field already revealed
     return html`
       <div
         class="sweeper-field${sweeperFieldClass}"

@@ -50,32 +50,31 @@
     <script type="module">
       import './dist/minesweeper.js';
 
-      window.addEventListener('DOMContentLoaded', () => {
-        function getGameModeConfiguration(currentGameMode) {
-          switch (currentGameMode) {
-            case 'hard':
-              return {
-                columns: 30,
-                rows: 16,
-                bombs: 99,
-              };
-            case 'normal':
-              return {
-                columns: 16,
-                rows: 16,
-                bombs: 40,
-              };
-            case 'easy':
-            default:
-              return {
-                columns: 9,
-                rows: 9,
-                bombs: 10,
-              };
-          }
+      function getGameModeConfiguration(currentGameMode) {
+        switch (currentGameMode) {
+          case 'hard':
+            return {
+              columns: 30,
+              rows: 16,
+              bombs: 99,
+            };
+          case 'normal':
+            return {
+              columns: 16,
+              rows: 16,
+              bombs: 40,
+            };
+          default: // 'easy'
+            return {
+              columns: 9,
+              rows: 9,
+              bombs: 10,
+            };
         }
+      }
 
-        const minesweeper = document.getElementById('minesweeper');
+      window.addEventListener('DOMContentLoaded', () => {
+        const minesweeper = document.querySelector('#minesweeper');
 
         minesweeper.addEventListener('game-won', () => {
           // eslint-disable-next-line no-alert
@@ -87,20 +86,28 @@
           window.alert('lose');
         });
 
-        document.getElementById('restart-game-button-confirm').addEventListener('click', (e) => {
-          e.preventDefault();
-          if (
-            // eslint-disable-next-line no-alert
-            window.confirm('Are you sure, that you want to restart the game?')
-          ) {
-            minesweeper.restartGame();
-          }
+        minesweeper.addEventListener('field-click', (event) => {
+          // eslint-disable-next-line no-alert
+          console.log('field-click', event);
         });
 
-        document.getElementById('select-game-mode').addEventListener('change', (e) => {
-          e.preventDefault();
 
-          const gameModeConfiguration = getGameModeConfiguration(e.target.value);
+        document
+          .querySelector('#restart-game-button-confirm')
+          .addEventListener('click', (event) => {
+            event.preventDefault();
+            if (
+              // eslint-disable-next-line no-alert
+              window.confirm('Are you sure, that you want to restart the game?')
+            ) {
+              minesweeper.restartGame();
+            }
+          });
+
+        document.querySelector('#select-game-mode').addEventListener('change', (event) => {
+          event.preventDefault();
+
+          const gameModeConfiguration = getGameModeConfiguration(event.target.value);
           minesweeper.setGameModeConfiguration(gameModeConfiguration);
         });
       });
