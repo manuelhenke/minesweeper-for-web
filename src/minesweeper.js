@@ -52,6 +52,13 @@ export class Minesweeper extends LitElement {
 
   /** @type {number} */
   @property({
+    attribute: 'long-press-threshold',
+    type: Number,
+  })
+  longPressThreshold = 500;
+
+  /** @type {number} */
+  @property({
     type: Number,
   })
   columns = 9;
@@ -147,6 +154,10 @@ export class Minesweeper extends LitElement {
     }
   }
 
+  get _isLongPressDisabled() {
+    return !this.longPressThreshold || this.longPressThreshold <= 0;
+  }
+
   /**
    * @param {string} type
    * @param {CustomEventInit} [eventInitDict]
@@ -171,7 +182,9 @@ export class Minesweeper extends LitElement {
   }
 
   _resetLongPressStates() {
-    clearTimeout(this._longPressTimer);
+    if (!this._isLongPressDisabled) {
+      clearTimeout(this._longPressTimer);
+    }
   }
 
   /**
@@ -185,6 +198,9 @@ export class Minesweeper extends LitElement {
     }
     const currentSweeperField = event.currentTarget;
     this._pressStartSweeperField = currentSweeperField;
+    if (this._isLongPressDisabled) {
+      return;
+    }
     this._pressStartTimestamp = event.timeStamp;
 
     if (this._game && this._game.board && !this._game.isGameOver) {
@@ -202,7 +218,7 @@ export class Minesweeper extends LitElement {
           }
         }
         animationInterval = setInterval(scale, 2);
-      }, 500);
+      }, this.longPressThreshold);
     }
   }
 
@@ -216,7 +232,9 @@ export class Minesweeper extends LitElement {
    */
   _handleFieldClickEnd(event) {
     const currentSweeperField = event.currentTarget;
-    const wasLongPress = event.timeStamp - this._pressStartTimestamp > 500;
+    const wasLongPress =
+      !this._isLongPressDisabled &&
+      event.timeStamp - this._pressStartTimestamp > this.longPressThreshold;
     const stillSameSweeperField = this._pressStartSweeperField === currentSweeperField;
     this._resetLongPressStates();
 

@@ -21,6 +21,7 @@
   </head>
 
   <body>
+    <h1>Minesweeper</h1>
     <p>
       Just play
       <a
@@ -45,7 +46,8 @@
       <button id="restart-game-button">Restart!</button>
       <button id="restart-game-button-confirm">Restart with Confirm!</button>
     </p>
-    <minesweeper-game rows="5" columns="5" bombs="5"></minesweeper-game>
+    <h2>Disabled Long Press</h2>
+    <minesweeper-game rows="5" columns="5" bombs="5" long-press-threshold="0"></minesweeper-game>
 
     <script type="module">
       import './dist/minesweeper.js';
