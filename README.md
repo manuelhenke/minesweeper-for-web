@@ -20,11 +20,22 @@ npm i minesweeper-for-web
 yarn add minesweeper-for-web
 ```
 
+## Api
+
+| Param                   | Type     | Description                                                                                                                                      | Default |
+| ----------------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------ | ------- |
+| `columns`               | `number` | Amount of columns of the board.                                                                                                                  | `9`     |
+| `rows`                  | `number` | Amount of rows of the board.                                                                                                                     | `9`     |
+| `bombs`                 | `number` | Amount of bombs of the board.                                                                                                                    | `10`    |
+| `long-press-threshold`  | `number` | Amount of milliseconds required to trigger a long press (placing a flag). A value of zero or below disabled the long press functionality overall | `500`   |
+| `restart-selector`      | `string` | If present, attaches a click event listener to the element to trigger a restart.                                                                 |         |
+| `bomb-counter-selector` | `string` | If present, changes the `textContent` of the provided element to the amount of bombs minus the amount of placed flags.                           |         |
+
 ## Usage
 
 ### Basic usage
 
-Just a basic 9x9 / 10 Mines minesweeper game. You can **combine** further examples.
+Just a basic 9x9 / 10 Mines minesweeper game. Further examples can be **combined**.
 
 ```html
 <minesweeper-game></minesweeper-game>
@@ -32,7 +43,7 @@ Just a basic 9x9 / 10 Mines minesweeper game. You can **combine** further exampl
 
 ### Provide left-bomb-counter container
 
-To keep the user informed how many mines are there left, after subtracting the number of placed flags, just provide a container for the counter.
+To keep the user informed how many mines are left, after subtracting the number of placed flags, just provide a container for the counter.
 
 ```html
 <p><span id="bomb-counter"></span> Mines</p>
@@ -41,16 +52,24 @@ To keep the user informed how many mines are there left, after subtracting the n
 
 ### Provide a restart button
 
-You can provide a selector where a "click"-event will be attached to, to restart the game.
+Provide a selector where a "click"-event will be attached to, to restart the game.
 
 ```html
 <minesweeper-game restart-selector="#restart-game-button"></minesweeper-game>
 <button id="restart-game-button">Restart!</button>
 ```
 
+### Disable Long Press
+
+Provide a number lower or equal to `0` to disable the long press functionality.
+
+```html
+<minesweeper-game long-press-threshold="0"></minesweeper-game>
+```
+
 ### Trigger Restart via JavaScript
 
-You can write your own custom logic to restart the game.
+Write custom logic to restart the game.
 
 ```html
 <minesweeper-game id="minesweeper"></minesweeper-game>
@@ -59,10 +78,10 @@ You can write your own custom logic to restart the game.
 
 ```javascript
 window.addEventListener('DOMContentLoaded', () => {
-  const minesweeper = document.getElementById('minesweeper');
+  const minesweeper = document.querySelector('#minesweeper');
 
-  document.getElementById('restart-game-button-confirm').addEventListener('click', (e) => {
-    e.preventDefault();
+  document.querySelector('#restart-game-button-confirm').addEventListener('click', (event) => {
+    event.preventDefault();
     if (window.confirm('Are you sure, that you want to restart the game?')) {
       minesweeper.restartGame();
     }
@@ -70,9 +89,9 @@ window.addEventListener('DOMContentLoaded', () => {
 });
 ```
 
-### Custom win/lose callbacks
+### Custom win/lose event listener
 
-You can attach EventListener for the win-/lose-events.
+Attach an EventListener for the win/lose events.
 
 ```html
 <minesweeper-game id="minesweeper"></minesweeper-game>
@@ -80,7 +99,7 @@ You can attach EventListener for the win-/lose-events.
 
 ```javascript
 window.addEventListener('DOMContentLoaded', () => {
-  const minesweeper = document.getElementById('minesweeper');
+  const minesweeper = document.querySelector('#minesweeper');
 
   minesweeper.addEventListener('game-won', () => {
     console.log('win');
@@ -92,9 +111,9 @@ window.addEventListener('DOMContentLoaded', () => {
 });
 ```
 
-### Custom win/lose callbacks
+### Custom field-click event listener
 
-You can attach EventListener for the win-/lose-events.
+Attach an EventListener for a field click.
 
 ```html
 <minesweeper-game id="minesweeper"></minesweeper-game>
@@ -102,10 +121,10 @@ You can attach EventListener for the win-/lose-events.
 
 ```javascript
 window.addEventListener('DOMContentLoaded', () => {
-  const minesweeper = document.getElementById('minesweeper');
+  const minesweeper = document.querySelector('#minesweeper');
 
   minesweeper.addEventListener('field-click', (event) => {
-    // event.detail.field containts the html element of the clicked field
+    // event.detail.field contains the html element of the clicked field
     // It has the data-row and data-column attributes
     // Currently there is no clean way to identify which type of field it is:
     // Number, Bomb, Flag or Questionmark before and after
@@ -137,37 +156,36 @@ Furthermore you can implement some own logic to create a selectable gamemode
 ```
 
 ```javascript
-window.addEventListener('DOMContentLoaded', () => {
-  function getGameModeConfiguration(currentGameMode) {
-    switch (currentGameMode) {
-      case 'hard':
-        return {
-          columns: 30,
-          rows: 16,
-          bombs: 99,
-        };
-      case 'normal':
-        return {
-          columns: 16,
-          rows: 16,
-          bombs: 40,
-        };
-      case 'easy':
-      default:
-        return {
-          columns: 9,
-          rows: 9,
-          bombs: 10,
-        };
-    }
+function getGameModeConfiguration(currentGameMode) {
+  switch (currentGameMode) {
+    case 'hard':
+      return {
+        columns: 30,
+        rows: 16,
+        bombs: 99,
+      };
+    case 'normal':
+      return {
+        columns: 16,
+        rows: 16,
+        bombs: 40,
+      };
+    default: // 'easy'
+      return {
+        columns: 9,
+        rows: 9,
+        bombs: 10,
+      };
   }
+}
 
-  const minesweeper = document.getElementById('minesweeper');
+window.addEventListener('DOMContentLoaded', () => {
+  const minesweeper = document.querySelector('#minesweeper');
 
-  document.getElementById('select-game-mode').addEventListener('change', (e) => {
-    e.preventDefault();
+  document.querySelector('#select-game-mode').addEventListener('change', (event) => {
+    event.preventDefault();
 
-    const gameModeConfiguration = getGameModeConfiguration(e.target.value);
+    const gameModeConfiguration = getGameModeConfiguration(event.target.value);
     minesweeper.setGameModeConfiguration(gameModeConfiguration);
   });
 });
