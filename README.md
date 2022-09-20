@@ -29,6 +29,7 @@ yarn add minesweeper-for-web
 | `bombs`                  | `number`  | Amount of bombs of the board.                                                                                                                     | `10`    |
 | `long-press-threshold`   | `number`  | Amount of milliseconds required to trigger a long press (placing a flag). A value of zero or below disabled the long press functionality overall. | `500`   |
 | `disable-question-marks` | `boolean` | Disables the functionality to place question marks.                                                                                               | `false` |
+| `flag-placement-mode`    | `boolean` | Enables the flag placement mode. A mode where every click places a flag instead of revealing the field.                                           | `false` |
 | `restart-selector`       | `string`  | If present, attaches a click event listener to the element to trigger a restart.                                                                  |         |
 | `bomb-counter-selector`  | `string`  | If present, changes the `textContent` of the provided element to the amount of bombs minus the amount of placed flags.                            |         |
 

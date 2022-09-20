@@ -43,6 +43,7 @@
       bomb-counter-selector="#bomb-counter"
     ></minesweeper-game>
     <p>
+      <button id="toggle-flag-mode">Toggle Flag Mode</button>
       <button id="restart-game-button">Restart!</button>
       <button id="restart-game-button-confirm">Restart with Confirm!</button>
     </p>
@@ -95,6 +96,16 @@
           console.log('field-click', event);
         });
 
+        document.querySelector('#toggle-flag-mode').addEventListener('click', (event) => {
+          event.preventDefault();
+          console.log('minesweeper', { minesweeper });
+          console.log('current flag placement mode:', minesweeper.flagPlacementMode);
+          if (minesweeper.flagPlacementMode) {
+            minesweeper.removeAttribute('flag-placement-mode');
+          } else {
+            minesweeper.setAttribute('flag-placement-mode', '');
+          }
+        });
 
         document
           .querySelector('#restart-game-button-confirm')

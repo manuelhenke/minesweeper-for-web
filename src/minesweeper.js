@@ -52,6 +52,14 @@ export class Minesweeper extends LitElement {
 
   /** @type {boolean} */
   @property({
+    attribute: 'flag-placement-mode',
+    type: Boolean,
+    reflect: true,
+  })
+  flagPlacementMode = false;
+
+  /** @type {boolean} */
+  @property({
     attribute: 'disable-question-marks',
     type: Boolean,
   })
@@ -98,7 +106,9 @@ export class Minesweeper extends LitElement {
   @state({})
   _longPressTimer;
 
-
+  /** @type {boolean} */
+  @state({})
+  _isPressingFlagKey = false;
 
   connectedCallback() {
     if (super.connectedCallback) {
@@ -118,16 +128,39 @@ export class Minesweeper extends LitElement {
     );
 
     this._createGameBoard();
+
+    this._handleDocumentKeydown = this._handleDocumentKeydown.bind(this);
+    this._handleDocumentKeyup = this._handleDocumentKeydown.bind(this);
+
+    document.addEventListener('keydown', this._handleDocumentKeydown);
+    document.addEventListener('keyup', this._handleDocumentKeyup);
   }
 
   disconnectedCallback() {
+    document.removeEventListener('keydown', this._handleDocumentKeydown);
+    document.addEventListener('keyup', this._handleDocumentKeyup);
     if (super.disconnectedCallback) {
       super.disconnectedCallback();
     }
   }
-  __createGameBoard() {
-    if (this.__game) {
-      this.__game.createBoard(this.columns, this.rows, this.bombs);
+
+  /**
+   * @param {KeyboardEvent} event
+   */
+  _handleDocumentKeydown(event) {
+    this._isPressingFlagKey = event.ctrlKey || event.altKey || event.metaKey;
+  }
+
+  _handleDocumentKeyup() {
+    this._isPressingFlagKey = false;
+  }
+
+  /**
+   * @param {MouseEvent} event
+   */
+  _handleSweeperContainerMouseMove(event) {
+    this._isPressingFlagKey = event.ctrlKey || event.altKey || event.metaKey;
+  }
 
   _createGameBoard() {
     if (this._game) {
@@ -252,6 +285,7 @@ export class Minesweeper extends LitElement {
     const allowed = this.dispatchEvent('field-click', {
       detail: {
         field: currentSweeperField,
+        flagPlacementMode: this.flagPlacementMode,
       },
       cancelable: true,
     });
@@ -265,7 +299,7 @@ export class Minesweeper extends LitElement {
 
     const { flags, questionMarks } = this._game.board;
     const hasFlag = flags[selectedRow][selectedColumn];
-    if (wasLongPress || event.ctrlKey || event.altKey || event.metaKey) {
+    if (wasLongPress || event.ctrlKey || event.altKey || event.metaKey || this.flagPlacementMode) {
       const hasQuestionMark = questionMarks[selectedRow][selectedColumn];
       if (!this.flagPlacementMode && !this.disableQuestionMarks && (hasQuestionMark || hasFlag)) {
         this._game.toggleQuestionMark(selectedRow, selectedColumn);
@@ -294,7 +328,12 @@ export class Minesweeper extends LitElement {
     }
 
     return html`
-      <div class="sweeper-container">
+      <div
+        class="sweeper-container${this.flagPlacementMode || this._isPressingFlagKey
+          ? ' show-hover-elements'
+          : ''}"
+        @mousemove="${this._handleSweeperContainerMouseMove}"
+      >
         <div class="sweeper-box" @click="${(event) => event.preventDefault()}">
           ${positions.map(
             (row, rowIndex) =>
@@ -341,6 +380,21 @@ export class Minesweeper extends LitElement {
     return sweeperFieldSvg;
   }
 
+  _getHoverSweeperFieldSvg(mainSweeperFieldSvg) {
+    switch (mainSweeperFieldSvg) {
+      case Minesweeper.ICONS.FLAG:
+        return this.disableQuestionMarks || this.flagPlacementMode
+          ? Minesweeper.ICONS.UNOPENED_SQUARE
+          : Minesweeper.ICONS.QUESTION_MARK;
+      case Minesweeper.ICONS.QUESTION_MARK:
+        return Minesweeper.ICONS.UNOPENED_SQUARE;
+      case Minesweeper.ICONS.UNOPENED_SQUARE:
+        return Minesweeper.ICONS.FLAG;
+      default:
+        return mainSweeperFieldSvg;
+    }
+  }
+
   _getSweeperFieldHtml(rowIndex, columnIndex) {
     const {
       isGameOver,
@@ -351,7 +405,8 @@ export class Minesweeper extends LitElement {
 
     const sweeperFieldSvg = this._getSweeperFieldSvg(rowIndex, columnIndex);
 
-    const sweeperFieldClass = isRevealed || hasFlag || isGameOver
+    const sweeperFieldClass =
+      isRevealed || (hasFlag && !(this.flagPlacementMode || this._isPressingFlagKey)) || isGameOver
         ? ' unselectable'
         : '';
     const attachEventListener = !isRevealed && !isGameOver;
@@ -370,7 +425,7 @@ export class Minesweeper extends LitElement {
           data-row="${rowIndex}"
           data-column="${columnIndex}"
         >
-          ${unsafeSVG(sweeperFieldSvg)}
+          ${unsafeSVG(sweeperFieldSvg)} ${unsafeSVG(this._getHoverSweeperFieldSvg(sweeperFieldSvg))}
         </div>
       `;
     }

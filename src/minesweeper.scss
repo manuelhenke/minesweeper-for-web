@@ -27,6 +27,13 @@
   border-color: rgb(123 123 123) white white rgb(123 123 123);
   background-color: #bdbdbd;
   overflow-x: auto;
+
+  &:not(.show-hover-elements) .sweeper-field,
+  &.show-hover-elements .sweeper-field:not(:hover) {
+    > *:nth-child(2) {
+      display: none;
+    }
+  }
 }
 
 .sweeper-box {
@@ -46,11 +53,21 @@
   -webkit-tap-highlight-color: transparent; /* for removing the highlight */
   height: 40px;
   width: 40px;
+  position: relative;
   object-position: center;
   object-fit: cover;
   cursor: pointer;
 
   &.unselectable {
     cursor: default;
+  }
+
+  > * {
+    position: absolute;
+    inset: 0;
+
+    &:nth-child(2) {
+      opacity: 0.25;
+    }
   }
 }
