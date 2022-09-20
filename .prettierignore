@@ -1,0 +1,6 @@
+CHANGELOG.md
+docs/
+dist/
+node_modules/
+coverage/
+.nuxt/

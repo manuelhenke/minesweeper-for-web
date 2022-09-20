@@ -33,10 +33,10 @@
     "analyze": "cem analyze --litelement",
     "build": "webpack",
     "lint": "yarn lint:js && yarn lint:style && yarn lint:prettier",
-    "lint:js": "eslint --ext \".js\" --ignore-path .gitignore .",
-    "lint:prettier": "prettier --ignore-path .gitignore --check .",
+    "lint:js": "eslint --ext \".js\" .",
+    "lint:prettier": "prettier --check .",
     "lint:style": "stylelint \"**/*.{css,scss,sass,html}\" --ignore-path .gitignore",
-    "lintfix": "prettier --ignore-path .gitignore --write --list-different . && yarn lint:js --fix && yarn lint:style --fix",
+    "lintfix": "prettier --write --list-different . && yarn lint:js --fix && yarn lint:style --fix",
     "prepare": "husky install",
     "test": "web-test-runner --coverage",
     "test:watch": "web-test-runner --watch"
