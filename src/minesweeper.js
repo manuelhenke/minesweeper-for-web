@@ -1,6 +1,6 @@
 /* eslint-disable lit-a11y/click-events-have-key-events */
 import { html, unsafeCSS, LitElement } from 'lit';
-import { customElement, eventOptions } from 'lit/decorators.js';
+import { customElement, eventOptions, property, state } from 'lit/decorators.js';
 import { unsafeSVG } from 'lit/directives/unsafe-svg.js';
 import { MinesweeperGame } from './minesweeper-game.js';
 import Icons from './icons.js';
@@ -49,6 +49,13 @@ export class Minesweeper extends LitElement {
     type: String,
   })
   bombCounterSelector;
+
+  /** @type {boolean} */
+  @property({
+    attribute: 'disable-question-marks',
+    type: Boolean,
+  })
+  disableQuestionMarks = false;
 
   /** @type {number} */
   @property({
@@ -260,7 +267,7 @@ export class Minesweeper extends LitElement {
     const hasFlag = flags[selectedRow][selectedColumn];
     if (wasLongPress || event.ctrlKey || event.altKey || event.metaKey) {
       const hasQuestionMark = questionMarks[selectedRow][selectedColumn];
-      if (hasQuestionMark || hasFlag) {
+      if (!this.flagPlacementMode && !this.disableQuestionMarks && (hasQuestionMark || hasFlag)) {
         this._game.toggleQuestionMark(selectedRow, selectedColumn);
       } else {
         this._game.toggleFlag(selectedRow, selectedColumn);
