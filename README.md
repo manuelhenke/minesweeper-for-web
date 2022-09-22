@@ -214,5 +214,7 @@ You can try it at [CodePen](https://codepen.io/manuelhenke/pen/ExoPKLZ) or just 
 
 ### Icons Copyright
 
-All rights for the icons used in this project belongs to their original creators: https://commons.wikimedia.org/wiki/Category:Minesweeper
+All rights for the icons used in this project belongs to their original creators:
+https://commons.wikimedia.org/wiki/Category:Minesweeper
+
 The icons "bomb_red.svg" and "bomb.svg" are based on "number-0.svg" and "flag_missed.svg" is based on "bomb.svg".
