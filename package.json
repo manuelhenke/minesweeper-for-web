@@ -1,7 +1,7 @@
 {
   "name": "minesweeper-for-web",
   "version": "2.2.1",
-  "description": "This is the classic microsoft minesweeper for the web.",
+  "description": "Minesweeper as a WebComponent.",
   "keywords": [
     "minesweeper",
     "javascript",
