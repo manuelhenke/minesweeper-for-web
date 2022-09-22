@@ -1,11 +1,11 @@
+# minesweeper-for-web
+
 [![CI](https://github.com/manuelhenke/minesweeper-for-web/actions/workflows/ci.yml/badge.svg)](https://github.com/manuelhenke/minesweeper-for-web/actions/workflows/ci.yml)
 [![CodeQL](https://github.com/manuelhenke/minesweeper-for-web/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/manuelhenke/minesweeper-for-web/actions/workflows/codeql-analysis.yml)
 [![License](https://img.shields.io/github/license/manuelhenke/minesweeper-for-web)](./LICENSE)
 [![NPM version](https://img.shields.io/npm/v/minesweeper-for-web.svg?style=flat)](https://www.npmjs.com/package/minesweeper-for-web)
 
-# minesweeper-for-web
-
-This is Minesweeper as a **WebComponent**. Once you integrate it as described further, the game just follows the [standard rules](https://www.instructables.com/id/How-to-beat-Minesweeper/). To place a flag just press `ctrl`, `alt` or the meta key while clicking on a field.
+This is **Minesweeper** as a **WebComponent**. Once you integrate it as described further, the game just follows the [standard rules](https://www.instructables.com/id/How-to-beat-Minesweeper/). To place a flag just press `ctrl`, `alt` or the meta key while clicking on a field.
 
 ## Getting Started
 
