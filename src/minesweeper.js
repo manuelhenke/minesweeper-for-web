@@ -267,6 +267,9 @@ export class Minesweeper extends LitElement {
       }
     };
     animationInterval = setInterval(scale, 2);
+    if (typeof window.navigator.vibrate === 'function') {
+      window.navigator.vibrate(100);
+    }
   }
 
   /**
