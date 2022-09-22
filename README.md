@@ -5,7 +5,7 @@
 
 # minesweeper-for-web
 
-This is the classic Microsoft Minesweeper-Game as a WebComponent. Once you integrate it as described further, the game just follows the [standard rules](https://www.instructables.com/id/How-to-beat-Minesweeper/). To place a flag just press `ctrl`, `alt` or the meta key while clicking on a field.
+This is Minesweeper as a **WebComponent**. Once you integrate it as described further, the game just follows the [standard rules](https://www.instructables.com/id/How-to-beat-Minesweeper/). To place a flag just press `ctrl`, `alt` or the meta key while clicking on a field.
 
 ## Getting Started
 
