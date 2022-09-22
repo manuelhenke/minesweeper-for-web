@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.2.1](https://github.com/manuelhenke/minesweeper-for-web/compare/v2.2.0...v2.2.1) (2022-09-22)
+
+
+### Bug Fixes
+
+* long press behavior ([5ed6691](https://github.com/manuelhenke/minesweeper-for-web/commit/5ed66919750a123bdba37ea50a67a6589542ec85))
+
 ## [2.2.0](https://github.com/manuelhenke/minesweeper-for-web/compare/v2.1.18...v2.2.0) (2022-09-20)
 
 
