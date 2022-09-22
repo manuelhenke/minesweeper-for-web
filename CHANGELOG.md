@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.3.0](https://github.com/manuelhenke/minesweeper-for-web/compare/v2.2.1...v2.3.0) (2022-09-22)
+
+
+### Features
+
+* vibrate on long press ([706ef4d](https://github.com/manuelhenke/minesweeper-for-web/commit/706ef4d719ac2bbb1533f02b99b270939ba565af))
+
 ## [2.2.1](https://github.com/manuelhenke/minesweeper-for-web/compare/v2.2.0...v2.2.1) (2022-09-22)
 
 
