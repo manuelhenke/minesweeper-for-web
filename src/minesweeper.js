@@ -131,14 +131,17 @@ export class Minesweeper extends LitElement {
 
     this._handleDocumentKeydown = this._handleDocumentKeydown.bind(this);
     this._handleDocumentKeyup = this._handleDocumentKeydown.bind(this);
+    this._handleScroll = this._handleScroll.bind(this);
 
     document.addEventListener('keydown', this._handleDocumentKeydown);
     document.addEventListener('keyup', this._handleDocumentKeyup);
+    document.addEventListener('scroll', this._handleScroll);
   }
 
   disconnectedCallback() {
     document.removeEventListener('keydown', this._handleDocumentKeydown);
-    document.addEventListener('keyup', this._handleDocumentKeyup);
+    document.removeEventListener('keyup', this._handleDocumentKeyup);
+    document.removeEventListener('scroll', this._handleScroll);
     if (super.disconnectedCallback) {
       super.disconnectedCallback();
     }
@@ -170,11 +173,11 @@ export class Minesweeper extends LitElement {
   }
 
   _gameWonCallback() {
-    this.dispatchEvent('game-won');
+    this.dispatchEvent(new CustomEvent('game-won', this._generateEventOptions()));
   }
 
   _gameLostCallback() {
-    this.dispatchEvent('game-lost');
+    this.dispatchEvent(new CustomEvent('game-lost', this._generateEventOptions()));
   }
 
   /**
@@ -202,29 +205,68 @@ export class Minesweeper extends LitElement {
    * @param {string} type
    * @param {CustomEventInit} [eventInitDict]
    */
-  dispatchEvent(type, eventInitDict = {}) {
+  _generateEventOptions(eventInitDict = {}) {
     const { detail, ...eventInitDictWithoutDetail } = eventInitDict;
 
-    return super.dispatchEvent(
-      new CustomEvent(type, {
-        detail: {
-          game: {
-            ...JSON.parse(JSON.stringify(this._game)), // deep copy
-          },
-          ...detail,
+    return {
+      detail: {
+        game: {
+          ...JSON.parse(JSON.stringify(this._game)), // deep copy
         },
-        bubbles: true,
-        composed: true,
-        cancelable: false,
-        ...eventInitDictWithoutDetail,
-      })
-    );
+        ...detail,
+      },
+      bubbles: true,
+      composed: true,
+      cancelable: false,
+      ...eventInitDictWithoutDetail,
+    };
   }
 
   _resetLongPressStates() {
     if (!this._isLongPressDisabled) {
       clearTimeout(this._longPressTimer);
     }
+  }
+
+  _handleScroll() {
+    this._resetLongPressStates();
+  }
+
+  _handleLongPress(sweeperField) {
+    const allowed = this.dispatchEvent(
+      new CustomEvent(
+        'field-long-press',
+        this._generateEventOptions({
+          detail: {
+            field: sweeperField,
+          },
+          cancelable: true,
+        })
+      )
+    );
+
+    if (!allowed) {
+      return;
+    }
+
+    let animationInterval;
+    const flagSvg = sweeperField.querySelector('svg');
+    let currentScale = 1;
+    const scale = () => {
+      if (currentScale >= 1.25) {
+        clearInterval(animationInterval);
+        flagSvg.style.transform = 'none';
+
+        const selectedRow = Number.parseInt(sweeperField.dataset.row, 10);
+        const selectedColumn = Number.parseInt(sweeperField.dataset.column, 10);
+        this._triggerSecondActionClick(selectedRow, selectedColumn);
+        this.requestUpdate();
+      } else {
+        currentScale += 0.01;
+        flagSvg.style.transform = `scale(${currentScale})`;
+      }
+    };
+    animationInterval = setInterval(scale, 2);
   }
 
   /**
@@ -244,21 +286,10 @@ export class Minesweeper extends LitElement {
     this._pressStartTimestamp = event.timeStamp;
 
     if (this._game && this._game.board && !this._game.isGameOver) {
-      this._longPressTimer = setTimeout(() => {
-        let animationInterval;
-        const flagSvg = currentSweeperField.querySelector('svg');
-        let currentScale = 1;
-        function scale() {
-          if (currentScale >= 1.25) {
-            clearInterval(animationInterval);
-            flagSvg.style.transform = 'none';
-          } else {
-            currentScale += 0.01;
-            flagSvg.style.transform = `scale(${currentScale})`;
-          }
-        }
-        animationInterval = setInterval(scale, 2);
-      }, this.longPressThreshold);
+      this._longPressTimer = setTimeout(
+        () => this._handleLongPress(currentSweeperField),
+        this.longPressThreshold
+      );
     }
   }
 
@@ -278,17 +309,27 @@ export class Minesweeper extends LitElement {
     const stillSameSweeperField = this._pressStartSweeperField === currentSweeperField;
     this._resetLongPressStates();
 
-    if (!this._game || !this._game.board || this._game.isGameOver || !stillSameSweeperField) {
+    if (
+      !this._game ||
+      !this._game.board ||
+      this._game.isGameOver ||
+      !stillSameSweeperField ||
+      wasLongPress
+    ) {
       return;
     }
 
-    const allowed = this.dispatchEvent('field-click', {
-      detail: {
-        field: currentSweeperField,
-        flagPlacementMode: this.flagPlacementMode,
-      },
-      cancelable: true,
-    });
+    const allowed = this.dispatchEvent(
+      new CustomEvent(
+        'field-click',
+        this._generateEventOptions({
+          detail: {
+            field: currentSweeperField,
+          },
+          cancelable: true,
+        })
+      )
+    );
 
     if (!allowed) {
       return;
@@ -297,20 +338,31 @@ export class Minesweeper extends LitElement {
     const selectedRow = Number.parseInt(currentSweeperField.dataset.row, 10);
     const selectedColumn = Number.parseInt(currentSweeperField.dataset.column, 10);
 
-    const { flags, questionMarks } = this._game.board;
+    const { flags } = this._game.board;
     const hasFlag = flags[selectedRow][selectedColumn];
-    if (wasLongPress || event.ctrlKey || event.altKey || event.metaKey || this.flagPlacementMode) {
-      const hasQuestionMark = questionMarks[selectedRow][selectedColumn];
-      if (!this.flagPlacementMode && !this.disableQuestionMarks && (hasQuestionMark || hasFlag)) {
-        this._game.toggleQuestionMark(selectedRow, selectedColumn);
-      } else {
-        this._game.toggleFlag(selectedRow, selectedColumn);
-      }
+    if (event.ctrlKey || event.altKey || event.metaKey || this.flagPlacementMode) {
+      this._triggerSecondActionClick(selectedRow, selectedColumn);
     } else if (!hasFlag) {
       // if user performs a regular click on a field with a flag on it cancel it
       this._game.selectField(selectedRow, selectedColumn);
     }
     this.requestUpdate();
+  }
+
+  /**
+   * @param {number} selectedRow
+   * @param {number} selectedColumn
+   */
+  _triggerSecondActionClick(selectedRow, selectedColumn) {
+    const { flags, questionMarks } = this._game.board;
+    const hasFlag = flags[selectedRow][selectedColumn];
+
+    const hasQuestionMark = questionMarks[selectedRow][selectedColumn];
+    if (!this.flagPlacementMode && !this.disableQuestionMarks && (hasQuestionMark || hasFlag)) {
+      this._game.toggleQuestionMark(selectedRow, selectedColumn);
+    } else {
+      this._game.toggleFlag(selectedRow, selectedColumn);
+    }
   }
 
   render() {
@@ -333,6 +385,7 @@ export class Minesweeper extends LitElement {
           ? ' show-hover-elements'
           : ''}"
         @mousemove="${this._handleSweeperContainerMouseMove}"
+        @scroll="${this._handleScroll}"
       >
         <div class="sweeper-box" @click="${(event) => event.preventDefault()}">
           ${positions.map(

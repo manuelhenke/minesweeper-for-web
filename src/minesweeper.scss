@@ -51,8 +51,11 @@
   display: inline-block;
   user-select: none;
   -webkit-tap-highlight-color: transparent; /* for removing the highlight */
+  -webkit-user-select: none; /* disable selection/Copy of UIWebView */
+  -webkit-touch-callout: none; /* disable the IOS popup when long-press on a link */
   height: 40px;
   width: 40px;
+  overflow: hidden;
   position: relative;
   object-position: center;
   object-fit: cover;

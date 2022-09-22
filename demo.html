@@ -96,6 +96,11 @@
           console.log('field-click', event);
         });
 
+        minesweeper.addEventListener('long-press', (event) => {
+          // eslint-disable-next-line no-alert
+          console.log('long-press', event);
+        });
+
         document.querySelector('#toggle-flag-mode').addEventListener('click', (event) => {
           event.preventDefault();
           console.log('minesweeper', { minesweeper });

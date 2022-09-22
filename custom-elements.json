@@ -365,16 +365,151 @@
               "default": "{\n    BOMB: getSVGReference('bomb'),\n    BOMB_EXPLODE: getSVGReference('bomb-explode'),\n    FLAG: getSVGReference('flag'),\n    FLAG_MISSED: getSVGReference('flag-missed'),\n    QUESTION_MARK: getSVGReference('question-mark'),\n    UNOPENED_SQUARE: getSVGReference('unopened-square'),\n    NUMBER_0: getSVGReference('blank'),\n    NUMBER_1: getSVGReference('number-1'),\n    NUMBER_2: getSVGReference('number-2'),\n    NUMBER_3: getSVGReference('number-3'),\n    NUMBER_4: getSVGReference('number-4'),\n    NUMBER_5: getSVGReference('number-5'),\n    NUMBER_6: getSVGReference('number-6'),\n    NUMBER_7: getSVGReference('number-7'),\n    NUMBER_8: getSVGReference('number-8'),\n  }"
             },
             {
-              "kind": "method",
-              "name": "__createGameBoard"
+              "kind": "field",
+              "name": "restartSelector",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "restart-selector"
+            },
+            {
+              "kind": "field",
+              "name": "bombCounterSelector",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "bomb-counter-selector"
+            },
+            {
+              "kind": "field",
+              "name": "flagPlacementMode",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "flag-placement-mode",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "disableQuestionMarks",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "disable-question-marks"
+            },
+            {
+              "kind": "field",
+              "name": "longPressThreshold",
+              "type": {
+                "text": "number"
+              },
+              "default": "500",
+              "attribute": "long-press-threshold"
+            },
+            {
+              "kind": "field",
+              "name": "columns",
+              "type": {
+                "text": "number"
+              },
+              "default": "9",
+              "attribute": "columns"
+            },
+            {
+              "kind": "field",
+              "name": "rows",
+              "type": {
+                "text": "number"
+              },
+              "default": "9",
+              "attribute": "rows"
+            },
+            {
+              "kind": "field",
+              "name": "bombs",
+              "type": {
+                "text": "number"
+              },
+              "default": "10",
+              "attribute": "bombs"
+            },
+            {
+              "kind": "field",
+              "name": "_game",
+              "type": {
+                "text": "MinesweeperGame"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "_pressStartTimestamp",
+              "type": {
+                "text": "Number"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "_pressStartSweeperField",
+              "type": {
+                "text": "HTMLElement"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "_longPressTimer",
+              "type": {
+                "text": "Number"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "_isPressingFlagKey",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
             },
             {
               "kind": "method",
-              "name": "__gameWonCallback"
+              "name": "_handleDocumentKeydown",
+              "parameters": [
+                {
+                  "name": "event",
+                  "type": {
+                    "text": "KeyboardEvent"
+                  }
+                }
+              ]
             },
             {
               "kind": "method",
-              "name": "__gameLostCallback"
+              "name": "_handleDocumentKeyup"
+            },
+            {
+              "kind": "method",
+              "name": "_handleSweeperContainerMouseMove",
+              "parameters": [
+                {
+                  "name": "event",
+                  "type": {
+                    "text": "MouseEvent"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_createGameBoard"
+            },
+            {
+              "kind": "method",
+              "name": "_gameWonCallback"
+            },
+            {
+              "kind": "method",
+              "name": "_gameLostCallback"
             },
             {
               "kind": "method",
@@ -393,12 +528,49 @@
               "name": "restartGame"
             },
             {
-              "kind": "method",
-              "name": "__resetLongPressStates"
+              "kind": "field",
+              "name": "_isLongPressDisabled"
             },
             {
               "kind": "method",
-              "name": "__handleFieldClickStart",
+              "name": "_generateEventOptions",
+              "parameters": [
+                {
+                  "name": "eventInitDict",
+                  "default": "{}",
+                  "optional": true,
+                  "type": {
+                    "text": "CustomEventInit"
+                  }
+                },
+                {
+                  "name": "type",
+                  "type": {
+                    "text": "string"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_resetLongPressStates"
+            },
+            {
+              "kind": "method",
+              "name": "_handleScroll"
+            },
+            {
+              "kind": "method",
+              "name": "_handleLongPress",
+              "parameters": [
+                {
+                  "name": "sweeperField"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_handleFieldClickStart",
               "parameters": [
                 {
                   "name": "event",
@@ -410,11 +582,11 @@
             },
             {
               "kind": "method",
-              "name": "__handleFieldClickLeave"
+              "name": "_handleFieldClickLeave"
             },
             {
               "kind": "method",
-              "name": "__handleFieldClickEnd",
+              "name": "_handleFieldClickEnd",
               "parameters": [
                 {
                   "name": "event",
@@ -426,7 +598,25 @@
             },
             {
               "kind": "method",
-              "name": "getSweeperFieldSvg",
+              "name": "_triggerSecondActionClick",
+              "parameters": [
+                {
+                  "name": "selectedRow",
+                  "type": {
+                    "text": "number"
+                  }
+                },
+                {
+                  "name": "selectedColumn",
+                  "type": {
+                    "text": "number"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_getSweeperFieldSvg",
               "parameters": [
                 {
                   "name": "rowIndex"
@@ -438,7 +628,16 @@
             },
             {
               "kind": "method",
-              "name": "getSweeperFieldHtml",
+              "name": "_getHoverSweeperFieldSvg",
+              "parameters": [
+                {
+                  "name": "mainSweeperFieldSvg"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_getSweeperFieldHtml",
               "parameters": [
                 {
                   "name": "rowIndex"
@@ -447,82 +646,6 @@
                   "name": "columnIndex"
                 }
               ]
-            },
-            {
-              "kind": "field",
-              "name": "columns",
-              "privacy": "public",
-              "type": {
-                "text": "number"
-              },
-              "default": "9",
-              "attribute": "columns"
-            },
-            {
-              "kind": "field",
-              "name": "rows",
-              "privacy": "public",
-              "type": {
-                "text": "number"
-              },
-              "default": "9",
-              "attribute": "rows"
-            },
-            {
-              "kind": "field",
-              "name": "bombs",
-              "privacy": "public",
-              "type": {
-                "text": "number"
-              },
-              "default": "10",
-              "attribute": "bombs"
-            },
-            {
-              "kind": "field",
-              "name": "restartSelector",
-              "privacy": "public",
-              "attribute": "restart-selector"
-            },
-            {
-              "kind": "field",
-              "name": "bombCounterSelector",
-              "privacy": "public",
-              "attribute": "bomb-counter-selector"
-            },
-            {
-              "kind": "field",
-              "name": "__game",
-              "privacy": "public",
-              "type": {
-                "text": "MinesweeperGame"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "__pressStartTimestamp",
-              "privacy": "public",
-              "type": {
-                "text": "Number"
-              },
-              "attribute": "__pressStartTimestamp"
-            },
-            {
-              "kind": "field",
-              "name": "__pressStartSweeperField",
-              "privacy": "public",
-              "type": {
-                "text": "HTMLElement"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "__longPressTimer",
-              "privacy": "public",
-              "type": {
-                "text": "Number"
-              },
-              "attribute": "__longPressTimer"
             }
           ],
           "events": [
@@ -539,6 +662,12 @@
               }
             },
             {
+              "name": "field-long-press",
+              "type": {
+                "text": "CustomEvent"
+              }
+            },
+            {
               "name": "field-click",
               "type": {
                 "text": "CustomEvent"
@@ -548,11 +677,41 @@
           "attributes": [
             {
               "name": "restart-selector",
+              "type": {
+                "text": "string"
+              },
               "fieldName": "restartSelector"
             },
             {
               "name": "bomb-counter-selector",
+              "type": {
+                "text": "string"
+              },
               "fieldName": "bombCounterSelector"
+            },
+            {
+              "name": "flag-placement-mode",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "flagPlacementMode"
+            },
+            {
+              "name": "disable-question-marks",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "disableQuestionMarks"
+            },
+            {
+              "name": "long-press-threshold",
+              "type": {
+                "text": "number"
+              },
+              "default": "500",
+              "fieldName": "longPressThreshold"
             },
             {
               "name": "columns",
@@ -577,20 +736,6 @@
               },
               "default": "10",
               "fieldName": "bombs"
-            },
-            {
-              "name": "__pressStartTimestamp",
-              "type": {
-                "text": "Number"
-              },
-              "fieldName": "__pressStartTimestamp"
-            },
-            {
-              "name": "__longPressTimer",
-              "type": {
-                "text": "Number"
-              },
-              "fieldName": "__longPressTimer"
             }
           ],
           "superclass": {
