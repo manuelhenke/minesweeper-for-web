@@ -33,6 +33,16 @@ yarn add minesweeper-for-web
 | `restart-selector`       | `string`  | If present, attaches a click event listener to the element to trigger a restart.                                                                  |         |
 | `bomb-counter-selector`  | `string`  | If present, changes the `textContent` of the provided element to the amount of bombs minus the amount of placed flags.                            |         |
 
+## Events
+
+By default, each event contains the current game state in `event.detail.game`. To discourage cheating, no events should be logged in the browser console.
+| Name | Cancelable | Description | `detail` |
+| ------------- | ------------------ | ------------------------- | ------ |
+| `game-won` | :x: | User just won the game | <ul><li>`game`: `Object` current game state</li></ul> |
+| `game-lost` | :x: | User just lost the game | <ul><li>`game`: `Object` current game state</li></ul> |
+| `field-click` | :white_check_mark: | User clicked a field | <ul><li>`game`: `Object` current game state</li><li>`field`: `HTMLElement` clicked field</li></ul> |
+| `field-long-press` | :white_check_mark: | User long pressed a field | <ul><li>`game`: `Object` current game state</li><li>`field`: `HTMLElement` long pressed field</li></ul> |
+
 ## Usage
 
 ### Basic usage
