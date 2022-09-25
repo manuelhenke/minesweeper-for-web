@@ -1,5 +1,16 @@
 # Changelog
 
+## [3.0.0](https://github.com/manuelhenke/minesweeper-for-web/compare/v2.3.0...v3.0.0) (2022-09-25)
+
+
+### ⚠ BREAKING CHANGES
+
+* typescript support + new interaction event
+
+### Features
+
+* typescript support + new interaction event ([b1e65b0](https://github.com/manuelhenke/minesweeper-for-web/commit/b1e65b04cda4c71d5bf5176b11fc0ea50dc18963))
+
 ## [2.3.0](https://github.com/manuelhenke/minesweeper-for-web/compare/v2.2.1...v2.3.0) (2022-09-22)
 
 
