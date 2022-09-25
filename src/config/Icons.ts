@@ -13,6 +13,7 @@ import Number5 from '../assets/icons/number-5.svg';
 import Number6 from '../assets/icons/number-6.svg';
 import Number7 from '../assets/icons/number-7.svg';
 import Number8 from '../assets/icons/number-8.svg';
+// @ Alias is currently not supported due to tsc or tsc-alias
 
 export default {
   Bomb,

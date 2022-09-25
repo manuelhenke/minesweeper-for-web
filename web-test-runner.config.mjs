@@ -1,10 +1,11 @@
+import { importMapsPlugin } from '@web/dev-server-import-maps';
 // import { playwrightLauncher } from '@web/test-runner-playwright';
 
-const filteredLogs = ['Running in dev mode'];
+const filteredLogs = ['Running in dev mode', 'lit-html is in dev mode'];
 
 export default /** @type {import("@web/test-runner").TestRunnerConfig} */ ({
   /** Test files to run */
-  files: 'test/**/*.test.js',
+  files: 'lib-esm/test/**/*.test.js',
 
   /** Resolve bare module imports */
   nodeResolve: {
@@ -20,6 +21,20 @@ export default /** @type {import("@web/test-runner").TestRunnerConfig} */ ({
     }
     return true;
   },
+
+  plugins: [
+    importMapsPlugin({
+      inject: {
+        importMap: {
+          imports: {
+            // mock a module in your own code (TODO: currently not working)
+            './**.scss': '../test/mocks/style-mock.js',
+            './**.svg': '../../test/mocks/svg-mock.js',
+          },
+        },
+      },
+    }),
+  ],
 
   /** Compile JS for older browsers. Requires @web/dev-server-esbuild plugin */
   // esbuildTarget: 'auto',

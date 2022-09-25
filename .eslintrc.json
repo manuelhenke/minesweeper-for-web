@@ -3,14 +3,17 @@
   "env": {
     "browser": true
   },
-  "parser": "@babel/eslint-parser",
+  "parser": "@typescript-eslint/parser",
   "parserOptions": {
+    "project": "./tsconfig.json",
     "requireConfigFile": true,
     "sourceType": "module"
   },
   "extends": [
     "airbnb-base",
-    "airbnb-babel",
+    "airbnb-typescript/base",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:@typescript-eslint/recommended-requiring-type-checking",
     "@open-wc",
     "plugin:lit/recommended",
     "plugin:lit-a11y/recommended",
@@ -18,12 +21,33 @@
     "plugin:unicorn/recommended",
     "plugin:prettier/recommended"
   ],
-  "plugins": ["@babel", "html", "no-only-tests", "no-secrets"],
+  "plugins": ["html", "no-only-tests", "no-secrets"],
   "rules": {
-    "import/extensions": ["error", "ignorePackages"],
+    "import/extensions": "off",
+    "import/no-unresolved": "off",
     "import/prefer-default-export": "off",
+    "no-console": "off",
+    "no-shadow": "off",
+    "@typescript-eslint/no-shadow": "error",
     "no-only-tests/no-only-tests": "error",
     "no-secrets/no-secrets": "error",
-    "unicorn/no-array-for-each": "off"
+    "unicorn/no-array-for-each": "off",
+    "unicorn/filename-case": [
+      "error",
+      {
+        "cases": {
+          "kebabCase": true,
+          "pascalCase": true
+        }
+      }
+    ]
+  },
+  "settings": {
+    "import/resolver": {
+      "alias": {
+        "map": [["@", "./src"]],
+        "extensions": [".ts", ".js", ".jsx", ".json"]
+      }
+    }
   }
 }

@@ -1,9 +1,7 @@
 <!DOCTYPE html>
-<html>
+<html lang="en-GB">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Minesweeper</title>
+    <meta charset="utf-8" />
     <style>
       * {
         box-sizing: border-box;
@@ -16,10 +14,10 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        background: #fafafa;
       }
     </style>
   </head>
-
   <body>
     <h1>Minesweeper</h1>
     <p>
@@ -51,9 +49,27 @@
     <minesweeper-game rows="5" columns="5" bombs="5" long-press-threshold="0"></minesweeper-game>
     <h2>Disabled Question Marks</h2>
     <minesweeper-game rows="5" columns="5" bombs="5" disable-question-marks></minesweeper-game>
+    <h2>Custom tag name</h2>
+    <custom-minesweeper-game></custom-minesweeper-game>
 
     <script type="module">
-      import './dist/minesweeper.js';
+      import { MinesweeperEngine, MinesweeperBoard } from 'minesweeper-for-web/engine';
+      import { FieldClickEvent, FieldKey } from 'minesweeper-for-web/core';
+      console.log({
+        MinesweeperEngine,
+        MinesweeperBoard,
+        FieldClickEvent,
+        FieldKey,
+      });
+
+      import 'minesweeper-for-web';
+      // Alternative:
+      // import 'minesweeper-for-web/custom-element';
+      // import 'minesweeper-for-web/custom-element.min';
+      import { MinesweeperGame } from 'minesweeper-for-web/minesweeper-game';
+      // Alternative:
+      // import 'minesweeper-for-web/minesweeper-game.min';
+      window.customElements.define('custom-minesweeper-game', MinesweeperGame);
 
       function getGameModeConfiguration(currentGameMode) {
         switch (currentGameMode) {
@@ -79,26 +95,31 @@
       }
 
       window.addEventListener('DOMContentLoaded', () => {
+        /** @type {MinesweeperGame} **/
         const minesweeper = document.querySelector('#minesweeper');
 
-        minesweeper.addEventListener('game-won', () => {
+        minesweeper.addEventListener('minesweeper:game-won', (event) => {
+          console.log('game-won', event);
           // eslint-disable-next-line no-alert
-          window.alert('win');
+          window.alert('You won!');
         });
 
-        minesweeper.addEventListener('game-lost', () => {
+        minesweeper.addEventListener('minesweeper:game-lost', (event) => {
+          console.log('game-lost', event);
           // eslint-disable-next-line no-alert
-          window.alert('lose');
+          window.alert('You lost!');
         });
 
-        minesweeper.addEventListener('field-click', (event) => {
-          // eslint-disable-next-line no-alert
+        minesweeper.addEventListener('minesweeper:field-click', (event) => {
           console.log('field-click', event);
         });
 
-        minesweeper.addEventListener('long-press', (event) => {
-          // eslint-disable-next-line no-alert
-          console.log('long-press', event);
+        minesweeper.addEventListener('minesweeper:field-long-press', (event) => {
+          console.log('field-long-press', event);
+        });
+
+        minesweeper.addEventListener('minesweeper:field-interaction', (event) => {
+          console.log('field-interaction', event);
         });
 
         document.querySelector('#toggle-flag-mode').addEventListener('click', (event) => {

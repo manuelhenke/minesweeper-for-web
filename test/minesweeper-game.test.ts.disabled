@@ -1,0 +1,20 @@
+import { html } from 'lit';
+import { fixture, expect } from '@open-wc/testing';
+import { MinesweeperGame } from '../src/MinesweeperGame.js';
+import '../src/minesweeper-game.js';
+
+describe('MinesweeperGame', () => {
+  it('can override the title via attribute', async () => {
+    const element = await fixture<MinesweeperGame>(
+      html`<minesweeper-game title="attribute title"></minesweeper-game>`
+    );
+
+    expect(element.title).to.equal('attribute title');
+  });
+
+  it('passes the a11y audit', async () => {
+    const element = await fixture<MinesweeperGame>(html`<minesweeper-game></minesweeper-game>`);
+
+    expect(element).shadowDom.to.be.accessible();
+  });
+});

@@ -1,15 +1,31 @@
 /* eslint-disable import/no-extraneous-dependencies */
 const path = require('node:path');
 const TerserPlugin = require('terser-webpack-plugin');
+const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 
-/** @type {require('webpack').Configuration} */
+/** @type {import('webpack').Configuration} */
 module.exports = {
   mode: 'production',
   cache: false,
-  devtool: false,
+  devtool: 'source-map',
+  experiments: {
+    outputModule: true,
+  },
   entry: {
-    minesweeper: './src/minesweeper.js',
-    'minesweeper.min': './src/minesweeper.js',
+    'custom-element': './src/minesweeper-game.ts',
+    'custom-element.min': './src/minesweeper-game.ts',
+    'minesweeper-game': {
+      import: './src/MinesweeperGame.ts',
+      library: {
+        type: 'module',
+      },
+    },
+    'minesweeper-game.min': {
+      import: './src/MinesweeperGame.ts',
+      library: {
+        type: 'module',
+      },
+    },
   },
   optimization: {
     minimize: true,
@@ -24,12 +40,16 @@ module.exports = {
     filename: '[name].js',
     clean: true,
   },
+  resolve: {
+    extensions: ['.tsx', '.ts', '.js'],
+    plugins: [new TsconfigPathsPlugin()],
+  },
   module: {
     rules: [
       {
-        test: /\.m?js$/,
-        exclude: /(node_modules|bower_components)/,
-        loader: 'babel-loader',
+        test: /\.tsx?$/,
+        use: 'ts-loader',
+        exclude: /node_modules/,
       },
       {
         test: /\.s[ac]ss$/i,

@@ -1,5 +1,6 @@
 docs/
 dist/
+lib-esm/
+lib-cjs/
 node_modules/
 coverage/
-.nuxt/

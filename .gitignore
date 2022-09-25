@@ -80,7 +80,6 @@ typings/
 
 # Nuxt.js build / generate output
 .nuxt
-dist
 
 # Gatsby files
 .cache/
@@ -115,3 +114,12 @@ dist
 
 ## temp folders
 /.tmp/
+
+# build
+/_site/
+/dist/
+/out-tsc/
+/lib-esm/
+/lib-cjs/
+
+custom-elements.json

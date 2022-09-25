@@ -1,10 +1,11 @@
-.github/
-.husky/
-test/
+.github
+.husky
+test
+node_modules
 .editorconfig
 .eslintignore
 .nvmrc
 .prettierignore
-jsconfig.json
+**/tsconfig.json
 web-test-runner.config.mjs
 webpack.cjs

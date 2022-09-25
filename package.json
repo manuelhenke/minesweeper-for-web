@@ -23,23 +23,47 @@
     "url": "https://henkebyte.com/"
   },
   "type": "module",
-  "main": "src/minesweeper.js",
-  "module": "src/minesweeper.js",
-  "browser": "dist/minesweeper.js",
+  "browser": "dist/custom-element.min.js",
+  "main": "lib-cjs/src/index.js",
+  "module": "lib-esm/src/index.js",
+  "types": "lib-esm/src/index.d.ts",
+  "exports": {
+    ".": "./dist/custom-element.min.js",
+    "./custom-element": "./dist/custom-element.js",
+    "./custom-element.min": "./dist/custom-element.min.js",
+    "./minesweeper-game": "./dist/minesweeper-game.js",
+    "./minesweeper-game.min": "./dist/minesweeper-game.min.js",
+    "./core": {
+      "import": "./lib-esm/src/index.js",
+      "require": "./lib-cjs/src/index.js"
+    },
+    "./engine": {
+      "import": "./lib-esm/src/engine/index.js",
+      "require": "./lib-cjs/src/engine/index.js"
+    }
+  },
   "files": [
-    "dist"
+    "dist",
+    "lib-cjs/src",
+    "lib-esm/src"
   ],
   "scripts": {
     "analyze": "cem analyze --litelement",
-    "build": "webpack",
-    "lint": "yarn lint:js && yarn lint:style && yarn lint:prettier",
-    "lint:js": "eslint --ext \".js\" .",
+    "build": "yarn build:dist && yarn build:lib && ./fixup.sh && yarn analyze --exclude dist",
+    "build:dist": "webpack",
+    "build:lib": "yarn build:lib-esm && yarn build:lib-cjs",
+    "build:lib-esm": "rm -fr lib-esm/* && tsc -p tsconfig.json && tsc-alias",
+    "build:lib-cjs": "rm -fr lib-cjs/* && tsc -p tsconfig-cjs.json && tsc-alias",
+    "dev": "yarn build && concurrently -k -r \"yarn build:dist --watch\" \"wds\"",
+    "prepublish": "yarn build",
+    "lint": "yarn lint:ts && yarn lint:style && yarn lint:prettier",
+    "lint:ts": "eslint --ext \".ts\" .",
     "lint:prettier": "prettier --check .",
     "lint:style": "stylelint \"**/*.{css,scss,sass,html}\" --ignore-path .gitignore",
-    "lintfix": "prettier --write --list-different . && yarn lint:js --fix && yarn lint:style --fix",
+    "lintfix": "prettier --write --list-different . && yarn lint:ts --fix && yarn lint:style --fix",
     "prepare": "husky install",
-    "test": "web-test-runner --coverage",
-    "test:watch": "web-test-runner --watch"
+    "test": "tsc && tsc-alias && wtr --coverage --debug",
+    "test:watch": "tsc && tsc-alias && concurrently -k -r \"tsc --watch --preserveWatchOutput\" \"tsc-alias --watch\" \"wtr --watch\""
   },
   "browserslist": [
     "last 4 version"
@@ -48,28 +72,28 @@
     "lit": "^2.2.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.17.5",
-    "@babel/eslint-parser": "^7.17.0",
-    "@babel/eslint-plugin": "^7.18.10",
-    "@babel/plugin-proposal-class-properties": "^7.16.7",
-    "@babel/plugin-proposal-decorators": "^7.17.2",
-    "@babel/preset-env": "^7.16.11",
     "@commitlint/cli": "^17.0.3",
     "@commitlint/config-conventional": "^17.0.3",
     "@custom-elements-manifest/analyzer": "^0.6.3",
     "@open-wc/eslint-config": "^8.0.2",
     "@open-wc/testing": "^3.0.4",
-    "@web/test-runner": "0.14.0",
+    "@typescript-eslint/eslint-plugin": "^5.38.0",
+    "@typescript-eslint/parser": "^5.38.0",
+    "@web/dev-server": "^0.1.34",
+    "@web/dev-server-import-maps": "^0.0.7",
+    "@web/test-runner": "^0.14.0",
     "autoprefixer": "^10.4.2",
-    "babel-loader": "^8.2.3",
+    "concurrently": "^7.4.0",
     "css-loader": "^6.5.1",
     "eslint": "^8.9.0",
     "eslint-config-airbnb-babel": "^0.2.2",
     "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-airbnb-typescript": "^17.0.0",
     "eslint-config-prettier": "^8.4.0",
+    "eslint-import-resolver-alias": "^1.1.2",
     "eslint-plugin-babel": "^5.3.1",
     "eslint-plugin-html": "^6.0.0",
-    "eslint-plugin-import": "^2.25.4",
+    "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-lit": "^1.3.0",
     "eslint-plugin-lit-a11y": "^2.2.2",
     "eslint-plugin-no-only-tests": "^2.4.0",
@@ -78,7 +102,6 @@
     "eslint-plugin-sonarjs": "^0.15.0",
     "eslint-plugin-unicorn": "^43.0.2",
     "eslint-plugin-wc": "^1.3.2",
-    "html-loader": "^4.1.0",
     "husky": "^8.0.1",
     "postcss": "^8.4.4",
     "postcss-html": "^1.5.0",
@@ -90,9 +113,14 @@
     "stylelint-config-prettier-scss": "^0.0.1",
     "stylelint-config-standard-scss": "^5.0.0",
     "svg-inline-loader": "^0.8.2",
-    "terser-webpack-plugin": "^5.3.1",
-    "webpack": "^5.69.1",
-    "webpack-cli": "^4.9.2"
+    "terser-webpack-plugin": "^5.3.6",
+    "ts-loader": "^9.4.1",
+    "tsc-alias": "^1.7.0",
+    "tsconfig-paths-webpack-plugin": "^4.0.0",
+    "tslib": "^2.3.1",
+    "typescript": "^4.8.3",
+    "webpack": "^5.74.0",
+    "webpack-cli": "^4.10.0"
   },
   "customElements": "custom-elements.json"
 }
