@@ -12,8 +12,8 @@ module.exports = {
     outputModule: true,
   },
   entry: {
-    'custom-element': './src/minesweeper-game.ts',
-    'custom-element.min': './src/minesweeper-game.ts',
+    'custom-element': './src/custom-element.ts',
+    'custom-element.min': './src/custom-element.ts',
     'minesweeper-game': {
       import: './src/MinesweeperGame.ts',
       library: {

@@ -23,37 +23,70 @@
     "url": "https://henkebyte.com/"
   },
   "type": "module",
-  "browser": "dist/custom-element.min.js",
-  "main": "lib-cjs/src/index.js",
-  "module": "lib-esm/src/index.js",
-  "types": "lib-esm/src/index.d.ts",
+  "browser": "dist/custom-element.js",
+  "main": "dist/custom-element.js",
+  "module": "dist/custom-element.js",
+  "types": "lib-esm/src/minesweeper-game.d.ts",
   "exports": {
-    ".": "./dist/custom-element.min.js",
-    "./custom-element": "./dist/custom-element.js",
-    "./custom-element.min": "./dist/custom-element.min.js",
-    "./minesweeper-game": "./dist/minesweeper-game.js",
-    "./minesweeper-game.min": "./dist/minesweeper-game.min.js",
+    ".": {
+      "types": "./lib-esm/src/minesweeper-game.d.ts",
+      "default": "./dist/custom-element.js"
+    },
+    "./custom-element": {
+      "types": "./lib-esm/src/minesweeper-game.d.ts",
+      "default": "./dist/custom-element.js"
+    },
+    "./custom-element.min": {
+      "types": "./lib-esm/src/minesweeper-game.d.ts",
+      "default": "./dist/custom-element.min.js"
+    },
+    "./minesweeper-game": {
+      "types": "./lib-esm/src/MinesweeperGame.d.ts",
+      "default": "./dist/minesweeper-game.js"
+    },
+    "./minesweeper-game.min": {
+      "types": "./lib-esm/src/MinesweeperGame.d.ts",
+      "default": "./dist/minesweeper-game.min.js"
+    },
     "./core": {
+      "types": "./lib-esm/src/index.d.ts",
       "import": "./lib-esm/src/index.js",
-      "require": "./lib-cjs/src/index.js"
+      "require": "./lib-cjs/src/index.js",
+      "default": "./lib-esm/src/index.js"
     },
     "./engine": {
+      "types": "./lib-esm/src/engine/index.d.ts",
       "import": "./lib-esm/src/engine/index.js",
-      "require": "./lib-cjs/src/engine/index.js"
+      "require": "./lib-cjs/src/engine/index.js",
+      "default": "./lib-esm/src/engine/index.js"
+    },
+    "./lib-esm/*": {
+      "types": "./lib-esm/src/index.d.ts",
+      "default": "./lib-esm/src/index.js"
+    },
+    "./lib-cjs/*": {
+      "types": "./lib-cjs/src/index.d.ts",
+      "default": "./lib-cjs/src/index.js"
     }
   },
   "files": [
-    "dist",
-    "lib-cjs/src",
-    "lib-esm/src"
+    "index.js",
+    "custom-element.js",
+    "custom-element.min.js",
+    "minesweeper-game.js",
+    "minesweeper-game.min.js",
+    "core.js",
+    "engine.js",
+    "lib-esm/src/",
+    "lib-cjs/src/"
   ],
   "scripts": {
     "analyze": "cem analyze --litelement",
     "build": "yarn build:dist && yarn build:lib && ./fixup.sh && yarn analyze --exclude dist",
     "build:dist": "webpack",
     "build:lib": "yarn build:lib-esm && yarn build:lib-cjs",
-    "build:lib-esm": "rm -fr lib-esm/* && tsc -p tsconfig.json && tsc-alias",
-    "build:lib-cjs": "rm -fr lib-cjs/* && tsc -p tsconfig-cjs.json && tsc-alias",
+    "build:lib-esm": "rm -fr lib-esm/* && tsc -p tsconfig.json && tsc-alias -p tsconfig.json",
+    "build:lib-cjs": "rm -fr lib-cjs/* && tsc -p tsconfig-cjs.json && tsc-alias -p tsconfig-cjs.json",
     "dev": "yarn build && concurrently -k -r \"yarn build:dist --watch\" \"wds\"",
     "prepublish": "yarn build",
     "lint": "yarn lint:ts && yarn lint:style && yarn lint:prettier",

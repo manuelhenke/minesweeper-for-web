@@ -21,5 +21,9 @@
     }
   },
   "include": ["**/*.ts", "custom.d.ts"],
-  "exclude": ["node_modules", "dist", "lib-esm", "lib-cjs"]
+  "exclude": ["node_modules", "dist", "lib-esm", "lib-cjs"],
+  "tsc-alias": {
+    "verbose": false,
+    "resolveFullPaths": true
+  }
 }
