@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.0.1](https://github.com/manuelhenke/minesweeper-for-web/compare/v3.0.0...v3.0.1) (2022-09-26)
+
+
+### Bug Fixes
+
+* exports of the package ([10d0a88](https://github.com/manuelhenke/minesweeper-for-web/commit/10d0a88195e90383ce4d010f0cf347075d2a891a))
+
 ## [3.0.0](https://github.com/manuelhenke/minesweeper-for-web/compare/v2.3.0...v3.0.0) (2022-09-25)
 
 
