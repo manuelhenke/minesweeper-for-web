@@ -462,16 +462,20 @@ export class MinesweeperGame extends LitElement {
 
   private getHoverSweeperFieldSvg(mainSweeperFieldSvg: string) {
     switch (mainSweeperFieldSvg) {
-      case IconsReferences.FLAG:
+      case IconsReferences.FLAG: {
         return this.disableQuestionMarks || this.flagPlacementMode
           ? IconsReferences.UNOPENED_SQUARE
           : IconsReferences.QUESTION_MARK;
-      case IconsReferences.QUESTION_MARK:
+      }
+      case IconsReferences.QUESTION_MARK: {
         return IconsReferences.UNOPENED_SQUARE;
-      case IconsReferences.UNOPENED_SQUARE:
+      }
+      case IconsReferences.UNOPENED_SQUARE: {
         return IconsReferences.FLAG;
-      default:
+      }
+      default: {
         return mainSweeperFieldSvg;
+      }
     }
   }
 
