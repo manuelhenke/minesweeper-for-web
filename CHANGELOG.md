@@ -1,5 +1,13 @@
 # Changelog
 
+## [3.0.4](https://github.com/manuelhenke/minesweeper-for-web/compare/v3.0.3...v3.0.4) (2022-12-15)
+
+
+### Bug Fixes
+
+* **deps:** bump lit from 2.4.1 to 2.5.0 ([#171](https://github.com/manuelhenke/minesweeper-for-web/issues/171)) ([47c026d](https://github.com/manuelhenke/minesweeper-for-web/commit/47c026d71290962acce9157fa5a166acebe85a54))
+* **deps:** bump loader-utils from 1.4.1 to 1.4.2 ([#143](https://github.com/manuelhenke/minesweeper-for-web/issues/143)) ([9140532](https://github.com/manuelhenke/minesweeper-for-web/commit/9140532dd7be3cf56eda1c116a2a35d745701ce5))
+
 ## [3.0.3](https://github.com/manuelhenke/minesweeper-for-web/compare/v3.0.2...v3.0.3) (2022-11-08)
 
 
