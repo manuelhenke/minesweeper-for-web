@@ -53,22 +53,17 @@
     <custom-minesweeper-game></custom-minesweeper-game>
 
     <script type="module">
-      import { MinesweeperEngine, MinesweeperBoard } from 'minesweeper-for-web/engine';
-      import { FieldClickEvent, FieldKey } from 'minesweeper-for-web/core';
-      console.log({
-        MinesweeperEngine,
-        MinesweeperBoard,
-        FieldClickEvent,
-        FieldKey,
-      });
-
-      import 'minesweeper-for-web';
+      import './dist/custom-element.js';
+      // Replace with: import 'minesweeper-for-web';
       // Alternative:
       // import 'minesweeper-for-web/custom-element';
       // import 'minesweeper-for-web/custom-element.min';
-      import { MinesweeperGame } from 'minesweeper-for-web/minesweeper-game';
+
+      import { MinesweeperGame } from './dist/minesweeper-game.js';
+      // Replace with: import { MinesweeperGame } from 'minesweeper-for-web/minesweeper-game';
       // Alternative:
       // import 'minesweeper-for-web/minesweeper-game.min';
+
       window.customElements.define('custom-minesweeper-game', MinesweeperGame);
 
       function getGameModeConfiguration(currentGameMode) {
