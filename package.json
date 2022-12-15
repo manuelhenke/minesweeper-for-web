@@ -101,6 +101,7 @@
     "last 4 version"
   ],
   "dependencies": {
+    "@types/node": "^18.11.15",
     "lit": "^2.2.0"
   },
   "devDependencies": {
