@@ -262,7 +262,7 @@ export class MinesweeperGame extends LitElement {
 
   @eventOptions({ passive: true })
   private handleFieldClickStart(event: TouchEvent | MouseEvent) {
-    if (typeof window.ontouchstart !== 'undefined' && event.type === 'mousedown') {
+    if (window.ontouchstart !== undefined && event.type === 'mousedown') {
       this.resetLongPressStates();
       return;
     }
