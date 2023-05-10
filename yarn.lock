@@ -921,31 +921,7 @@
   dependencies:
     semver "^7.3.4"
 
-"@web/dev-server-core@^0.3.18":
-  version "0.3.18"
-  resolved "https://registry.yarnpkg.com/@web/dev-server-core/-/dev-server-core-0.3.18.tgz#3a5d8497ece5947bb01cea5cc1488dfe7fbe6878"
-  integrity sha512-o8EBGKXlBjAaQZiYNE1RZsNZJFQHjjr9FwuJyP2fsN+dkdZRhOjp4/E46hl2rB17Qgq4AizFmds8enmF/hU5dw==
-  dependencies:
-    "@types/koa" "^2.11.6"
-    "@types/ws" "^7.4.0"
-    "@web/parse5-utils" "^1.2.0"
-    chokidar "^3.4.3"
-    clone "^2.1.2"
-    es-module-lexer "^0.9.0"
-    get-stream "^6.0.0"
-    is-stream "^2.0.0"
-    isbinaryfile "^4.0.6"
-    koa "^2.13.0"
-    koa-etag "^4.0.0"
-    koa-send "^5.0.1"
-    koa-static "^5.0.0"
-    lru-cache "^6.0.0"
-    mime-types "^2.1.27"
-    parse5 "^6.0.1"
-    picomatch "^2.2.2"
-    ws "^7.4.2"
-
-"@web/dev-server-core@^0.3.19":
+"@web/dev-server-core@^0.3.18", "@web/dev-server-core@^0.3.19":
   version "0.3.19"
   resolved "https://registry.yarnpkg.com/@web/dev-server-core/-/dev-server-core-0.3.19.tgz#b61f9a0b92351371347a758b30ba19e683c72e94"
   integrity sha512-Q/Xt4RMVebLWvALofz1C0KvP8qHbzU1EmdIA2Y1WMPJwiFJFhPxdr75p9YxK32P2t0hGs6aqqS5zE0HW9wYzYA==
@@ -969,15 +945,39 @@
     picomatch "^2.2.2"
     ws "^7.4.2"
 
-"@web/dev-server-import-maps@^0.0.7":
-  version "0.0.7"
-  resolved "https://registry.yarnpkg.com/@web/dev-server-import-maps/-/dev-server-import-maps-0.0.7.tgz#abc89d74dda24e6e3903d28574154639db7a2619"
-  integrity sha512-uq8SFRkh3Zic71boDP/GeNwc7BtOWFWLDam3JJF3G0L9gMZVm7WteeDxxn9ppdbGxRhvlJtxqBlSOvf3pl75qw==
+"@web/dev-server-core@^0.5.1":
+  version "0.5.1"
+  resolved "https://registry.yarnpkg.com/@web/dev-server-core/-/dev-server-core-0.5.1.tgz#80e5a059f2abf5d1d40bd123c2b539ae86640e2c"
+  integrity sha512-pXgb4bjDmPIaIQT9luixTSqTvRQxttUEzSKOZqLNl6pVgrl4n47ZtmZte936G2tM7nHmpT+oaMDDtCM0CgbQNQ==
+  dependencies:
+    "@types/koa" "^2.11.6"
+    "@types/ws" "^7.4.0"
+    "@web/parse5-utils" "^2.0.0"
+    chokidar "^3.4.3"
+    clone "^2.1.2"
+    es-module-lexer "^1.0.0"
+    get-stream "^6.0.0"
+    is-stream "^2.0.0"
+    isbinaryfile "^5.0.0"
+    koa "^2.13.0"
+    koa-etag "^4.0.0"
+    koa-send "^5.0.1"
+    koa-static "^5.0.0"
+    lru-cache "^8.0.4"
+    mime-types "^2.1.27"
+    parse5 "^6.0.1"
+    picomatch "^2.2.2"
+    ws "^7.4.2"
+
+"@web/dev-server-import-maps@^0.1.1":
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/@web/dev-server-import-maps/-/dev-server-import-maps-0.1.1.tgz#44c619117a025e3515198a129d662a0fb52f5c82"
+  integrity sha512-Et/uswWE2K9tFLM2xNArsvoDtFmBPyFrwJRm5O5ls5u0F3ZNE8vXk4kUONakillQ/041uSE30wIfesljl1ZKsg==
   dependencies:
     "@import-maps/resolve" "^1.0.1"
     "@types/parse5" "^6.0.1"
-    "@web/dev-server-core" "^0.3.19"
-    "@web/parse5-utils" "^1.3.0"
+    "@web/dev-server-core" "^0.5.1"
+    "@web/parse5-utils" "^2.0.0"
     parse5 "^6.0.1"
     picomatch "^2.2.2"
 
@@ -1013,10 +1013,18 @@
     open "^8.0.2"
     portfinder "^1.0.32"
 
-"@web/parse5-utils@^1.2.0", "@web/parse5-utils@^1.3.0":
+"@web/parse5-utils@^1.2.0":
   version "1.3.0"
   resolved "https://registry.yarnpkg.com/@web/parse5-utils/-/parse5-utils-1.3.0.tgz#e2e9e98b31a4ca948309f74891bda8d77399f6bd"
   integrity sha512-Pgkx3ECc8EgXSlS5EyrgzSOoUbM6P8OKS471HLAyvOBcP1NCBn0to4RN/OaKASGq8qa3j+lPX9H14uA5AHEnQg==
+  dependencies:
+    "@types/parse5" "^6.0.1"
+    parse5 "^6.0.1"
+
+"@web/parse5-utils@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@web/parse5-utils/-/parse5-utils-2.0.0.tgz#15ac70e8792a115ef05baa0eab2631fb8ffd3004"
+  integrity sha512-9pxjAg1k0Ie3t4gTQr/nmoTrvq6wmP40MNPwaetaN+jPc328MpO+WzmEApvJOW65v7lamjlvYFDsdvG8Lrd87Q==
   dependencies:
     "@types/parse5" "^6.0.1"
     parse5 "^6.0.1"
@@ -3621,6 +3629,11 @@ isbinaryfile@^4.0.6:
   resolved "https://registry.yarnpkg.com/isbinaryfile/-/isbinaryfile-4.0.10.tgz#0c5b5e30c2557a2f06febd37b7322946aaee42b3"
   integrity sha512-iHrqe5shvBUcFbmZq9zOQHBoeOhZJu6RQGrDpBgenUm/Am+F3JM2MgQj+rK3Z601fzrL5gLZWtAPH2OBaSVcyw==
 
+isbinaryfile@^5.0.0:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/isbinaryfile/-/isbinaryfile-5.0.0.tgz#034b7e54989dab8986598cbcea41f66663c65234"
+  integrity sha512-UDdnyGvMajJUWCkib7Cei/dvyJrrvo4FIrsvSFWdPpXSUorzXrDJ0S+X5Q4ZlasfPjca4yqCNNsjbCeiy8FFeg==
+
 isexe@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/isexe/-/isexe-2.0.0.tgz#e8fbf374dc556ff8947a10dcb0572d633f2cfa10"
@@ -3994,6 +4007,11 @@ lru-cache@^6.0.0:
   integrity sha512-Jo6dJ04CmSjuznwJSS3pUeWmd/H0ffTlkXXgwZi+eq1UCmqQwCh+eLsYOYCwY991i2Fah4h1BEMCx4qThGbsiA==
   dependencies:
     yallist "^4.0.0"
+
+lru-cache@^8.0.4:
+  version "8.0.5"
+  resolved "https://registry.yarnpkg.com/lru-cache/-/lru-cache-8.0.5.tgz#983fe337f3e176667f8e567cfcce7cb064ea214e"
+  integrity sha512-MhWWlVnuab1RG5/zMRRcVGXZLCXrZTgfwMikgzCegsPnG62yDQo5JnqKkrK4jO5iKqDAZGItAqN5CtKBCBWRUA==
 
 make-dir@^3.0.0:
   version "3.1.0"
