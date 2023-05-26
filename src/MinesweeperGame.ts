@@ -89,7 +89,6 @@ export class MinesweeperGame extends LitElement {
   })
   rows = 9;
 
-  /** @type {number} */
   @property({
     type: Number,
   })
