@@ -116,7 +116,7 @@
     "@web/dev-server-import-maps": "^0.1.1",
     "@web/test-runner": "^0.15.0",
     "autoprefixer": "^10.4.2",
-    "concurrently": "^7.4.0",
+    "concurrently": "^8.2.0",
     "css-loader": "^6.5.1",
     "eslint": "^8.9.0",
     "eslint-config-airbnb-babel": "^0.2.2",
