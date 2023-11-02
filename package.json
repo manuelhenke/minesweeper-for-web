@@ -114,7 +114,7 @@
     "@typescript-eslint/parser": "^5.38.0",
     "@web/dev-server": "^0.2.3",
     "@web/dev-server-import-maps": "^0.1.1",
-    "@web/test-runner": "^0.15.0",
+    "@web/test-runner": "^0.18.0",
     "autoprefixer": "^10.4.2",
     "concurrently": "^8.2.0",
     "css-loader": "^6.5.1",
