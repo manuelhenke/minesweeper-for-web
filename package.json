@@ -1,6 +1,6 @@
 {
   "name": "minesweeper-for-web",
-  "version": "3.0.4",
+  "version": "3.0.5",
   "description": "Minesweeper as a WebComponent.",
   "keywords": [
     "minesweeper",

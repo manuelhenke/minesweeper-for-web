@@ -1,5 +1,16 @@
 # Changelog
 
+## [3.0.5](https://github.com/manuelhenke/minesweeper-for-web/compare/v3.0.4...v3.0.5) (2024-01-30)
+
+
+### Bug Fixes
+
+* **deps:** bump json5 from 1.0.1 to 1.0.2 ([#197](https://github.com/manuelhenke/minesweeper-for-web/issues/197)) ([8534ef1](https://github.com/manuelhenke/minesweeper-for-web/commit/8534ef1e701f1f28f440d341c0a49e8ad133a190))
+* **deps:** bump lit from 2.5.0 to 2.6.0 ([#205](https://github.com/manuelhenke/minesweeper-for-web/issues/205)) ([3b388fd](https://github.com/manuelhenke/minesweeper-for-web/commit/3b388fd6986acf3cfef243a089cafecf0ec8a29f))
+* **deps:** bump lit from 2.6.0 to 2.6.1 ([#211](https://github.com/manuelhenke/minesweeper-for-web/issues/211)) ([863526c](https://github.com/manuelhenke/minesweeper-for-web/commit/863526c4321dbbd33e09b87c13cc48c5e65a32d8))
+* **deps:** bump lit from 2.6.1 to 2.7.4 ([#320](https://github.com/manuelhenke/minesweeper-for-web/issues/320)) ([38d570d](https://github.com/manuelhenke/minesweeper-for-web/commit/38d570d3f0734126f59b2fb215145112e6bd6857))
+* **deps:** bump word-wrap from 1.2.3 to 1.2.4 ([#367](https://github.com/manuelhenke/minesweeper-for-web/issues/367)) ([5da8b1e](https://github.com/manuelhenke/minesweeper-for-web/commit/5da8b1eb71fa8300734b9d671ec3aeebe8fbc701))
+
 ## [3.0.4](https://github.com/manuelhenke/minesweeper-for-web/compare/v3.0.3...v3.0.4) (2022-12-15)
 
 
