@@ -151,11 +151,11 @@ Attach an EventListener for the win/lose events.
   window.addEventListener('DOMContentLoaded', () => {
     const minesweeper = document.querySelector('#minesweeper');
 
-    minesweeper.addEventListener('game-won', () => {
+    minesweeper.addEventListener('minesweeper:game-won', () => {
       console.log('win');
     });
 
-    minesweeper.addEventListener('game-lost', () => {
+    minesweeper.addEventListener('minesweeper:game-lost', () => {
       console.log('lose');
     });
   });
